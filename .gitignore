@@ -34,3 +34,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 /*.log
+
+# Lab run outputs and the model cache (delete before "academy check")
+labs/artifacts/
+labs/cache/

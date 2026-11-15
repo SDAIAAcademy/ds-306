@@ -1,0 +1,8007 @@
+[
+ {
+  "id": "C00029",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00105",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00132",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00155",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00164",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00201",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00203",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00259",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00285",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00352",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00366",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00384",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00397",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00405",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00407",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00417",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00441",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00465",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00493",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00496",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00540",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00562",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00563",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00594",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00626",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00639",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00645",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00658",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00683",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00750",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00806",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00819",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00852",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00877",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00893",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00895",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00897",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00930",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00955",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00982",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C00989",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01010",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01016",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01085",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01086",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01125",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01134",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01158",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01162",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01163",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01232",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01254",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01282",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01312",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01316",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01333",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01338",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01354",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01375",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01406",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01425",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01462",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01463",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01465",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01499",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01591",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01604",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01630",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01638",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01662",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01716",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01722",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01827",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01841",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01852",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01892",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01900",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01908",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01956",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01973",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01979",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01986",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C01987",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02000",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02003",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02018",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02033",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02035",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02047",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02060",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02075",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02084",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02115",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02119",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02209",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02211",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02212",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02242",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02253",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02263",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02296",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02311",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02345",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02348",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02380",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02429",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02432",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02440",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02464",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02490",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02555",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02589",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02601",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02611",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02625",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02636",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02643",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02648",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02692",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02777",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02780",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02781",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02807",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02816",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02818",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02841",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02850",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02885",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02894",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02895",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02939",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02956",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02965",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C02999",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03031",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03038",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03045",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03100",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03116",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03118",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03121",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03158",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03170",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03214",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03229",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03247",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03266",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03289",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03290",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03326",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03327",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03354",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03366",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03376",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03392",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03395",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03396",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03435",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03439",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03465",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03477",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03478",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03502",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03515",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03548",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03573",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03598",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03602",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03626",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03632",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03643",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03651",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03656",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03675",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03692",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03708",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03724",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03821",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03822",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03846",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03921",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03928",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03949",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03979",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C03987",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04051",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04056",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04059",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04066",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04083",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04104",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04106",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04149",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04152",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04167",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04177",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04219",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04230",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04250",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04290",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04309",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04311",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04320",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04334",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04343",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04358",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04362",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04371",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04373",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04384",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04418",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04429",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04432",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04448",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04453",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04495",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04500",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04528",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04535",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04556",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04583",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04622",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04642",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04658",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04715",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04735",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04747",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04763",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04792",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04793",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04797",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04817",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04821",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04837",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04841",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04859",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04870",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04882",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04884",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04889",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04906",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04915",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04937",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04950",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C04978",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05000",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05022",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05071",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05076",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05078",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05116",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05123",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05168",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05182",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05186",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05216",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05283",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05286",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05292",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05307",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05325",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05331",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05333",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05339",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05374",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05403",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05419",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05437",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05454",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05506",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05594",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05597",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05604",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05710",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05734",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05735",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05778",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05802",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05848",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05909",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05940",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05945",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05962",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05973",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05996",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C05997",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06000",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06077",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06094",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06143",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06147",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06148",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06166",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06219",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06225",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06234",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06239",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06253",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06255",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06262",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06271",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06305",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06360",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06442",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06489",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06497",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06516",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06525",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06533",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06547",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06595",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06609",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06646",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06659",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06726",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06748",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06757",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06783",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06834",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06851",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06876",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06887",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06898",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06935",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06956",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C06978",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07029",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07053",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07076",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07096",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07105",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07114",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07116",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07127",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07140",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07164",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07171",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07179",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07206",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07219",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07241",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07271",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07277",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07285",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07306",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07309",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07324",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07335",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07347",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07392",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07397",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07430",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07441",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07486",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07493",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07551",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07557",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07566",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07589",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07602",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07609",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07615",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07625",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07644",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07719",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07724",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07730",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07735",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07742",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07744",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07763",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07765",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07776",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07802",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07858",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07890",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07897",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07900",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07907",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07926",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07934",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07961",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07976",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C07991",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08006",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08017",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08037",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08041",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08061",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08097",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08100",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08133",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08177",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08249",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08260",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08265",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08285",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08303",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08310",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08314",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08347",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08383",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08384",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08386",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08404",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08409",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08426",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08431",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08446",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08447",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08475",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08485",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08504",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08513",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08538",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08540",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08547",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08586",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08622",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08627",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08635",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08669",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08700",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08783",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08786",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08816",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08829",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08857",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08888",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08894",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08896",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08904",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08913",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08918",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08932",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08935",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08938",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08958",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08970",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08980",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C08988",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09071",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09083",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09099",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09111",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09115",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09133",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09199",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09208",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09235",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09260",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09279",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09283",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09302",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09326",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09338",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09344",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09367",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09369",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09377",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09387",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09394",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09403",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09441",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09530",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09557",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09559",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09567",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09570",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09574",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09575",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09596",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09619",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09633",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09640",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09688",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09717",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09745",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09751",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09763",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09800",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09809",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09872",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09876",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09877",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09888",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09903",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09923",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09938",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C09975",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10011",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10025",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10036",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10041",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10043",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10126",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10146",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10152",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10172",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10177",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10197",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10211",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10215",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10243",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10253",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10264",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10283",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10323",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10329",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10352",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10412",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10424",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10428",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10457",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10462",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10469",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10484",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10492",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10512",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10531",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10534",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10539",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10562",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10570",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10600",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10620",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10621",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10630",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10664",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10695",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10757",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10767",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10772",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10797",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10798",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10799",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10801",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10804",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10805",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10808",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10811",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10813",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10814",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10816",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10817",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10819",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10820",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10821",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10824",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10825",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10827",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10829",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10832",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10833",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10834",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10837",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10839",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10840",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10841",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10843",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10846",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10849",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10851",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10852",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10853",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10857",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10858",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10863",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10864",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10865",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10866",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10868",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10869",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10870",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10871",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10872",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10876",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10877",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10878",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10881",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10882",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10885",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10888",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10889",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10891",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10892",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10894",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10899",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10900",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10901",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10902",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10906",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10908",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10911",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10912",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10914",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10917",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10918",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10919",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10926",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10929",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10933",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10934",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10935",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10937",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10939",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10941",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10942",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10945",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10948",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10949",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10952",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10953",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10954",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10955",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10957",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10960",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10966",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10967",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10970",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10971",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10975",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10977",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10981",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10982",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10983",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10984",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10987",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10990",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10993",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10994",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10997",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C10998",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C10999",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11003",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11004",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11005",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11007",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11008",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11009",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11010",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11011",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11012",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11016",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11018",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11020",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11021",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11023",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11025",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11027",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11032",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11033",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11034",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11037",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11040",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11044",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11045",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11047",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11049",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11050",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11053",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11055",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11058",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11061",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11062",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11064",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11067",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11069",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11070",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11073",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11074",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11077",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11081",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11082",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11083",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11084",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11089",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11090",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11093",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11095",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11097",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11100",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11101",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11102",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11105",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11109",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11110",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11112",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11115",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11116",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11119",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11120",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11121",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11126",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11128",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11129",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11130",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11131",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11134",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11135",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11136",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11138",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11140",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11142",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11145",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11148",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11153",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11154",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11158",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11162",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11163",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11164",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11168",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11169",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11170",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11171",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11172",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11174",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11175",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11176",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11177",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11179",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11180",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11182",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11184",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11185",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11186",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11187",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11189",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11192",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11193",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11195",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11196",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11197",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11199",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11200",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11202",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11203",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11204",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11205",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11206",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11207",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11209",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11210",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11212",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11215",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11217",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11220",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11224",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11225",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11227",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11229",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11230",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11233",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11238",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11239",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11240",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11241",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11243",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11244",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11245",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11248",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11251",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11252",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11253",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11254",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11255",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11257",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11261",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11262",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11265",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11266",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11267",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11269",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11271",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11277",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11284",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11285",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11288",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11291",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11293",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11296",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11297",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11304",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11307",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11311",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11312",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11313",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11314",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11315",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11316",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11321",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11325",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11326",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11328",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11330",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11331",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11336",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11338",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11339",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11340",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11342",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11345",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11350",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11354",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11355",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11356",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11357",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11358",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11359",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11360",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11361",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11365",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11370",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11371",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11372",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11374",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11377",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11380",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11381",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11382",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11383",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11384",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11385",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11386",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11387",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11391",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11393",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11395",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11396",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11401",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11404",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11405",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11406",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11407",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11408",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11411",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11412",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11413",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11414",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11419",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11421",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11422",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11423",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11425",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11429",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11430",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11433",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11434",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11435",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11438",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11439",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11441",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11442",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11444",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11445",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11446",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11449",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11450",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11451",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11455",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11456",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11457",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11458",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11459",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11460",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11461",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11462",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11463",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11464",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11465",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11467",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11470",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11471",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11472",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11474",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11476",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11477",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11478",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11479",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11481",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11483",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11484",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11488",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11489",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11490",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11491",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11492",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11495",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11498",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11501",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11502",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11503",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11504",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11506",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11507",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11509",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11515",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11519",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11520",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11521",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11523",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11524",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11527",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11529",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11531",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11532",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11537",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11540",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11541",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11545",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11546",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11549",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11552",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11553",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11556",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11557",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11560",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11563",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11567",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11568",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11569",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11570",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11571",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11572",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11573",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11576",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11579",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11581",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11587",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11588",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11589",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11591",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11593",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11594",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11595",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11596",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11597",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11598",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11599",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11601",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11602",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11603",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11604",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11605",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11606",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11611",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11613",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11616",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11617",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11618",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11620",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11628",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11631",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11633",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11636",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11638",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11639",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11642",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11645",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11647",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11648",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11649",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11650",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11651",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11655",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11657",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11658",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11661",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11662",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11663",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11664",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11668",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11670",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11673",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11675",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11676",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11677",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11679",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11683",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11685",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11686",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11688",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11698",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11700",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11704",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11706",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11708",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11709",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11711",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11712",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11717",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11719",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11720",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11723",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11727",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11730",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11732",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11734",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11735",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11737",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11740",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11741",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11742",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11743",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11746",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11747",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11753",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11754",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11755",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11756",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11759",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11760",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11764",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11767",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11768",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11773",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11775",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11776",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11778",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11784",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11786",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11789",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11790",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11792",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11794",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11795",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11796",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11801",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11803",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11805",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11806",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11807",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11808",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11810",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11811",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11812",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11815",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11818",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11824",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11825",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11826",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11827",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11828",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11837",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11839",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11840",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11841",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11846",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11847",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11853",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11856",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11857",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11859",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11863",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11865",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11866",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11867",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11874",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11876",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11884",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11886",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11887",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11888",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11889",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11892",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11898",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11899",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11900",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11903",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11905",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11908",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11909",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11911",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11912",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11913",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11916",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11917",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11920",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11921",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11924",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11925",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11927",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11929",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11930",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11931",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11932",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11934",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11936",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11937",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11938",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11940",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C11947",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11954",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11957",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11958",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11959",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11960",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11965",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11966",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11967",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11969",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11970",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11973",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11974",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11975",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11982",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11984",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11985",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11986",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11988",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11990",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11994",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11995",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11996",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11998",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C11999",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12003",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12004",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12005",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12006",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12007",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12008",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12011",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12012",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12014",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12015",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12016",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12018",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12021",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12022",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12025",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12026",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12027",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12034",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12035",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12038",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12041",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12043",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12046",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12048",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12049",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12051",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12052",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12053",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12054",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12060",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12061",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12063",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12064",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12065",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12066",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12071",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12072",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12075",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12078",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12081",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12082",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12084",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12085",
+  "keep": true,
+  "campaign": true
+ },
+ {
+  "id": "C12095",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12097",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12118",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12131",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12143",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12187",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12197",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12198",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12204",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12233",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12239",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12256",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12257",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12310",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12318",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12319",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12323",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12324",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12371",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12396",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12410",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12417",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12429",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12441",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12448",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12460",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12463",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12469",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12470",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12489",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12490",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12515",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12516",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12519",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12531",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12533",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12556",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12570",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12574",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12584",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12589",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12590",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12592",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12626",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12727",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12768",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12786",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12801",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12806",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12835",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12868",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12883",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12915",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12939",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C12992",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13010",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13011",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13013",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13014",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13026",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13038",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13069",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13070",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13116",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13158",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13159",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13169",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13185",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13188",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13203",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13207",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13241",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13265",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13280",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13281",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13297",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13328",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13362",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13392",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13400",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13412",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13486",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13498",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13554",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13564",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13583",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13586",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13611",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13616",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13618",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13640",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13673",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13738",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13775",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13815",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13840",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13844",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13864",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13919",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13925",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C13934",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14003",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14011",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14031",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14053",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14085",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14114",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14155",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14163",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14182",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14187",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14211",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14222",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14238",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14239",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14265",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14272",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14280",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14298",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14308",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14311",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14326",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14344",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14355",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14394",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14401",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14410",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14415",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14425",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14430",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14440",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14452",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14460",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14466",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14506",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14527",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14529",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14530",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14556",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14560",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14581",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14603",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14607",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14632",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14673",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14685",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14713",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14735",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14744",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14747",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14753",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14778",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14800",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14805",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14866",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14875",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14878",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14888",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14912",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14928",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14942",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14950",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14979",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C14994",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15006",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15031",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15087",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15105",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15125",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15146",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15187",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15211",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15214",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15216",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15229",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15253",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15275",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15390",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15409",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15417",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15431",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15482",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15487",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15488",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15492",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15493",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15507",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15513",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15554",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15611",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15656",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15661",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15679",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15687",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15704",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15710",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15759",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15805",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15812",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15851",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15914",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15923",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15927",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15995",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C15999",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16018",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16062",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16064",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16073",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16090",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16112",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16130",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16138",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16144",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16145",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16188",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16196",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16215",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16237",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16256",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16295",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16324",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16334",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16337",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16347",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16351",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16429",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16431",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16444",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16448",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16454",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16492",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16507",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16525",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16548",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16563",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16565",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16567",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16574",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16604",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16612",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16658",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16684",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16704",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16772",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16782",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16829",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16831",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16836",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16841",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16870",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16886",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16894",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16902",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16904",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16915",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16928",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16932",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16949",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16994",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16996",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C16997",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17054",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17083",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17110",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17158",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17178",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17233",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17235",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17255",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17273",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17284",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17290",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17309",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17325",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17334",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17341",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17355",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17369",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17403",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17468",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17477",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17538",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17542",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17575",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17581",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17623",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17639",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17648",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17656",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17663",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17685",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17692",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17707",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17728",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17737",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17760",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17769",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17784",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17802",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17818",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17832",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17880",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17886",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17904",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17952",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17966",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17972",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17978",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17983",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C17990",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18012",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18031",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18061",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18073",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18074",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18106",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18127",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18132",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18153",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18247",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18274",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18280",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18305",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18317",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18328",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18330",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18343",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18346",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18356",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18388",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18420",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18442",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18456",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18479",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18492",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18495",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18520",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18583",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18593",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18602",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18621",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18644",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18650",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18674",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18688",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18700",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18731",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18732",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18742",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18756",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18798",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18827",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18828",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18829",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18840",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18842",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18855",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18858",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18889",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18913",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18919",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C18962",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19041",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19082",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19083",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19087",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19098",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19120",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19126",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19174",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19176",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19196",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19199",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19203",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19210",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19212",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19249",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19256",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19272",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19273",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19306",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19316",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19327",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19348",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19407",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19436",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19453",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19477",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19491",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19493",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19530",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19532",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19542",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19551",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19552",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19563",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19577",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19598",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19601",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19607",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19671",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19687",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19688",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19700",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19701",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19714",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19743",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19769",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19788",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19795",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19809",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19818",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19820",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19826",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19861",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19876",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19878",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19883",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19892",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19914",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19983",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19986",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19987",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19988",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19989",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19990",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19991",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19992",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19993",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19994",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19995",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19996",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19997",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C19998",
+  "keep": false,
+  "campaign": false
+ },
+ {
+  "id": "C20000",
+  "keep": false,
+  "campaign": false
+ }
+]

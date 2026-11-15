@@ -1,0 +1,18 @@
+{
+ "before": 7311,
+ "after": 7256,
+ "top_rules": [
+  [
+   "(letters repeated 3 times or more)",
+   897
+  ],
+  [
+   "اللحين",
+   272
+  ],
+  [
+   "الحينه",
+   264
+  ]
+ ]
+}

@@ -9,7 +9,7 @@
     "en": "Text and Unstructured Data for Data Science",
     "ar": "النصوص والبيانات غير المهيكلة في علم البيانات"
   },
-  "tagline": "REPLACE: one line under the title: what participants can do after the course",
+  "tagline": "Turn Arabic and English text into measurements you can defend: clean and redact a corpus, score sparse, embedding and prompted classifiers on one gold set, test a language model as an annotator and correct the estimates its labels feed",
   "description": "Participants turn text into measurements they can defend. For the Sada Citizen Voice Centre, a fictional agency receiving complaints in Arabic and English, they normalise Arabic script and dialect spellings, redact personal data, build sparse and embedding-based classifiers, classify and extract fields with a prompted open-weight language model, and treat every model-made label as a measurement: agreement with a human gold set, stability across runs and prompts, gaps between dialects and the bias it carries into estimates. Writing labelling guidelines and adjudication are in DS-311.",
   "track": "data-science",
   "level": 300,
@@ -66,8 +66,8 @@
     }
   ],
   "case_study": {
-    "name": "REPLACE: the name of the fictional organisation every lab works on",
-    "summary": "REPLACE: two sentences on the case study and its synthetic data"
+    "name": "Sada Citizen Voice Centre",
+    "summary": "Sada Citizen Voice Centre is a fictional government centre that receives complaints about municipal services in Modern Standard Arabic, Gulf dialect and English. Participants work on 20,000 synthetic complaints from 12 districts, a 300-document gold set coded by two people, 500 inspection reports and the recorded runs of Fahim, the centre's prompted labelling instruction on an open-weight model: they clean and redact the corpus, compare three classifiers, measure Fahim as an instrument and correct the district complaint rates its labels produce. All data are synthetic and written with a fixed seed; the recorded model runs are synthetic too."
   },
   "format": "intensive",
   "format_note": "Intensive: 4 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task",
@@ -89,68 +89,165 @@
         {
           "title": "Text as a data source",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Describe how a complaint corpus samples the people affected",
+            "Profile a corpus by language, length and channel",
+            "Measure the exact duplicate rate and say what it does to a count"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.1",
-            "title": "Profile the corpus by language, length, channel and duplicate rate",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Profile the corpus",
+            "summary": "Profile the corpus by language, length, channel and duplicate rate, and test the form's language field against the text itself.",
             "minutes": 25,
-            "href": "D1_1_profile_corpus_language.ipynb"
-          }
+            "href": "D1_1_profile.ipynb",
+            "steps": [
+              {
+                "text": "Load the complaints and count what arrived",
+                "minutes": 4
+              },
+              {
+                "text": "Language from the script against the form field",
+                "minutes": 6
+              },
+              {
+                "text": "Length by language and channel",
+                "minutes": 5
+              },
+              {
+                "text": "The exact duplicate rate",
+                "minutes": 5
+              },
+              {
+                "text": "The profile table, saved for the report",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Complaints per week and channel: find the week that does not look like the others"
+          },
+          "summary": "Who writes to the centre, through which channel and in which language: a profile before any model"
         },
         {
           "title": "Preparing Arabic text",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Identify the script variants in an Arabic corpus",
+            "Write a normalisation function in named layers",
+            "Measure the vocabulary change of each layer and name what it merges"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.2",
-            "title": "Normalise letter variants and diacritics and measure the vocabulary change",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Normalise Arabic text",
+            "summary": "Normalise letter variants and diacritics in named layers, measure the vocabulary change of each, and apply the course's Gulf spelling rules.",
             "minutes": 25,
-            "href": "D1_2_normalise_letter_variants.ipynb"
-          }
+            "href": "D1_2_normalise.ipynb",
+            "steps": [
+              {
+                "text": "Find the variants: forms, marks, letters, digits",
+                "minutes": 5
+              },
+              {
+                "text": "Write normalise() in layers",
+                "minutes": 8
+              },
+              {
+                "text": "The vocabulary change of each layer",
+                "minutes": 7
+              },
+              {
+                "text": "Gulf spellings from the supplied map",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Find two different words that one rule merges into one"
+          },
+          "summary": "Script variants, marks, digits and dialect spellings, and what each normalisation rule costs"
         },
         {
           "title": "Near-duplicates",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Compute the Jaccard similarity of two texts from character shingles",
+            "Find near-duplicate candidates with MinHash and banding",
+            "Write a keep rule that separates resubmissions from a campaign"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.3",
-            "title": "Find near-duplicate complaints with character shingles and decide which to keep",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Find near-duplicates",
+            "summary": "Find near-duplicate complaints with character shingles and MinHash, group them, and decide which to keep and which to flag as a campaign.",
             "minutes": 25,
-            "href": "D1_3_find_near_duplicate.ipynb"
-          }
+            "href": "D1_3_near_duplicates.ipynb",
+            "steps": [
+              {
+                "text": "Shingles and Jaccard on two complaints",
+                "minutes": 5
+              },
+              {
+                "text": "MinHash signatures for the corpus",
+                "minutes": 7
+              },
+              {
+                "text": "Bands: candidate pairs, then the true similarity",
+                "minutes": 6
+              },
+              {
+                "text": "Groups and the keep rule",
+                "minutes": 7
+              }
+            ],
+            "stretch": "Count the campaign as one issue: which district's count changes most?"
+          },
+          "summary": "Shingles, Jaccard similarity and MinHash, and a keep rule that the count can defend"
         },
         {
           "title": "Redacting personal data",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Explain why identifiers are removed before text reaches a hosted model",
+            "Write patterns for phone and identity numbers in both digit systems",
+            "Measure a redaction miss rate by type and language on an audited sample"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.4",
-            "title": "Mask phone numbers, identity numbers and names and measure misses",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Redact and measure misses",
+            "summary": "Mask phone numbers, identity numbers, emails and names, measure the misses on 500 audited complaints, and write the profile report.",
             "minutes": 25,
-            "href": "D1_4_mask_phone_numbers.ipynb"
-          }
+            "href": "D1_4_redaction.ipynb",
+            "steps": [
+              {
+                "text": "Read what leaks in the audited sample",
+                "minutes": 4
+              },
+              {
+                "text": "Phone numbers in every format",
+                "minutes": 7
+              },
+              {
+                "text": "Identity numbers and emails",
+                "minutes": 4
+              },
+              {
+                "text": "Names after cue words",
+                "minutes": 5
+              },
+              {
+                "text": "The miss rate and the profile report",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Names with no cue word: how many are there, and what would catch them?"
+          },
+          "summary": "Personal data in free text: patterns, cue words and a miss rate measured on an audited sample"
         }
-      ]
+      ],
+      "subtitle": "Profile, normalise, deduplicate and redact 20,000 complaints before any model reads them"
     },
     {
       "id": "day2",
@@ -161,68 +258,166 @@
         {
           "title": "Gold sets and agreement",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Label complaints from a codebook without AI help",
+            "Compute percent agreement and Cohen's kappa from a confusion table",
+            "Explain why a rare category can show high agreement and low kappa"
           ],
           "lo": [
-            "LO2"
+            "LO2",
+            "LO5"
           ],
           "lab": {
             "id": "2.1",
-            "title": "Label 40 complaints with a partner from the supplied codebook and compute chance-corrected agreement",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Agreement with a partner",
+            "summary": "Label 40 complaints with a partner from the supplied codebook, compute percent agreement and Cohen's kappa by hand, and meet the prevalence trap.",
             "minutes": 25,
-            "href": "D2_1_label_40_complaints.ipynb"
-          }
+            "href": "D2_1_agreement.ipynb",
+            "steps": [
+              {
+                "text": "Read the codebook",
+                "minutes": 5
+              },
+              {
+                "text": "Label 40 complaints with a partner (AI-off)",
+                "minutes": 10
+              },
+              {
+                "text": "Percent agreement and kappa by hand",
+                "minutes": 5
+              },
+              {
+                "text": "The prevalence trap",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Krippendorff's alpha for you, your partner and the two reference coders"
+          },
+          "summary": "A gold set from a codebook, and agreement that is corrected for chance"
         },
         {
           "title": "Sparse baselines",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Build character n-gram features for Arabic and English text",
+            "Train a linear classifier on a noisy training pool",
+            "Score it on the gold set with bootstrap intervals by language"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "2.2",
-            "title": "Train a character n-gram classifier and score it on the gold set",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "A character n-gram classifier",
+            "summary": "Train a character n-gram classifier on the 3,000-document pool and score it on the 300-document gold set, with intervals by language.",
             "minutes": 25,
-            "href": "D2_2_train_character_n.ipynb"
-          }
+            "href": "D2_2_sparse.ipynb",
+            "steps": [
+              {
+                "text": "Load the pool and the gold set",
+                "minutes": 3
+              },
+              {
+                "text": "Character n-grams with TF-IDF",
+                "minutes": 6
+              },
+              {
+                "text": "A logistic classifier",
+                "minutes": 5
+              },
+              {
+                "text": "Macro F1 and accuracy on the gold set",
+                "minutes": 5
+              },
+              {
+                "text": "Bootstrap intervals by language",
+                "minutes": 6
+              }
+            ],
+            "stretch": "Word n-grams instead: which language loses most?"
+          },
+          "summary": "Character n-grams and a linear model: the baseline every other classifier must beat"
         },
         {
           "title": "Embeddings as features",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Explain what an embedding vector keeps and loses",
+            "Train a classifier on embeddings fetched within a call budget",
+            "Report scores per language with the cost of the vectors"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "2.3",
-            "title": "Train an embedding classifier and score it per language",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "An embedding classifier",
+            "summary": "Embed the pool and the gold set with a free hosted model within a call budget, train a classifier on the vectors and score it per language.",
             "minutes": 25,
-            "href": "D2_3_train_embedding_classifier.ipynb"
-          }
+            "href": "D2_3_embeddings.ipynb",
+            "steps": [
+              {
+                "text": "Embed the pool and the gold set within the budget",
+                "minutes": 7
+              },
+              {
+                "text": "A logistic head on the vectors",
+                "minutes": 5
+              },
+              {
+                "text": "Scores per language with intervals",
+                "minutes": 7
+              },
+              {
+                "text": "Calls, seconds and cost per thousand documents",
+                "minutes": 6
+              }
+            ],
+            "stretch": "Join the sparse and the embedding features: does the union beat both?"
+          },
+          "summary": "Vectors from a hosted embedding model as features, within a budget of calls"
         },
         {
           "title": "Comparing classifiers fairly",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Explain why scores on the same documents are compared in pairs",
+            "Compute a paired bootstrap interval for a difference in accuracy",
+            "Decide between classifiers by language with cost in view"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "2.4",
-            "title": "Compare the two classifiers on the gold set with paired bootstrap intervals by language",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Compare classifiers fairly",
+            "summary": "Compare the sparse and embedding classifiers on the gold set with paired bootstrap intervals, overall and by language, and write the decision.",
             "minutes": 25,
-            "href": "D2_4_compare_two_classifiers.ipynb"
-          }
+            "href": "D2_4_paired_bootstrap.ipynb",
+            "steps": [
+              {
+                "text": "Load both classifiers' predictions on the gold set",
+                "minutes": 4
+              },
+              {
+                "text": "Paired differences per document",
+                "minutes": 5
+              },
+              {
+                "text": "A paired bootstrap interval",
+                "minutes": 7
+              },
+              {
+                "text": "The same, by language",
+                "minutes": 5
+              },
+              {
+                "text": "The decision, with cost",
+                "minutes": 4
+              }
+            ],
+            "stretch": "An unpaired bootstrap of the same difference: how much wider is it?"
+          },
+          "summary": "Two classifiers on the same 300 documents: a paired bootstrap by language and a decision with its cost"
         }
-      ]
+      ],
+      "subtitle": "A gold set, chance-corrected agreement and two classifiers compared on the same documents"
     },
     {
       "id": "day3",
@@ -233,68 +428,171 @@
         {
           "title": "Prompted classification",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Write a classification prompt from a codebook with a fixed output format",
+            "Classify documents in batches within a call budget and parse every reply",
+            "Record model, prompt version and settings with every label set"
           ],
           "lo": [
-            "LO2"
+            "LO2",
+            "LO5"
           ],
           "lab": {
             "id": "3.1",
-            "title": "Classify the gold set with a prompted open-weight model",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Prompted classification",
+            "summary": "Classify the gold set with Fahim, a prompted open-weight model: ten documents live, the full recorded run scored with intervals by language and costed.",
             "minutes": 25,
-            "href": "D3_1_classify_gold_set.ipynb"
-          }
+            "href": "D3_1_prompted.ipynb",
+            "steps": [
+              {
+                "text": "The prompt: codebook, labels, JSON",
+                "minutes": 6
+              },
+              {
+                "text": "Classify a batch of ten",
+                "minutes": 5
+              },
+              {
+                "text": "Load the recorded run and its version record",
+                "minutes": 4
+              },
+              {
+                "text": "Score it on the gold set by language",
+                "minutes": 6
+              },
+              {
+                "text": "Cost per thousand documents",
+                "minutes": 4
+              }
+            ],
+            "stretch": "One document per call against batches of ten: do the labels change?"
+          },
+          "summary": "A prompt is an instrument: codebook, label set, output format, batch and a version record"
         },
         {
           "title": "Ask it twice",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Measure how often labels change between runs of one prompt",
+            "Measure the shift caused by rewording a prompt",
+            "Name the documents that move and why"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.2",
-            "title": "Repeat one prompt three times, reword it once and measure label stability",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Ask it twice",
+            "summary": "Repeat one prompt three times, reword it once and measure label stability: flip rate, kappa between runs and the documents that move.",
             "minutes": 25,
-            "href": "D3_2_repeat_one_prompt.ipynb"
-          }
+            "href": "D3_2_stability.ipynb",
+            "steps": [
+              {
+                "text": "Three runs of one prompt: the flip rate",
+                "minutes": 6
+              },
+              {
+                "text": "Kappa between runs",
+                "minutes": 5
+              },
+              {
+                "text": "The reworded prompt: the shift",
+                "minutes": 6
+              },
+              {
+                "text": "Which documents move",
+                "minutes": 5
+              },
+              {
+                "text": "The majority of three runs",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Run twenty complaints three times live and compare with the recorded runs"
+          },
+          "summary": "Run stability and prompt stability, measured as agreement of the model with itself"
         },
         {
           "title": "Dialect gaps",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Measure agreement by language variety with intervals",
+            "Find the confusion that drives a dialect gap",
+            "Estimate how a gap under-counts a category in some districts"
           ],
           "lo": [
-            "LO5"
+            "LO5",
+            "LO4"
           ],
           "lab": {
             "id": "3.3",
-            "title": "Measure agreement on Modern Standard Arabic, Gulf dialect and English subsets",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Dialect gaps",
+            "summary": "Measure Fahim's agreement on Modern Standard Arabic, Gulf dialect and English subsets, find the confusion behind the gap and its effect on a count.",
             "minutes": 25,
-            "href": "D3_3_measure_agreement_modern.ipynb"
-          }
+            "href": "D3_3_dialect_gaps.ipynb",
+            "steps": [
+              {
+                "text": "Agreement by variety with intervals",
+                "minutes": 7
+              },
+              {
+                "text": "The confusion table of Gulf complaints",
+                "minutes": 6
+              },
+              {
+                "text": "The gap with a bootstrap interval",
+                "minutes": 6
+              },
+              {
+                "text": "What the gap does to a count",
+                "minutes": 6
+              }
+            ],
+            "stretch": "Does the reworded prompt narrow the gap?"
+          },
+          "summary": "Agreement by language variety, the confusions behind a gap, and what a gap does to a count"
         },
         {
           "title": "Is the model a good annotator",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Compare model-human agreement with human-human agreement",
+            "Set decision criteria before reading the results",
+            "Write a reliability memo with a decision and its limits"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.4",
-            "title": "Decide whether model labels can replace a second human coder",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "A good annotator?",
+            "summary": "Decide whether Fahim's labels can replace a second human coder, against criteria written first, and draft the reliability memo.",
             "minutes": 25,
-            "href": "D3_4_decide_whether_model.ipynb"
-          }
+            "href": "D3_4_annotator.ipynb",
+            "steps": [
+              {
+                "text": "Agreement between the two human coders",
+                "minutes": 4
+              },
+              {
+                "text": "Fahim against each coder and the gold label",
+                "minutes": 6
+              },
+              {
+                "text": "Write the criteria before looking",
+                "minutes": 4
+              },
+              {
+                "text": "Apply them: agreement, stability, gaps",
+                "minutes": 6
+              },
+              {
+                "text": "Draft the reliability memo",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Leave one coder out: how often does Fahim agree with the other coder as often as a human does?"
+          },
+          "summary": "A model as a second coder: criteria fixed before looking, evidence, and a written decision"
         }
-      ]
+      ],
+      "subtitle": "A prompted open-weight model measured like any other instrument: accuracy, stability, dialect gaps"
     },
     {
       "id": "day4",
@@ -305,80 +603,183 @@
         {
           "title": "Schema-constrained extraction",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Define a schema with types, ranges and allowed values for six fields",
+            "Request schema-constrained output and validate every reply",
+            "Return a null for a field the text does not state"
           ],
           "lo": [
             "LO3"
           ],
           "lab": {
             "id": "4.1",
-            "title": "Extract six fields from inspection reports into a validated schema",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Six fields, validated",
+            "summary": "Extract six fields from inspection reports into a validated schema, repair replies that fail and keep a null where the report states nothing.",
             "minutes": 25,
-            "href": "D4_1_extract_six_fields.ipynb"
-          }
+            "href": "D4_1_extraction.ipynb",
+            "steps": [
+              {
+                "text": "The schema with Pydantic",
+                "minutes": 6
+              },
+              {
+                "text": "The prompt and three reports",
+                "minutes": 6
+              },
+              {
+                "text": "Validate and repair",
+                "minutes": 6
+              },
+              {
+                "text": "A null, not an invented value",
+                "minutes": 4
+              },
+              {
+                "text": "Twelve reports, saved with the version",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Add a seventh field, the street number, and measure it on the twelve reports"
+          },
+          "summary": "A schema the model must fill, validation of every reply, and nulls instead of invented values"
         },
         {
           "title": "Field-level validation",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Define precision and recall for a field that may be empty",
+            "Compute them per field over 500 reports",
+            "List the commonest errors per field and the rule that would catch each"
           ],
           "lo": [
             "LO3"
           ],
           "lab": {
             "id": "4.2",
-            "title": "Compute per-field precision and recall and list the commonest errors",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Field-level validation",
+            "summary": "Compute per-field precision and recall of the recorded extraction run over 500 reports, list the commonest errors and write the validation report.",
             "minutes": 25,
-            "href": "D4_2_compute_per_field.ipynb"
-          }
+            "href": "D4_2_field_validation.ipynb",
+            "steps": [
+              {
+                "text": "Load the run and the reference",
+                "minutes": 3
+              },
+              {
+                "text": "Matching rules per field",
+                "minutes": 5
+              },
+              {
+                "text": "Precision and recall per field",
+                "minutes": 7
+              },
+              {
+                "text": "The commonest errors per field",
+                "minutes": 6
+              },
+              {
+                "text": "The validation report",
+                "minutes": 4
+              }
+            ],
+            "stretch": "An interval for the precision of the deadline field"
+          },
+          "summary": "Precision and recall per field, with nulls counted correctly, and the commonest errors"
         },
         {
           "title": "Structure in text",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Cluster document vectors and choose a number of clusters",
+            "Name clusters from their terms and examples",
+            "Compare clusters with codebook categories and say what each shows"
           ],
           "lo": [
+            "LO2",
             "LO6"
           ],
           "lab": {
             "id": "4.3",
-            "title": "Cluster complaint embeddings and label five clusters",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Structure in text",
+            "summary": "Cluster complaint embeddings, name five clusters from their terms and examples, and compare them with the codebook categories.",
             "minutes": 25,
-            "href": "D4_3_cluster_complaint_embeddings.ipynb"
-          }
+            "href": "D4_3_clusters.ipynb",
+            "steps": [
+              {
+                "text": "Vectors for a sample of complaints",
+                "minutes": 5
+              },
+              {
+                "text": "k-means for several k, with silhouette",
+                "minutes": 6
+              },
+              {
+                "text": "Five clusters: terms and examples",
+                "minutes": 7
+              },
+              {
+                "text": "Name them and compare with the categories",
+                "minutes": 7
+              }
+            ],
+            "stretch": "Find the campaign: which cluster is it, and what would it do to a topic count?"
+          },
+          "summary": "Clusters of embeddings as a way to see a corpus, and why a cluster is not a category"
         },
         {
           "title": "Errors downstream",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Compute a naive district rate from model labels",
+            "Correct it with the gold set, stratified by language",
+            "Report naive and corrected rates with intervals and a version record"
           ],
           "lo": [
-            "LO4"
+            "LO4",
+            "LO6"
           ],
           "lab": {
             "id": "4.4",
-            "title": "Correct model-label complaint rates with the human sample and choose the capstone corpus",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Corrected rates",
+            "summary": "Correct model-label complaint rates with the human sample, compare naive and corrected rates by district with intervals, and choose the capstone corpus.",
             "minutes": 25,
-            "href": "D4_4_correct_model_label.ipynb"
-          }
+            "href": "D4_4_corrected_rates.ipynb",
+            "steps": [
+              {
+                "text": "Naive rates per district from model labels",
+                "minutes": 5
+              },
+              {
+                "text": "The correction from the gold set, by language",
+                "minutes": 6
+              },
+              {
+                "text": "Corrected rates per district",
+                "minutes": 6
+              },
+              {
+                "text": "Bootstrap intervals",
+                "minutes": 5
+              },
+              {
+                "text": "Choose the capstone corpus",
+                "minutes": 3
+              }
+            ],
+            "stretch": "What does the campaign do to Al-Naseem's rate, with and without it?"
+          },
+          "summary": "A complaint rate from model labels, corrected with the human sample, with intervals"
         }
-      ]
+      ],
+      "subtitle": "Validated extraction, field-level scores, clusters, and estimates corrected with the human sample"
     },
     {
       "id": "capstone",
       "kind": "capstone",
-      "title": "Capstone project presentations",
+      "title": "Capstone: a text measurement defended live",
       "deck": "slides/capstone.html",
-      "subtitle": "REPLACE: the catalog gives 8 minutes for each presentation and nothing about questions; decide whether the questions are inside those minutes, set capstone.talk_minutes and capstone.qa_minutes in course.json and the timers of the now-presenting slide, and remove this line"
+      "subtitle": "Each participant defends a text-measurement pipeline in eight minutes, then re-labels ten documents chosen by the assessor and answers questions"
     }
   ],
   "capstone": {
     "summary": "A text-measurement project on a supplied or public corpus, in a public repository whose README reports the gold set, agreement, model and extraction results and a reliability memo; eight-minute defence plus questions",
-    "submission": "REPLACE: what participants submit and how: a public repository link, or a shared folder for a course without code",
+    "submission": "A link to a public GitHub repository: the cleaning and redaction script with its miss rate, the gold set and agreement, the classifier and extraction results with model and prompt versions, the saved model outputs and run logs, the corrected estimate and the reliability memo, with a lock file and a README that reports all of them; prompts and agent transcripts are committed with it",
     "talk_minutes": 8,
     "rubric": [
       {
@@ -401,7 +802,8 @@
         "criterion": "Reproducibility",
         "weight": 10
       }
-    ]
+    ],
+    "qa_minutes": 7
   },
   "labs": {
     "kind": "notebooks",
@@ -450,6 +852,149 @@
       "examples": [
         "Label Studio",
         "doccano"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "group": "National references",
+      "items": [
+        {
+          "title": "Personal Data Protection Law (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Implementing Regulation of the Personal Data Protection Law (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Data Classification Policy (National Data Management Office, SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf"
+        },
+        {
+          "title": "Generative AI Guideline for Government (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf"
+        },
+        {
+          "title": "Generative AI Guideline for Public (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf"
+        },
+        {
+          "title": "AI Bias Reference Guide, first edition (SDAIA, May 2026)",
+          "url": "https://sdaia.gov.sa/en/MediaCenter/KnowledgeCenter/ResearchLibrary/EN-AI-BIAS.pdf"
+        }
+      ]
+    },
+    {
+      "group": "Models and endpoints",
+      "items": [
+        {
+          "title": "OpenRouter: API rate limits, including free models",
+          "url": "https://openrouter.ai/docs/api-reference/limits"
+        },
+        {
+          "title": "OpenRouter: Embeddings API",
+          "url": "https://openrouter.ai/docs/api-reference/embeddings"
+        },
+        {
+          "title": "OpenRouter: Gemma 4 31B Instruct (Google), model page and prices",
+          "url": "https://openrouter.ai/google/gemma-4-31b-it"
+        },
+        {
+          "title": "OpenRouter: list of embedding models",
+          "url": "https://openrouter.ai/api/v1/embeddings/models"
+        },
+        {
+          "title": "ALLaM 7B Instruct (preview), model card on the Hugging Face Hub",
+          "url": "https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview"
+        },
+        {
+          "title": "llama.cpp",
+          "url": "https://github.com/ggml-org/llama.cpp"
+        },
+        {
+          "title": "Ollama",
+          "url": "https://ollama.com/"
+        }
+      ]
+    },
+    {
+      "group": "Arabic text and near-duplicates",
+      "items": [
+        {
+          "title": "CAMeL Tools documentation: utils.normalize",
+          "url": "https://camel-tools.readthedocs.io/en/latest/api/utils/normalize.html"
+        },
+        {
+          "title": "camel-tools on PyPI",
+          "url": "https://pypi.org/project/camel-tools/"
+        },
+        {
+          "title": "Unicode Standard Annex 15: Unicode Normalization Forms",
+          "url": "https://unicode.org/reports/tr15/"
+        },
+        {
+          "title": "Python documentation: unicodedata",
+          "url": "https://docs.python.org/3/library/unicodedata.html"
+        },
+        {
+          "title": "Leskovec, Rajaraman and Ullman: Mining of Massive Datasets, chapter 3, Finding Similar Items",
+          "url": "http://www.mmds.org/"
+        }
+      ]
+    },
+    {
+      "group": "Labels, classifiers and estimates",
+      "items": [
+        {
+          "title": "scikit-learn: cohen_kappa_score",
+          "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html"
+        },
+        {
+          "title": "scikit-learn: TfidfVectorizer",
+          "url": "https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html"
+        },
+        {
+          "title": "scikit-learn: clustering",
+          "url": "https://scikit-learn.org/stable/modules/clustering.html"
+        },
+        {
+          "title": "Sentence Transformers documentation",
+          "url": "https://www.sbert.net/"
+        },
+        {
+          "title": "BERTopic documentation",
+          "url": "https://maartengr.github.io/BERTopic/"
+        },
+        {
+          "title": "Angelopoulos, Bates, Fannjiang, Jordan and Zrnic (2023): Prediction-Powered Inference",
+          "url": "https://arxiv.org/abs/2301.09633"
+        },
+        {
+          "title": "Calderon, Reichart and Dror (2025): The Alternative Annotator Test for LLM-as-a-Judge",
+          "url": "https://arxiv.org/abs/2501.10970"
+        },
+        {
+          "title": "Label Studio",
+          "url": "https://labelstud.io/"
+        },
+        {
+          "title": "doccano",
+          "url": "https://github.com/doccano/doccano"
+        }
+      ]
+    },
+    {
+      "group": "Extraction",
+      "items": [
+        {
+          "title": "Pydantic documentation: JSON Schema",
+          "url": "https://docs.pydantic.dev/latest/concepts/json_schema/"
+        },
+        {
+          "title": "JSON Schema",
+          "url": "https://json-schema.org/"
+        }
       ]
     }
   ]

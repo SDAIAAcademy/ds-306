@@ -1,0 +1,19 @@
+{
+ "rows": 20000,
+ "distinct_texts": 19348,
+ "exact_duplicate_rate": 0.0326,
+ "script_share": {
+  "ar": 0.7953,
+  "en": 0.1965,
+  "mixed": 0.0082
+ },
+ "channel_share": {
+  "web": 0.3096,
+  "app": 0.2678,
+  "call_centre": 0.2348,
+  "social": 0.1024,
+  "email": 0.0854
+ },
+ "form_field_wrong_rate": 0.0833,
+ "median_chars": 125
+}

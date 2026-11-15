@@ -1,0 +1,37 @@
+[
+ {
+  "layers": "none",
+  "distinct_tokens": 13835,
+  "drop": 0
+ },
+ {
+  "layers": "unicode",
+  "distinct_tokens": 11284,
+  "drop": 2551
+ },
+ {
+  "layers": "unicode+persian",
+  "distinct_tokens": 10946,
+  "drop": 338
+ },
+ {
+  "layers": "unicode+persian+marks",
+  "distinct_tokens": 8487,
+  "drop": 2459
+ },
+ {
+  "layers": "unicode+persian+marks+alef",
+  "distinct_tokens": 8454,
+  "drop": 33
+ },
+ {
+  "layers": "unicode+persian+marks+alef+yeh_teh",
+  "distinct_tokens": 8386,
+  "drop": 68
+ },
+ {
+  "layers": "unicode+persian+marks+alef+yeh_teh+digits",
+  "distinct_tokens": 7311,
+  "drop": 1075
+ }
+]

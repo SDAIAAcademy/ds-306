@@ -5,7 +5,7 @@
 
 Data Science Track · SDAIA Academy · DS-306 · Level 300
 
-REPLACE: one line under the title: what participants can do after the course
+Turn Arabic and English text into measurements you can defend: clean and redact a corpus, score sparse, embedding and prompted classifiers on one gold set, test a language model as an annotator and correct the estimates its labels feed
 
 Participants turn text into measurements they can defend. For the Sada Citizen Voice Centre, a fictional agency receiving complaints in Arabic and English, they normalise Arabic script and dialect spellings, redact personal data, build sparse and embedding-based classifiers, classify and extract fields with a prompted open-weight language model, and treat every model-made label as a measurement: agreement with a human gold set, stability across runs and prompts, gaps between dialects and the bias it carries into estimates. Writing labelling guidelines and adjudication are in DS-311.
 
@@ -34,12 +34,32 @@ Participants turn text into measurements they can defend. For the Sada Citizen V
 | Day 2 | Labels you can trust | Gold sets and agreement; Sparse baselines; Embeddings as features; Comparing classifiers fairly | [`slides/day2.html`](slides/day2.html) |
 | Day 3 | Language models as instruments | Prompted classification; Ask it twice; Dialect gaps; Is the model a good annotator | [`slides/day3.html`](slides/day3.html) |
 | Day 4 | From documents to tables | Schema-constrained extraction; Field-level validation; Structure in text; Errors downstream | [`slides/day4.html`](slides/day4.html) |
-| Capstone | Capstone project presentations |  | [`slides/capstone.html`](slides/capstone.html) |
+| Capstone | Capstone: a text measurement defended live |  | [`slides/capstone.html`](slides/capstone.html) |
 <!-- /academy:units -->
 
 ## Case study
 
-**REPLACE: the name of the fictional organisation every lab works on.** REPLACE: two sentences on the case study and its synthetic data
+**Sada Citizen Voice Centre (مركز صدى لصوت المواطن)** is a fictional government centre that receives complaints about municipal services in Modern Standard Arabic, Gulf dialect and English. Every lab works on its synthetic data, written by `labs/prepare_data.py` with a fixed seed:
+
+| Data | What it holds | Used in |
+|---|---|---|
+| 20,000 complaints | As received, with personal data: 12 districts, five channels, three language varieties, copies and one campaign | Day 1, Lab 4.4 |
+| A redaction audit | 500 complaints whose personal data a person marked | Lab 1.4 |
+| A codebook and a gold set | Eight categories; 300 redacted complaints coded by two people, with the adjudicated label | Days 2 to 4 |
+| A training pool | 3,000 redacted complaints with the intake team's routing labels (not checked) | Labs 2.2, 2.3 |
+| Recorded runs of Fahim | The centre's prompted labelling instruction on an open-weight model: two prompts by three runs on the gold set, one run on all complaints | Days 3 and 4 |
+| 500 inspection reports | Arabic and English, with reference extractions of six fields and one recorded extraction run | Labs 4.1, 4.2 |
+| Two capstone corpora | Nadwa Public Libraries Network and Raafid Social Support Office: documents, a gold set, recorded runs, a codebook and a brief | Capstone |
+
+The recorded model runs are synthetic too: they imitate behaviours the course measures (a dialect gap, unstable answers on two-topic complaints, invented deadlines). With a free key, the labs' live cells call a hosted model and the results can be compared with the recorded runs. Without a key, a scripted stand-in replays the recorded runs and says so on screen.
+
+## How the course runs
+
+Four teaching days of four 50-minute sessions: about 20 to 25 minutes of ideas, a checkpoint, then a 25-minute lab. Every lab starts from a supplied file, so none depends on another lab of the same day. Pre-work (two hours) is the notebook `labs/00_prework_metrics.ipynb` on classification metrics, with an entry quiz on the practice page; the follow-up task is the audit of one labelling process (`labs/followup/README.md`).
+
+**AI policy.** AI-off for the supervised checks and for the human gold labels (Lab 2.1). An AI tutor may hint at cleaning and classifier code without writing it. Language models are what the labs measure. AI is allowed in full in the capstone, which is defended live.
+
+**Responsible use.** Identifiers are redacted before any text reaches a model; the classification of the data decides whether text may go to a hosted model at all (the labs only send synthetic text); dialect gaps are reported so that no group is under-counted; model and prompt versions are kept with every label set.
 
 <!-- academy:labs -->
 ## Labs
@@ -48,29 +68,35 @@ Every lab is a notebook in `labs/`. Open it in Google Colab from the course page
 
 | | Session | Lab | File |
 |---|---|---|---|
-| 1.1 | Day 1 · Session 1 | Profile the corpus by language, length, channel and duplicate rate | [`D1_1_profile_corpus_language.ipynb`](labs/D1_1_profile_corpus_language.ipynb) |
-| 1.2 | Day 1 · Session 2 | Normalise letter variants and diacritics and measure the vocabulary change | [`D1_2_normalise_letter_variants.ipynb`](labs/D1_2_normalise_letter_variants.ipynb) |
-| 1.3 | Day 1 · Session 3 | Find near-duplicate complaints with character shingles and decide which to keep | [`D1_3_find_near_duplicate.ipynb`](labs/D1_3_find_near_duplicate.ipynb) |
-| 1.4 | Day 1 · Session 4 | Mask phone numbers, identity numbers and names and measure misses | [`D1_4_mask_phone_numbers.ipynb`](labs/D1_4_mask_phone_numbers.ipynb) |
-| 2.1 | Day 2 · Session 1 | Label 40 complaints with a partner from the supplied codebook and compute chance-corrected agreement | [`D2_1_label_40_complaints.ipynb`](labs/D2_1_label_40_complaints.ipynb) |
-| 2.2 | Day 2 · Session 2 | Train a character n-gram classifier and score it on the gold set | [`D2_2_train_character_n.ipynb`](labs/D2_2_train_character_n.ipynb) |
-| 2.3 | Day 2 · Session 3 | Train an embedding classifier and score it per language | [`D2_3_train_embedding_classifier.ipynb`](labs/D2_3_train_embedding_classifier.ipynb) |
-| 2.4 | Day 2 · Session 4 | Compare the two classifiers on the gold set with paired bootstrap intervals by language | [`D2_4_compare_two_classifiers.ipynb`](labs/D2_4_compare_two_classifiers.ipynb) |
-| 3.1 | Day 3 · Session 1 | Classify the gold set with a prompted open-weight model | [`D3_1_classify_gold_set.ipynb`](labs/D3_1_classify_gold_set.ipynb) |
-| 3.2 | Day 3 · Session 2 | Repeat one prompt three times, reword it once and measure label stability | [`D3_2_repeat_one_prompt.ipynb`](labs/D3_2_repeat_one_prompt.ipynb) |
-| 3.3 | Day 3 · Session 3 | Measure agreement on Modern Standard Arabic, Gulf dialect and English subsets | [`D3_3_measure_agreement_modern.ipynb`](labs/D3_3_measure_agreement_modern.ipynb) |
-| 3.4 | Day 3 · Session 4 | Decide whether model labels can replace a second human coder | [`D3_4_decide_whether_model.ipynb`](labs/D3_4_decide_whether_model.ipynb) |
-| 4.1 | Day 4 · Session 1 | Extract six fields from inspection reports into a validated schema | [`D4_1_extract_six_fields.ipynb`](labs/D4_1_extract_six_fields.ipynb) |
-| 4.2 | Day 4 · Session 2 | Compute per-field precision and recall and list the commonest errors | [`D4_2_compute_per_field.ipynb`](labs/D4_2_compute_per_field.ipynb) |
-| 4.3 | Day 4 · Session 3 | Cluster complaint embeddings and label five clusters | [`D4_3_cluster_complaint_embeddings.ipynb`](labs/D4_3_cluster_complaint_embeddings.ipynb) |
-| 4.4 | Day 4 · Session 4 | Correct model-label complaint rates with the human sample and choose the capstone corpus | [`D4_4_correct_model_label.ipynb`](labs/D4_4_correct_model_label.ipynb) |
+| 1.1 | Day 1 · Session 1 | Profile the corpus | [`D1_1_profile.ipynb`](labs/D1_1_profile.ipynb) |
+| 1.2 | Day 1 · Session 2 | Normalise Arabic text | [`D1_2_normalise.ipynb`](labs/D1_2_normalise.ipynb) |
+| 1.3 | Day 1 · Session 3 | Find near-duplicates | [`D1_3_near_duplicates.ipynb`](labs/D1_3_near_duplicates.ipynb) |
+| 1.4 | Day 1 · Session 4 | Redact and measure misses | [`D1_4_redaction.ipynb`](labs/D1_4_redaction.ipynb) |
+| 2.1 | Day 2 · Session 1 | Agreement with a partner | [`D2_1_agreement.ipynb`](labs/D2_1_agreement.ipynb) |
+| 2.2 | Day 2 · Session 2 | A character n-gram classifier | [`D2_2_sparse.ipynb`](labs/D2_2_sparse.ipynb) |
+| 2.3 | Day 2 · Session 3 | An embedding classifier | [`D2_3_embeddings.ipynb`](labs/D2_3_embeddings.ipynb) |
+| 2.4 | Day 2 · Session 4 | Compare classifiers fairly | [`D2_4_paired_bootstrap.ipynb`](labs/D2_4_paired_bootstrap.ipynb) |
+| 3.1 | Day 3 · Session 1 | Prompted classification | [`D3_1_prompted.ipynb`](labs/D3_1_prompted.ipynb) |
+| 3.2 | Day 3 · Session 2 | Ask it twice | [`D3_2_stability.ipynb`](labs/D3_2_stability.ipynb) |
+| 3.3 | Day 3 · Session 3 | Dialect gaps | [`D3_3_dialect_gaps.ipynb`](labs/D3_3_dialect_gaps.ipynb) |
+| 3.4 | Day 3 · Session 4 | A good annotator? | [`D3_4_annotator.ipynb`](labs/D3_4_annotator.ipynb) |
+| 4.1 | Day 4 · Session 1 | Six fields, validated | [`D4_1_extraction.ipynb`](labs/D4_1_extraction.ipynb) |
+| 4.2 | Day 4 · Session 2 | Field-level validation | [`D4_2_field_validation.ipynb`](labs/D4_2_field_validation.ipynb) |
+| 4.3 | Day 4 · Session 3 | Structure in text | [`D4_3_clusters.ipynb`](labs/D4_3_clusters.ipynb) |
+| 4.4 | Day 4 · Session 4 | Corrected rates | [`D4_4_corrected_rates.ipynb`](labs/D4_4_corrected_rates.ipynb) |
 <!-- /academy:labs -->
 
 ## Capstone
 
 A text-measurement project on a supplied or public corpus, in a public repository whose README reports the gold set, agreement, model and extraction results and a reliability memo; eight-minute defence plus questions
 
-**Submission:** REPLACE: what participants submit and how: a public repository link, or a shared folder for a course without code
+**Submission:** a link to a public GitHub repository: the cleaning and redaction script with its miss rate, the gold set and agreement, the classifier and extraction results with model and prompt versions, the saved model outputs and run logs, the corrected estimate and the reliability memo, with a lock file and a README that reports all of them.
+
+**Defence:** eight minutes, then seven minutes in which the assessor chooses ten documents for you to label live from your codebook and asks you to explain any disagreement with your gold set.
+
+**Rubric:** preparation and redaction 25, gold set and agreement 20, models and extraction 20, reliability memo 25, reproducibility 10.
+
+**Assessment:** AI-off entry and exit checks on agreement, representation choice and field validation (20%), the capstone rubric (60%) and the live defence (20%). Passing: 70% overall and at least 60% on both the capstone rubric and the supervised check.
 
 ## Prerequisites
 
@@ -94,12 +120,54 @@ Each line is a capability; the examples are interchangeable.
 <!-- academy:sources -->
 ## Sources
 
-- REPLACE: every source the course cites, with its address, in course.json under "sources"; this list is written from there
-<!-- /academy:sources -->
-
 ### National references
 
-- Personal Data Protection Law and its implementing regulations: REPLACE: the address of the official text
-- NDMO Data Classification Policy: REPLACE: the address of the official text
-- SDAIA Generative AI Guidelines: REPLACE: the address of the official text
-- SDAIA AI Bias Reference Guide: REPLACE: the address of the official text
+- [Personal Data Protection Law (SDAIA)](https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf)
+- [Implementing Regulation of the Personal Data Protection Law (SDAIA)](https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf)
+- [Data Classification Policy (National Data Management Office, SDAIA)](https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf)
+- [Generative AI Guideline for Government (SDAIA)](https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf)
+- [Generative AI Guideline for Public (SDAIA)](https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf)
+- [AI Bias Reference Guide, first edition (SDAIA, May 2026)](https://sdaia.gov.sa/en/MediaCenter/KnowledgeCenter/ResearchLibrary/EN-AI-BIAS.pdf)
+
+### Models and endpoints
+
+- [OpenRouter: API rate limits, including free models](https://openrouter.ai/docs/api-reference/limits)
+- [OpenRouter: Embeddings API](https://openrouter.ai/docs/api-reference/embeddings)
+- [OpenRouter: Gemma 4 31B Instruct (Google), model page and prices](https://openrouter.ai/google/gemma-4-31b-it)
+- [OpenRouter: list of embedding models](https://openrouter.ai/api/v1/embeddings/models)
+- [ALLaM 7B Instruct (preview), model card on the Hugging Face Hub](https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview)
+- [llama.cpp](https://github.com/ggml-org/llama.cpp)
+- [Ollama](https://ollama.com/)
+
+### Arabic text and near-duplicates
+
+- [CAMeL Tools documentation: utils.normalize](https://camel-tools.readthedocs.io/en/latest/api/utils/normalize.html)
+- [camel-tools on PyPI](https://pypi.org/project/camel-tools/)
+- [Unicode Standard Annex 15: Unicode Normalization Forms](https://unicode.org/reports/tr15/)
+- [Python documentation: unicodedata](https://docs.python.org/3/library/unicodedata.html)
+- [Leskovec, Rajaraman and Ullman: Mining of Massive Datasets, chapter 3, Finding Similar Items](http://www.mmds.org/)
+
+### Labels, classifiers and estimates
+
+- [scikit-learn: cohen_kappa_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html)
+- [scikit-learn: TfidfVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
+- [scikit-learn: clustering](https://scikit-learn.org/stable/modules/clustering.html)
+- [Sentence Transformers documentation](https://www.sbert.net/)
+- [BERTopic documentation](https://maartengr.github.io/BERTopic/)
+- [Angelopoulos, Bates, Fannjiang, Jordan and Zrnic (2023): Prediction-Powered Inference](https://arxiv.org/abs/2301.09633)
+- [Calderon, Reichart and Dror (2025): The Alternative Annotator Test for LLM-as-a-Judge](https://arxiv.org/abs/2501.10970)
+- [Label Studio](https://labelstud.io/)
+- [doccano](https://github.com/doccano/doccano)
+
+### Extraction
+
+- [Pydantic documentation: JSON Schema](https://docs.pydantic.dev/latest/concepts/json_schema/)
+- [JSON Schema](https://json-schema.org/)
+<!-- /academy:sources -->
+
+## National references
+
+- Personal Data Protection Law and its implementing regulations: https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf and https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf
+- NDMO Data Classification Policy: https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf
+- SDAIA Generative AI Guidelines: https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf (government) and https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf (public)
+- SDAIA AI Bias Reference Guide: https://sdaia.gov.sa/en/MediaCenter/KnowledgeCenter/ResearchLibrary/EN-AI-BIAS.pdf

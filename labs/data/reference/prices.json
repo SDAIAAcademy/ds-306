@@ -1,0 +1,11 @@
+{
+ "checked": "2026-11-15",
+ "source": "https://openrouter.ai/api/v1/models",
+ "chat_model": "google/gemma-4-31b-it:free",
+ "chat_free": {"prompt": 0.0, "completion": 0.0},
+ "chat_paid_id": "google/gemma-4-31b-it",
+ "chat_paid": {"prompt": 2e-07, "completion": 4e-07},
+ "embed_model": "nvidia/nemotron-3.5-embed-1b:free",
+ "embed_paid": null,
+ "free_limits": {"requests_per_minute": 20, "requests_per_day_without_credits": 50, "requests_per_day_with_10_credits": 1000, "source": "https://openrouter.ai/docs/api-reference/limits"}
+}
