@@ -1,158 +1,434 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Today a language model enters, and it is treated like any other instrument: calibrated against the gold set, tested for repeatability, checked by group. Say early and clearly that the full runs used today are synthetic recordings; participants with a working key run a few live calls and compare. Breaks are yours: press B.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Four questions, one per session: how good is it, how repeatable, for whom, and is that good enough to replace a person. Each lab starts from the recorded runs, so nothing depends on a key or on yesterday.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO2">
+  <div class="kicker">Review of Day 2</div>
+  <h2>What did the paired comparison show?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Sparse minus embedding accuracy on the same 300 gold complaints was +0.037, interval −0.003 to +0.073. Unpaired, the interval was 0.093 wide; paired, 0.077. What made the paired interval narrower?</p>
+    <div class="opts">
+      <div class="opt" data-why="Thinks pairing adds data: both analyses use the same 300 complaints">Pairing doubles the number of complaints</div>
+      <div class="opt" data-why="Confuses the number of resamples with precision: both used 2,000">The paired bootstrap used more resamples</div>
+      <div class="opt" data-ok>Complaints that are easy or hard for both classifiers cancel out in the difference</div>
+      <div class="opt" data-why="Attributes the width to the metric: both intervals are on accuracy">Accuracy is less variable than macro F1</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the complaints where exactly one classifier is right carry the difference; pairing keeps the rest from adding noise.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. This comes back in session 2: two runs of one model share most of their errors, which is why their disagreement is small and informative.</p></aside>
+</section>
 
 <!-- Session 1 -->
 
-<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
-
-<section class="slide" id="s1-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s1" data-auto="section" data-session="1">
+  <aside class="notes"><p>The prompt is the instrument's design. Its version is recorded like a questionnaire's.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="prompt-as-instrument" data-lo="LO2 LO5">
+  <div class="kicker">A prompt is an instrument</div>
+  <h2>The codebook becomes a prompt with fixed labels and a fixed output format</h2>
+  <div class="prompt" data-tool="Fahim, prompt 1">
+    <span class="seg c-teal">You label citizen complaints for Sada Citizen Voice Centre.</span>
+    <span class="seg c-cyan">Assign each complaint exactly one category: the main problem the citizen asks the centre to fix.</span>
+    <span class="seg c-coral">Categories: water_sewage, roads, waste, … each with one line of definition.</span>
+    <span class="seg c-purple">Reply with JSON only: {"labels": [{"id": …, "label": …}]}</span>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="legend"><span class="c-teal">Role</span><span class="c-cyan">Unit and rule</span><span class="c-coral">Label set</span><span class="c-purple">Format</span></div>
+  <aside class="notes"><p>From data/prompts/fahim_p1.md. Ask the room which line of the codebook did not make it into the prompt: the "does not include" column. That omission is one of the reasons for tomorrow's corrections. The labels are the exact codes, so parsing is a lookup, not an interpretation.</p></aside>
+</section>
+
+<section class="slide" id="batch-and-budget" data-lo="LO2">
+  <div class="kicker">Within the budget</div>
+  <h2>Ten complaints a request: the prompt is paid once per batch</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>One request labels ten complaints, each line <code>id: text</code></li>
+      <li>The gold set is 30 requests; all 20,000 complaints are 2,000</li>
+      <li>Free tier: 50 requests a day, 1,000 after a one-time 10 credits</li>
+    </ul>
+    <div class="callout warn"><b>A measurement choice.</b> Batching can change labels: a complaint is read next to nine others. The stretch of Lab 3.1 compares one-per-call with batches.</div>
+  </div>
+  <aside class="notes"><p>Limits from OpenRouter's documentation, read this month. Batching is a trade: fewer requests and tokens against a possible context effect. A careful study measures it; the stretch does with a key. Sources: OpenRouter API rate limits.</p></aside>
+</section>
+
+<section class="slide" id="parse-never-guess" data-lo="LO2">
+  <div class="kicker">Lab 3.1, step 2</div>
+  <h2>A reply that cannot be parsed is a missing label, never a guessed one</h2>
+  <pre class="code" data-file="sada.py"><code class="language-python">def parse_labels(text, ids):
+    data = json.loads(text[text.find("{"): text.rfind("}") + 1])
+    got = {str(x.get("id")): x.get("label") for x in data.get("labels", [])}
+    return {i: (got.get(i) if got.get(i) in CATEGORIES else None) for i in ids}</code></pre>
+  <p class="small mt-s">In the course's run all ten labels came back usable and eight were right.</p>
+  <aside class="notes"><p>Missing ids and labels outside the codebook become None and are counted. Mapping "Roads and pavements" to roads silently would hide a format failure that grows with a new model. The 8 of 10 is from the stand-in replaying the recorded run.</p></aside>
+</section>
+
+<section class="slide" id="version-record" data-lo="LO2 LO4">
+  <div class="kicker">The version record</div>
+  <h2>Every label set travels with the model, the prompt and the settings that made it</h2>
+  <table class="t">
+    <tr><th>Field</th><th>Value in the recorded run</th></tr>
+    <tr><td>Model</td><td><code>google/gemma-4-31b-it:free</code></td></tr>
+    <tr><td>Prompt</td><td>P1 and the hash of its text</td></tr>
+    <tr><td>Temperature, batch size</td><td>0.7, ten complaints</td></tr>
+    <tr><td>Date</td><td>The day of the run</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> A model name stays while the weights behind an endpoint change. Without the date and the prompt hash, a published rate cannot be reproduced.</div>
+  <aside class="notes"><p>Gemma 4 31B Instruct is an open-weight model from Google; its free endpoint was listed on OpenRouter this month. An Arabic-capable alternative is ALLaM 7B, published on the Hugging Face Hub, which a centre would serve locally (llama.cpp, Ollama) when text may not leave its servers. Sources: OpenRouter Gemma 4 31B model page; ALLaM 7B Instruct model card.</p></aside>
+</section>
+
+<section class="slide" id="prompted-results" data-lo="LO2">
+  <div class="kicker">Lab 3.1, the scores (recorded run)</div>
+  <h2>Fahim is right on 81% of the gold set, and on 73% of Gulf complaints</h2>
+  <table class="t">
+    <tr><th>Gold complaints</th><th class="num">n</th><th class="num">Accuracy</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>All</td><td class="num">300</td><td class="num">0.810</td><td class="num">0.763 to 0.853</td></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.868</td><td class="num">0.807 to 0.930</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">120</td><td class="num">0.733</td><td class="num">0.658 to 0.808</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.848</td><td class="num">0.758 to 0.939</td></tr>
+  </table>
+  <p class="small mt-s">Macro F1 0.797. The sparse classifier of Day 2: 0.930, with no dialect gap.</p>
+  <aside class="notes"><p>From Lab 3.1 on the recorded run (synthetic). The comparison with Day 2 is fair in one way (same gold set) and unfair in another: the sparse model learnt from 3,000 Sada complaints, Fahim from none. Ask the room when that difference is worth paying for.</p></aside>
+</section>
+
+<section class="slide" id="prompted-cost" data-lo="LO2">
+  <div class="kicker">Lab 3.1, step 5</div>
+  <h2>A thousand complaints cost 100 requests, or about three cents at volume</h2>
+  <table class="t">
+    <tr><th>Per 1,000 complaints</th><th class="num">Value</th></tr>
+    <tr><td>Tokens in, per complaint (prompt shared by ten)</td><td class="num">106.9</td></tr>
+    <tr><td>Tokens out, per complaint</td><td class="num">14.0</td></tr>
+    <tr><td>Requests, ten a batch</td><td class="num">100</td></tr>
+    <tr><td>Days on a free account without credits</td><td class="num">2</td></tr>
+    <tr class="hl"><td>USD on the paid endpoint of the same model</td><td class="num">0.027</td></tr>
+  </table>
+  <aside class="notes"><p>Paid price of google/gemma-4-31b-it on OpenRouter's public list on 2026-11-15: USD 0.20 per million input tokens and 0.40 per million output tokens. Tokens per complaint are from the recorded run. Money is not the binding cost here; requests per day and where the text goes are. Sources: OpenRouter Gemma 4 31B model page.</p></aside>
+</section>
+
+<section class="slide" id="check-prompted" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which classifier for a category that did not exist last month?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">The centre adds a ninth category, "heat and cooling in public buildings", with no labelled examples yet. The sparse model scores 0.930 on the old eight; Fahim 0.810. What do you use for the first month?</p>
+    <div class="opts">
+      <div class="opt" data-why="Ignores that the sparse model has never seen the new category and cannot predict it">The sparse model, since it scores higher</div>
+      <div class="opt" data-ok>Fahim with the new category added to its prompt, checked on a small new gold sample</div>
+      <div class="opt" data-why="Assumes no labels means no measurement: a small gold sample is enough to check">Neither, until 3,000 new labels are collected</div>
+      <div class="opt" data-why="Uses each model where it is weakest: the sparse model cannot route to a category it never learnt">The sparse model for the new category and Fahim for the old ones</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A prompted model needs a codebook, not training labels. It must still be measured against a human sample before its labels are used.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. This is the honest case for prompted classification: speed of change, not accuracy on a stable task.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-1" data-auto="lab" data-lab="3.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>With a key in labs/.env or Colab Secrets, task 2 makes one real request. A 401 switches to the stand-in for the rest of the notebook and prints a warning; a 429 waits and retries. Common error: building the user message with the full text including the ids twice. The stretch only measures something with a working key.</p></aside>
 </section>
 
 <!-- Session 2 -->
 
-<section class="slide section" id="s2" data-auto="section" data-session="2"></section>
-
-<section class="slide" id="s2-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s2" data-auto="section" data-session="2">
+  <aside class="notes"><p>A scale that reads differently each time you step on it. Ask the room what they would do with it before showing any numbers.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="two-kinds-of-instability" data-lo="LO5">
+  <div class="kicker">Ask it twice</div>
+  <h2>Two kinds of instability: the same prompt again, and the same request in other words</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Run stability</h4><p class="small mb0">Prompt 1, three runs at the same settings. Sampling makes the labels vary.</p></div>
+    <div class="card c-coral"><h4>Prompt stability</h4><p class="small mb0">Prompt 2 says the same thing differently and adds a rule for two-problem complaints. Wording moves labels.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <p class="small mt">Both are part of the measurement error of one label. A single run shows neither.</p>
+  <aside class="notes"><p>Read prompt 2 aloud. Nobody would call it a different instruction, which is the point: a researcher choosing between two equally reasonable prompts is choosing between two label sets.</p></aside>
+</section>
+
+<section class="slide" id="flip-rate" data-lo="LO5">
+  <div class="kicker">Lab 3.2, step 1</div>
+  <h2>One complaint in five gets a different label in one of three runs</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">19.7%</div><div class="lbl">of gold complaints: the three runs of prompt 1 do not all agree</div></div>
+    <table class="t small">
+      <tr><th>Prompt 1</th><th class="num">Accuracy</th></tr>
+      <tr><td>Run 1</td><td class="num">0.810</td></tr>
+      <tr><td>Run 2</td><td class="num">0.793</td></tr>
+      <tr><td>Run 3</td><td class="num">0.817</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>From Lab 3.2 on the recorded runs (synthetic). Prompt 2 has the same flip rate. The accuracies move by two points between runs: a difference that size between two models, from one run each, means nothing.</p></aside>
+</section>
+
+<section class="slide" id="run-kappa" data-lo="LO5">
+  <div class="kicker">Lab 3.2, step 2</div>
+  <h2>Fahim agrees with itself about as well as two people agree with each other</h2>
+  <div class="bars">
+    <div class="row"><span>Run 1 and run 2</span><div class="bar c-teal" style="--w:84%"></div><span class="val">0.840</span></div>
+    <div class="row"><span>Run 1 and run 3</span><div class="bar c-teal" style="--w:86.4%"></div><span class="val">0.864</span></div>
+    <div class="row"><span>Run 2 and run 3</span><div class="bar c-teal" style="--w:83.7%"></div><span class="val">0.837</span></div>
+    <div class="row"><span>Two human coders</span><div class="bar c-coral" style="--w:82.9%"></div><span class="val">0.829</span></div>
+  </div>
+  <p class="small mt">Kappa. A model's agreement with itself is the ceiling of its agreement with anyone else.</p>
+  <aside class="notes"><p>From Lab 3.2. The ceiling argument: whatever changes between runs is noise, and noise agrees with the gold label only by chance. So Fahim's kappa against gold cannot exceed about 0.85 at these settings.</p></aside>
+</section>
+
+<section class="slide" id="prompt-shift" data-lo="LO5">
+  <div class="kicker">Lab 3.2, step 3</div>
+  <h2>Rewording the prompt moves twice as many labels as running it again</h2>
+  <table class="t">
+    <tr><th>Labels that change</th><th class="num">Share of gold complaints</th></tr>
+    <tr><td>Prompt 1 run 1 against prompt 1 run 2</td><td class="num">13.7%</td></tr>
+    <tr class="hl"><td>Prompt 1 run 1 against prompt 2 run 1</td><td class="num">31.3%</td></tr>
+  </table>
+  <p class="small mt-s">Yet the accuracy barely moves: 0.810 with prompt 1, 0.797 with prompt 2. Different complaints are wrong.</p>
+  <aside class="notes"><p>From Lab 3.2. This is the slide to dwell on: the headline accuracy hides that a third of the labels changed. Any count built on the labels changes too, by category and by district. Report which prompt produced a published number, and test a second one.</p></aside>
+</section>
+
+<section class="slide" id="who-moves" data-lo="LO5">
+  <div class="kicker">Lab 3.2, step 4</div>
+  <h2>The complaints Fahim cannot settle are the ones people disagree on too</h2>
+  <table class="t">
+    <tr><th>The two human coders</th><th class="num">Complaints</th><th class="num">Unstable across six model labels</th></tr>
+    <tr><td>Agreed</td><td class="num">256</td><td class="num">43.4%</td></tr>
+    <tr class="hl"><td>Disagreed</td><td class="num">44</td><td class="num">72.7%</td></tr>
+  </table>
+  <p class="small mt-s">Most of them name two problems. The codebook's rule for them is the weak point of both instruments.</p>
+  <aside class="notes"><p>From Lab 3.2. Instability is not spread evenly: it concentrates on ambiguous complaints. The practical step is a codebook change (a sharper rule for two-problem complaints) and a review queue for unstable labels, which DS-311 builds at scale.</p></aside>
+</section>
+
+<section class="slide" id="majority-vote" data-lo="LO5">
+  <div class="kicker">Lab 3.2, step 5</div>
+  <h2>The majority of three runs gains four points for three times the requests</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">0.850</div><div class="lbl">accuracy of the majority of three runs, against 0.810 for one run</div></div>
+    <ul class="bullets">
+      <li>Votes cancel part of the run noise</li>
+      <li>They do not cancel a systematic error: a Gulf word misread three times is misread</li>
+      <li>Cost: 300 requests per 1,000 complaints</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 3.2. The second bullet prepares session 3: the dialect gap is systematic and survives voting.</p></aside>
+</section>
+
+<section class="slide" id="check-stability" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Two prompts, the same accuracy: are their labels interchangeable?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Prompt 1 scores 0.810 on the gold set and prompt 2 scores 0.797. A colleague says the prompts are equivalent, so the published district counts do not depend on the choice. What do you check?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats equal accuracy as equal labels: the same score can come from different complaints being wrong">Nothing: equal accuracy means equal counts</div>
+      <div class="opt" data-why="Checks run noise instead of the prompt effect">The flip rate of prompt 1 alone</div>
+      <div class="opt" data-why="Changes the subject to cost: the question is whether the counts depend on the prompt">Which prompt uses fewer tokens</div>
+      <div class="opt" data-ok>How many labels differ between the prompts, and the counts by category and district under each</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A third of the labels change between the prompts while accuracy stays put. Counts are built from labels, not from accuracy.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-2" data-auto="lab" data-lab="3.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>All on the recorded runs; no key needed. The pivot from long to wide format is where most participants lose time: give them the wide table if needed (it is built in the first cell). The stretch makes six requests with a key.</p></aside>
 </section>
 
 <!-- Session 3 -->
 
-<section class="slide section" id="s3" data-auto="section" data-session="3"></section>
-
-<section class="slide" id="s3-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s3" data-auto="section" data-session="3">
+  <aside class="notes"><p>Averages hide groups. The session ends on a district, not on a model.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="gap-by-variety" data-lo="LO5">
+  <div class="kicker">Lab 3.3, step 1</div>
+  <h2>Fahim falls short of the human coders on Gulf dialect, not elsewhere</h2>
+  <table class="t">
+    <tr><th>Variety</th><th class="num">n</th><th class="num">Kappa, Fahim against gold</th><th class="num">Kappa, two humans</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.845</td><td class="num">0.813</td></tr>
+    <tr class="hl"><td>Gulf dialect</td><td class="num">120</td><td class="num">0.685</td><td class="num">0.872</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.824</td><td class="num">0.772</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.3 on the recorded run. The human coders do best on Gulf complaints: the centre's coders include Gulf speakers. The model does worst. The gap is not "Arabic is hard"; formal Arabic is fine.</p></aside>
+</section>
+
+<section class="slide" id="gulf-confusion" data-lo="LO5">
+  <div class="kicker">Lab 3.3, step 2</div>
+  <h2>Gulf sewage complaints that mention a flooded street are read as road complaints</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">9 of 32</div><div class="lbl">Gulf gold <code>water_sewage</code> complaints labelled <code>roads</code></div></div>
+    <div class="chat">
+      <div class="msg user"><span class="who">Complaint</span><span class="ar">ترى المجاري طافحة عند الدوار … والشارع غرقان.</span></div>
+      <div class="msg ai bad"><span class="who">Fahim</span>roads</div>
+    </div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <p class="small mt">مويه and غرقان ("water", "flooded") sit next to شارع ("street"). The codebook says a street flooded by sewage is <code>water_sewage</code>; the prompt never says so.</p>
+  <aside class="notes"><p>From Lab 3.3's confusion table. This is a systematic error with a cause: a dialect word and a missing codebook line. Prompt 2 adds that line; the stretch measures whether it helps.</p></aside>
+</section>
+
+<section class="slide" id="gap-interval" data-lo="LO5">
+  <div class="kicker">Lab 3.3, step 3</div>
+  <h2>The gap is 13.5 points, and its interval excludes zero</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">+0.135</div><div class="lbl">accuracy on formal Arabic minus Gulf; 95% interval +0.025 to +0.236</div></div>
+    <ul class="bullets">
+      <li>Two groups, different complaints: resample within each group, nothing to pair</li>
+      <li>Wide, because each group has about 120 complaints</li>
+      <li>Prompt 2: +0.065, interval −0.046 to +0.167</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 3.3 and its stretch. Prompt 2 halves the point estimate, but its interval overlaps prompt 1's: a promising change, not a proven one. A larger Gulf gold sample is the way to know.</p></aside>
+</section>
+
+<section class="slide" id="variety-instrument" data-lo="LO4 LO5">
+  <div class="kicker">Lab 3.3, step 4</div>
+  <h2>To carry the gap to districts, the variety of every complaint is guessed, and the guess is measured</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>English: by script</li>
+      <li>Gulf: when a Gulf marker word appears (وايد, الحين, محد, مويه …)</li>
+      <li>Otherwise formal Arabic</li>
+    </ul>
+    <div class="stat center"><div class="big">95.7%</div><div class="lbl">agreement with the coders' variety on the gold set; 13 of 120 Gulf complaints guessed as formal</div></div>
+  </div>
+  <aside class="notes"><p>From Lab 3.3. Every instrument used on the way to a number gets the same treatment, the variety guess included. Its error runs one way: short Gulf complaints without a marker word look formal.</p></aside>
+</section>
+
+<section class="slide" id="district-recall" data-lo="LO4 LO5">
+  <div class="kicker">Lab 3.3, step 4</div>
+  <h2>Where most residents write in Gulf dialect, a quarter of sewage complaints are missed</h2>
+  <table class="t">
+    <tr><th>District</th><th class="num">Gulf share</th><th class="num">Expected recall of sewage complaints</th></tr>
+    <tr class="hl"><td>Al-Naseem</td><td class="num">60.5%</td><td class="num">0.752</td></tr>
+    <tr><td>Al-Jazira</td><td class="num">55.1%</td><td class="num">0.767</td></tr>
+    <tr><td>Al-Salam</td><td class="num">48.1%</td><td class="num">0.787</td></tr>
+    <tr><td>Al-Shati</td><td class="num">17.5%</td><td class="num">0.892</td></tr>
+    <tr><td>Al-Khalij</td><td class="num">12.8%</td><td class="num">0.910</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.3: the district's guessed variety mix times the gold-set recall of each variety. The districts that complain most about sewage are the ones the model under-counts most. SDAIA's AI Bias Reference Guide calls a systematic over- or under-estimate of true values measurement bias. Sources: AI Bias Reference Guide, first edition.</p></aside>
+</section>
+
+<section class="slide" id="check-dialect" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does the dialect gap do to the published rate?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5 LO4">
+    <p class="lead">Fahim misses more sewage complaints in Gulf dialect. Al-Naseem's complaints are 60% Gulf, Al-Khalij's 13%. The naive sewage rate is published for both. Which statement holds?</p>
+    <div class="opts">
+      <div class="opt" data-ok>Al-Naseem's rate is under-stated more than Al-Khalij's, so the gap between them looks smaller than it is</div>
+      <div class="opt" data-why="Assumes errors cancel across districts: the error depends on each district's language mix">Both are under-stated equally, so the comparison is fair</div>
+      <div class="opt" data-why="Reverses the direction of the error: missed complaints lower the count">Al-Naseem's rate is over-stated</div>
+      <div class="opt" data-why="Thinks a better overall accuracy fixes a group error: the gap is in one variety">The rates are fine because overall accuracy is 0.81</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The miss rate follows the variety, and the variety mix differs by district. The district that suffers most is under-counted most.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option. Tomorrow's last lab corrects exactly this.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-3" data-auto="lab" data-lab="3.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Task 4 guesses the variety of all 20,000 complaints; it takes about a minute (quick mode uses 5,000). Some participants compute recall over all categories: the question is about water and sewage only. The stretch compares the prompts.</p></aside>
 </section>
 
 <!-- Session 4 -->
 
-<section class="slide section" id="s4" data-auto="section" data-session="4"></section>
-
-<section class="slide" id="s4-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s4" data-auto="section" data-session="4">
+  <aside class="notes"><p>The decision of the day. Make the room write criteria before the lab prints anything.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="the-question" data-lo="LO5">
+  <div class="kicker">The decision</div>
+  <h2>Can Fahim replace the second coder, and can its labels feed an estimate?</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Replace a coder</h4><p class="small mb0">Each label is used as it is, complaint by complaint. The bar is what a second person adds.</p></div>
+    <div class="card c-coral"><h4>Feed an estimate</h4><p class="small mb0">Labels are counted. Errors can be measured on a human sample and corrected in the count.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <p class="small mt">Two questions, two bars. A model can fail the first and pass the second.</p>
+  <aside class="notes"><p>Keep the two questions apart all session. Most teams merge them and decide "the model is good enough" or "not good enough" for everything at once.</p></aside>
+</section>
+
+<section class="slide" id="criteria-first" data-lo="LO5">
+  <div class="kicker">Lab 3.4, step 3</div>
+  <h2>Write the bar before you read the results</h2>
+  <table class="t">
+    <tr><th>Criterion, in every variety</th><th class="num">The course's bar</th></tr>
+    <tr><td>Fahim's kappa below the human pair's, at most</td><td class="num">0.05</td></tr>
+    <tr><td>Complaints whose three runs agree, at least</td><td class="num">90%</td></tr>
+    <tr><td>Accuracy gap between varieties, at most</td><td class="num">0.05</td></tr>
+  </table>
+  <p class="small mt-s">A criterion written after the results is a description of the results.</p>
+  <aside class="notes"><p>The numbers are one defensible set, not a standard. The alternative annotator test (Calderon, Reichart and Dror, 2025) is a formal version of the first criterion with a statistical procedure; the stretch of the lab uses its idea. Sources: The Alternative Annotator Test for LLM-as-a-Judge.</p></aside>
+</section>
+
+<section class="slide" id="criteria-results" data-lo="LO5">
+  <div class="kicker">Lab 3.4, step 4</div>
+  <h2>Fahim passes on formal Arabic and English, and fails on Gulf dialect and stability</h2>
+  <table class="t">
+    <tr><th>Test</th><th class="num">Value</th><th>Result</th></tr>
+    <tr><td>Kappa shortfall, Modern Standard Arabic</td><td class="num">−0.032</td><td>Pass</td></tr>
+    <tr class="hl"><td>Kappa shortfall, Gulf dialect</td><td class="num">0.187</td><td>Fail</td></tr>
+    <tr><td>Kappa shortfall, English</td><td class="num">−0.052</td><td>Pass</td></tr>
+    <tr class="hl"><td>Three runs agree</td><td class="num">80.3%</td><td>Fail</td></tr>
+    <tr class="hl"><td>Accuracy gap between varieties</td><td class="num">0.135</td><td>Fail</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.4 on the recorded runs. A negative shortfall means Fahim agrees with gold better than the two coders agree with each other in that group; it is not the same comparison, so read it as "no shortfall", not as "better than people".</p></aside>
+</section>
+
+<section class="slide" id="leave-one-out" data-lo="LO5">
+  <div class="kicker">Lab 3.4, stretch</div>
+  <h2>Swapped in for either coder, Fahim agrees less with the other one than a person does</h2>
+  <table class="t">
+    <tr><th>Replace</th><th class="num">The human's agreement with the other coder</th><th class="num">Fahim's</th></tr>
+    <tr><td>Coder A</td><td class="num">0.853</td><td class="num">0.780</td></tr>
+    <tr><td>Coder B</td><td class="num">0.853</td><td class="num">0.750</td></tr>
+  </table>
+  <aside class="notes"><p>From the stretch of Lab 3.4: the idea of the alternative annotator test with two coders. With more coders the test counts, for each one left out, whether the model agrees with the rest at least as well; with two coders it is a sanity check rather than a test.</p></aside>
+</section>
+
+<section class="slide" id="reliability-memo" data-lo="LO5">
+  <div class="kicker">Lab 3.4, step 5</div>
+  <h2>The reliability memo answers both questions in five short paragraphs</h2>
+  <div class="flow v">
+    <div class="step c-teal"><b>Question</b>Replace the second coder? Feed the district rates?</div>
+    <div class="arrow">↓</div>
+    <div class="step c-cyan"><b>Evidence</b>Agreement, stability, gaps, each with its number</div>
+    <div class="arrow">↓</div>
+    <div class="step c-coral"><b>Decision</b>Not as a coder; yes for counts with a correction</div>
+    <div class="arrow">↓</div>
+    <div class="step c-purple"><b>Limits</b>Synthetic runs, small groups, versions to keep</div>
+  </div>
+  <aside class="notes"><p>The draft is saved to artifacts/day3/reliability_memo.md. In the capstone it is worth 25 of the 100 rubric points, the same as preparation and redaction. Ask two participants to read their decision paragraph aloud.</p></aside>
+</section>
+
+<section class="slide" id="check-annotator" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does the memo recommend?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Fahim fails the criteria on Gulf dialect and on stability, and passes on formal Arabic and English. Dr. Ebtisam wants one recommendation. Which one follows from the evidence?</p>
+    <div class="opts">
+      <div class="opt" data-why="Ignores the failed criteria because the overall numbers look acceptable">Replace the second coder, since overall kappa is 0.778</div>
+      <div class="opt" data-why="Discards labels that are usable for estimates with a correction">Stop using Fahim for anything</div>
+      <div class="opt" data-ok>Keep both human coders; use Fahim's labels for counts only with a correction from the human sample, by variety</div>
+      <div class="opt" data-why="Moves the bar after the results: the criteria were set before looking">Lower the stability criterion to 80% so that Fahim passes</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Per-complaint use needs every label to be good enough; a count can be corrected for measured errors.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. The fourth option happens in real projects more than anyone admits; name it.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-4" data-auto="lab" data-lab="3.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Insist on writing the criteria in task 3 before running task 4. The memo is a draft for the capstone; it may be in Arabic or English. All on recorded runs.</p></aside>
 </section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">Day 3 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Version everything</h4><p class="small mb0">Model, prompt hash, settings and date travel with every label set.</p></div>
+    <div class="card c-coral"><h4>Ask it twice</h4><p class="small mb0">Run and prompt stability are part of a label's error; a single run hides both.</p></div>
+    <div class="card c-purple"><h4>Report by group</h4><p class="small mb0">A gap by variety turns into an under-count by district.</p></div>
   </div>
+  <aside class="notes"><p>Ask: which number from today would you put in the first line of the memo? Usually the Gulf shortfall.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
   <h2>Day 4: From documents to tables</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <p class="lead">Tomorrow: fields extracted from inspection reports, clusters, and the corrected district rates. Read the two capstone briefs in labs/data/capstone/.</p>
+  <aside class="notes"><p>Lab 4.4 ends with the choice of the capstone corpus: Nadwa, Raafid, or a public corpus the trainer approves. Ask participants to come with a first choice.</p></aside>
 </section>

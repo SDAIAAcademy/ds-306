@@ -1,0 +1,6 @@
+{
+ "between_prompts": 0.313,
+ "between_runs": 0.137,
+ "accuracy_P1": 0.81,
+ "accuracy_P2": 0.797
+}

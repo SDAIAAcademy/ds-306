@@ -203,6 +203,22 @@ def script_language(text: str) -> str:
     return "ar" if arabic >= 0.8 else "en" if arabic <= 0.2 else "mixed"
 
 
+GULF_MARKERS = {"وايد", "الحين", "محد", "شلون", "ليش", "مويه", "الماي", "ماي", "زين", "يبي", "نبي", "ترى", "اللي",
+                "مره", "جنب", "وش", "تكفون", "يكبون", "الياهل", "سكروا", "قعدت", "مسكره", "ماطور", "حطوا", "طافيه",
+                "شي", "مو", "هالحال", "يسوء", "يتاذون", "العيال", "الشيبان"}
+
+
+def guess_variety(text: str) -> str:
+    """A rough variety guess for any complaint: English by script, Gulf when a Gulf marker word appears, else MSA.
+
+    It is an instrument like any other: Lab 3.3 measures it against the coders' variety on the gold set.
+    """
+    if script_language(text) == "en":
+        return "en"
+    words = set(tokens(dialect(normalise(text))))
+    return "gulf" if words & {normalise(w) for w in GULF_MARKERS} else "msa"
+
+
 PII_TAGS = {"phone": "[PHONE]", "national_id": "[ID]", "email": "[EMAIL]", "name": "[NAME]"}
 
 
@@ -469,7 +485,7 @@ class StandIn:
         system = " ".join(m["content"] for m in messages if m["role"] == "system")
         user = [m["content"] for m in messages if m["role"] == "user"][-1]
         rec = _recorded()
-        if "inspection" in system.lower():
+        if "repair_deadline_days" in system:  # the extraction prompt of Day 4
             m = re.search(r"IR-\d{4}", user)
             got = rec["extract"].get(m.group(0)) if m else None
             fields = ["district", "inspection_date", "defect_type", "severity", "hazard_to_public", "repair_deadline_days"]

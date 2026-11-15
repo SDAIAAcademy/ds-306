@@ -1,0 +1,27 @@
+[
+ {
+  "test": "kappa shortfall, msa",
+  "value": -0.032,
+  "pass": true
+ },
+ {
+  "test": "kappa shortfall, gulf",
+  "value": 0.187,
+  "pass": false
+ },
+ {
+  "test": "kappa shortfall, en",
+  "value": -0.052,
+  "pass": true
+ },
+ {
+  "test": "three runs agree",
+  "value": 0.803,
+  "pass": false
+ },
+ {
+  "test": "accuracy gap between varieties",
+  "value": 0.135,
+  "pass": false
+ }
+]

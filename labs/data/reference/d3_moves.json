@@ -1,0 +1,12 @@
+[
+ {
+  "humans_agree": false,
+  "mean": 0.727,
+  "size": 44
+ },
+ {
+  "humans_agree": true,
+  "mean": 0.434,
+  "size": 256
+ }
+]
