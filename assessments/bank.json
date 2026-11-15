@@ -762,9 +762,9 @@
       "prompt": "A brief asks for \"the share of feedback about facilities in each branch\". Which measurement choice must the report state explicitly?",
       "options": [
         "Whether copies and campaigns are counted as messages or as issues",
-        "The name of the notebook",
-        "The number of slides in the defence",
-        "The colour of the chart"
+        "The order in which the coders labelled the gold set",
+        "The colour scale of the branch map",
+        "The random seed of the clustering run used to explore the corpus"
       ],
       "correct": [
         0
@@ -772,9 +772,9 @@
       "explanation": "The unit counted changes the share; the report states it and gives the other count beside it.",
       "misconceptions": [
         "",
-        "Not a measurement choice",
-        "Not a measurement choice",
-        "A presentation choice, not a measurement choice"
+        "Order may affect fatigue, but the share is computed from the labels, not their order",
+        "A presentation choice, not a measurement choice",
+        "A cluster run that does not feed the share cannot change it"
       ],
       "lo": [
         "LO6"
@@ -841,6 +841,92 @@
       "pool": "practice",
       "weight": 1,
       "session": 4
+    },
+    {
+      "id": "q-cluster-language",
+      "type": "single",
+      "prompt": "Five clusters of 1,000 complaint vectors agree with the routing labels at an adjusted Rand index of 0.005 and with the guessed language variety at 0.642. What should the report on the clusters say?",
+      "options": [
+        "The clusters group complaints by language more than by topic, so their sizes are not topic counts",
+        "The routing labels are wrong, since the clusters disagree with them",
+        "Five is the wrong number of clusters; more clusters would match the topics",
+        "The clusters are new categories to add to the codebook"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A cluster shows what the vectors see. Here that is mostly language, so the report describes it as a lens and keeps topic counts to the coded categories.",
+      "misconceptions": [
+        "",
+        "Treats an unsupervised grouping as the reference for labels it was never asked to match",
+        "Assumes changing k removes what the vectors encode; the language signal stays at any k",
+        "Promotes a grouping with no definition or measured error to a category"
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "day4",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "session": 3
+    },
+    {
+      "id": "q-census-interval",
+      "type": "single",
+      "prompt": "Sada counts every one of its 20,000 complaints, then corrects the count with 300 gold complaints. Where does the interval of the corrected district rate come from?",
+      "options": [
+        "From the three runs of the model",
+        "There is no interval, because all complaints were counted",
+        "From resampling the 20,000 complaints",
+        "From the 300 gold complaints that estimate the correction"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The counts have no sampling error, but the rectifiers do: they are estimated from 300 complaints, so the bootstrap resamples those, within each variety.",
+      "misconceptions": [
+        "Run variation was measured on Day 3; the rate uses one recorded run",
+        "Forgets that the correction itself is estimated from a sample",
+        "Treats a census as a sample: every complaint received is already counted",
+        ""
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day4",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "session": 4
+    },
+    {
+      "id": "q-defend-stratify",
+      "type": "single",
+      "prompt": "In the defence the assessor asks: \"Why did you correct by language variety and not with one overall correction?\" Which answer defends the choice best?",
+      "options": [
+        "Because stratified estimates are always more precise",
+        "Because the model's error differed by variety on my gold set, and the branches differ in their variety mix; here are both numbers",
+        "Because Gulf dialect is harder for every model",
+        "Because the course did it that way"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "A measurement choice is defended with the project's own numbers: the measured difference in error and the difference in mix that makes it matter.",
+      "misconceptions": [
+        "States a general rule that is false: small strata can widen intervals",
+        "",
+        "Generalises without the project's own measurement",
+        "Appeals to authority instead of evidence from the project"
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "capstone",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
     }
   ]
 }

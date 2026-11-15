@@ -527,6 +527,8 @@ class StandIn:
             got = rec["extract"].get(m.group(0)) if m else None
             fields = ["district", "inspection_date", "defect_type", "severity", "hazard_to_public", "repair_deadline_days"]
             return json.dumps({k: got[k] for k in fields} if got else {k: None for k in fields})
+        if sha(system) not in rec["p"] and "water_sewage" not in system:  # not a labelling prompt
+            return json.dumps({"standin": True, "note": "scripted stand-in: no model answered this request"})
         version = rec["p"].get(sha(system), "P1")
         labels = []
         for line in user.splitlines():

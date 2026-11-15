@@ -1,79 +1,125 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">Today is theirs: keep your own talking to the opening and the closing. Confirm the running order and the demo setup (screen sharing, accounts, a recorded backup) first.</aside>
+  <aside class="notes">Today is theirs: keep your own talking to the opening and the closing. Confirm the running order, screen sharing, and that every participant has the repository link and a recorded backup of their demo. The assessor needs each participant's codebook open before the defence starts.</aside>
 </section>
 
 <section class="slide" id="agenda" data-label="Agenda">
   <div class="kicker">Capstone</div>
-  <h2>How the presentations run</h2>
+  <h2>How the defences run</h2>
   <div class="agenda">
-    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, a last rehearsal, then the first presentations</small></div></div>
-    <div class="item"><div><b>Presentations</b><small>each one timed, with questions after it</small></div></div>
+    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, what full marks look like, a last rehearsal</small></div></div>
+    <div class="item"><div><b>Defences</b><small>eight minutes each, then seven minutes of live labelling and questions</small></div></div>
     <div class="item"><div><b>Review and closing</b><small>peer feedback, the trainer's review, what next</small></div></div>
   </div>
+  <aside class="notes">The supervised AI-off exit check (20% of the grade) runs before the first defence or after the last one, as the cohort's schedule allows.</aside>
 </section>
 
-<section class="slide" id="rubric" data-label="The rubric">
-  <div class="kicker">How presentations are scored</div>
+<section class="slide" id="the-task" data-lo="LO6">
+  <div class="kicker">The task</div>
+  <h2>One question, one corpus, one corrected number you can defend</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The director's question from your brief, in one sentence</li>
+      <li>The corpus prepared and redacted, with its miss rate</li>
+      <li>A gold set with agreement, and a model scored on it</li>
+      <li>Fields extracted and validated per field</li>
+      <li>The corrected estimate with its interval</li>
+      <li>The reliability memo and the version record</li>
+    </ul>
+    <div class="card c-teal"><h4>Corpora</h4><p class="small mb0">Nadwa libraries or Raafid social support (synthetic, in <code>labs/data/capstone/</code>), or a public corpus the trainer approved. Extraction uses the course's 500 inspection reports unless your corpus has its own fields.</p></div>
+  </div>
+  <aside class="notes">Every item maps to a lab: Day 1 for preparation, Day 2 for agreement and classifiers, Day 3 for the memo, Day 4 for extraction and the corrected rate. The capstone corpora have no fields to extract, so the extraction criterion is scored on the inspection reports or on a reference set of at least 50 documents the participant built from their own corpus.</aside>
+</section>
+
+<section class="slide" id="rubric" data-label="The rubric" data-lo="LO6">
+  <div class="kicker">How the project is scored</div>
   <h2>The rubric</h2>
   <div class="bars">
-    <div class="row"><span>Preparation and redaction</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>Gold set and agreement</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>Models and extraction</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>Reliability memo</span><div class="bar c-purple" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>Reproducibility</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10%</span></div>
+    <div class="row"><span>Preparation and redaction</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25</span></div>
+    <div class="row"><span>Gold set and agreement</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">20</span></div>
+    <div class="row"><span>Models and extraction</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20</span></div>
+    <div class="row"><span>Reliability memo</span><div class="bar c-purple" style="--w:100%"></div><span class="val">25</span></div>
+    <div class="row"><span>Reproducibility</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10</span></div>
   </div>
-  <div class="callout tip mt"><b>Show results from at least two measured runs.</b> A claim without a number is a plan, not a result.</div>
-  <aside class="notes">Walk through each criterion with one example of what full marks look like.</aside>
+  <div class="callout tip mt"><b>Every claim carries a number from a run.</b> A claim without one is a plan, not a result.</div>
+  <aside class="notes">The rubric is 60% of the grade, the live defence 20%, the AI-off checks 20%. Passing: 70% overall and at least 60% on both the rubric and the supervised check. Walk through the next slide before anyone rehearses.</aside>
 </section>
 
-<section class="slide" id="format" data-label="Format">
+<section class="slide" id="full-marks" data-lo="LO6">
+  <div class="kicker">What full marks look like</div>
+  <h2>Each criterion has one thing that separates a pass from full marks</h2>
+  <table class="t small">
+    <tr><th>Criterion</th><th>Full marks</th></tr>
+    <tr><td>Preparation and redaction</td><td>A near-duplicate rule justified by a threshold table; a redaction miss rate with its interval</td></tr>
+    <tr><td>Gold set and agreement</td><td>Kappa by group, and the disagreements read and explained</td></tr>
+    <tr><td>Models and extraction</td><td>Two methods compared on the same gold set, paired; precision and recall per field</td></tr>
+    <tr><td>Reliability memo</td><td>Criteria set before the results; separate answers for per-document and aggregate use</td></tr>
+    <tr><td>Reproducibility</td><td>Lock file, prompts, saved outputs and a version record for every label set</td></tr>
+  </table>
+  <aside class="notes">These are the examples to give when someone asks what "good" means. The most common gap in a first draft is a corrected estimate with no interval, or an interval without saying where its uncertainty comes from.</aside>
+</section>
+
+<section class="slide" id="format" data-label="Format" data-lo="LO6">
   <div class="kicker">Format</div>
-  <h2>8 minutes for each presentation</h2>
+  <h2>Eight minutes to defend, seven to label live and answer</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>1 · The problem</h4><p class="small mb0">Who, what, why now. One slide.</p></div>
-    <div class="card c-cyan"><h4>2 · What you built</h4><p class="small mb0">Design, decisions, trade-offs. Then the live demo.</p></div>
-    <div class="card c-coral"><h4>3 · What you measured</h4><p class="small mb0">Baseline, improvement, failures found, what comes next.</p></div>
+    <div class="card c-teal"><h4>1 · The question</h4><p class="small mb0">Who asked, what decision it feeds. One slide.</p></div>
+    <div class="card c-cyan"><h4>2 · The pipeline</h4><p class="small mb0">Each measurement choice with the number that justified it.</p></div>
+    <div class="card c-coral"><h4>3 · The estimate</h4><p class="small mb0">Naive and corrected, the interval, the limits, the memo's decision.</p></div>
   </div>
-  <div class="callout note mt"><b>Peer feedback.</b> After each talk, everyone writes one strength, one question and one suggestion.</div>
+  <div class="callout note mt"><b>Then live.</b> The assessor picks ten documents; you label them from your codebook and explain any disagreement with your gold set.</div>
+  <aside class="notes">Peer feedback after each defence: one strength, one question, one suggestion, written on the shared sheet.</aside>
+</section>
+
+<section class="slide" id="live-labelling" data-lo="LO6">
+  <div class="kicker">The seven minutes after the talk</div>
+  <h2>The ten documents test the codebook, not your memory</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Ten documents</b>The assessor picks them from your corpus, some from your gold set</div>
+    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · Label</b>From your codebook, aloud, about two minutes</div>
+    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · Explain</b>Where you differ from your gold label, say why</div>
+  </div>
+  <div class="callout tip mt frag"><b>Assessor.</b> Pick at least two documents with two problems and one in each language variety.</div>
+  <aside class="notes">Press once per step. A disagreement with one's own gold set is not a failure: explaining it from the codebook is what earns the marks. Remaining minutes are questions on any measurement choice.</aside>
 </section>
 
 <section class="slide order" id="running-order" data-label="Running order">
   <div class="kicker">Running order</div>
-  <h2>Who presents when</h2>
+  <h2>Who defends when</h2>
   <table class="t small">
-    <tr><th>#</th><th>Presenter</th><th>Project</th></tr>
-    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
+    <tr><th>#</th><th>Participant</th><th>Corpus and question</th></tr>
+    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
   </table>
-  <aside class="notes">Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too.</aside>
+  <aside class="notes">Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too. Alternate Nadwa and Raafid projects so the room hears different choices.</aside>
 </section>
 
-<section class="slide dark" id="final-prep" data-label="Before the first presentation">
-  <div class="kicker">Before the first presentation</div>
+<section class="slide dark" id="final-prep" data-label="Before the first defence">
+  <div class="kicker">Before the first defence</div>
   <h1>Final prep · 20 minutes</h1>
   <div class="timer" data-minutes="20"></div>
-  <p class="lead">Rehearse once, record a backup, try the demo on this screen.</p>
+  <p class="lead">Rehearse once against the clock, check the repository link opens, keep your codebook at hand.</p>
   <aside class="notes">Press T to start the timer. Breaks are not slides: press B when the room needs one.</aside>
 </section>
 
 <section class="slide dark presenting" id="now-presenting" data-label="Now presenting">
-  <div class="kicker center">Now presenting</div>
-  <div class="center"><input placeholder="Presenter · project"></div>
+  <div class="kicker center">Now defending</div>
+  <div class="center"><input placeholder="Participant · corpus"></div>
   <div class="timers mt">
-    <div><h3>Talk and demo</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Defence</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Ten documents and questions</h3><div class="timer" data-minutes="7"></div></div>
   </div>
-  <aside class="notes">Type the presenter's name and press T to start the timer. Reuse this slide for every presenter.</aside>
+  <aside class="notes">Type the participant's name and press T to start the first timer; start the second when the talk ends. Reuse this slide for every participant.</aside>
 </section>
 
 <section class="slide" id="review" data-label="Trainer review">
   <div class="kicker">Trainer review</div>
-  <h2>What the presentations showed</h2>
+  <h2>What the defences showed</h2>
   <div class="cols cols-3">
     <div class="card c-teal"><h4>Strongest patterns</h4><p class="small mb0">What several projects got right.</p></div>
     <div class="card c-coral"><h4>Common gaps</h4><p class="small mb0">What most projects would fix next.</p></div>
@@ -86,9 +132,11 @@
   <div class="kicker">After the course</div>
   <h2>Keep going</h2>
   <ul class="bullets">
+    <li><b>The follow-up task:</b> audit one labelling process at your own organisation with the course's checks, due in four weeks (labs/followup/)</li>
     <li><b>Your project stays yours:</b> keep it reproducible and add the next improvement you named today</li>
-    <li><b>Next Academy course:</b> REPLACE: the course that follows this one</li>
+    <li><b>Next Academy course:</b> DS-311, labelling guidelines, pilots and adjudication: building the gold set this course supplied</li>
   </ul>
+  <aside class="notes">The follow-up is tracked: remind participants of the date and where to submit it.</aside>
 </section>
 
 <section class="slide dark" id="thanks" data-label="Thank you">
