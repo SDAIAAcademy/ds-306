@@ -671,7 +671,7 @@ def make_capstone(key: str):
         category = choice_w(r, list(zip(cats, [0.18, 0.22, 0.25, 0.15, 0.20])))
         second = r.choice([c for c in cats if c != category]) if r.random() < 0.12 else ""
         bank = spec["categories"][category][variety]
-        parts = [r.choice(OPENERS[variety]), r.choice(bank)]
+        parts = [r.choice(OPENERS[variety]).replace("Dear Sada team,", "Dear team,"), r.choice(bank)]
         if second:
             parts.append(r.choice(spec["categories"][second][variety]))
         parts.append(r.choice(CLOSERS[variety]))
@@ -771,6 +771,17 @@ Tags such as [PHONE] or [NAME] stand for removed personal data.
 Return JSON only, in the form {"labels": [{"id": "...", "label": "..."}]}, one entry per complaint, in the given order.
 """
 
+PROMPT_EXTRACT = """You extract fields from municipal inspection reports for Sada Citizen Voice Centre. Reports are in Arabic or English.
+Reply with one JSON object only, with exactly these keys:
+- district: the district code, one of: {codes}
+- inspection_date: the date of the visit as YYYY-MM-DD. A date written with slashes is day/month/year.
+- defect_type: one of pothole, sewage_overflow, broken_light, illegal_dumping, damaged_pavement, fallen_sign
+- severity: low (minor), medium (moderate), high (serious) or critical
+- hazard_to_public: true when the report says the defect is a risk to the public, false when it says there is none
+- repair_deadline_days: the number of days the report gives for the repair, as an integer
+Use null for any field the report does not state. Never infer repair_deadline_days from the severity.
+"""
+
 CODEBOOK = """# Sada complaint codebook (version 3)
 
 Owner: Muhannad Al-Oqaili, head of complaint intake. Synthetic, for the DS-306 labs.
@@ -807,6 +818,8 @@ def main() -> None:
     prompts.mkdir(exist_ok=True)
     (prompts / "fahim_p1.md").write_text(PROMPT_P1, encoding="utf-8", newline="\n")
     (prompts / "fahim_p2.md").write_text(PROMPT_P2, encoding="utf-8", newline="\n")
+    codes = "; ".join(f"{k} ({v[0]}, {v[1]})" for k, v in DISTRICTS.items())
+    (prompts / "extract_v1.md").write_text(PROMPT_EXTRACT.format(codes=codes), encoding="utf-8", newline="\n")
 
     by_id = {x["id"]: x for x in rows}
     r = rnd("samples")

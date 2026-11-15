@@ -46,7 +46,7 @@ R01571,لا توجد موـــاعيد متاحة في الفرع. اسمي [NA
 R01754,أود الإبلاغ عن مشكلة: لا أفهم سبب عدم اهليتي للدعم. آمل التواصل معي.,msa,eligibility,eligibility,eligibility
 R00992,"Hello, My application was rejected although I meet the conditions. Please contact me.",en,eligibility,appointments,eligibility
 R02166,تحيه طيبة، طلبوا مني مستندا قدـــمته من قبل. [NAME] - الحي,msa,documents,documents,documents
-R01324,"Dear Sada team, Nobody answered my calls.",en,staff,staff,staff
+R01324,"Dear team, Nobody answered my calls.",en,staff,staff,staff
 R00575,تّأخر صرف الدعم لّهذا اْلشهر. وشكرا لكم.,msa,payments,payments,payments
 R02401,ألغي موعدي دون اشعار. نرجو سرعة المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],msa,appointments,appointments,appointments
 R01306,"Hi, This month's payment is late. Please fix this soon.",en,payments,payments,payments
@@ -95,7 +95,7 @@ R00176,مرحبا النظام ما يقبل ارفع الأوراق.,gulf,docum
 R00408,This month's payment is late. Please contact me. My mobile is [PHONE].,en,payments,payments,payments
 R01031,اود الإبلاغ عن مشكلة: لا أفهم سبب عدم اهليتي للدعم. اسمي [NAME].,msa,eligibility,eligibility,eligibility
 R02009,"Hello, The amount paid is lower than usual. Please contact me. My mobile is [PHONE].",en,payments,payments,payments
-R01753,"Dear Sada team, My application was rejected although I meet the conditions. Please contact me.",en,eligibility,eligibility,eligibility
+R01753,"Dear team, My application was rejected although I meet the conditions. Please contact me.",en,eligibility,eligibility,eligibility
 R01635,تحيه طيبة، لا افهم سبب عدم اهليتي للدعم. للتواصل: [PHONE],msa,eligibility,eligibility,eligibility
 R02237,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبل. نرجو سرعة المعالجة.,msa,documents,documents,documents
 R00542,"Hi, They asked for a document I already submitted. Please fix this soon.",en,documents,documents,documents
@@ -134,7 +134,7 @@ R01567,السلام عليكم محد رد على اتصالاتي. [NAME] - ا�
 R01367,المبلغ المصروف أقل من المعتاد. آمل التواصل معي. للتواصل: [PHONE],msa,payments,payments,payments
 R00845,تحية طيبة، لا أفهم سبب عدم أهليتي للدعم. آمل التواصل معي. [NAME] - الحي,msa,eligibility,eligibility,eligibility
 R01441,طْﻝﺏﻭﺍ ﻡﻥﻱ ﻡستنﺩﺍ قﺩﻡﺕه ﻡن قُبل. ﻥْرجﻭ سﺭعة الﻡعﺍلجة. اسمي [NAME].,msa,documents,payments,documents
-R00625,"Dear Sada team, The system will not accept my documents. Please fix this soon.",en,documents,documents,documents
+R00625,"Dear team, The system will not accept my documents. Please fix this soon.",en,documents,documents,documents
 R01826,تحیة طیبة، لم یرد احد على اتصالاتی. وشکرا لکم. أنا المواطن [NAME].,msa,staff,staff,staff
 R00599,أﻭﺩ اﻝإبﻝاغ عﻥ ﻡشكﻝة: ﺍﻝنظﺍﻡ لﺍ يقﺏﻝ رفع ﺍﻝﻡستنﺩﺍت.,msa,documents,documents,documents
 R00251,السﻝاﻡ عﻝﻱكم، المﺏﻝغ ﺍﻝمصﺭﻭف أقﻝ من اﻝمعﺕﺍﺩ.,msa,payments,payments,payments

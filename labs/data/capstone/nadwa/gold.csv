@@ -19,7 +19,7 @@ N00397,لو سمحتوا لغوا ورشة الأطفال وما علمونا. �
 N01397,ﺍﻝسلاﻡ علﻱكﻡ، الكﺕب ﺍﻝعﺭﺏﻱة اﻝحدﻱثة قﻝﻱلة جﺩا. ﻭشكرا لكم.,msa,collections,collections,collections
 N00370,السلام عليكم، ألغيت ورشة الأطفال دون إشعار.,msa,events,events,events
 N01320,تحية طيبة، التكييف في قاعة المطالعه معطل. وشكرا لكم. اسمي [NAME].,msa,facilities,facilities,facilities
-N01230,"Dear Sada team, The staff at the loans desk were unhelpful. Please contact me.",en,staff,staff,staff
+N01230,"Dear team, The staff at the loans desk were unhelpful. Please contact me.",en,staff,staff,staff
 N00632,مﻭظف الإعﺍﺭة ﻡُا ﺕْعﺍوﻥ ﻡُعي. وشكﺭا. ايميلي [EMAIL],gulf,staff,staff,staff
 N00432,"Hi, There are very few new Arabic books. This is the third time I report it. [NAME], phone [PHONE]",en,collections,collections,collections
 N00817,اود الإبلاغ عن مشكلة: الغيت ورشة الأطفال دون إشعار.,msa,events,events,events
@@ -96,7 +96,7 @@ N00592,أود الإبلاغ عن مشكلة: ألغيت ورشة الأطفال
 N00953,الكتب العربية الحديثه قليله جدا. آمل التواصل معي. رقم جوالي [PHONE],msa,collections,collections,collections
 N01546,تحية طيبة، الكتب العربية الحديثة قليلة جدا. التكييف في قاعة المطالعة معطل. رقم جوالي [PHONE],msa,collections,facilities,collections
 N00923,التسجيل بًالفعاليات يُخلص بّسرعة. معك [NAME].,gulf,events,events,events
-N01670,"Dear Sada team, The air conditioning in the reading room is broken. Thank you.",en,facilities,facilities,facilities
+N01670,"Dear team, The air conditioning in the reading room is broken. Thank you.",en,facilities,facilities,facilities
 N02066,أود الإبلاغ عن مشكلة: ألغيت ورشة الأطفال دون إشعار. آمل التواصل معي.,msa,events,events,events
 N02152,السلام عليكم لغوا ورشة الأطفال وما علمونا. الحين صار لها وايد ومحد سوا شي. انا [NAME] من سكان الحي.,gulf,events,events,events
 N00846,لو سمحتوا محد رد على سؤالي بالمكتب. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],gulf,staff,staff,staff
@@ -184,7 +184,7 @@ N00624,The air conditioning in the reading room is broken. Event registration fi
 N01672,لا تتوافق ساعات العمل مع اوقات الطلاب. للتواصل: [PHONE],msa,opening_hours,opening_hours,opening_hours
 N02041,السلام عليكم الكتب العربية الجديدة قليلة مره. وشكرا.,gulf,collections,collections,collections
 N01448,الدوام ما يناسب الطلاب ابد. وشكرا. جوالي [PHONE],gulf,opening_hours,opening_hours,opening_hours
-N01942,"Dear Sada team, The air conditioning in the reading room is broken. Please fix this soon.",en,facilities,facilities,facilities
+N01942,"Dear team, The air conditioning in the reading room is broken. Please fix this soon.",en,facilities,facilities,facilities
 N02197,There are very few new Arabic books. Thank you.,en,collections,collections,collections
 N02115,السلام عليكم لغوا ورشة الأطفال وما علمونا. الـــله يعافيكم شوفوا لنا حل. جوالي [PHONE],gulf,events,staff,events
 N00468,تحية طيبة، طلبت كتابا منذ شهر ولم يصل. نرجو سرعة المعالجة. أنا المواطن [NAME].,msa,collections,collections,collections
@@ -198,4 +198,4 @@ N02114,أود الإبلاغ عن مشكلة: التكييف في قاعه ال�
 N01530,لو سمحتوا موـــظف الإعارة ما تعاون معی. الله یعافیکم شوفوا لنا حل.,gulf,staff,facilities,staff
 N01909,التسجيل بالفعاليات يخلص بسرعة. الحين صار لها وايد ومحد سوا شي.,gulf,events,events,events
 N01686,"The library's internet is very slow. Please contact me. [NAME], phone [PHONE]",en,events,facilities,facilities
-N02340,"Dear Sada team, The library's internet is very slow.",en,facilities,facilities,facilities
+N02340,"Dear team, The library's internet is very slow.",en,facilities,facilities,facilities

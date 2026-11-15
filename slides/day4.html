@@ -1,158 +1,374 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>The last teaching day turns text into tables: fields from reports in the morning, structure and corrected rates in the afternoon. The day ends with the choice of the capstone corpus, so keep the last lab on time. Model runs today are again the course's synthetic recordings unless a participant has a working key; say so at the start.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Two sessions on extraction and its validation, one on clustering, one on carrying model errors into a published rate. Every lab starts from supplied files.</p></aside>
+</section>
+
+<section class="slide" id="review-day3" data-lo="LO5">
+  <div class="kicker">Review of Day 3</div>
+  <h2>What did the criteria decide?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Fahim failed the criteria on Gulf dialect (kappa 0.187 below the human pair) and on stability (80.3% of complaints with three agreeing runs). What did the reliability memo recommend?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats a failed annotator test as a ban on any use: counts can be corrected">Stop using Fahim's labels altogether</div>
+      <div class="opt" data-ok>Keep the second coder; use Fahim's labels for counts, corrected with the gold set by variety</div>
+      <div class="opt" data-why="Takes the majority vote as a fix for a systematic error: votes cancel noise, not bias">Replace the coder with the majority of three runs</div>
+      <div class="opt" data-why="Moves the bar after the results were known">Relax the stability criterion to 80%</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A label used one complaint at a time must be right; a count can be corrected for errors measured on a human sample. Session 4 does that correction.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. Keep the distinction alive all day: per-document use against aggregate use.</p></aside>
+</section>
 
 <!-- Session 1 -->
 
-<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
-
-<section class="slide" id="s1-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s1" data-auto="section" data-session="1">
+  <aside class="notes"><p>Khalaf Al-Baqmi's field inspectors write free text. His repair schedule needs a table. The schema is the contract between them.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="report-to-row" data-lo="LO3">
+  <div class="kicker">From report to row</div>
+  <h2>One report, six fields, each with a type and a rule</h2>
+  <div class="cols cols-2">
+    <div class="chat">
+      <div class="msg user"><span class="who">IR-0005</span><span class="ar">تاريخ الزيارة: 19 سبتمبر 2026. الحي: المروة. لاحظ المفتش طفح مياه الصرف … الخلل جسيم. يشكل خطرا على المارة. يجب الإصلاح خلال 10 أيام.</span></div>
+    </div>
+    <table class="t small">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>district</td><td><code>al_marwa</code></td></tr>
+      <tr><td>inspection_date</td><td><code>2026-09-19</code></td></tr>
+      <tr><td>defect_type</td><td><code>sewage_overflow</code></td></tr>
+      <tr><td>severity</td><td><code>high</code></td></tr>
+      <tr><td>hazard_to_public</td><td><code>true</code></td></tr>
+      <tr><td>repair_deadline_days</td><td><code>10</code></td></tr>
+    </table>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>From data/inspections.jsonl: 500 synthetic reports, 40% in English, dates in three styles, district names in several spellings, a third with no deadline. Ask the room which field they would trust least before seeing any numbers.</p></aside>
+</section>
+
+<section class="slide" id="schema" data-lo="LO3">
+  <div class="kicker">Lab 4.1, step 1</div>
+  <h2>The schema says what a valid answer is before any model answers</h2>
+  <pre class="code" data-file="D4_1_extraction.ipynb"><code class="language-python">class Inspection(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    district: Optional[Literal[CODES]] = None
+    inspection_date: Optional[date] = None      # and a 2026 check
+    defect_type: Optional[Literal[DEFECTS]] = None
+    severity: Optional[Literal["low", "medium", "high", "critical"]] = None
+    hazard_to_public: Optional[bool] = None
+    repair_deadline_days: Optional[int] = Field(None, ge=1, le=90)</code></pre>
+  <aside class="notes"><p>Every field is optional because a report may not state it: the schema must allow an honest empty. Pydantic is one choice; JSON Schema, which OpenRouter's structured outputs accept for models that support them, is another. The class produces the JSON Schema, so either way it is written once. Sources: Pydantic documentation.</p></aside>
+</section>
+
+<section class="slide" id="validate-repair" data-lo="LO3">
+  <div class="kicker">Lab 4.1, step 3</div>
+  <h2>JSON mode makes a reply parse; the schema makes it admissible</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Ask</b>Prompt and report, JSON mode</div>
+    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · Validate</b>"Al Marwa", "07/06/2026", "Minor": three errors</div>
+    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · Repair once</b>Send the errors back; validate again</div>
+  </div>
+  <div class="callout warn mt frag"><b>What goes wrong.</b> The repaired IR-0002 is valid and still wrong: no district, day and month swapped, a hazard the report denies.</div>
+  <aside class="notes"><p>Press once per step. The broken reply is supplied in the lab, so the repair path runs without a key. The point of the last line: validation checks form, not truth. Session 2 measures truth.</p></aside>
+</section>
+
+<section class="slide" id="null-not-invented" data-lo="LO3">
+  <div class="kicker">Lab 4.1, step 4</div>
+  <h2>A deadline the report never gave looks exactly like data</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">47 of 177</div><div class="lbl">reports with no deadline got one in the recorded run (26.6%)</div></div>
+    <ul class="bullets">
+      <li>The prompt says: never infer it from the severity</li>
+      <li>The invented values match the severity table</li>
+      <li><b>Grounding rule</b>: keep a deadline only when the number of days is written in the text</li>
+      <li>It catches all 47</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 4.1 on the recorded run (synthetic). A missing value is visible and gets checked; an invented one enters the repair schedule. The grounding rule is plain code: a number followed by the word for days, in either digit system.</p></aside>
+</section>
+
+<section class="slide" id="check-extraction" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should come back for a field the report does not state?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A report reads "The repair date will be set later." The defect is serious. The schema allows <code>repair_deadline_days</code> from 1 to 90 or null. Which extraction is right?</p>
+    <div class="opts">
+      <div class="opt" data-why="Fills the field from the severity table: a plausible value the report never gave">7, the usual deadline for a serious defect</div>
+      <div class="opt" data-why="Uses a number as a code for missing: it passes as a real deadline downstream and fails the 1 to 90 range">0, meaning no deadline</div>
+      <div class="opt" data-why="Puts text in a whole-number field: the schema rejects it">"later"</div>
+      <div class="opt" data-ok>null</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> An empty field is honest and countable. Any number would be read as a deadline by the schedule.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. Ask who has seen "0" or "999" used as a missing code in a real table, and what it did to an average.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-1" data-auto="lab" data-lab="4.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Without a key the stand-in replays the recorded run; with one, about fifteen requests. Common error: building the schema with plain str fields, which then accepts "Al Marwa". The twelve reports are fixed (six with a deadline, six without) so everyone compares the same rows.</p></aside>
 </section>
 
 <!-- Session 2 -->
 
-<section class="slide section" id="s2" data-auto="section" data-session="2"></section>
-
-<section class="slide" id="s2-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s2" data-auto="section" data-session="2">
+  <aside class="notes"><p>"The extraction is 94% accurate." Ask what that number would tell Khalaf about his schedule. Nothing.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="outcomes" data-lo="LO3">
+  <div class="kicker">Lab 4.2, step 2</div>
+  <h2>A field that may be empty has five outcomes, not two</h2>
+  <table class="t">
+    <tr><th>Outcome</th><th>Reference</th><th>Extracted</th><th>Counts against</th></tr>
+    <tr><td>Right</td><td>a value</td><td>the same value</td><td></td></tr>
+    <tr><td>Wrong</td><td>a value</td><td>another value</td><td>precision and recall</td></tr>
+    <tr><td>Missed</td><td>a value</td><td>empty</td><td>recall</td></tr>
+    <tr class="hl"><td>Invented</td><td>empty</td><td>a value</td><td>precision</td></tr>
+    <tr><td>Correctly empty</td><td>empty</td><td>empty</td><td></td></tr>
+  </table>
+  <aside class="notes"><p>Precision is right over everything the model gave; recall is right over everything the reports state. Correctly empty fields count for neither, which is why the lab also reports the share of empty fields that stayed empty.</p></aside>
+</section>
+
+<section class="slide" id="field-scores" data-lo="LO3">
+  <div class="kicker">Lab 4.2, step 3 (recorded run)</div>
+  <h2>94% of all values are right; the deadline's precision is 0.87</h2>
+  <table class="t">
+    <tr><th>Field</th><th class="num">Precision</th><th class="num">Recall</th></tr>
+    <tr><td>district</td><td class="num">1.000</td><td class="num">0.942</td></tr>
+    <tr><td>inspection_date</td><td class="num">0.966</td><td class="num">0.966</td></tr>
+    <tr><td>defect_type</td><td class="num">0.968</td><td class="num">0.968</td></tr>
+    <tr><td>severity</td><td class="num">0.968</td><td class="num">0.968</td></tr>
+    <tr><td>hazard_to_public</td><td class="num">0.908</td><td class="num">0.908</td></tr>
+    <tr class="hl"><td>repair_deadline_days</td><td class="num">0.870</td><td class="num">0.972</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.2 over 500 reports (synthetic run). The deadline's precision has a 95% interval of 0.834 to 0.903 (stretch). Only 73% of empty deadlines stayed empty. The pooled 94% is the number a vendor quotes.</p></aside>
+</section>
+
+<section class="slide" id="error-patterns" data-lo="LO3">
+  <div class="kicker">Lab 4.2, step 4</div>
+  <h2>Each field fails in its own way, and most failures follow the text's form</h2>
+  <table class="t">
+    <tr><th>Field</th><th>Commonest error</th><th class="num">n</th><th>Where</th></tr>
+    <tr><td>district</td><td>left empty for a spelling variant</td><td class="num">29</td><td>Arabic 8%</td></tr>
+    <tr><td>inspection_date</td><td>day and month swapped</td><td class="num">17</td><td>dd/mm/yyyy 15%</td></tr>
+    <tr><td>defect_type</td><td>damaged pavement read as pothole</td><td class="num">9</td><td>English 4%</td></tr>
+    <tr><td>severity</td><td>medium read as low</td><td class="num">16</td><td>Arabic 5%</td></tr>
+    <tr><td>hazard_to_public</td><td>"no risk" read as a risk</td><td class="num">46</td><td>Arabic 9%</td></tr>
+    <tr><td>repair_deadline_days</td><td>empty filled with 14</td><td class="num">18</td><td>Arabic 12%</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.2. A swap is only possible when the day is 12 or less, which is why the error concentrates in one date style rather than one language.</p></aside>
+</section>
+
+<section class="slide" id="rules-in-code" data-lo="LO3">
+  <div class="kicker">Lab 4.2, step 5</div>
+  <h2>Most fixes are rules in code, not a better prompt</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Dates with slashes: parse in code, day first</li>
+      <li>District: a list of spelling variants kept with the schema</li>
+      <li>Hazard: check the negated phrase, override to false</li>
+      <li>Deadline: keep it only when written in the text</li>
+    </ul>
+    <div class="card c-teal"><h4>The validation report</h4><p class="small mb0">One line per field: precision, recall, the commonest error and the rule that catches it. It goes to Khalaf with the table.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The model is left with what code cannot read: the defect description and severity words in free form. Ask which rule participants would add first given one hour: usually the deadline grounding, because it protects the schedule.</p></aside>
+</section>
+
+<section class="slide" id="check-field" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which number tells Khalaf whether to trust the deadlines?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">Khalaf will schedule repairs from <code>repair_deadline_days</code>. A wrong deadline sends a crew on the wrong day; a missing one is checked by phone. Which measure answers his question?</p>
+    <div class="opts">
+      <div class="opt" data-ok>The deadline field's precision, with the share of empty deadlines that stayed empty</div>
+      <div class="opt" data-why="Uses the pooled figure, which mixes the easy fields with the one that matters">The accuracy pooled over all six fields</div>
+      <div class="opt" data-why="Measures found values, while his cost is in wrong and invented ones">The deadline field's recall</div>
+      <div class="opt" data-why="Confuses a valid reply with a right one: invented deadlines are valid">The share of replies that passed the schema</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> His costly error is a deadline given that is wrong or invented: that is precision, and the empties are where invention happens.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-2" data-auto="lab" data-lab="4.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>No model calls. The commonest slip is counting a None against a None as a true positive, which inflates recall. Another: comparing 14 with 14.0 as different. The matching function handles both; make participants read it.</p></aside>
 </section>
 
 <!-- Session 3 -->
 
-<section class="slide section" id="s3" data-auto="section" data-session="3"></section>
-
-<section class="slide" id="s3-idea" data-lo="LO6">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s3" data-auto="section" data-session="3">
+  <aside class="notes"><p>Dr. Ebtisam asks what people write about that the eight categories do not show. Clustering looks without a codebook, and shows what the vectors see.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO6">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="choosing-k" data-lo="LO2">
+  <div class="kicker">Lab 4.3, step 2</div>
+  <h2>The silhouette barely moves with k: complaints have no sharp borders</h2>
+  <div class="bars">
+    <div class="row"><span>k = 3</span><div class="bar c-teal" style="--w:50%"></div><span class="val">0.100</span></div>
+    <div class="row"><span>k = 5</span><div class="bar c-coral" style="--w:50.5%"></div><span class="val">0.101</span></div>
+    <div class="row"><span>k = 8</span><div class="bar c-teal" style="--w:51%"></div><span class="val">0.102</span></div>
+    <div class="row"><span>k = 10</span><div class="bar c-teal" style="--w:55%"></div><span class="val">0.110</span></div>
+    <div class="row"><span>k = 12</span><div class="bar c-teal" style="--w:43%"></div><span class="val">0.086</span></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <p class="small mt">Mean silhouette, cosine, 1,000 complaints. The silhouette advises; the number of clusters a person can read decides.</p>
+  <aside class="notes"><p>From Lab 4.3, on the stand-in's lexical vectors because no embedding call ran. Bars are scaled to a maximum of 0.2. With a real embedding model the values change; the flat shape is typical of short complaints.</p></aside>
+</section>
+
+<section class="slide" id="what-clusters-see" data-lo="LO2 LO6">
+  <div class="kicker">Lab 4.3, step 4</div>
+  <h2>The five clusters follow the language, not the topic</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Agreement of the clusters with</th><th class="num">Adjusted Rand</th></tr>
+      <tr><td>Routing labels (topic)</td><td class="num">0.005</td></tr>
+      <tr class="hl"><td>Guessed variety</td><td class="num">0.642</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>One cluster is all English, one all formal Arabic</li>
+      <li>Three are mostly Gulf dialect</li>
+      <li>Wording-based vectors see wording</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A team names the clusters "topics" and publishes their sizes. They were counting languages.</div>
+  <aside class="notes"><p>From Lab 4.3 on stand-in vectors (hashed character n-grams). A multilingual embedding model should weaken the language effect; whether it removes it is something to measure, not assume. Adjusted Rand: 0 is chance, 1 the same partition.</p></aside>
+</section>
+
+<section class="slide" id="campaign-cluster" data-lo="LO2 LO6">
+  <div class="kicker">Lab 4.3, stretch</div>
+  <h2>One cluster is a single message written hundreds of times</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">26 of 26</div><div class="lbl">campaign messages in the sample fall in one Gulf sewage cluster, a quarter of it</div></div>
+    <div class="chat">
+      <div class="msg user"><span class="who">Cluster 3, nearest the centre</span><span class="ar">يا جماعة ترى المجاري طافحة عند مدخل الحي والريحة وايد قوية. الشارع غرقان مويه …</span></div>
+    </div>
+  </div>
+  <aside class="notes"><p>From Lab 4.3. The campaign found by MinHash on Day 1 shows up again, from another direction. A cluster's size is not a measure of how many citizens share a concern: organised writing inflates it.</p></aside>
+</section>
+
+<section class="slide" id="check-clusters" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Can a cluster's size be published as a topic count?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2 LO6">
+    <p class="lead">A colleague proposes a new quarterly figure: the share of complaints in each of the five clusters, named from their top terms. What is the main problem?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats the choice of k as the only issue: any k has the same problem">Five is the wrong number of clusters</div>
+      <div class="opt" data-why="Thinks a better silhouette makes clusters into categories">The silhouette is too low; a higher one would make the figure valid</div>
+      <div class="opt" data-ok>A cluster has no definition or measured error, and here it tracks language and a campaign more than topic</div>
+      <div class="opt" data-why="Blames the sample size: more complaints would sharpen, not define, the clusters">The sample of 1,000 is too small</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A category has a codebook, a gold set and an error rate. A cluster is a way to look, and it moves with the vectors, the sample and k.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. The useful outcome of clustering here is a question for the codebook: is there a theme the eight categories miss?</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-3" data-auto="lab" data-lab="4.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>With a key, 16 embedding requests (64 complaints each), under the free daily limit. Only redacted text from pool.csv is sent. Fitting ten k-means takes under a minute. If someone names clusters from terms alone, ask them to read the three examples first.</p></aside>
 </section>
 
 <!-- Session 4 -->
 
-<section class="slide section" id="s4" data-auto="section" data-session="4"></section>
-
-<section class="slide" id="s4-idea" data-lo="LO4">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide section" id="s4" data-auto="section" data-session="4">
+  <aside class="notes"><p>The number Dr. Ebtisam publishes: water and sewage complaints per 10,000 residents, by district. Day 3 showed why it is biased. Now it is corrected.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO4">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="rectifier" data-lo="LO4">
+  <div class="kicker">Lab 4.4, step 2</div>
+  <h2>The gold set measures how far the model's share is off, one variety at a time</h2>
+  <table class="t">
+    <tr><th>Guessed variety</th><th class="num">Gold n</th><th class="num">Model's share</th><th class="num">True share</th><th class="num">Rectifier</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">127</td><td class="num">0.197</td><td class="num">0.205</td><td class="num">−0.008</td></tr>
+    <tr class="hl"><td>Gulf dialect</td><td class="num">107</td><td class="num">0.187</td><td class="num">0.280</td><td class="num">−0.093</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.152</td><td class="num">0.121</td><td class="num">+0.030</td></tr>
+  </table>
+  <p class="small mt-s">Corrected count = model's count − complaints × rectifier, summed over varieties.</p>
+  <aside class="notes"><p>The rectifier is the core of prediction-powered inference (Angelopoulos, Bates, Fannjiang, Jordan and Zrnic, Science, 2023): the model labels everything, a human sample measures its bias. Stratifying by variety is the course's choice because the bias differs by variety. The variety is guessed on the gold set too, so strata match. Sources: Prediction-powered inference.</p></aside>
+</section>
+
+<section class="slide" id="corrected-rates" data-lo="LO4">
+  <div class="kicker">Lab 4.4, steps 3 and 4</div>
+  <h2>The Gulf-speaking districts move up; Al-Khalij does not move</h2>
+  <table class="t">
+    <tr><th>Per 10,000 residents</th><th class="num">Gulf share</th><th class="num">Naive</th><th class="num">Corrected</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>Al-Naseem</td><td class="num">57%</td><td class="num">47.0</td><td class="num">57.1</td><td class="num">50.2 to 64.5</td></tr>
+    <tr><td>Al-Jazira</td><td class="num">55%</td><td class="num">38.5</td><td class="num">47.9</td><td class="num">41.4 to 54.9</td></tr>
+    <tr><td>Al-Salam</td><td class="num">48%</td><td class="num">39.0</td><td class="num">47.3</td><td class="num">41.1 to 53.8</td></tr>
+    <tr><td>Al-Shati</td><td class="num">18%</td><td class="num">21.5</td><td class="num">22.7</td><td class="num">17.2 to 27.0</td></tr>
+    <tr><td>Al-Khalij</td><td class="num">13%</td><td class="num">23.8</td><td class="num">23.8</td><td class="num">18.2 to 28.1</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.4 (synthetic labels). The complaints are a census, so the interval comes only from the 300 gold complaints, resampled within each variety. The naive rate has no interval, which makes it look more certain than it is.</p></aside>
+</section>
+
+<section class="slide" id="against-truth" data-lo="LO4 LO6">
+  <div class="kicker">Only in a course: the truth</div>
+  <h2>The correction restores the gap between districts, which is what the director compares</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">23.2 → 33.3</div><div class="lbl">Al-Naseem minus Al-Khalij, naive then corrected; the true gap is 32.6</div></div>
+    <ul class="bullets">
+      <li>Average error per district: naive 2.7, corrected 2.6</li>
+      <li>All 12 intervals contain the true rate</li>
+      <li>The correction trades a hidden bias for a visible variance</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The data are synthetic, so the true category of every complaint is known (solutions/truth). In a real project the gold set is the only access to the truth. Be honest about the second bullet: with 300 gold complaints the rectifiers are noisy, so the average error barely falls. The comparison between districts is what improves.</p></aside>
+</section>
+
+<section class="slide" id="campaign-rate" data-lo="LO4 LO6">
+  <div class="kicker">Lab 4.4, stretch</div>
+  <h2>Counted message by message, one campaign would double Al-Naseem's rate</h2>
+  <table class="t">
+    <tr><th>Al-Naseem, per 10,000</th><th class="num">Naive</th><th class="num">Corrected</th></tr>
+    <tr><td>Campaign counted as one issue</td><td class="num">47.0</td><td class="num">57.1</td></tr>
+    <tr class="hl"><td>Campaign's 576 messages counted</td><td class="num">98.8</td><td class="num">113.3</td></tr>
+  </table>
+  <p class="small mt-s">Every choice from Day 1 reaches the published number: copies, the campaign rule, redaction, the variety guess.</p>
+  <aside class="notes"><p>From the stretch of Lab 4.4. This is the slide that ties the course together for the capstone defence: every measurement choice is a line in the rate's version record.</p></aside>
+</section>
+
+<section class="slide" id="check-corrected" data-lo="LO4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Why stratify the correction by variety?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4 LO6">
+    <p class="lead">One rectifier for all complaints (−0.030) raises every district's rate by a similar share. The stratified rectifiers raise Al-Naseem by 10.1 and Al-Khalij by 0.0. Which reason justifies stratifying?</p>
+    <div class="opts">
+      <div class="opt" data-why="Thinks stratifying always narrows intervals: smaller strata can widen them">It always gives narrower intervals</div>
+      <div class="opt" data-why="Confuses the gold set's size with its strata: the 300 complaints stay the same">It uses more gold complaints</div>
+      <div class="opt" data-why="Inverts the logic: the variety mix is the reason, not a side effect">It makes all districts' rates rise equally</div>
+      <div class="opt" data-ok>The model's error differs by variety and districts differ in their variety mix</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A single rectifier spreads the Gulf under-count over every district; stratifying puts it where the Gulf complaints are.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. Follow up: what would make the stratified correction wrong? A district whose Gulf speakers write differently from the gold set's.</p></aside>
+</section>
+
+<section class="slide" id="capstone-choice" data-lo="LO6">
+  <div class="kicker">Lab 4.4, step 5</div>
+  <h2>Choose the corpus you will defend</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Nadwa libraries</h4><p class="small mb0">Facilities feedback per branch, corrected, for the renovation budget. Six branches, 2,575 documents.</p></div>
+    <div class="card c-coral"><h4>Raafid social support</h4><p class="small mb0">Late-payment enquiries per region and month, with intervals: national or regional?</p></div>
+  </div>
+  <p class="small mt">Each has personal data to redact, a 200-document gold set with two coders, recorded runs and a brief. A public corpus needs the trainer's approval.</p>
+  <aside class="notes"><p>Both corpora are synthetic and built like Sada's, so every lab of the course applies. The choice is saved to artifacts/day4/capstone_choice.json with the hardest measurement choice the participant expects to defend.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-4" data-auto="lab" data-lab="4.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>No model calls. Guessing the variety of 20,000 complaints takes about a minute. The commonest error is estimating the rectifiers with the coders' variety while the corpus uses the guess: the strata must match. Leave three minutes for the capstone choice.</p></aside>
 </section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">Day 4 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Valid is not right</h4><p class="small mb0">A schema checks form; field-level precision and recall check truth.</p></div>
+    <div class="card c-coral"><h4>A cluster is a lens</h4><p class="small mb0">It shows what the vectors see, here language and a campaign, not a category.</p></div>
+    <div class="card c-purple"><h4>Correct, then compare</h4><p class="small mb0">A human sample turns a biased count into an estimate with an interval.</p></div>
   </div>
+  <aside class="notes"><p>Ask: which correction from today would change a decision at Sada? Usually the district comparison.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
-  <h2>Capstone: Capstone project presentations</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <h2>Capstone: a text measurement defended live</h2>
+  <p class="lead">Eight minutes to defend your pipeline, ten documents re-labelled live, then questions. Bring the corrected estimate, its interval and its version record.</p>
+  <aside class="notes"><p>The capstone deck has the rubric and the timer. Remind participants that the assessor chooses the ten documents, so the labelling instruction must work on documents they have not seen.</p></aside>
 </section>

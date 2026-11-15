@@ -147,7 +147,9 @@ def codebook() -> str:
 
 
 def prompt(version: str) -> str:
-    return (DATA / "prompts" / f"fahim_{version.lower()}.md").read_text(encoding="utf-8")
+    """Fahim's prompts by version ("P1", "P2"), or another prompt file by name ("extract_v1")."""
+    name = f"fahim_{version.lower()}" if version.upper() in ("P1", "P2") else version
+    return (DATA / "prompts" / f"{name}.md").read_text(encoding="utf-8")
 
 
 def sha(text: str) -> str:
@@ -443,6 +445,41 @@ def parse_labels(text: str, ids: list[str]) -> dict[str, str | None]:
     return {i: (got.get(i) if got.get(i) in CATEGORIES else None) for i in ids}
 
 
+# ---------- Day 4: inspection reports ----------
+
+FIELDS = ["district", "inspection_date", "defect_type", "severity", "hazard_to_public", "repair_deadline_days"]
+DEFECTS = ["pothole", "sewage_overflow", "broken_light", "illegal_dumping", "damaged_pavement", "fallen_sign"]
+SEVERITIES = ["low", "medium", "high", "critical"]
+
+
+def inspection_schema():
+    """The reference schema of Lab 4.1, for the cells that follow when the exercise is not done yet."""
+    from datetime import date as _date
+    from typing import Literal, Optional
+
+    from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+    codes = tuple(districts().district)
+
+    class Inspection(BaseModel):
+        model_config = ConfigDict(extra="forbid")
+        district: Optional[Literal[codes]] = None  # type: ignore[valid-type]
+        inspection_date: Optional[_date] = None
+        defect_type: Optional[Literal[tuple(DEFECTS)]] = None  # type: ignore[valid-type]
+        severity: Optional[Literal[tuple(SEVERITIES)]] = None  # type: ignore[valid-type]
+        hazard_to_public: Optional[bool] = None
+        repair_deadline_days: Optional[int] = Field(default=None, ge=1, le=90)
+
+        @field_validator("inspection_date")
+        @classmethod
+        def in_2026(cls, v):
+            if v is not None and v.year != 2026:
+                raise ValueError("inspections in this file are from 2026")
+            return v
+
+    return Inspection
+
+
 # ---------- the scripted stand-in ----------
 
 _RECORDED: dict | None = None
@@ -486,7 +523,7 @@ class StandIn:
         user = [m["content"] for m in messages if m["role"] == "user"][-1]
         rec = _recorded()
         if "repair_deadline_days" in system:  # the extraction prompt of Day 4
-            m = re.search(r"IR-\d{4}", user)
+            m = re.search(r"IR-\d{4}", " ".join(str(x["content"]) for x in messages if x["role"] == "user"))
             got = rec["extract"].get(m.group(0)) if m else None
             fields = ["district", "inspection_date", "defect_type", "severity", "hazard_to_public", "repair_deadline_days"]
             return json.dumps({k: got[k] for k in fields} if got else {k: None for k in fields})

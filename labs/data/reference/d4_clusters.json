@@ -1,0 +1,21 @@
+{
+ "silhouette_k5": 0.101,
+ "best_k": 10,
+ "ari_labels": 0.005,
+ "ari_variety": 0.642,
+ "purity": 0.253,
+ "sizes": [
+  376,
+  73,
+  200,
+  110,
+  241
+ ],
+ "names": [
+  "0: formal Arabic, mixed topics",
+  "1: Gulf dialect, mixed topics",
+  "2: English, mixed topics",
+  "3: Gulf dialect, water_sewage",
+  "4: Gulf dialect, mixed topics"
+ ]
+}
