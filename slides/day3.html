@@ -169,8 +169,8 @@
     <div class="row"><span>Run 2 and run 3</span><div class="bar c-teal" style="--w:83.7%"></div><span class="val">0.837</span></div>
     <div class="row"><span>Two human coders</span><div class="bar c-coral" style="--w:82.9%"></div><span class="val">0.829</span></div>
   </div>
-  <p class="small mt">Kappa. A model's agreement with itself is the ceiling of its agreement with anyone else.</p>
-  <aside class="notes"><p>From Lab 3.2. The ceiling argument: whatever changes between runs is noise, and noise agrees with the gold label only by chance. So Fahim's kappa against gold cannot exceed about 0.85 at these settings.</p></aside>
+  <p class="small mt">Kappa. Whatever changes between runs is noise that every single-run label set carries.</p>
+  <aside class="notes"><p>From Lab 3.2. Read the bars as test-retest reliability at these settings. Do not read them as a ceiling on Fahim's agreement with gold; there is no such strict bound for kappa (a model that is right 81% of the time with independent noise agrees with gold more than with itself). What the bars do say is that a second run of the same prompt changes about one label in seven, so one run is a sample of possible label sets, not the label set. Fahim's kappa against gold is 0.778.</p></aside>
 </section>
 
 <section class="slide" id="prompt-shift" data-lo="LO5">
@@ -259,7 +259,7 @@
       <div class="msg ai bad"><span class="who">Fahim</span>roads</div>
     </div>
   </div>
-  <p class="small mt">مويه and غرقان ("water", "flooded") sit next to شارع ("street"). The prompt lists "flooding from sewage" under <code>water_sewage</code>, in formal words only.</p>
+  <p class="small mt">Gulf words such as غرقان and مويه ("flooded", "water") sit next to شارع ("street"). The prompt lists "flooding from sewage" under <code>water_sewage</code>, in formal words only.</p>
   <aside class="notes"><p>From Lab 3.3's confusion table. This is a systematic error with a cause: dialect words the prompt does not anticipate. Prompt 2 rewords the definitions and adds a rule for two-problem complaints; the stretch of Lab 3.3 measures whether that helps.</p></aside>
 </section>
 
