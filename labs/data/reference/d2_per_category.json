@@ -1,0 +1,50 @@
+[
+ {
+  "category": "parks",
+  "share": 0.047,
+  "agreement": 0.957,
+  "kappa": 0.644
+ },
+ {
+  "category": "lighting",
+  "share": 0.077,
+  "agreement": 0.97,
+  "kappa": 0.775
+ },
+ {
+  "category": "permits",
+  "share": 0.083,
+  "agreement": 0.97,
+  "kappa": 0.8
+ },
+ {
+  "category": "noise",
+  "share": 0.107,
+  "agreement": 0.95,
+  "kappa": 0.754
+ },
+ {
+  "category": "staff_service",
+  "share": 0.137,
+  "agreement": 0.96,
+  "kappa": 0.823
+ },
+ {
+  "category": "waste",
+  "share": 0.153,
+  "agreement": 0.977,
+  "kappa": 0.911
+ },
+ {
+  "category": "roads",
+  "share": 0.183,
+  "agreement": 0.957,
+  "kappa": 0.848
+ },
+ {
+  "category": "water_sewage",
+  "share": 0.213,
+  "agreement": 0.967,
+  "kappa": 0.9
+ }
+]

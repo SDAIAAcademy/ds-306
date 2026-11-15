@@ -2,91 +2,91 @@
  {
   "script": "ar",
   "channel": "app",
-  "chars": 120.0,
-  "words": 21.0
+  "chars": 125.0,
+  "words": 23.0
  },
  {
   "script": "ar",
   "channel": "call_centre",
-  "chars": 119.0,
-  "words": 22.0
+  "chars": 126.0,
+  "words": 23.0
  },
  {
   "script": "ar",
   "channel": "email",
-  "chars": 124.0,
-  "words": 22.0
+  "chars": 131.0,
+  "words": 23.0
  },
  {
   "script": "ar",
   "channel": "social",
-  "chars": 118.0,
+  "chars": 120.0,
   "words": 21.0
  },
  {
   "script": "ar",
   "channel": "web",
-  "chars": 120.0,
-  "words": 21.0
+  "chars": 126.0,
+  "words": 22.0
  },
  {
   "script": "en",
   "channel": "app",
-  "chars": 155.0,
-  "words": 28.0
+  "chars": 168.0,
+  "words": 30.0
  },
  {
   "script": "en",
   "channel": "call_centre",
-  "chars": 151.0,
-  "words": 28.0
+  "chars": 160.0,
+  "words": 29.0
  },
  {
   "script": "en",
   "channel": "email",
-  "chars": 155.0,
-  "words": 28.0
+  "chars": 166.0,
+  "words": 30.0
  },
  {
   "script": "en",
   "channel": "social",
-  "chars": 155.0,
-  "words": 28.0
+  "chars": 162.0,
+  "words": 29.0
  },
  {
   "script": "en",
   "channel": "web",
-  "chars": 154.0,
-  "words": 28.0
+  "chars": 164.0,
+  "words": 29.0
  },
  {
   "script": "mixed",
   "channel": "app",
-  "chars": 107.0,
+  "chars": 105.0,
   "words": 16.0
  },
  {
   "script": "mixed",
   "channel": "call_centre",
-  "chars": 100.0,
+  "chars": 102.0,
   "words": 15.0
  },
  {
   "script": "mixed",
   "channel": "email",
-  "chars": 96.0,
+  "chars": 103.0,
   "words": 14.0
  },
  {
   "script": "mixed",
   "channel": "social",
-  "chars": 108.0,
-  "words": 16.0
+  "chars": 96.0,
+  "words": 14.0
  },
  {
   "script": "mixed",
   "channel": "web",
-  "chars": 102.0,
-  "words": 15.0
+  "chars": 98.0,
+  "words": 14.0
  }
 ]

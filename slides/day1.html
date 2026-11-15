@@ -57,11 +57,11 @@
   <div class="kicker">Lab 1.1, the channels</div>
   <h2>Five channels deliver the corpus, and each leaves its mark on the text</h2>
   <div class="bars">
-    <div class="row"><span>Web form</span><div class="bar c-teal" style="--w:31%"></div><span class="val">31.0%</span></div>
-    <div class="row"><span>App</span><div class="bar c-cyan" style="--w:26.8%"></div><span class="val">26.8%</span></div>
+    <div class="row"><span>Web form</span><div class="bar c-teal" style="--w:30.9%"></div><span class="val">30.9%</span></div>
+    <div class="row"><span>App</span><div class="bar c-cyan" style="--w:27.1%"></div><span class="val">27.1%</span></div>
     <div class="row"><span>Call centre</span><div class="bar c-coral" style="--w:23.5%"></div><span class="val">23.5%</span></div>
-    <div class="row"><span>Social media</span><div class="bar c-purple" style="--w:10.2%"></div><span class="val">10.2%</span></div>
-    <div class="row"><span>Email</span><div class="bar c-amber" style="--w:8.5%"></div><span class="val">8.5%</span></div>
+    <div class="row"><span>Social media</span><div class="bar c-purple" style="--w:9.7%"></div><span class="val">9.7%</span></div>
+    <div class="row"><span>Email</span><div class="bar c-amber" style="--w:8.8%"></div><span class="val">8.8%</span></div>
   </div>
   <p class="small mt">Call-centre transcripts carry more Gulf dialect; app text arrives with a Persian keyboard layout; emails carry letters pasted from PDF files.</p>
   <aside class="notes"><p>Shares of the 20,000 rows from the Lab 1.1 run. The channel matters again in session 2: the script problems cluster by channel, which is how you find their cause rather than only their symptom.</p></aside>
@@ -71,18 +71,18 @@
   <div class="kicker">Lab 1.1, metadata</div>
   <h2>The form's language field is wrong for one complaint in twelve</h2>
   <div class="cols cols-2">
-    <div class="stat center"><div class="big">8.3%</div><div class="lbl">of complaints: the form field contradicts the script of the text</div></div>
+    <div class="stat center"><div class="big">8.8%</div><div class="lbl">of complaints: the form field contradicts the script of the text</div></div>
     <table class="t small">
       <tr><th>Channel</th><th class="num">Field contradicts the text</th></tr>
-      <tr class="hl"><td>App</td><td class="num">24.3%</td></tr>
-      <tr><td>Social media</td><td class="num">4.4%</td></tr>
-      <tr><td>Web form</td><td class="num">2.4%</td></tr>
+      <tr class="hl"><td>App</td><td class="num">25.1%</td></tr>
+      <tr><td>Social media</td><td class="num">4.8%</td></tr>
+      <tr><td>Web form</td><td class="num">2.7%</td></tr>
       <tr><td>Call centre</td><td class="num">2.0%</td></tr>
       <tr><td>Email</td><td class="num">1.8%</td></tr>
     </table>
   </div>
   <div class="callout warn mt"><b>What goes wrong.</b> A dashboard reports "English complaints" from the field. A quarter of the app's "English" rows are Arabic.</div>
-  <aside class="notes"><p>From Lab 1.1: 1,665 of 20,000 rows. The field records how the form was set, often by the app's default, not what the citizen wrote. The lesson generalises: a metadata field is a measurement made by somebody else, with its own errors. Measure it against the text before you use it to split a corpus.</p></aside>
+  <aside class="notes"><p>From Lab 1.1: 1,750 of 20,000 rows. The field records how the form was set, often by the app's default, not what the citizen wrote. The lesson generalises: a metadata field is a measurement made by somebody else, with its own errors. Measure it against the text before you use it to split a corpus.</p></aside>
 </section>
 
 <section class="slide" id="profile-first" data-lo="LO1">
@@ -106,9 +106,9 @@
   <h2>English complaints are longer in characters and words than Arabic ones</h2>
   <table class="t">
     <tr><th>Script</th><th class="num">Median characters</th><th class="num">Median words</th></tr>
-    <tr><td>Arabic</td><td class="num">120</td><td class="num">21</td></tr>
-    <tr><td>English</td><td class="num">155</td><td class="num">28</td></tr>
-    <tr><td>Mixed</td><td class="num">about 100</td><td class="num">15</td></tr>
+    <tr><td>Arabic</td><td class="num">126</td><td class="num">22</td></tr>
+    <tr><td>English</td><td class="num">164</td><td class="num">29</td></tr>
+    <tr><td>Mixed</td><td class="num">98</td><td class="num">14</td></tr>
   </table>
   <ul class="bullets mt">
     <li>Length differs by language, hardly by channel</li>
@@ -122,9 +122,9 @@
   <div class="kicker">Lab 1.1, copies</div>
   <h2>One message in thirty is an exact copy of an earlier one</h2>
   <div class="cols cols-2">
-    <div class="stat center"><div class="big">3.3%</div><div class="lbl">652 exact copies after whitespace is collapsed</div></div>
+    <div class="stat center"><div class="big">3.2%</div><div class="lbl">639 exact copies after whitespace is collapsed</div></div>
     <ul class="bullets">
-      <li>Most copies arrive through the app (4.4%) and the web form (4.2%): a second press of "send"</li>
+      <li>Most copies arrive through the app (4.7%) and the web form (4.0%): a second press of "send"</li>
       <li>Copies inflate every count by district</li>
       <li>A copy in the training data and its twin in the test data flatter every score</li>
     </ul>
@@ -143,13 +143,13 @@
       <div class="opt" data-ok>The script of the text itself, checked against the form field on a sample</div>
       <div class="opt" data-why="Gives up measurement for a person's reading: possible for 40 complaints, not for 20,000">A person reading every complaint and tagging it</div>
     </div>
-    <div class="callout tip why"><b>Why.</b> The language of a text is a property of the text. The form field disagrees with it for 8.3% of complaints, and for a quarter of the app's.</div>
+    <div class="callout tip why"><b>Why.</b> The language of a text is a property of the text. The form field disagrees with it for 8.8% of complaints, and for a quarter of the app's.</div>
   </div>
   <aside class="notes"><p>Answer: the script of the text. If the room picks the field, show the app row of the previous slide again. Mixed-script complaints need a decision of their own: the lab gives them their own label rather than forcing them into one team.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes"><p>Watch for participants who skip reading rows in task 1: ask them to read five aloud to a neighbour. In task 4, some deduplicate before sorting by date; the earliest copy should be kept, so sort first. The stretch finds a week in June with about 770 complaints against a median near 490: do not reveal why; session 3 does.</p></aside>
+  <aside class="notes"><p>Watch for participants who skip reading rows in task 1: ask them to read five aloud to a neighbour. In task 4, some deduplicate before sorting by date; the earliest copy should be kept, so sort first. The stretch finds a week in June with 813 complaints against a median week of 499: do not reveal why; session 3 does.</p></aside>
 </section>
 
 <!-- Session 2 -->
@@ -187,16 +187,16 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
   <h2>Every Arabic complaint carries at least one spelling choice</h2>
   <table class="t small">
     <tr><th>Variant</th><th class="num">Arabic complaints with it</th><th>Where it comes from</th></tr>
-    <tr><td>Teh marbuta (ة)</td><td class="num">88.0%</td><td>Spelling, written either ة or ه</td></tr>
-    <tr><td>Hamza on alef (أ إ آ)</td><td class="num">67.0%</td><td>Spelling, often typed without hamza</td></tr>
-    <tr><td>Alef maqsura (ى)</td><td class="num">42.8%</td><td>Spelling, often confused with ي</td></tr>
-    <tr><td>Arabic-Indic digits</td><td class="num">28.4%</td><td>Keyboard</td></tr>
-    <tr><td>Diacritics</td><td class="num">14.7%</td><td>Emphasis or habit</td></tr>
-    <tr><td>Tatweel (ـ)</td><td class="num">9.7%</td><td>Stretching a word for emphasis</td></tr>
-    <tr><td>Persian yeh or kaf</td><td class="num">6.6%</td><td>Keyboard layout, mostly the app</td></tr>
-    <tr><td>Presentation forms</td><td class="num">2.6%</td><td>Pasted from PDF files, the email channel</td></tr>
+    <tr><td>Teh marbuta (ة)</td><td class="num">90.0%</td><td>Spelling, written either ة or ه</td></tr>
+    <tr><td>Hamza on alef (أ إ آ)</td><td class="num">69.3%</td><td>Spelling, often typed without hamza</td></tr>
+    <tr><td>Alef maqsura (ى)</td><td class="num">43.8%</td><td>Spelling, often confused with ي</td></tr>
+    <tr><td>Arabic-Indic digits</td><td class="num">28.8%</td><td>Keyboard</td></tr>
+    <tr><td>Diacritics</td><td class="num">14.8%</td><td>Emphasis or habit</td></tr>
+    <tr><td>Tatweel (ـ)</td><td class="num">9.8%</td><td>Stretching a word for emphasis</td></tr>
+    <tr><td>Persian yeh or kaf</td><td class="num">6.5%</td><td>Keyboard layout, mostly the app</td></tr>
+    <tr><td>Presentation forms</td><td class="num">2.8%</td><td>Pasted from PDF files, the email channel</td></tr>
   </table>
-  <aside class="notes"><p>From Lab 1.2 over 16,071 complaints in Arabic or mixed script. The first three are spelling habits of the writer; the last four come from tools. That difference matters: a tool problem has one fix at its source, a spelling habit is handled by normalisation forever.</p></aside>
+  <aside class="notes"><p>From Lab 1.2 over 15,964 complaints in Arabic or mixed script. The first three are spelling habits of the writer; the last four come from tools. That difference matters: a tool problem has one fix at its source, a spelling habit is handled by normalisation forever.</p></aside>
 </section>
 
 <section class="slide" id="layers" data-lo="LO1">
@@ -219,14 +219,14 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
   <div class="kicker">Lab 1.2, step 3</div>
   <h2>Three layers do almost all the work: forms, marks and digits</h2>
   <div class="bars">
-    <div class="row"><span>unicode</span><div class="bar c-teal" style="--w:100%"></div><span class="val">−2,551</span></div>
-    <div class="row"><span>persian</span><div class="bar c-cyan" style="--w:13%"></div><span class="val">−338</span></div>
-    <div class="row"><span>marks</span><div class="bar c-coral" style="--w:96%"></div><span class="val">−2,459</span></div>
-    <div class="row"><span>alef</span><div class="bar c-purple" style="--w:1.3%"></div><span class="val">−33</span></div>
-    <div class="row"><span>yeh_teh</span><div class="bar c-amber" style="--w:2.7%"></div><span class="val">−68</span></div>
-    <div class="row"><span>digits</span><div class="bar c-green" style="--w:42%"></div><span class="val">−1,075</span></div>
+    <div class="row"><span>unicode</span><div class="bar c-teal" style="--w:100%"></div><span class="val">−2,935</span></div>
+    <div class="row"><span>persian</span><div class="bar c-cyan" style="--w:12%"></div><span class="val">−346</span></div>
+    <div class="row"><span>marks</span><div class="bar c-coral" style="--w:85%"></div><span class="val">−2,488</span></div>
+    <div class="row"><span>alef</span><div class="bar c-purple" style="--w:1.1%"></div><span class="val">−33</span></div>
+    <div class="row"><span>yeh_teh</span><div class="bar c-amber" style="--w:2.3%"></div><span class="val">−68</span></div>
+    <div class="row"><span>digits</span><div class="bar c-green" style="--w:35%"></div><span class="val">−1,018</span></div>
   </div>
-  <p class="small mt">Distinct tokens over the Arabic complaints: 13,835 raw, 7,311 after all six layers.</p>
+  <p class="small mt">Distinct tokens over the Arabic complaints: 14,158 raw, 7,270 after all six layers.</p>
   <aside class="notes"><p>From Lab 1.2. The alef and yeh_teh layers remove few distinct tokens here because both spellings of most words already occur; what they change is how often each token is counted. Ask why digits remove so many: every street number in two digit systems was two tokens.</p></aside>
 </section>
 
@@ -256,7 +256,7 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
     <tr><td>شنو, ويش</td><td>وش</td><td>what</td></tr>
     <tr><td>واااايد</td><td>وايد</td><td>a lot (letters repeated three times or more)</td></tr>
   </table>
-  <p class="small mt-s">Lab 1.2: the stretched letters fired in 897 complaints; the map took the vocabulary from 7,311 to 7,256.</p>
+  <p class="small mt-s">Lab 1.2: the stretched letters fired in 872 complaints; the map took the vocabulary from 7,270 to 7,211.</p>
   <div class="callout note mt"><b>Why not translate?</b> وايد is not an error. Turning Gulf text into formal Arabic hides the variety that Day 3 measures.</div>
   <aside class="notes"><p>The map in data/dialect_map.csv is the course's own: sixteen rules, each with its meaning. The point to stress is the callout: the dialect is a property of the writer and a group in the analysis. Day 3 asks whether Fahim labels Gulf complaints as well as formal ones; translating them away would make that impossible to see.</p></aside>
 </section>
@@ -284,7 +284,7 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
 <!-- Session 3 -->
 
 <section class="slide section" id="s3" data-auto="section" data-session="3">
-  <aside class="notes"><p>The June week from Lab 1.1 is the hook: open by asking what the 280 extra complaints could be.</p></aside>
+  <aside class="notes"><p>The June week from Lab 1.1 is the hook: open by asking what the 300 or so extra complaints could be.</p></aside>
 </section>
 
 <section class="slide" id="three-kinds" data-lo="LO1">
@@ -316,13 +316,13 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
   <div class="cols cols-2">
     <div class="stat center"><div class="big">|A ∩ B| / |A ∪ B|</div><div class="lbl">1 for identical sets, 0 for nothing shared</div></div>
     <ul class="bullets">
-      <li>Two campaign messages written from different templates: <b>0.22</b></li>
-      <li>Two unrelated complaints: <b>0.00</b></li>
+      <li>Two campaign messages written in different words: <b>0.21</b></li>
+      <li>Two unrelated complaints: <b>0.03</b></li>
       <li>A resubmission and its original: usually above 0.7</li>
     </ul>
   </div>
   <div class="callout note mt"><b>Same issue, different words.</b> Jaccard finds copied wording, not the same problem described twice. The campaign is found as several groups, one per template.</div>
-  <aside class="notes"><p>Numbers from Lab 1.3, task 1. The 0.22 is the honest surprise: two residents complaining about the same sewer in their own words are not near-duplicates by text. That is correct behaviour for this tool, and the reason a campaign is found as a few groups that the keep rule then flags by size.</p></aside>
+  <aside class="notes"><p>Numbers from Lab 1.3, task 1. The 0.21 is the honest surprise: two residents complaining about the same sewer in their own words are not near-duplicates by text. That is correct behaviour for this tool, and the reason a campaign is found as a few groups that the keep rule then flags by size.</p></aside>
 </section>
 
 <section class="slide" id="minhash" data-lo="LO1">
@@ -337,7 +337,7 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
     <div class="arrow">→</div>
     <div class="step c-purple"><b>Confirm</b>The true Jaccard on candidates only</div>
   </div>
-  <p class="small mt">All pairs would be about 200 million comparisons. The bands leave about 110,000 candidates.</p>
+  <p class="small mt">All pairs would be about 200 million comparisons. The bands leave about 103,000 candidates.</p>
   <aside class="notes"><p>The probability that two signatures agree at one position equals the Jaccard similarity of the sets; that is the whole trick. Bands tune the trade-off: more rows per band means fewer, closer candidates. Sources: Leskovec, Rajaraman and Ullman, Mining of Massive Datasets, chapter 3 (Finding Similar Items). The lab writes it in numpy to see it.</p></aside>
 </section>
 
@@ -353,8 +353,8 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
     </ul>
     <table class="t small">
       <tr><th>Step</th><th class="num">Pairs</th></tr>
-      <tr><td>Candidates from the bands</td><td class="num">109,886</td></tr>
-      <tr class="hl"><td>Confirmed</td><td class="num">11,355</td></tr>
+      <tr><td>Candidates from the bands</td><td class="num">103,238</td></tr>
+      <tr class="hl"><td>Confirmed</td><td class="num">11,031</td></tr>
     </table>
   </div>
   <aside class="notes"><p>From Lab 1.3. Without blocking and the window, the first version of this lab chained more than 5,000 unrelated complaints into one group: formulaic text is the norm in complaints. The metadata is part of the definition of a duplicate, not a speed trick.</p></aside>
@@ -362,14 +362,14 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
 
 <section class="slide" id="keep-rule" data-lo="LO1">
   <div class="kicker">Lab 1.3, step 4</div>
-  <h2>The keep rule removes 1,021 messages and flags 580 as one campaign</h2>
+  <h2>The keep rule removes 998 messages and flags 576 as one campaign</h2>
   <table class="t">
     <tr><th>Group</th><th>Rule</th><th class="num">Messages</th></tr>
-    <tr><td>Fewer than 20 members</td><td>Keep the earliest; the others are copies</td><td class="num">1,021 removed</td></tr>
-    <tr class="hl"><td>20 members or more</td><td>Keep all, flag <code>campaign</code></td><td class="num">580 flagged</td></tr>
+    <tr><td>Fewer than 20 members</td><td>Keep the earliest; the others are copies</td><td class="num">998 removed</td></tr>
+    <tr class="hl"><td>20 members or more</td><td>Keep all, flag <code>campaign</code></td><td class="num">576 flagged</td></tr>
   </table>
-  <p class="small mt-s">All 580 flagged messages are from Al-Naseem, sent in ten days of June, about one sewer on Street 12.</p>
-  <aside class="notes"><p>From Lab 1.3. The campaign carries over to Day 4: a rate per message counts 580 residents; a rate per issue counts one. Neither is wrong; the report says which one it gives.</p></aside>
+  <p class="small mt-s">All 576 flagged messages are from Al-Naseem, sent in ten days of June, about one sewer on Street 12.</p>
+  <aside class="notes"><p>From Lab 1.3. The campaign carries over to Day 4: a rate per message counts 576 residents; a rate per issue counts one. Neither is wrong; the report says which one it gives.</p></aside>
 </section>
 
 <section class="slide" id="threshold-tradeoff" data-lo="LO1">
@@ -377,26 +377,26 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
   <h2>A threshold trades copies missed against real complaints dropped</h2>
   <table class="t">
     <tr><th class="num">Jaccard threshold</th><th class="num">Messages removed</th><th class="num">Of them, true copies</th><th class="num">True copies found</th></tr>
-    <tr><td class="num">0.6</td><td class="num">1,371</td><td class="num">822</td><td class="num">89%</td></tr>
-    <tr class="hl"><td class="num">0.7</td><td class="num">1,021</td><td class="num">774</td><td class="num">84%</td></tr>
-    <tr><td class="num">0.8</td><td class="num">753</td><td class="num">598</td><td class="num">65%</td></tr>
+    <tr><td class="num">0.6</td><td class="num">1,247</td><td class="num">839</td><td class="num">91%</td></tr>
+    <tr class="hl"><td class="num">0.7</td><td class="num">998</td><td class="num">810</td><td class="num">88%</td></tr>
+    <tr><td class="num">0.8</td><td class="num">758</td><td class="num">626</td><td class="num">68%</td></tr>
   </table>
   <p class="small mt-s">924 messages are true copies or resubmissions. Synthetic data has an answer key; real data has a sample you read.</p>
-  <aside class="notes"><p>From the generator's answer key, run with the lab's rule at a 21-day window. At 0.7, about three in four removed messages are true copies; the rest are independent complaints worded alike. In real work there is no key: read 50 removed pairs and count how many are true copies. That reading is the evidence for the threshold.</p></aside>
+  <aside class="notes"><p>From the generator's answer key, run with the lab's rule at a 21-day window. At 0.7, about four in five removed messages are true copies; the rest are independent complaints worded alike. In real work there is no key: read 50 removed pairs and count how many are true copies. That reading is the evidence for the threshold.</p></aside>
 </section>
 
 <section class="slide" id="check-near-dups" data-lo="LO1">
   <div class="kicker">Checkpoint</div>
-  <h2>What do you do with 580 near-identical messages?</h2>
+  <h2>What do you do with 576 near-identical messages?</h2>
   <div class="quiz" data-type="single" data-lo="LO1">
-    <p class="lead">The keep rule finds 580 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?</p>
+    <p class="lead">The keep rule finds 576 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?</p>
     <div class="opts">
-      <div class="opt" data-why="Treats a campaign as copies by one person: each message is a resident who complained">Keep the earliest message and drop the other 579</div>
-      <div class="opt" data-why="Assumes organised complaints are less real: the residents are real and the sewer overflows">Drop all 580 as an organised campaign</div>
-      <div class="opt" data-why="Hides the decision from the reader: the count changes by 579 depending on a choice nobody sees">Keep all 580 with no flag, since they are complaints</div>
-      <div class="opt" data-ok>Keep all 580, flag them, and report the count with and without the campaign</div>
+      <div class="opt" data-why="Treats a campaign as copies by one person: each message is a resident who complained">Keep the earliest message and drop the other 575</div>
+      <div class="opt" data-why="Assumes organised complaints are less real: the residents are real and the sewer overflows">Drop all 576 as an organised campaign</div>
+      <div class="opt" data-why="Hides the decision from the reader: the count changes by 575 depending on a choice nobody sees">Keep all 576 with no flag, since they are complaints</div>
+      <div class="opt" data-ok>Keep all 576, flag them, and report the count with and without the campaign</div>
     </div>
-    <div class="callout tip why"><b>Why.</b> They are 580 complaints and one issue. The flag lets both counts be made, and the report states which one the rate uses.</div>
+    <div class="callout tip why"><b>Why.</b> They are 576 complaints and one issue. The flag lets both counts be made, and the report states which one the rate uses.</div>
   </div>
   <aside class="notes"><p>Answer: the fourth option. The first option is the commonest wrong answer: it applies the rule for exact copies to a campaign. Link back to the three units slide.</p></aside>
 </section>
@@ -428,12 +428,12 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
 
 <section class="slide" id="what-is-there" data-lo="LO1">
   <div class="kicker">The audited sample</div>
-  <h2>A person marked 369 personal values in 500 complaints</h2>
+  <h2>A person marked 339 personal values in 500 complaints</h2>
   <div class="bars">
-    <div class="row"><span>Phone numbers</span><div class="bar c-teal" style="--w:100%"></div><span class="val">184</span></div>
-    <div class="row"><span>Names</span><div class="bar c-coral" style="--w:72%"></div><span class="val">133</span></div>
-    <div class="row"><span>Identity numbers</span><div class="bar c-purple" style="--w:16%"></div><span class="val">30</span></div>
-    <div class="row"><span>Emails</span><div class="bar c-amber" style="--w:12%"></div><span class="val">22</span></div>
+    <div class="row"><span>Phone numbers</span><div class="bar c-teal" style="--w:100%"></div><span class="val">160</span></div>
+    <div class="row"><span>Names</span><div class="bar c-coral" style="--w:76%"></div><span class="val">122</span></div>
+    <div class="row"><span>Identity numbers</span><div class="bar c-purple" style="--w:24%"></div><span class="val">38</span></div>
+    <div class="row"><span>Emails</span><div class="bar c-amber" style="--w:12%"></div><span class="val">19</span></div>
   </div>
   <p class="small mt">The marking is the reference. Without it, a redaction can only report what it found, never what it missed.</p>
   <aside class="notes"><p>From data/redaction_audit.csv in Lab 1.4. In real work the sample is drawn at random from the corpus and marked by two people; 500 is enough to put an interval on the miss rate of the common types, not of rare ones.</p></aside>
@@ -441,13 +441,13 @@ unicodedata.normalize("NFKC", "ﺕحﻱة") == "تحية"   # True</code></pre>
 
 <section class="slide" id="naive-pattern" data-lo="LO1">
   <div class="kicker">Lab 1.4, step 1</div>
-  <h2>"05 and eight digits" misses almost nine phone numbers in ten</h2>
+  <h2>"05 and eight digits" misses four phone numbers in five</h2>
   <div class="cols cols-2">
-    <div class="stat center"><div class="big">88.6%</div><div class="lbl">of marked phone numbers missed by <code>05\d{8}</code></div></div>
+    <div class="stat center"><div class="big">80.6%</div><div class="lbl">of marked phone numbers missed by <code>05\d{8}</code></div></div>
     <ul class="bullets">
-      <li><span class="ar">٠٥٢ ١٩٥ ٧٢٠٧</span>: Arabic-Indic digits, with spaces</li>
-      <li><code>+966 57 378 1767</code>: international form</li>
-      <li><code>056-968-5860</code>: dashes</li>
+      <li><span class="ar">٠٥٥ ٩٥٠ ٨٤١٤</span>: Arabic-Indic digits, with spaces</li>
+      <li><code>+966 59 158 0751</code>: international form</li>
+      <li><code>059-386-9528</code>: dashes</li>
     </ul>
   </div>
   <aside class="notes"><p>From Lab 1.4, step 1. The five numbers it printed show the three reasons: digit system, country code, separators. Ask the room to guess the miss rate before revealing it; most guess under 20%.</p></aside>
@@ -475,7 +475,7 @@ EMAIL = r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"</code></pre>
     <tr><td>اسمي</td><td><span class="ar">اسمي [NAME]، جوالي [PHONE]</span></td></tr>
     <tr><td>معك, انا</td><td><span class="ar">معك [NAME].</span></td></tr>
     <tr><td>My name is, Regards,</td><td>My name is [NAME]. Call me on [PHONE].</td></tr>
-    <tr><td><em>No cue</em></td><td><em>Latifa Al-Shammari, phone [PHONE]</em></td></tr>
+    <tr><td><em>No cue</em></td><td><em>Badr Al-Mutairi, phone [PHONE]</em></td></tr>
   </table>
   <div class="callout warn mt"><b>What goes wrong.</b> A name written with no cue word passes untouched. Patterns reach their limit here.</div>
   <aside class="notes"><p>The last row is from the stretch of Lab 1.4. Options beyond patterns: a list of common names (cheap, misses rare names, masks words that are also names), a named-entity model (better, needs its own evaluation on Gulf text), a person for high-risk releases. Each has a miss rate to measure the same way.</p></aside>
@@ -483,22 +483,22 @@ EMAIL = r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"</code></pre>
 
 <section class="slide" id="miss-rate" data-lo="LO1">
   <div class="kicker">Lab 1.4, step 5</div>
-  <h2>The redaction misses 5.4% of personal values, almost all of them names</h2>
+  <h2>The redaction misses 7.7% of personal values, all of them names</h2>
   <div class="cols cols-2">
     <table class="t">
       <tr><th>Type</th><th class="num">Missed</th></tr>
-      <tr><td>Phone numbers</td><td class="num">0 of 184</td></tr>
-      <tr><td>Identity numbers</td><td class="num">0 of 30</td></tr>
-      <tr><td>Emails</td><td class="num">0 of 22</td></tr>
-      <tr class="hl"><td>Names</td><td class="num">20 of 133 (15.0%)</td></tr>
+      <tr><td>Phone numbers</td><td class="num">0 of 160</td></tr>
+      <tr><td>Identity numbers</td><td class="num">0 of 38</td></tr>
+      <tr><td>Emails</td><td class="num">0 of 19</td></tr>
+      <tr class="hl"><td>Names</td><td class="num">26 of 122 (21.3%)</td></tr>
     </table>
     <ul class="bullets">
-      <li>Arabic-script complaints: 3.1% missed</li>
-      <li>English complaints: 16.2% missed</li>
-      <li>The interval on 20 of 133 runs from about 10% to 22%</li>
+      <li>Arabic-script complaints: 5.7% missed</li>
+      <li>English complaints: 15.1% missed</li>
+      <li>The interval on 26 of 122 runs from about 15% to 29%</li>
     </ul>
   </div>
-  <aside class="notes"><p>From Lab 1.4. The language gap is the first of the week: the English names are more often written without a cue ("Name, phone"). The interval is a Wilson 95% interval computed by hand for this slide. The miss rate and its interval go into the profile report: that is the LO1 evidence.</p></aside>
+  <aside class="notes"><p>From Lab 1.4. The language gap is the first of the week: English names are more often written without a cue ("Name, phone"), and so are bare names at the end of Arabic complaints. The interval is a Wilson 95% interval computed by hand for this slide. The miss rate and its interval go into the profile report: that is the LO1 evidence.</p></aside>
 </section>
 
 <section class="slide" id="zero-matches" data-lo="LO1">

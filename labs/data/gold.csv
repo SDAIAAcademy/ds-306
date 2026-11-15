@@ -1,301 +1,301 @@
 id,district,variety,text,coder_a,coder_b,gold
-C14490,al_safa,msa,تحية طيبة، دورات المياه في الحديقة مغلقة منذ اسابيع. الحديقة العامة في شارع 150 بلا سقي والعشب جاف. وقد أبلغت عن ذلك سابقا. للتواصل: [PHONE],parks,parks,parks
-C01810,al_wurud,gulf,رفضوا التصريح وما قالوا وش الناقص. مقـــدم على رخصة بناء من 6 يوم وللحين ما ردوا. وشكرا.,permits,permits,permits
-C00523,al_salam,gulf,لو سمحتوا الشارع غرقان ميه من البيارة اللي عند الدوار. وصار له فترة على هالحال. وشكرا. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
-C04006,al_faisaliya,msa,ﺕحية طﻱﺏة، ﺭفض طﻝب ﺍلتصريح دﻭن ذكر ﺍﻝﻡسﺕﻥدات اﻝﻥاقصة. طلب تجﺩﻱد ﺭخصة ﺍلﻡحﻝ ﻡعلق فﻱ اﻝﻥظﺍم ﺩون سﺏﺏ ﻭﺍضح. ﻭهذﺍ ﻱؤثﺭ على ﺍلأطفﺍﻝ وكباﺭ اﻝسن. [NAME] - حي الفيصلية,permits,permits,permits
-C19980,al_safa,en,The pavement near the clinic is broken and elderly people cannot walk on it. The whole neighbourhood is affected. This is the third time I report it.,roads,roads,roads
-C12298,al_wurud,msa,تحية طيبة، حاويات النفايات عند مدخل الحي ممتلئة وتنتشر حولها القطط. ويتضرر منها سكان الحي كلهم. [NAME] - حي الورود,waste,waste,waste
-C03575,al_nuzha,gulf,السلام عليكم الحديقة اللي في شارع 113 محد يسقيها والزرع ميت. ممشى الحي ما فيه كراسي تكفي. والعيال والشيبان يتأذون. الحينه صار لها واااايد ومحد سوا شي. انا [NAME] وهذا رقمي [PHONE],parks,parks,parks
-C09020,al_marwa,gulf,مرحبا الشارع غرقان مويه من البيارة اللي عند مخبز الحي. فيه تسريب مويه من الماسورة في شارع 173 من أسبوع والشارع غرقان. والعيال والشيبان يتأذون. القاعة اللي جنب المستوصف السماعات عندهم عالية مرره. كلموني على [PHONE],noise,water_sewage,water_sewage
-C11320,al_faisaliya,msa,تحيه طيبة، ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. والمشكله تزداد سوءا. وشكرا لكم. بريدي الإلكتروني [EMAIL],water_sewage,water_sewage,water_sewage
-C14013,al_jazira,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب الدوار كِل ليلة. الحاويات عند مدرسة الحي فايضة وّالقطاوة معفسينها. وكل أهل اِلحي متضررين.,waste,staff_service,waste
-C04228,al_nuzha,en,"Dear Sada team, A generator on Street 117 runs day and night and the noise is constant. It is getting worse. This is the third time I report it. ID number [ID]",noise,noise,noise
-C07373,al_wurud,msa,اود الإبلاغ عن مشكلة: انقطعت المياه عن منزلنا في شارع 184 منذ 18 أيام دون أي اشعار. تسربت المياه من أنبوب مكسور في شارع 80 وتجمعت في الطريق.,water_sewage,water_sewage,water_sewage
-C15238,al_khalij,en,"Hi, We have had no water at home on Street 161 for 2 days. The whole neighbourhood is affected. The toilets in the park have been closed for weeks. This is the third time I report it.",water_sewage,parks,water_sewage
-C13374,al_aziziya,msa,السلام عْلیکم، ظهرت تشققات خطیرة فی الجسر المؤدی إلى مْخبز الحی. وّالوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة. [NAME] - حي العزيزية,roads,roads,roads
-C15153,al_jazira,gulf,لو سمحتوا حمامات الحدیقه مسکره من أسابیع. ممشى الحی ما فیه کراسی تکفی. وبلغنا قبل ومحد سوا شی. الحینه صار لها وااااید ومحد سوا شی.,parks,parks,parks
-C05101,al_aziziya,en,"Dear Sada team, Our neighbourhood bin has been broken for a month. Thank you. My name is [NAME].",waste,waste,waste
-C17037,al_nuzha,msa,تحية طيبة، تُقدمت بطلب رخصة بناء منذ 21 يوما ولم يصلني أي رد. ويتضرر منها سَكان الحي كلهم. نرجو سرعة اًلمعالجة.,permits,permits,permits
-C18632,al_salam,en,"Dear Sada team, The manholes on Street 87 fill with sewage after every rain. A broken pipe on Street 6 is leaking water onto the road. This is the third time I report it. My mobile is [PHONE].",water_sewage,water_sewage,water_sewage
-C18062,al_faisaliya,gulf,مرحبا فيه ناس يكبون مخلفات بناء جنب السوق المركزي كل ليلة. حاوية حارتنا مكسوره من شهر ومحد بدلها. والوضع كل يوم يسوء. وشكرا. كلموني على [PHONE],waste,parks,waste
-C12152,al_aziziya,msa,انقطعت المياه عن منزلنا في شارع 145 منذ 30 أيام دون أي اشعار.,water_sewage,water_sewage,water_sewage
-C08716,al_naseem,gulf,ضغط الماي ضعيف مرره وما يوصل للخزان فوق. ترى المجاري طافحة عند الدوار والريحة واااايد قوية. وصار له فترة على هالحال. الحين صار لها وايد وماحد سوا شي.,water_sewage,water_sewage,water_sewage
-C18631,al_naseem,gulf,ضغط الماي ضعيف مرره وما يوصل لًلخزان فوق. وكل أهل اَلحي مِتضررين. تكفون بسرعة. جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C13373,al_khalij,msa,لم ترفع النفايات من شارع 168 منذ 17 ايام. والمشكلة تزداد سوءا. آمل التواصل معي. اسمي [NAME].,waste,waste,waste
-C08015,al_jazira,gulf,مرحبا online البناء اللي جنب المسجد يبدون قبل الفجر ونصحى من الدق. وكل اسبوع نفس الشي. تكفون بسرعة. انا [NAME] من سكان الحي.,noise,noise,noise
-C04513,al_naseem,msa,تحية طيبة، تسربت المياه من أنبوب مكسور في شارع ٨٩ وتجمعت في الطريق. غرف التفتيش في شارع ٩٧ ممتلئة بمياه الصرف بعد كل مطر. بريدي الإلكتروني [EMAIL],water_sewage,water_sewage,water_sewage
-C14678,al_khalij,en,"Dear Sada team, There is a large pothole on Street 10 that has damaged several cars. The pavement near the central market is broken and elderly people cannot walk on it. Please contact me. [NAME], phone [PHONE]",roads,roads,roads
-C03991,al_salam,msa,السلام عليكم، انقطعت المياه عن منزلنا في شارع 66 منذ 11 أيام دون أي اشعار. ويتضرر منها سكان الحي كلهم. وشكرا لكم.,water_sewage,water_sewage,water_sewage
-C06113,al_aziziya,msa,لم ترفع النفايات من شارع 158 منذ 29 أيام. ولم يحضر احد للمعاينة. نرجو سرعة المعالجة. رقم الهوية [ID],waste,waste,waste
-C10975,al_naseem,msa,مياه الصرف الصحى طافحة في شارع 12 عند المدرسة منذ أسبوعين والرائحة لا تحتمل. مقدم البلاغ: [NAME]، جوال [PHONE],water_sewage,water_sewage,water_sewage
-C05763,al_jazira,gulf,ترى المجارى طافحه عند مدرسه الحي والريحة واااايد قوية. والوضع كل يوم يسوء. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
-C17815,al_safa,en,"Hi, The toilets in the park have been closed for weeks. My name is [NAME].",water_sewage,parks,parks
-C08416,al_aziziya,msa,تحية طيبة، دورات المياه في الحديقة مغلقة منذ أسابيع. ألعاب الأطفال في مدرسة الحي مكسورة وخطرة. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة. اسمي [NAME].,parks,parks,parks
-C13177,al_wurud,gulf,السلام عليكم فيه تسريب مويا من الماسورة في شارع 120 من أسبوع والشارع غرقان. تكفون بسرعة. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
-C00847,al_rawabi,gulf,يا جماعة سيارة البلدية تشيل الزبالة وتطيح نصها بالشارع. اللحين صار لها وايد ومحد سوا شي.,waste,waste,waste
-C09297,al_aziziya,en,Serious cracks have appeared on the bridge leading to the clinic. Excavation works on Street 133 stopped 15 days ago and the road was never resurfaced. It is getting worse. Please contact me. Call me on [PHONE].,roads,roads,roads
-C02064,al_jazira,msa,اِلرصيف في شارع ٩٩ متكسر ولا يستطيع كبار السن المشي عِليه. والمشكلة تزداد سوءا. وِشكرا لكم.,roads,roads,roads
-C19863,al_aziziya,msa,تحية طيبة، الإنارة تعمل في النهار وتنطفئ في الليل في شارع 6. وقد أبلغت عن ذلك سابقا. آمل التواصل معي.,lighting,lighting,lighting
-C00784,al_rawabi,msa,اود الإبلاغ عن مشكلة: عمود انارة مائل في شارع 12 ويخشى سقوطه. الطريق المؤدي إلى الدوار مظلم تماما في الليل. وهذا يؤثر على الأطفال وكبار السن. رقم الهوية [ID],lighting,lighting,lighting
-C02943,al_jazira,en,Serious cracks have appeared on the bridge leading to the central market. The pavement near the clinic is broken and elderly people cannot walk on it. Children and older people are at risk. Please contact me. ID number [ID],roads,roads,roads
-C06657,al_naseem,gulf,السلام عليكم فيه تسريب مويه من الماسوره في شارع 119 من أسبوع والشارع غرقان. والوضع كل يوم يسوء. تكفون بسرعة.,water_sewage,water_sewage,water_sewage
-C04963,al_nuzha,en,"Dear Sada team, I called the hotline 27 times and nobody answered. They closed my previous report without doing anything.",staff_service,staff_service,staff_service
-C01538,al_naseem,msa,السلام عليكم، الإنارة تعمل في النهار وتنطفئ في الليل في شارع 86. عمود إنارة مائل في شارع 190 ويخشى سقوطه. اسمي [NAME].,lighting,lighting,lighting
-C07036,al_safa,msa,تحية طيبة، الرصيف في شارع 123 متكسر ولا يستطيع كبار السن المشي عليه. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة. بريدي الإلكتروني [EMAIL],roads,roads,roads
-C14909,al_khalij,en,"Dear Sada team, The children's play equipment in the park is broken and dangerous. The walking track does not have enough benches for older people. The whole neighbourhood is affected. Please fix this soon. Regards, [NAME]",parks,parks,parks
-C00444,al_naseem,msa,تحية طّيبة، ظهرت تشققات خطيرة في الجسر اِلمؤدي إلى السوق المركزي. المطب الجديد امام الدوار بلا لوحات تحذيرية. ويتضرر منها سكان اًلحي كلهم. نرجو سرعة المعالجة. اسمي [NAME].,roads,roads,roads
-C01607,al_rawabi,msa,أود الإبلاغ عن مشكلة: مكبرات الصوت في القاعة المجاورة لـمخبز الحي مرتفعة جدا. رقم الهوية [ID],noise,noise,noise
-C01366,al_jazira,gulf,لو سمحتوا البناء اللي جنب المسجد يبدون قبل الفجر ونصحى من الدق. القاعة اللي جنب المسجد السماعات عندهم عالية مره. وصار له فترة على هالحال. كلموني على [PHONE],noise,noise,noise
-C11113,al_faisaliya,msa,اتصلت بالرقم الموحد 30 مرات ولم يرد أحد. أغلقوا البلاغ السابق دون اي إجراء فعلي. وقد ابلغت عن ذلك سابقا. الإنارة تعمل في النهار وتنطفئ في الليل في شارع 143.,lighting,staff_service,staff_service
-C17036,al_khalij,en,"Hi, Construction waste is being dumped next to the roundabout every night. My mobile is [PHONE].",waste,waste,waste
-C12897,al_jazira,gulf,يا جماعة سكروا البلاغ اللي قبل وهم ما سووا شي. ومحد جا يشوف. الله يعافيكم شوفوا لنا حل. معك [NAME].,staff_service,staff_service,staff_service
-C09852,al_faisaliya,msa,اود الإبلاغ عن مشكلة: تقدمت بطلب رخصة بناء منذ 3 يوما ولم يصلني أي رد. ألغي موعد المعاينة لطلب الترخيص مرتين. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة. رقم الهوية [ID],permits,permits,permits
-C07532,al_salam,gulf,لو سمحتوا حطوا مطب عند السوق المركزي بدون لوحه وكل يوم حادث. فيه حفرة كبيرة في شارع 55 خربت كفرات السيارة. والعيال والشيبان يتأذون. الله يعافيكم شوفوا لنا حل. [NAME] - حي السلام,roads,roads,roads
-C02375,al_wurud,msa,ترمى مخلفات البناء بجوار الدوار دون رقابة. الحاوية المخصصة لحينا مكسورة منذ شهر. والوضع يتكرر كل أسبوع. آمل التواصل معي. للتواصل: [PHONE],waste,waste,waste
-C09443,al_safa,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب السوق المركزى كل ليلة. وبلغنا قبل ومحد سوا شي. شنوكرا.,waste,waste,waste
-C11412,al_naseem,gulf,المجاري في شارع 12 عند المدرسة طافحة من أسبوعين والعيال يمرون من وسط المويه، الله يعافيكم. انا [NAME] من سكان الحي.,water_sewage,water_sewage,water_sewage
-C03870,al_safa,gulf,الأنوار شغالة بالنهار وطافية بالليل، شلون كذا؟ وبلغنا قبل ومحد سوا شي.,lighting,lighting,lighting
-C11230,al_naseem,gulf,لو سمحتوا المجاري طافحة في شارع 12 جنب المدرسة من أسبوعين والشارع غرقان والريحة وايد، تكفون. [NAME] - حي النسيم,water_sewage,roads,water_sewage
-C11836,al_safa,msa,أود الإبلاغ عًن مشكلة: ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. غرف التفتيش فًي شارع ١٩٧ ممتلئه بُمياه الصرف بعد كل مطر. آمل التواصل معي. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C01470,al_faisaliya,gulf,مقدم على رخصه بناء من 28 يوم وللحين ما ردوا. حاوية حارتنا مكسورة من شهر ومحد بدلها. تكفون بسرعة.,waste,permits,permits
-C13639,al_jazira,gulf,لو سمحتوا اتصلت على الرقم الموحد 19 مرات وماحد رد. ومحد جا يشوف. تكفون بسرعة.,staff_service,staff_service,staff_service
-C05094,al_marwa,en,"Dear Sada team, The wedding hall near the entrance of the district plays music far too loud. The children's play equipment in the park is broken and dangerous. Thank you.",noise,noise,noise
-C06417,al_aziziya,en,"Hello, The collection truck spills half of the waste on the street. Rubbish has not been collected from Street 61 for 16 days. The whole neighbourhood is affected.",waste,waste,waste
-C03871,al_nuzha,gulf,يا جماعة تجديد رخصة المحل معلق بالنظام وما أدري ليش. مقدم على رخصة بناء من ١٦ يوم وللحين ما ردوا. الحين صار لها واااايد ومحد سوا شي. جوالي [PHONE],permits,permits,permits
-C07891,al_wurud,msa,تحية طيبة، يوجد طفح للصرف الصحي امام مخبز الحي والرائحة لا تحتمل. آمل التواصل معي. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
-C02111,al_marwa,gulf,الطريق لين مخبز الحي ظلمة بالليل ما تشوف شي. لمبات الشارع طافية في شارع 124 من 18 أيام. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],lighting,lighting,lighting
-C05828,al_naseem,gulf,مرحبا فيه تسريب مويه من الماسورة في شارع ١٢٠ من أسبوع والشارع غرقان. والعيال والشيبان يتأذون. وشكرا. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
-C09515,al_safa,en,"Hello, I waited more than two hours at the branch without being served. The whole neighbourhood is affected. Please fix this soon. My mobile is [PHONE].",staff_service,staff_service,staff_service
-C13359,al_safa,msa,اود الإبلاغ عن مشكلة: ورشة في شارع ١٨٥ تعمل طوال الليل بأصوات مزعجة. وهذا يؤثر على الأطفال وكبار السن.,noise,noise,noise
-C17271,al_jazira,gulf,ضغط اِلماي ضعيف مُرره وما يوصل للخزان فوق. والعيال وْالشيبان يتأذون. جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C05587,al_wurud,gulf,يا جماعة قعدت ساعتين بالفرع ومحد خدمني. وصار له فترة على هالحال. معك [NAME].,staff_service,staff_service,staff_service
-C02752,al_wurud,en,"Hi, Excavation works on Street 76 stopped 9 days ago and the road was never resurfaced. Serious cracks have appeared on the bridge leading to the clinic. The whole neighbourhood is affected. The bins near the mosque are overflowing and cats are spreading the waste. Please fix this soon. My name is [NAME].",waste,roads,roads
-C17486,al_wurud,msa,اود الإبلاغ عن مشكلة: تسربت المياه من أنبوب مكسور في شارع ٣٣ وتجمعت في الطريق. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
-C15058,al_nuzha,gulf,لو سمحتوا الحفريات في شارع ١٧٧ لها ١٢ يوم ومحد سفلتها. الشارع كله ترقيع وحفر من بعد الأمطار. والوضع كل يوم يسوء. قعدت ساعتين بالفرع ومحد خدمني. شنوكرا.,roads,roads,roads
-C14993,al_safa,gulf,لو سمحتوا تجديد رخصة المحل معلق بالنظام وما أدري ليه. موعد الكشف على الطلب انلغى مرتين.,permits,permits,permits
-C11464,al_naseem,gulf,يا جماعة المجاري طافحه في شارع 12 جنب المدرسة من أسبوعين والشارع غرقان والريحة وايد، صار لها وايد.,water_sewage,water_sewage,water_sewage
-C00242,al_salam,msa,المطب الجدید أمام السوق المرکزی بلا لوحات تحذیریة. والوضع یتکرر کل أسبوع. وشکرا لکم. أنا المواطن [NAME].,roads,roads,roads
-C18350,al_faisaliya,msa,ظهرت تشققات خطيره في الجسر المؤدي الى مدخل الحي. وهذا يؤثر على الأطفال وكبار السن.,roads,roads,roads
-C04581,al_nuzha,en,"Dear Sada team, I called the hotline 29 times and nobody answered. Please contact me. Regards, [NAME]",staff_service,staff_service,staff_service
-C01305,al_wurud,msa,أود الإبلاغ عن مشكلة: ألغي موعد المعاينة لطلب الترخيص مرتين. آمل التواصل معي. للتواصل: [PHONE],permits,permits,permits
-C06859,al_jazira,gulf,مرحبا الأنوار شغالة بالنهار وطافية بالليل، شلون كذا؟ وكل أسبوع نفس الشي. تكفون بسرعة.,lighting,lighting,lighting
-C16344,al_wurud,msa,تحية طيبة، ممشى الحي بلا مقاعد كافية لكبار السن.,parks,parks,parks
-C13073,al_faisaliya,gulf,مرحبا app رفضوا التصريح وما قالوا وش الناقص. وكل أسبوع نفس الشي. ألعاب الياهل في الحديقة مكسرة وخطيرة. وشكرا.,permits,parks,permits
-C03341,al_faisaliya,en,"Dear Sada team, There is a large pothole on Street 106 that has damaged several cars. Serious cracks have appeared on the bridge leading to the neighbourhood school. It has been like this for a while. Please contact me.",roads,roads,roads
-C18730,al_faisaliya,msa,تحية طيبة، ألغي موعد المعاينة لطلب الترخيص مرتين. رفض طلب التصريح دون ذكر المستندات الناقصة. رقم الهوية [ID],permits,permits,permits
-C01665,al_safa,msa,سيارة النظافة تترك نصف المخلفات على الطريق. آمل التواصل معي. بريدي الإلكتروني [EMAIL],waste,waste,waste
-C00160,al_aziziya,gulf,يا جماعه الشارع غرقان مويا من البياره اللي عند مخبز الحي. اللحين صار لها واااايد وماحد سوا شي.,water_sewage,water_sewage,water_sewage
-C03124,al_wurud,msa,أود الإبلاغ عن مشكلة: توجد حفرة كبيرة في شارع 14 تسببت في اضرار للسيارات. والوضع يتكرر كل أسبوع.,roads,roads,roads
-C01156,al_rawabi,gulf,سيارة البلدية تشيل الزبالة وتطيح نصها بالشارع. حاوية حارتنا مكسورة من شهر ومحد بدلها. والعيال والشيبان يتأذون.,waste,waste,waste
-C17075,al_jazira,msa,تحية طيبة، غرف التفتيش في شارع 175 ممـــتلئه بمياه الصرف بعد كل مطر. يوجد طفح للصرف الصحي أمام مخبز الحي والرائحة لا تحتمل. وشكرا لكم.,water_sewage,water_sewage,water_sewage
-C11146,al_naseem,gulf,الرصيف مكسر عند المسجد والشيبان ما يقدرون يمشون. وصار له فترة على هالحال. تكفون بسرعة. انا [NAME] من سكان الحي.,roads,roads,roads
-C13372,al_aziziya,en,The public garden on Street 179 is not watered and the grass is dead. The toilets in the park have been closed for weeks. Thank you.,parks,parks,parks
-C15816,al_salam,en,Water pressure is very low on the upper floors since the start of the month. Children and older people are at risk. I called the hotline 17 times and nobody answered.,staff_service,water_sewage,water_sewage
-C12635,al_aziziya,gulf,حطوا system مطب عَند الدوار بدون لوحه وِكل يوم حادث. وكل أهل اَلحي متضررين. تكفون بسرعة. كلموني على [PHONE],roads,roads,roads
-C06118,al_aziziya,gulf,رفضوا التصريح وما قالوا وش الناقص. والعيال والشيبان يتأذون.,permits,permits,permits
-C04054,al_wurud,msa,تحية طيبة، توجد حفرة كبيرة في شارع ١٧ تسببت في أضرار للسيارات. أعمال الحفر في شارع ١٨٨ متوقفه منذ ٦ يوما دون اعادة السفلتة. آمل التواصل معي. للتواصل: [PHONE],roads,roads,roads
-C19538,al_safa,msa,أود الإبلاغ عن مشكلة: ترمى مخلفات البناء بجوار مدرسة الحي دون رقابة. آمل التواصل معي.,waste,waste,waste
-C02200,al_nuzha,msa,تحية طيبة، رفض طلب التصريح دون ذكر المستندات الناقصة. طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. ولم يحضر أحد للمعاينة. ورشة في شارع 184 تعمل طوال الليل بأصوات مزعجة. رقم جوالي [PHONE],permits,permits,permits
-C00023,al_naseem,msa,السلام عليكم، الرصيف في شارع 167 متكسر ولا يستطيع كبار السن المشي عليه. المطب الجديد أمام السوق المركزى بلا لوحات تحذيرية. وشكرا لكم. مقدم البلاغ: [NAME]، جوال [PHONE],roads,roads,roads
-C02892,al_aziziya,msa,ممشى الحي بلا مقاعد كافية لكبار السن. والمشكلة تزداد سوءا. آمل التواصل معي. اسمي [NAME].,parks,parks,parks
-C16378,al_rawabi,msa,تعامل الموظف في مركز الخدمة كان غير لائق. والوضع على هذه الحال منذ مدة. [NAME] - حي الروابي,staff_service,staff_service,staff_service
-C00922,al_faisaliya,msa,السلام عليكم، غرف التفتيش في شارع 159 ممتلئه بمياه الصرف بعد كل مطر. والوضع يتكرر كل أسبوع. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
-C15958,al_marwa,msa,السلام عليكم، تسربت المياه من أنبوب مكسور في شارع 25 وتجمعت في الطريق. والوضع على هذه الحال منذ مدة. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
-C04113,al_faisaliya,en,"Hi, I applied for a building permit 19 days ago and have heard nothing. I reported it before. Please fix this soon. [NAME], phone [PHONE]",staff_service,permits,permits
-C17168,al_jazira,gulf,الشارع كله ترقيع وحفر من بعد الأمطار. الحينه صار لها واااايد وماحد سوا شي. انا [NAME] من سكان الحي.,roads,roads,roads
-C13937,al_faisaliya,en,"Hello, Our neighbourhood bin has been broken for a month. The bins near the mosque are overflowing and cats are spreading the waste. The whole neighbourhood is affected. This is the third time I report it. My name is [NAME].",waste,waste,waste
-C07202,al_jazira,gulf,لو سمحتوا رفضوا التصريح وما قالوا وش الناقص. الحينه صار لها واااايد وماحد سوا شي. كلموني على [PHONE],roads,permits,permits
-C14843,al_jazira,gulf,السلام عليكم الحفريات في شارع 39 لها 15 يوم ومحد سفلتها. فيه عمود نور مايل في شارع 94 بيطيح على أحد. الله يعافيكم شوفوا لنا حل.,roads,roads,roads
-C16288,al_faisaliya,msa,السلام عليكم، الطريق المؤدى إلى مدخل الحي مظلم تماما في الليل. والوضع يتكرر كل أسبوع. نرجو سرعة المعالجة.,lighting,lighting,lighting
-C11277,al_jazira,msa,الحاوية المخصصة لحينا مكسورة منذ شهر.,waste,waste,waste
-C05291,al_marwa,msa,أود الإبلاغ عن مشكلة: توجد حفرة كبيره في شارع 110 تسببت في اضرار للسيارات. اعمال الحفر في شارع 136 متوقفة منذ 22 يوما دون إعادة السفلتة. وهذا يؤثر على الأطفال وكبار السن.,roads,roads,roads
-C05356,al_naseem,gulf,السلام عليكم الأنوار شغالة بالنهار وطافية بالليل، شلون كذا؟ فيه عمود نور مايل في شارع 180 بيطيح على احد. وبلغنا قبل ومحد سوا شي. تكفون بسرعة. كلموني على [PHONE],lighting,lighting,lighting
-C05821,al_rawabi,msa,تحية طيبة، الحاوية المخصصة لحينا مكسورة منذ شهر. لم ترفع النفايات من شارع 66 منذ 7 ايام. والمشكلة تزداد سوءا. وشكرا لكم.,waste,waste,waste
-C03957,al_jazira,msa,السلام عليكم، انتظرت اكثر من ساعتين في الفرع دون خدمة. أغلقوا البلاغ السابق دون أي إجراء فعلي. وهذا يؤثر على الأطفال وكبار السن. آمل التواصل معي.,staff_service,staff_service,staff_service
-C09765,al_faisaliya,gulf,لمبات الشارع طافية في شارع 86 من 2 أيام. فيه عمود نور مايل في شارع 185 بيطيح على أحد. ومحد جا يشوف. تكفون بسرعة. انا [NAME] وهذا رقمي [PHONE],lighting,lighting,lighting
-C01898,al_aziziya,msa,تحية طيبة، تسربت المياه من أنبوب مكسور في شارع 161 وتجمعت في الطريق. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
-C18804,al_aziziya,en,"Hi, The manholes on Street 88 fill with sewage after every rain. Water pressure is very low on the upper floors since the start of the month. Please contact me. My name is [NAME].",water_sewage,water_sewage,water_sewage
-C00538,al_salam,gulf,الحديقة اللي في شارع 177 محد يسقيها والزرع ميت. وكل اهل الحي متضررين. الله يعافيكم شوفوا لنا حل. انا [NAME] من سكان الحي.,parks,parks,parks
-C14699,al_aziziya,en,"Hi, A street light pole on Street 39 is leaning and may fall. The road to the roundabout is completely dark at night. It is getting worse. This is the third time I report it. Call me on [PHONE].",lighting,lighting,lighting
-C14432,al_jazira,gulf,لو سمحتوا ألعاب الياهل في الحديقة مكسرة وخطيرة. الحين صار لها وايد وماحد سوا شي. انا [NAME] وهذا رقمي [PHONE],parks,lighting,parks
-C06511,al_safa,en,"Dear Sada team, The pavement near the neighbourhood school is broken and elderly people cannot walk on it. I reported it before. Regards, [NAME]",roads,roads,roads
-C18278,al_nuzha,msa,الحديقة العامه في شارع 41 بلا سقي والعشب جاف. أنا المواطن [NAME].,parks,parks,parks
-C10127,al_nuzha,msa,ألعاب اَلأطفال في مُخبز الـــحي مكسورة وخطرة. آمل اِلتواصل معي. للتواصل: [PHONE],waste,parks,parks
-C07489,al_shati,msa,أود الإبلاغ عن مشكلة: طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. آمل التواصل معي. بريدي الإلكتروني [EMAIL],permits,permits,permits
-C08292,al_aziziya,en,Excavation works on Street 23 stopped 23 days ago and the road was never resurfaced. This is the third time I report it.,roads,roads,roads
-C05169,al_safa,msa,ممشى الحي بلا مقاعد كافية لكبار السن.,parks,parks,parks
-C04300,al_safa,msa,مكبرات الصوت في القاعه اَلمجاوره لـالسوق المركزي مرتفعة جُدا. وًهذا يؤثر على الأطفال وكبار السن.,noise,noise,noise
-C19427,al_wurud,en,"Dear Sada team, My shop licence renewal is stuck in the system with no reason given. Children and older people are at risk. [NAME], phone [PHONE]",permits,permits,permits
-C14414,al_marwa,msa,ترمى مخلفات البناء بجوار مدخل الحي دون رقابة. والمشكلة تزداد سوءا. للتواصل: [PHONE],waste,waste,waste
-C04750,al_aziziya,gulf,رفضوا app التصریح وما قالوا وش الناقص. تکفون بسرعة. انا [NAME] وهذا رقمي [PHONE],permits,permits,permits
-C08431,al_khalij,msa,رفض طلب التصريح دون ذكر المستندات الناقصة.,permits,permits,permits
-C19076,al_faisaliya,gulf,مرحبا system الماي مقطوع عندنا من 16 أيام وما أحد رد علينا. رقم هويتي [ID],water_sewage,water_sewage,water_sewage
-C03107,al_faisaliya,gulf,يا جماعة فيه تسريب مويه من الماسورة في شارع 178 من أسبوع والشارع غرقان. الشارع غرقان مويه من البيارة اللي عند مدخل الحي. وشكرا. معك [NAME].,water_sewage,water_sewage,water_sewage
-C18441,al_marwa,gulf,السلام عليكم تجديد رخصة المحل معلق بالنظام وما ادري ليش. شنوكرا.,permits,permits,permits
-C01139,al_salam,msa,اِلإنارة تعمل في اُلنهار وتنطفئ فِي الليل في شارع 104. نرجو سرعة المعالجة.,lighting,lighting,lighting
-C15127,al_faisaliya,gulf,السلام عليكم ترى المجاري طافحة عند المسجد والريحه واااايد قوية. وبلغنا قبل وماحد سوا شي. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C19354,al_jazira,msa,أود الإبلاغ عن مشكلة: دورات المياه في الحديقة مغلقة منذ أسابيع. ممشى الحى بلا مقاعد كافية لكبار السن. وقد أبلغت عن ذلك سابقا. آمل التواصل معي. أنا المواطن [NAME].,parks,parks,parks
-C05462,al_rawabi,msa,السلام عليكم، اتصلت بالرقم الموحد 28 مرات ولم يرد أحد. والمشكلة تزداد سوءا. نرجو سرعة المعالجة. رقم الهوية [ID],staff_service,staff_service,staff_service
-C09520,al_naseem,gulf,تُرى المجاري طافحة عُند مدرسة الحي والريحة وايد قوية. وكل اهل الحي متضررين. اِلحاويات عند مدرسة الحي فايضة والقطاوة معفسينها. تكفون بسرعة.,water_sewage,water_sewage,water_sewage
-C12423,al_jazira,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب السوق المركزي كل ليلة. الزبالة ما انشالت من 27 أيام في شارع 33. تكفون بسرعة. ايميلي [EMAIL],waste,waste,waste
-C19161,al_faisaliya,gulf,يا جماعة الحاويات عند السوق المركزي فايضة والقطاوة معفسينها. والعيال والشيبان يتأذون. فيه حفرة كبيرة في شارع 50 خربت كفرات السيارة. ايميلي [EMAIL],waste,waste,waste
-C16346,al_wurud,msa,اّود الإبلاغ عن مشكلة: تعامل الموظف في مركز اِلخدمة كان غير لّائق. والمشكلة تزداد سوءا. أنا المواطن [NAME].,staff_service,staff_service,staff_service
-C11684,al_faisaliya,msa,سيارة النظافة تترك نصف المخلفات على الطريق. حاويات النفايات عند السوق المركزي مّمتلئة وتنتشر حُولها القطط. ولم يحضر اُحد للمعاينة.,waste,waste,waste
-C12411,al_jazira,gulf,مرحبا الحفريات في شارع 111 لها 14 يوم ومحد سفلتها. حطوا مطب عند مدرسة الحى بدون لوحة وكل يوم حادث. والوضع كل يوم يسوء. الحين صار لها واااايد ومحد سوا شي.,parks,roads,roads
-C04076,al_salam,gulf,السلام عليكم فيه ناس يكبون مخلفات بناء جنب الدوار كل ليلة. الحينه صار لها وايد ومحد سوا شي.,waste,waste,waste
-C06267,al_jazira,gulf,مرحبا حمامات الحديقة مسكره من أسابيع. ألعاب الياهل في الحديقه مكسره وخطيرة. ومحد جا يشوف.,parks,parks,parks
-C03917,al_faisaliya,gulf,لو سمحتوا فيه حفرة كبيرة في شارع 12 خربت كفرات السيارة. الـــشارع كله ترقيع وحفر من بعد الأمطار. الله يعافيكم شوفوا لنا حل. انا [NAME] من سكان الحي.,roads,roads,roads
-C07917,al_marwa,en,"Hi, Excavation works on Street 24 stopped 30 days ago and the road was never resurfaced. Children and older people are at risk. This is the third time I report it.",roads,roads,roads
-C08357,al_salam,en,The wedding hall near the roundabout plays music far too loud. Children and older people are at risk. This is the third time I report it. My mobile is [PHONE].,noise,noise,noise
-C16785,al_rawabi,gulf,لو سمحتوا الرصيف مكسر عند مدخل الحي والشيبان ما يقـــدرون يمشون. فيه ناس يكبون مخلفات بناء جنب مخبز الحي كل ليلة. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],roads,roads,roads
-C19709,al_safa,msa,السلام عليكم، ظهرت تشققات خطيرة في الجسر المؤدي إلى الدوار. ولم يحضر أحد للمعاينة. آمل التواصل معي. للتواصل: [PHONE],roads,roads,roads
-C03823,al_faisaliya,gulf,سكروا البلاغ اللي قبل وهم ما سووا شي. الحين صار لها وايد ومحد سوا شي. انا [NAME] من سكان الحي.,staff_service,staff_service,staff_service
-C14249,al_faisaliya,en,A broken pipe on Street 5 is leaking water onto the road. It happens every week. I called the hotline 28 times and nobody answered. Please fix this soon. Call me on [PHONE].,water_sewage,water_sewage,water_sewage
-C12366,al_wurud,msa,تحیة طیبة، عمود اّناره مائل فی شارع 135 ویخشى سقوطه. الطریق المؤدی إًلى مدرسة الحی مظلم تماما فی اّللیل. ویتضرر منها سکان الحی کلهم. وشکرا لکم. مقدم البلاغ: [NAME]، جوال [PHONE],lighting,lighting,lighting
-C11716,al_aziziya,msa,اود الإبلاغ عن مشكلة: ضغط المياه ضعيف جدا في الأدوار العليا منذ بدايه الشهر. انقطعت المياه عن منزلنا في شارع 144 منذ 25 أيام دون أي إشعار. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
-C16342,al_rawabi,gulf,الموظف في مركز الخدمة كان أسلوبه مو زين أبد. سكروا البلاغ اللي قبل وهم ما سووا شي. الحين صار لها واااايد ومحد سوا شي.,staff_service,staff_service,staff_service
-C15550,al_salam,msa,السلام عليكم، سيارة النظافة تترك نصف اْلمخلفات على الطريق. ترمى مخلفات البناء بجوار مَخبز الحي دون رقابة. والوضع يِتكرر كل أسبوع.,staff_service,waste,waste
-C19095,al_safa,gulf,مرحبا حاوية حْارتنا مكسورة من شهر وماحد بدلها. سيارة البلدية تشيل الزبالة وتطيح نصها بُالشارع. وبلغنا قبل ومحد سًوا شي. رقم هويتي [ID],waste,waste,waste
-C10060,al_shati,gulf,الشارع غرقان ميه من البيارة اّللي عند مخبز اًلحي. وكل اهل الحي مًتضررين. وشكرا. انا [NAME] من سكان الحي.,water_sewage,water_sewage,water_sewage
-C07953,al_marwa,msa,تحيه طيبة، ترمى مخلفات البناء بجوار مخبز الحي دون رقابة. وقد ابـــلغت عن ذلك سابقا. رقم جوالي [PHONE],parks,waste,waste
-C11781,al_faisaliya,en,Sewage is overflowing in front of the clinic and the smell is unbearable. The whole neighbourhood is affected. Please contact me.,water_sewage,water_sewage,water_sewage
-C02692,al_naseem,en,"Dear Sada team, Rubbish has not been collected from Street 136 for 22 days. Our neighbourhood bin has been broken for a month. It happens every week. Thank you. [NAME], resident of Al-Naseem",waste,waste,waste
-C18046,al_aziziya,gulf,يا جماعة لمبات الشارع طافية في شارع 133 من 28 أيام. اللحين صار لها واااايد ومحد سوا شي. معك [NAME].,lighting,lighting,lighting
-C07422,al_faisaliya,en,"Dear Sada team, A street light pole on Street 14 is leaning and may fall. It happens every week. This is the third time I report it.",lighting,lighting,lighting
-C10671,al_faisaliya,msa,السلام عليكم، ممشى الحي بلا مقاعد كافية لكبار السن. دورات المياه في الحديقة مغلقة منذ أسابيع. ويتضرر منها سكان الحي كلهم. نرجو سرعة المعالجة. رقم جوالي [PHONE],parks,parks,parks
-C16243,al_aziziya,msa,الغي موعد المعاينه لطلب الترخيص مرتين. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],permits,permits,permits
-C10779,al_wurud,gulf,مرحبا ألعاب الياهل في الحديقه مكسرة وخطيرة. ومحد جا يشوف. تكفون بسرعة.,parks,parks,parks
-C08530,al_nuzha,gulf,حطوا مطب عند مدخل الحي بدون لوحة وكل يوم حادث. اُلرصيف مكسر عند مدخل الحي والشيبان ما يقدرون يّمشون. وكل أسبوع نِفس الشي. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],roads,roads,roads
-C18190,al_jazira,msa,أود الإبلاغ عن مشكلة: لم ترفع النفايات من شارع 11 منذ 3 ايام. آمل التواصل معي. رقم الهوية [ID],waste,waste,waste
-C15180,al_jazira,gulf,مرحبا الشارع غرقان مويه من البيارة اللي عند مدخل الحي. وشكرا. جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C14110,al_nuzha,gulf,لو سمحتوا الشارع كله ترقيع وحفر من بعد الأمطار. وكل اهل الحي متضررين. وشكرا.,roads,roads,roads
-C14121,al_safa,en,"A workshop on Street 25 runs noisy machines all night. The wedding hall near the bakery plays music far too loud. It happens every week. I applied for a building permit 3 days ago and have heard nothing. Please contact me. [NAME], phone [PHONE]",noise,permits,noise
-C02888,al_khalij,msa,انتظرت أكثر من ساعتين في الفرع دون خدمة. آمل التواصل معي.,staff_service,staff_service,staff_service
-C18485,al_salam,gulf,سكروا البلاغ اللي قبل وهم ما سووا شي.,staff_service,staff_service,staff_service
-C17053,al_jazira,gulf,مرحبا الشارع غرقان مويه من البيارة اللي عند مدرسه الحي. وشكرا. معك [NAME].,water_sewage,water_sewage,water_sewage
-C09849,al_wurud,en,"Dear Sada team, My permit application was rejected without saying which documents were missing. The inspection appointment for my licence was cancelled twice. Please contact me. My name is [NAME].",permits,permits,permits
-C06295,al_faisaliya,msa,الرصيف في شارع ١٩٣ متكسر ولا يستطيع كبار السن المشي عليه. ظهرت تشققات خطيرة في الجسر المؤدي إلى المسجد. نرجو سرعة المعالجة. رقم جوالي [PHONE],roads,roads,roads
-C18506,al_jazira,gulf,السلام عليكم الزباله ما انشالت من 26 ايام في شارع 13. وكل أهل الحي متضررين. وشكرا. [NAME] - حي الجزيرة,waste,waste,waste
-C01485,al_jazira,en,"Hello, The pavement near the clinic is broken and elderly people cannot walk on it. It has been like this for a while.",roads,roads,roads
-C01136,al_safa,msa,تحيه طيبة، اعمال الحفر في شارع 95 متوقفة منذ 18 يوما دون إعادة السفلتة. ولم يحضر احد للمعاينة. وشكرا لكم. رقم الهوية [ID],roads,roads,roads
-C01679,al_jazira,gulf,السلام online عليكم الأنوار شغالة بالنهار وطافية بالليل، شلون كذا؟ لمبات الشارع طافية في شارع 73 من 21 أيام. الله يعافيكم شوفوا لنا حل. انا [NAME] وهذا رقمي [PHONE],lighting,lighting,lighting
-C18900,al_khalij,en,"Hello, The collection truck spills half of the waste on the street. Rubbish has not been collected from Street 79 for 16 days. A workshop on Street 11 runs noisy machines all night. Please fix this soon. My name is [NAME].",waste,noise,waste
-C13576,al_safa,gulf,لو online سمحتوا الحفريات في شارع 5 لها 5 يوم ومحد سفلتها. وبلغنا قبل ومحد سوا شي. الحين صار لها وايد ومحد سوا شي. معك [NAME].,roads,roads,roads
-C09350,al_nuzha,msa,تحية طيبة، حاويات النفايات عند السوق المركزى ممتلئة وتنتشر حولها القطط. ترمى مخلفات البناء بجوار الدوار دون رقابة. ولم يحضر أحد للمعاينة. الرصيف في شارع 39 متكسر ولا يستطيع كبار السن المشي عليه. وشكرا لكم.,roads,waste,waste
-C08165,al_wurud,en,"Dear Sada team, A street light pole on Street 16 is leaning and may fall. The lights stay on during the day and go off at night on Street 178. It happens every week. Please contact me.",lighting,lighting,lighting
-C00233,al_khalij,en,"Hello, The employee at the service centre was rude to me. I waited more than two hours at the branch without being served. I reported it before. This is the third time I report it.",staff_service,staff_service,staff_service
-C04762,al_shati,msa,أود الإبلاغ عن مشكلة: اتصلت بالرقم الموحد 10 مرات ولم يرد احد. ولم يحضر أحد للمعاينة. رقم الهوية [ID],staff_service,staff_service,staff_service
-C18458,al_faisaliya,en,"Hello, The collection truck spills half of the waste on the street. Rubbish has not been collected from Street 199 for 8 days. I reported it before. Please contact me. My mobile is [PHONE].",waste,waste,waste
-C09910,al_khalij,en,"Hi, They closed my previous report without doing anything. Nobody came to inspect it. Thank you.",staff_service,staff_service,staff_service
-C08915,al_naseem,gulf,يا جماعة فيه ناس يكبون مخلفات بناء جنب السوق المركزي كل ليلة. الحين صار لها واااايد وماحد سوا شي. انا [NAME] وهذا رقمي [PHONE],waste,waste,waste
-C04085,al_nuzha,msa,أود الإبلاغ عن مشكلة: ممشى الحي بلا مقاعد كافية لكبار السن. الـــرصيف في شارع 87 متكسر ولا يستطيع كبار السن المشي عليه.,parks,parks,parks
-C18757,al_jazira,msa,اود الإبلاغ عن مْشكلة: اَلرصيف في شارع ١٧٠ متكسر ولا يستطيع كبار السن المشي عليه. وشكرا لكم. للتواصل: [PHONE],roads,roads,roads
-C18244,al_faisaliya,msa,يوجد طفح للصرف الصحي أمام المسجد والرائحة لا تحتمل. ولم يحضر احد للمعاينة. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],water_sewage,water_sewage,water_sewage
-C16843,al_aziziya,gulf,فيه حفرة كبيرة في شارع 75 خربت كفرات اْلسيارة. وصار له فترة على هالحال. اللحين صًار لها وايد وماحد سوا شًي.,roads,roads,roads
-C19900,al_jazira,gulf,سيارة البلدية تشيل الزبالة وتطيح نصها بالشارع. حاوية حارتنا مكسورة من شهر ومحد بدلها. والوضع كل يوم يسوء. تكفون بسرعة.,waste,waste,waste
-C15856,al_faisaliya,msa,يوجد طفح للصرف الصحي امام الدوار والرائحة لا تحتمل. نرجو سرعة المعالجة. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C10646,al_safa,gulf,ماطور كهربا شغال ليل ونهار في شارع 55. فيه ورشة في شارع 64 تشتغل طول الليل والإزعاج وايد. والعيال والشيبان يتأذون. الحين صار لها وايد ومحد سوا شي.,noise,noise,noise
-C19773,al_salam,msa,دورات المياه في الحديقة مغلقة منذ اسابيع. ألعاب الأطفال في مدرسه الحى مكسورة وخطرة. ويتضرر منها سكان الحي كلهم. نرجو سرعة المعالجة.,parks,parks,parks
-C10555,al_salam,gulf,فيه تسريب مويا من الماسورة فْي شارع ١٧٥ من أسبوع والشارع غّرقان. وبلغنا قِبل ومحد سوا شي. الله يعافيكم شوفوا لنا حل.,water_sewage,water_sewage,water_sewage
-C12013,al_nuzha,en,"Dear Sada team, Our neighbourhood bin has been broken for a month. I reported it before. Please contact me.",noise,waste,waste
-C06028,al_aziziya,en,"Hello, Excavation works on Street 16 stopped 7 days ago and the road was never resurfaced. It has been like this for a while.",roads,roads,roads
-C01527,al_jazira,msa,مكبرات الصوت في القاعة المجاورة لـمدرسه الحي مرتفعة جدا. وقد أبلغت عن ذلك سابقا. تعامل الموظف في مركز الخدمة كان غير لائق. آمل التواصل معي.,noise,noise,noise
-C12597,al_safa,msa,تحية طيبة، أعمال البناء بجوار مدرسة الحى تبدأ قبل الفجر كِل يوم. مًكبرات الصوت في القاعة المجاورة لـمدرسة الحي مرتفعة جدا. وهذا يؤثر على الأطفال وْكبار السن. أغلقوا البلاغ السابق دون أي إجراء فعلي. للتواصل: [PHONE],staff_service,noise,noise
-C16550,al_naseem,gulf,تجديد رخصه المحل معلق بالنظام وما ادري ليه. وماحد جا يشوف. انا [NAME] من سكان الحي.,permits,permits,permits
-C18295,al_safa,gulf,لو سمحتوا فيه حفرة كبيرة في شارع 98 خربت كفرات السيارة. حطوا مطب عند مدخل الحي بدون لوحة وكل يوم حادث. وكل اهل الحي متضررين.,roads,roads,roads
-C10310,al_khalij,en,"Dear Sada team, A workshop on Street 54 runs noisy machines all night. The wedding hall near the roundabout plays music far too loud. My mobile is [PHONE].",noise,noise,noise
-C03881,al_rawabi,msa,لم ترفع النفايات من شارع ١٨٢ منذ ٢ أيام. وقد أبلغت عن ذلك سابقا. رقم الهوية [ID],waste,waste,waste
-C18417,al_jazira,gulf,الرصيف مكسر عند المسجد والشيبان ما يقدرون يمشون. جوالي [PHONE],roads,roads,roads
-C17599,al_faisaliya,msa,اود الإبلاغ عن مشكلة: طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. ويتضرر منها سكان الحي كلهم. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],permits,permits,permits
-C06633,al_naseem,msa,اود الإبلاغ عن مشكلة: الرصيف في شارع 51 متكسر ولا يستطيع كبار السن المشي عليه. والوضع يتكرر كل اسبوع. نرجو سرعة المعالجة.,roads,roads,roads
-C00131,al_naseem,gulf,لو سمحتوا الشارع غرقان مويه من البيارة اللي عند المسجد. وكل أهل الحي متضررين. شنوكرا.,water_sewage,water_sewage,water_sewage
-C02742,al_naseem,msa,مكبرات الصوت في القاعة المجاورة لـالمسجد مرتفعة جدا. ويتضرر منها سكان الحي كلهم. نرجو سرعة المعالجة.,noise,noise,noise
-C06947,al_faisaliya,en,"The lights stay on during the day and go off at night on Street 131. Thank you. Regards, [NAME]",lighting,lighting,lighting
-C02173,al_naseem,gulf,يا جماعة حاوية حارتنا مكسورة من شهر وماحد بدلها. وصار له فترة على هالحال. تكفون بسرعة.,waste,waste,waste
-C19215,al_shati,msa,تحية طيبة، اعمال الحفر في شارع 3 متوقفة منذ 19 يوما دون إعادة السفلتة. الرصيف في شارع 195 متكسر ولا يستطيع كبار السن المشي عليه. والوضع يتكرر كل أسبوع. وشكرا لكم. مقدم البلاغ: [NAME]، جوال [PHONE],roads,roads,roads
-C01373,al_safa,msa,اتصلت بالرقم الموحد 6 مرات ولم يرد أحد. والمشكلة تزداد سوءا. الطريق المؤدي إلى مخبز الحي مظلم تماما في الليل. آمل التواصل معي.,staff_service,staff_service,staff_service
-C08325,al_faisaliya,msa,ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. والوضع يتكرر كل اسبوع. وشكرا لكم. مقدم البلاغ: [NAME]، جوال [PHONE],water_sewage,water_sewage,water_sewage
-C04493,al_faisaliya,gulf,لو سمحتوا ترى المجارى طافحة عند الدوار والريحة وايد قوية. والوضع كل يوم يسوء. تكفون بسرعة. معك [NAME].,water_sewage,water_sewage,water_sewage
-C06406,al_marwa,msa,ﺕﻭجﺩ حفﺭة كبﻱﺭة في شﺍﺭع 35 تسبﺏﺕ فﻱ ﺍضﺭﺍﺭ للسيارﺍت. آمﻝ ﺍلﺕﻭﺍصﻝ ﻡعﻱ.,roads,roads,roads
-C17901,al_faisaliya,msa,تحية طَيبة، توجد حفرة كبيرة فْي شارع 34 تسببت في اَضرار للسيارات. ويتضرر منها سكان الحي كلهم.,roads,roads,roads
-C06832,al_jazira,gulf,فيه ناس يكبون مخلفات بناء جنب السوق المركزي كل ليلة. حاوية حارتنا مكسورة من شهر ومحد بدلها. والعيال والشيبان يتأذون. وشكرا. كلموني على [PHONE],waste,waste,waste
-C07705,al_marwa,msa,لم ترفع النفايات من شارع 63 منذ 5 ايام. ولم يحضر أحد للمعاينة. للتواصل: [PHONE],waste,waste,waste
-C05770,al_aziziya,msa,تحية طيبة، لم ترفع النفايات من شارع 101 منذ 3 ايام. سيارة النظافة تترك نصف المخلفات على الطريق. آمل التواصل معي.,waste,waste,waste
-C07879,al_nuzha,en,"They closed my previous report without doing anything. I reported it before. The toilets in the park have been closed for weeks. Thank you. [NAME], phone [PHONE]",staff_service,staff_service,staff_service
-C11975,al_naseem,msa,مياه الصرف الـــصحي طافحه في شارع 12 عند المدرسة منذ أسبوعين والرائحة لا تحتمل. [NAME] - حي النسيم,water_sewage,water_sewage,water_sewage
-C02788,al_rawabi,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب مدرسة الحي كل ليلة. والعيال والشيبان يتأذون. الحين صار لها وايد ومحد سوا شي. جوالي [PHONE],waste,waste,waste
-C13557,al_jazira,en,"Hi, My shop licence renewal is stuck in the system with no reason given. I applied for a building permit 23 days ago and have heard nothing. This is the third time I report it. My mobile is [PHONE].",permits,permits,permits
-C03329,al_marwa,msa,اود الإبلاغ عن مشكلة: عمود إنارة مائل في شارع ١٣٧ ويخشى سقوطه. وشكرا لكم. اسمي [NAME].,lighting,lighting,lighting
-C19537,al_naseem,gulf,لو سمحتوا فيه تسريب مويه من الماسورة في شارع 2 من أسبوع والشارع غرقان. ضغط الماى ضعيف مره وما يوصل للخزان فوق. وصار له فترة على هالحال. الحين صار لها وايد ومحد سوا شي. رقم هويتي [ID],water_sewage,water_sewage,water_sewage
-C06727,al_naseem,gulf,رفضوا التصريح وما قالوا شنو الناقص. مقدم على رخصة بناء من ٤ يوم وللحين ما ردوا. وكل اهل الحي متضررين.,permits,permits,permits
-C05887,al_safa,gulf,مرحبا قعدت ساعتين بالفرع وماحد خدمني. الحينه صار لها وايد ومحد سوا شي.,staff_service,staff_service,staff_service
-C16100,al_khalij,en,"Hi, Excavation works on Street 150 stopped 21 days ago and the road was never resurfaced. Please fix this soon. Regards, [NAME]",roads,roads,roads
-C18862,al_marwa,gulf,مرحبا الماي مُقطوع عندنا من 14 أيام وما أحد رد عًلينا. وصار له فترة على هالحال. الله يعافيكم شوفوا لنا حل. انا [NAME] وهذا رقمي [PHONE],water_sewage,water_sewage,water_sewage
-C05604,al_faisaliya,msa,السلام عليكم، رفض طلب التصريح دون ذكر المستندات الناقصة. الغي موعد المعاينة لطلب الترخيص مرتين. وشكرا لكم.,permits,permits,permits
-C17969,al_shati,msa,تحیه طیبة، طلب تجدید رخصه المحل معلق فی النظام دون سبب واضح. [NAME] - حي الشاطئ,permits,permits,permits
-C04413,al_khalij,msa,السلام عليكم، سياره النظافة تترك نصف المخلفات على الطريق. للتواصل: [PHONE],waste,waste,waste
-C04371,al_naseem,gulf,لو سمحتوا الحاويات عند الدوار فايضة والقطاوة معفسينها. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],waste,waste,waste
-C09073,al_aziziya,gulf,يا OK جماعة سيارة البلدية تشيل الزبالة وتطيح نصها بالشارع. وصـــار له فترة على هالحال. رقم هويتي [ID],waste,waste,waste
-C02062,al_salam,msa,تحية طيبة، اتصلت بالرقم الموحد 30 مرات ولم يرد احد. وشكرا لكم. أنا المواطن [NAME].,staff_service,staff_service,staff_service
-C04903,al_naseem,msa,تعامل اَلموظف في مًركز الخدمة كان غّير لائق. رقم الهوية [ID],staff_service,staff_service,staff_service
-C17078,al_faisaliya,gulf,يا جّماعة الزبالة ما اْنشالت من ٢٩ أيام في شارع ١٣٨. وشكرا. انا [NAME] وهذا رقمي [PHONE],waste,waste,waste
-C07888,al_khalij,gulf,مرحبا system فيه ورشة فًي شارع ١٨٦ تشتغل طول الليل والإزعاج وايد. وكل أسبوع نفس الشي. اْلله يعافيكم شِوفوا لنا حل. انا [NAME] من سكان الحي.,noise,noise,noise
-C02487,al_khalij,msa,انقطعت المیاه عن منزلنا فی شارع 36 منذ 9 أیام دون أی إشعار. وشکرا لکم. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C18749,al_jazira,msa,تحية طيبة، المطب الجديد امام المسجد بلا لوحات تحذيرية. نرجو سرعة المعالجة. رقم جوالي [PHONE],roads,roads,roads
-C10053,al_jazira,gulf,يا جمـــاعة حطوا مطب عند مدرسة الحي بدون لوحة وكل يوم حادث. الرصيف مكسر عند مدخل الحي والشيبان ما يقدرون يمشون. وصار له فترة على هالحال. كلموني على [PHONE],roads,roads,roads
-C05995,al_naseem,gulf,يا جماعة الحفريات في شارع 35 لها 17 يوم وماحد سفلتها. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],roads,roads,roads
-C17557,al_aziziya,msa,انقطعت المياه عن منزلنا في شارع 17 منذ 20 ايام دون أي إشعار. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
-C13324,al_faisaliya,msa,ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. نرجو سرعة المعالجة. [NAME] - حي الفيصلية,water_sewage,water_sewage,water_sewage
-C08719,al_jazira,gulf,فيه ناس يكبون مخلفات بناء جنب المسجد كل ليلة. حاوية حارتنا مكسورة من شهر ومحد بدلها. انا [NAME] وهذا رقمي [PHONE],waste,waste,waste
-C03779,al_jazira,msa,السلام عليكم، الرصيف في شارع 69 متكسر ولا يستطيع كبار السن المشي عليه. ظهرت تشققات خطيرة في الجسر المؤدي الى الدوار. وشكرا لكم. رقم جوالي [PHONE],roads,roads,roads
-C15048,al_wurud,msa,السلام عليكم، حاويات النفايات عند مدخل الحي ممتلئة وتنتشر حولها القطط. رقم جوالي [PHONE],lighting,waste,waste
-C06489,al_khalij,en,"Dear Sada team, I waited more than two hours at the branch without being served. Please contact me. Call me on [PHONE].",staff_service,staff_service,staff_service
-C02596,al_faisaliya,msa,ﻝم ترفع ﺍلنفﺍيﺍﺕ ﻡﻥ شاﺭع 148 مﻥذ 8 أْﻱﺍﻡ. وُقد أبلغﺕ عﻥ ذﻝك ساﺏقﺍ. ﻭشكرا ﻝكﻡ.,waste,waste,waste
-C04458,al_nuzha,msa,تحية طيبة، الإنارة تعمل في النهار وتنطفئ في الليل في شارع ٣٨. رقم جوالي [PHONE],lighting,lighting,lighting
-C17035,al_nuzha,msa,ترمى مخلفات البناء بجوار المسجد دون رقابة. والوضع يتكرر كل أسبوع. أنا المواطن [NAME].,waste,waste,waste
-C12082,al_naseem,msa,تحية طيبة، مياه الصرف الصحي طافحة في شارع 12 عند المدرسة منذ أسبوعين والرائحه لا تحتمل. اسمي [NAME].,water_sewage,water_sewage,water_sewage
-C10714,al_naseem,gulf,السلام عْليكم مِمشى الحي ما فيه كراسي تًكفي. وشكرا. كلموني على [PHONE],parks,parks,parks
-C10199,al_jazira,gulf,لو سمحتوا الأنوار شغالة بالنهار وطافية بالليل، شلون كذا؟ لمبات الشارع طافيه في شارع ٣٢ من ٢٤ ايام. وصار له فترة على هالحال. وشكرا. انا [NAME] وهذا رقمي [PHONE],lighting,lighting,lighting
-C12863,al_naseem,msa,لم ترفع النفايات من شارع 105 منذ 12 ايـــام. حاويات النفايات عند مدرسة الحي ممتلئة وتنتشر حولها القطط.,waste,waste,waste
-C19771,al_salam,en,"A broken pipe on Street 96 is leaking water onto the road. The manholes on Street 21 fill with sewage after every rain. Children and older people are at risk. Thank you. [NAME], phone [PHONE]",water_sewage,water_sewage,water_sewage
-C11237,al_salam,en,"Hi, I applied for a building permit 5 days ago and have heard nothing. The inspection appointment for my licence was cancelled twice. It is getting worse. Please fix this soon. [NAME], resident of Al-Salam",permits,permits,permits
-C18508,al_nuzha,en,"Hello, A workshop on Street 66 runs noisy machines all night. A generator on Street 55 runs day and night and the noise is constant. Thank you. Contact: [EMAIL]",noise,noise,noise
-C08260,al_nuzha,msa,سيارة النظافة تترك نصف المخلفات على الطريق. والوضع على هذه الحال منذ مدة. وشكرا لكم.,waste,waste,waste
-C09034,al_faisaliya,msa,أعمدة الإناره في شارع 59 مطفأة منذ 21 ايام. الإنارة تعمل في النهار وتنطفئ في الليل في شارع 173. رقم جوالي [PHONE],lighting,lighting,lighting
-C06320,al_marwa,gulf,السلام عليكم القاعة اللي جنب مدرسه الحي الـــسماعات عندهم عالية مره. تكفون بسرعة. انا [NAME] وهذا رقمي [PHONE],noise,noise,noise
-C13662,al_wurud,msa,السلام علیکم، أعمال البناء بجوار مخبز الحی تبدأ قبل الفجر کل یوم. وهذا یؤثر على الأطفال وکبار السن.,noise,noise,noise
-C07448,al_wurud,en,The road to the entrance of the district is completely dark at night. The lights stay on during the day and go off at night on Street 138. The whole neighbourhood is affected. Please fix this soon.,lighting,lighting,lighting
-C16986,al_jazira,gulf,سكروا البلاغ اللي قبل وهم ما سووا شي. وبلغنا قبل ومحد سوا شي. شنوكرا. جوالي [PHONE],lighting,staff_service,staff_service
-C08171,al_nuzha,msa,تحية طيبة، مولد كهربائي يعمل باستمرار في شارع 88 ويسبب ضوضاء. والمشكلة تزداد سوءا. مقدم البلاغ: [NAME]، جوال [PHONE],noise,noise,noise
-C01868,al_aziziya,msa,تحية طيبة، توجد حفرة كبيرة في شارع 97 تسببت في أضرار للسيارات. الرصيف في شارع 1 متكسر ولا يستطيع كبار السن المشي عليه. آمل التواصل معي.,roads,roads,roads
-C08166,al_jazira,gulf,يا جماعة ترى المجاري طافحة عند المستوصف والريحة واااايد قوية. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
-C03640,al_wurud,gulf,لو سمحتوا الرصيف مِكسر عند مًدرسة الحى والشيبان مُا يقدرون يمشون. وصار له فترة على هالحال. جوالي [PHONE],roads,roads,roads
-C04985,al_jazira,gulf,حاوية حارتنا مكسورة من شهر ومحد بدلها. الزبالة ما انشالت من ١٤ أيام في شارع ١٦٩. وكل أهل الحي متضررين. حمامات الحديقة مسكرة من أسابيع. تكفون بسرعة. جوالي [PHONE],parks,waste,waste
-C19153,al_faisaliya,msa,السلام عليكم، ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. وهذا يؤثر على الأطفال وكبار السن. اسمي [NAME].,water_sewage,water_sewage,water_sewage
-C00531,al_aziziya,msa,السلام عليكم، تسربت المياه من أنبوب مكسور في شارع 165 وتجمعت في الطريق. وقد ابلغت عن ذلك سابقا. نرجو سرعة المعالجة. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
-C01056,al_wurud,msa,الحديقة العامة في شارع 4 بلا سقي والعشب جاف. دورات المياه في الحديقة مغلقة منذ اسابيع. نرجو سرعة المعالجة. رقم الهوية [ID],parks,parks,parks
-C19794,al_faisaliya,msa,اود الإبلاغ عن مشكلة: الرصيف في شارع 54 متكسر ولا يستطيع كبار السن المشي عليه. بريدي الإلكتروني [EMAIL],roads,roads,roads
-C15192,al_wurud,msa,السلام عليكم، انتظرت أكثر من ساعتين في الفرع دون خدمة. اغلقوا البلاغ السابق دون اي اجراء فعلي. ولم يحضر أحد للمعاينة. مقدم البلاغ: [NAME]، جوال [PHONE],staff_service,staff_service,staff_service
-C13944,al_wurud,en,Sewage is overflowing in front of the mosque and the smell is unbearable. A broken pipe on Street 5 is leaking water onto the road. Children and older people are at risk. Please contact me. Call me on [PHONE].,water_sewage,water_sewage,water_sewage
-C02363,al_aziziya,msa,الرصیف فی شارع ٤٢ متکسر ولا یستطیع کبار السن المشى علیه. وهذا یؤثر على الأطفال وکبار السن. نرجو سرعة المعالجة.,roads,roads,roads
-C03281,al_faisaliya,msa,دورات المياه في الحديقة مغلقة منذ أسابيع. وهذا يؤثر على الأطفال وكبار السن. وشكرا لكم. أنا المواطن [NAME].,parks,parks,parks
-C01732,al_safa,en,"Hi, Water pressure is very low on the upper floors since the start of the month. It happens every week. This is the third time I report it. My mobile is [PHONE].",water_sewage,water_sewage,water_sewage
-C17961,al_wurud,gulf,السلام عليكم فيه عمود نور مايل في شارع 148 بيطيح على أحد. الطريق لين مخبز الحى ظلمة بالليل ما تشوف شي. والعيال والشيبان يتأذون.,lighting,lighting,lighting
-C09436,al_faisaliya,gulf,قعدت ساعتين بالفرع ومحد خدمني. اتصلت على الرقم الموحد ٢٤ مرات ومحد ردـــ. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],staff_service,permits,staff_service
-C19359,al_jazira,en,The collection truck spills half of the waste on the street. Please contact me. My mobile is [PHONE].,waste,waste,waste
-C15974,al_marwa,gulf,حطوا مطب عند السوق المركزي بدون لوحة وكل يوم حادث. فيه حفرة كبيره في شارع 19 خربت كفرات السيارة. والعيال والشيبان يتأذون. تكفون بسرعة. جوالي [PHONE],roads,roads,roads
-C16860,al_aziziya,msa,ضْغط المﻱاه ضعيف جدا في ﺍﻝأدوﺍﺭ اﻝعﻝﻱا مﻥذ بﺩﺍﻱة الشهر. ﺕسربﺕ اَﻝمﻱﺍه ﻡﻥ ﺍنﺏﻭﺏ ﻡكسور فﻱ شارع ٥٤ وﺕجﻡعت فﻱ الطﺭيق. ﻭِﺍﻝوضع ﻱﺕكرﺭ كل أسﺏﻭع.,water_sewage,water_sewage,water_sewage
-C01446,al_safa,gulf,يا جماعة فيه تسريب مويه من الماسورة في شارع ١٥٧ من أسبوع والشارع غرقان. وكل أهل الحي متضررين. تجديد رخصة المحل معلق بالنظام وما ادري ليش. رقم هويتي [ID],permits,water_sewage,water_sewage
-C13694,al_khalij,msa,انقطعت المياه عن منزلنا في شارع 120 منذ 13 أيام دون اي اشعار. تسربت المياه من أنبوب مكسور في شارع 136 وتجمعت في الطريق. رقم الهوية [ID],water_sewage,water_sewage,water_sewage
-C01944,al_wurud,msa,السلام عليكم، طلب تجديد رخصة اِلمحل معلق في النظام دًون سبب وُاضح. ولم يحضر احد للمعاينة. بريدي الإلكتروني [EMAIL],permits,permits,permits
-C06037,al_rawabi,msa,ضغط المياه ضعيف جدا فّي اِلأدوار اُلعليا منذ بداية الشهر. والمشكلة تزداد سوءا. وشكرا لكم.,water_sewage,water_sewage,water_sewage
-C00642,al_jazira,msa,السلام علیکم، یوجد طفح للصرف الصحی امام السوق المرکزی والرائحة لا تحتمل. والوضع على هذه الحال منذ مدة. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
-C11878,al_jazira,gulf,مرحبا الحفريات في شارع 53 لها 18 يوم ومحد سفلتها. الرصيف مكسر عند مدخل الحي والشيبان ما يقدرون يمشون. وكل أهل الحي متضررين. ألعاب الياهل في الحديقة مكسرة وخطيرة. تكفون بسرعة. رقم هويتي [ID],roads,roads,roads
-C17204,al_wurud,gulf,لو سمحتوا حطوا مطب عند مخبز الحي بدون لوحه وكل يوم حادث. الشارع كله ترقيع وحفر من بعد الأمطار. والعيال والشيبان يتأذون. الله يعافيكم شوفوا لنا حل. انا [NAME] من سكان الحي.,roads,roads,roads
-C06967,al_shati,msa,السلام علیکم، الحاویة المخصصة لحینا مکسورة منذ شهر. ویتضرر منها سکان الحی کلهم. للتواصل: [PHONE],waste,waste,waste
-C11595,al_naseem,gulf,ترى المجاري طافحة في شارع 12 عند اُلمدرسة مْن أْسبوعين والريحة وايد، تكفون.,water_sewage,water_sewage,water_sewage
-C16047,al_marwa,gulf,لو سمحتوا القاعة اللي جنب مخبز الحي السماعات عندهم عالية مره. فيه ورشة في شارع 180 تشتغل طول الليل والإزعاج وايد. وكل أسبوع نفس الشي. تكفون بسرعة. [NAME] - حي المروة,noise,noise,noise
-C15310,al_naseem,gulf,السلام عليكم فيه ورشة في شارع 47 تشتغل طول الليل والإزعاج واااايد. تكفون بسرعة. ايميلي [EMAIL],noise,noise,noise
-C18466,al_nuzha,gulf,السلام عليكم الحديقة اللي في شارع 136 محد يسقيها والزرع ميت. ممشى الحي ما فيه كراسي تكفي. ويشكرا. كلموني على [PHONE],parks,parks,parks
-C00209,al_faisaliya,gulf,الرصيف مكسر عند مخبز الحي والشيبان ما يقدرون يمشون. فيه حفرة كبيره في شارع ١٧٦ خربت كفرات السيارة. تكفون بسرعة. [NAME] - حي الفيصلية,roads,roads,roads
-C15949,al_safa,en,"Hi, The inspection appointment for my licence was cancelled twice. Children and older people are at risk. Please fix this soon. My name is [NAME].",permits,permits,permits
+C14473,al_jazira,msa,تحیة طیبة، ظهرت تشققات خطیرة فی الجسر المؤدی إلى المستوصف. أعمال الحفر فی شارع 16 متوقفة منذ 29 یوما دون إعاده السفلتة. وقد أبلغت عن ذلک سابقا. ضغط المیاه ضعیف جدا فی الأدوار العلیا منذ بدایه الشهر. وشکرا لکم.,roads,water_sewage,roads
+C01803,al_faisaliya,gulf,مرحبا ممشى الحي ما فيه كراسي تكفي. ومحد جا يشوف. الحين صار لها وايد ومحد سوا شي. جوالي [PHONE],parks,parks,parks
+C00521,al_aziziya,gulf,السلام app عليكم الماي مقطوع عندنا من 11 أيام وما أحد رد علينا. حطوا مطب عند مدرسة الحي بدون لوحة وكل يوم حادث. وشكرا.,water_sewage,roads,water_sewage
+C03987,al_aziziya,gulf,مرحبا حطوا مطب عند مدخل الحي بدون لوحة وكل يوم حادث. فيه حفرة كبيره في شارع 67 خربت كفرات السيارة. وكل اهل الحى متضررين. ويشكرا. جوالي [PHONE],roads,roads,roads
+C19981,al_nuzha,msa,اود الإبلاغ عْن مشكلة: يُوجد طفح للصرف الصحي امام الدوار وّالرائحة لا تحتمل. والوضع على هذه الحال منذ مدة. وشكرا لكم.,water_sewage,water_sewage,water_sewage
+C12296,al_jazira,gulf,لو سمـــحتوا ترى المجاري طافحة عند الدوار والريحة وايد قوية. الحينه صار لها وايد ومحد سوا شي. كلموني على [PHONE],waste,water_sewage,water_sewage
+C03554,al_nuzha,gulf,يا system جماعة البناء اللى جنب المسجد يبدون قبل الفجر ونصحى من الدق. فيه ورشة في شارع 35 تشتغل طول الليل والإزعاج وايد. والعيال والشيبان يتأذون. الحين صار لها وايد وماحد سوا شي. انا [NAME] وهذا رقمي [PHONE],noise,noise,noise
+C09035,al_safa,gulf,ﻡرحبﺍ حطوﺍ مطﺏ عنﺩ ﻡدﺭسة ﺍلحﻱ بﺩﻭﻥ ﻝوحة وكﻝ ﻱﻭﻡ حاﺩث. ﺍلله ﻱعﺍفﻱكﻡ شﻭفوﺍ لﻥا حﻝ. رقم هويتي [ID],roads,roads,roads
+C11321,al_nuzha,gulf,موعد الكشف على الطلب انلغى مرتين. مقدم على رخصة بناء من 9 يوم وللحين ما ردوا. والوضع كل يوم يسوء. تكفون بسرعة.,permits,permits,permits
+C14002,al_naseem,gulf,مرحبا رفضوا التصريح وما قالوا وش الناقص. وكل أهل الحي متضررين. الشارع كله ترقيع وحفر من بعد الأمطار. الله يعافيكم شوفوا لنا حل.,permits,permits,permits
+C04204,al_naseem,gulf,يا جماعه مقدم على رخصة بناء من ١٩ يوم وللحين ما ردوا. تجديد رخصة المحل معلق بالنظام وما أدري ليه. فيه ناس يكبون مخلفات بناء جنب الدوار كل ليلة. وشكرا.,permits,permits,permits
+C07381,al_jazira,gulf,ترى المجاري طافحة عند الدوار والريحة وايد قوية. فيه تسريب ميه من الماسورة في شارع 72 من أسبوع والشارع غرقان. الله يعافيكم شوفوا لنا حل.,water_sewage,water_sewage,water_sewage
+C15210,al_salam,msa,السلام علیکم، مکبرات الصوت فی القاعة المجاورة لـالمستوصف مرتفعه جدا. ورشة فی شارع 163 تعمل طوال اللیل بأصوات مزعجة. والوضع على هذه الحال منذ مدة.,noise,noise,noise
+C13367,al_marwa,en,"Hi, The street lights on Street 198 have been off for 6 days. The road to the mosque is completely dark at night. Children and older people are at risk. A workshop on Street 153 runs noisy machines all night. This is the third time I report it. My mobile is [PHONE].",lighting,lighting,lighting
+C15129,al_aziziya,msa,مكبرات الصوت في القاعة المجاورة لـمخبز الحي مرتفعة جدا. والمشكلة تزداد سوءا. اعمال الحفر في شارع 142 متوقفة منذ 11 يوما دون اعادة السفلتة. آمل التواصل معي.,noise,roads,noise
+C05076,al_salam,gulf,لو سمحتوا ماطور کهربا شغال لیل ونهار فی شارع ١٤.,noise,noise,noise
+C17019,al_salam,gulf,الطريق لين المستوصف ظلمة بالليل ما تشوف شي. الحين صار لها وايد ومحد سوا شي.,lighting,lighting,lighting
+C18623,al_faisaliya,gulf,ﻡﺭحبﺍ ﺍتصلﺕ على ﺍلرقم اﻝمﻭحﺩ ١٥ ﻡﺭﺍت ﻭﻡاحﺩ ﺭﺩ. سكرﻭا الﺏﻝﺍغ ﺍﻝﻝي قﺏل وهﻡ ﻡﺍ سﻭﻭﺍ شﻱ. ومحﺩ جا ﻱشوف. ضغط ﺍلﻡﺍﻱ ضعيف ﻡﺭره ﻭمﺍ ﻱوصﻝ للخزﺍن فوق. الحﻱنه صﺍر ﻝها وايﺩ ﻭﻡحﺩ سﻭﺍ شي.,staff_service,staff_service,staff_service
+C18054,al_faisaliya,gulf,لو سمحتوا الطريق لين مدخل الحى ظلمة بالليل ما تشوف شي. والعيال والشيبان يتأذون. الله يعافيكم شوفوا لنا حل.,lighting,lighting,lighting
+C12149,al_wurud,msa,السلام عليكم، طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. رفض طلب التصريح دون ذكر المستندات الناقصة. والوضع يتكرر كل أسبوع. وشكرا لكم. رقم الهوية [ID],waste,permits,permits
+C08738,al_safa,en,Serious cracks have appeared on the bridge leading to the entrance of the district.,roads,roads,roads
+C18622,al_faisaliya,gulf,لو سمحتوا فيه ورشة في شارع ١٥٤ تشتغل طول الليل والإزعاج واـــيد. ومحد جا يشوف. تكفون بسرعة. انا [NAME] وهذا رقمي [PHONE],noise,noise,noise
+C13366,al_nuzha,gulf,يا جماعه البناء اللي جنب السوق المركزى يبدون قبل الفجر ونصحى من الدق. ماطور كهربا شغال ليل ونهار في شارع ١٩٧. وبلغنا قبل ومحد سوا شي. حطوا مطب عند مدخل الحي بدون لوحة وكل يوم حادث. الله يعافيكم شوفوا لنا حل. [NAME] - حي النزهة,noise,noise,noise
+C08027,al_aziziya,en,"Hi, Construction next to the mosque starts before dawn every day. My shop licence renewal is stuck in the system with no reason given. This is the third time I report it.",permits,noise,noise
+C04483,al_aziziya,msa,يوجد طفح للصرف الصحي أمام مدرسة الحي والرائحه لا تحتمل. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
+C14658,al_shati,en,"Dear Sada team, The pavement near the clinic is broken and elderly people cannot walk on it. A new speed bump near the roundabout has no warning signs. It is getting worse. Please contact me. Call me on [PHONE].",roads,roads,roads
+C03971,al_faisaliya,msa,تحيه طيبة، الرصيف في شارع 112 متكسر ولا يستطيع كبار السن المشي عليه. توجد حفرة كبيرة في شارع 173 تسببت في اضرار للسيارات. والوضع على هذه الحال منذ مدة. وشكرا لكم. رقم جوالي [PHONE],roads,roads,roads
+C06102,al_jazira,en,The bins near the neighbourhood school are overflowing and cats are spreading the waste. I applied for a building permit 5 days ago and have heard nothing. Thank you.,waste,waste,waste
+C10978,al_salam,msa,انتظرت أكثر من ساعتين في الفرع دون خدمة. اتصلت بالرقم الموحد 10 مرات ولم يرد أحد. العاب الأطفال في الدوار مكسورة وخطرة. اسمي [NAME].,staff_service,staff_service,staff_service
+C05751,al_jazira,gulf,لو OK سمحتوا الرصيف مكسر عند الدوار والشيبان ما يقدرون يمشون. وماحد جا يشوف. ترى المجاري طافحة عند السوق المركزى والريحة وايد قوية. الحينه صار لها وايد ومحد سوا شي. جوالي [PHONE],roads,roads,roads
+C17802,al_khalij,en,I applied for a building permit 14 days ago and have heard nothing. It is getting worse. Please fix this soon. Call me on [PHONE].,permits,permits,permits
+C08435,al_rawabi,gulf,السلام عليكم اتصلت على الرقم الموحد 27 مرات ومحد رد. سكروا البلاغ اللي قبل وهم ما سووا شي. وصار له فترة على هالحال. حمامات الحديقة مسكرة من أسابيع. الحينه صار لها وايد ومحد سوا شي. كلموني على [PHONE],staff_service,staff_service,staff_service
+C13172,al_rawabi,msa,الـــسلام عليكم، لم ترفع النفايات من شارع 73 منذ 15 ايام. اعمال البناء بجوار مدرسة الحي تبدأ قبل الفجر كل يوم. اسمي [NAME].,waste,waste,waste
+C00844,al_shati,msa,أًعمال الحفر فُي شارع 164 متوقفه منذ 3 يوما دون إعادة السفلتة. وْلم يحضر احد للمعاينة.,roads,roads,roads
+C09311,al_faisaliya,msa,مكبرات الصوت في القاعة المجاورة لـمدخل الحي مرتفعة جدا. ورشة في شارع 184 تعمل طوال الليل بأصوات مزعجة. والوضع يتكرر كل أسبوع.,noise,water_sewage,noise
+C02052,al_shati,en,"Hi, Construction waste is being dumped next to the entrance of the district every night. Rubbish has not been collected from Street 141 for 9 days. Thank you.",waste,waste,waste
+C19865,al_jazira,gulf,لو سمحتوا اتصلت على الـــرقم الموحد 3 مرات وماحد رد. سكروا البلاغ اللي قبل وهم ما سووا شي.,staff_service,staff_service,staff_service
+C00781,al_nuzha,msa,السلام عليكم، أعمال البناء بجوار المستوصف تبدأ قبل الفجر كل يوم. وقد أبلغت عن ذلك سابقا. ألعاب الأطفال في السوق المركزي مكسوره وخطرة. نرجو سرعة المعالجة. أنا المواطن [NAME].,noise,noise,noise
+C02928,al_rawabi,gulf,حطوا مطب عند مخبز الحي بدون لوحة وكل يوم حادث. وشكرا.,roads,roads,roads
+C06660,al_wurud,gulf,يا جماعة اْلقاعة اللى جنب اًلمسجد السماعات عندهم عالية مرره. ماطور كهربا شغال ليل ونهار في شارع 134. الله يْعافيكم شوفوا لنا حل. رقم هويتي [ID],noise,noise,noise
+C04934,al_khalij,en,"Dear Sada team, The toilets in the park have been closed for weeks. The public garden on Street 53 is not watered and the grass is dead. It has been like this for a while. Please fix this soon. Contact: [EMAIL]",parks,parks,parks
+C01532,al_shati,msa,السلام علیکم، ظهرت تشققات خطیرة فی الجسر المؤدی الى مدرسه الحی. المطب الجدید امام مدرسه الحی بلا لوحات تحذیریة. آمل التواصل معی.,waste,roads,roads
+C07041,al_safa,en,"Hi, A new speed bump near the central market has no warning signs. It is getting worse. Please fix this soon.",roads,roads,roads
+C14889,al_salam,msa,تحية طًيبة، الرصيف في شارع 101 متكسر ولا يستطيع كبار اَلسن المشي عليه. وْيتضرر منها سكان الحي كلهم. مقدم البلاغ: [NAME]، جوال [PHONE],roads,roads,roads
+C00444,al_wurud,msa,السلام عليكم، أعمدة الإنارة في شارع ١٤٠ مطفأة منذ ١٤ أيام. ورشة في شارع ١٤١ تعمل طوال الليل بأصوات مزعجة. آمل التواصل معي. اسمي [NAME].,noise,lighting,lighting
+C01600,al_safa,en,"Dear Sada team, I waited more than two hours at the branch without being served. It happens every week. Call me on [PHONE].",staff_service,waste,staff_service
+C01363,al_naseem,gulf,مرحبا الزبالة ما انشالت من 17 أيام في شارع 87. وصار له فترة علـــى هالحال. الله يعافيكم شوفوا لنا حل. [NAME] - حي النسيم,waste,waste,waste
+C11112,al_rawabi,msa,السلام عليكم، اغلقوا البلاغ السابق دون أي إجراء فعلي. تعامل الموظف في مركز الخدمة كان غير لائق. نرجو سرعة المعالجة. بريدي الإلكتروني [EMAIL],staff_service,staff_service,staff_service
+C17018,al_wurud,gulf,السلام عليكم القاعة اللي جنب مدخل الحي السماعات عندهم عالية مره. البناء اللي جنب المسجد يبدون قبل الفجر ونصحى من الدق. وكل أهل الحي متضررين. تكفون بسرعة. [NAME] - حي الورود,parks,noise,noise
+C12886,al_marwa,msa,انقطعت المياه عن منزلنا في شارع ١٠٩ منذ ١٤ أيام دون أي إشعار. تسربت المياه من انبوب مكسور في شارع ٢٦ وتجمعت في الطريق. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C09858,al_safa,msa,أود الإبلاغ عن مشكلة: ضغط المياه ضعيف جدا في الأدوار العليا منذ بدايه الشهر. والوضع على هذه الحال منذ مدة. أغلقوا البلاغ السابق دون أي اجراء فعلي. نرجو سرعة المعالجة.,water_sewage,water_sewage,water_sewage
+C07539,al_naseem,gulf,مرحبا online فيه تسريب مويه من الماسورة في شارع 1 من اسبوع والشارع غرقان. ترى المجاري طافحة عند السوق المركزى والريحة وايد قوية. وصار له فترة على هالحال. وشكرا.,water_sewage,water_sewage,water_sewage
+C02362,al_marwa,en,"Construction next to the central market starts before dawn every day. It has been like this for a while. [NAME], phone [PHONE]",noise,noise,noise
+C09452,al_marwa,gulf,اﻝﻡﺍي app مقطوع عﻥﺩنﺍ مﻥ 14 أﻱﺍم ﻭمﺍ أحﺩ ﺭﺩ علﻱﻥﺍ. ﺍﻝحفريﺍﺕ في شَﺍﺭع 79 ﻝهﺍ 15 ﻱوﻡ ومحﺩ سفﻝتهﺍ. الﻝه ﻱعافﻱكﻡ شوفﻭا ﻝﻥا حل.,water_sewage,water_sewage,water_sewage
+C11412,al_naseem,gulf,مرحبا المجاری فی شارع 12 عند المدرسة طافحة من اسبوعین والعیال یمرون من وسط المویه، الله یعافیکم. انا [NAME] من سكان الحي.,water_sewage,water_sewage,water_sewage
+C03847,al_nuzha,msa,اود الإبلاغ عن مشكلة: ظهرت تشققات خطيره في الجسر المؤدي إلى الدوار. وهذا يؤثر على الأطفال وكبار السن. للتواصل: [PHONE],roads,roads,roads
+C11232,al_naseem,gulf,السلام عليكم ترى المجاري طافحة في شارع 12 عند المدرسة من أسبوعين والريحة وايد، الله يعافيكم. انا [NAME] وهذا رقمي [PHONE],water_sewage,water_sewage,water_sewage
+C11837,al_naseem,gulf,يا جماعة اُلمجاري في شارع 12 عند المدرسة طّافحة من أسبوعين والعيال يمرون مُن وسط المويه، صار لها وايد. انا [NAME] وهذا رقمي [PHONE],water_sewage,water_sewage,water_sewage
+C01464,al_aziziya,en,"Dear Sada team, Sewage is overflowing in front of the entrance of the district and the smell is unbearable. I reported it before. Please contact me.",water_sewage,water_sewage,water_sewage
+C13634,al_aziziya,gulf,فيه تسريب مويه من الماسورة في شارع 33 من أسبوع والشارع غرقان. والعيال والشيبان يتأذون. معك [NAME].,water_sewage,water_sewage,water_sewage
+C05069,al_wurud,gulf,مرحبا سكروا البلاغ اللي قبل وهم ما سووا شي. الماي مقطوع عندنا من 8 أيام وما أحد رد علينا. الحين صار لها وايد ومحد سوا شي.,staff_service,staff_service,staff_service
+C06413,al_naseem,gulf,الماي مقطوع عندنا من 4 ايام وما أحد رًد علينا. الشارع غرقان مويه من البيارة اللي عند اْلدوار. وصار له فترة عُلى هالحال. وشكرا. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C03848,al_wurud,gulf,مرحبا app الشارع غرقان مويه من البياره اللي عند السوق اَلمركزي. وبلغنا قبل وُمحد سوا شي. وشكرا. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C07902,al_jazira,msa,الطريق المؤدي إلى السوق المركزي مظلم تماما في الليل. رقم جوالي [PHONE],lighting,parks,lighting
+C02099,al_nuzha,msa,السلام عليكم، حاويات النفايات عند مخبز الحي ممتلئة وتنتشر حولها القطط. سيارة النظافة تترك نصف المخلفات على الطريق. آمل التواصل معي.,waste,waste,waste
+C05815,al_safa,en,The collection truck spills half of the waste on the street. Please fix this soon.,waste,waste,waste
+C09526,al_salam,en,Serious cracks have appeared on the bridge leading to the entrance of the district. Excavation works on Street 100 stopped 10 days ago and the road was never resurfaced. Children and older people are at risk. My mobile is [PHONE].,roads,roads,roads
+C13351,al_rawabi,msa,تحیة طیبة، انقطعت المیاه عن منزلنا فی شارع ١٣ منذ ١٢ أیام دون أی إشعار. یوجد طفح للصرف الصحی أمام المستوصف والرائحة لا تحتمل. والمشکلة تزداد سوءا. وشکرا لکم.,water_sewage,water_sewage,water_sewage
+C17259,al_naseem,msa,انقطعت اَلمياه عن مَنزلنا في شارع ١٨٨ منذ ١٤ ايام دّون أي اشعار. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة.,water_sewage,water_sewage,water_sewage
+C05571,al_khalij,en,"Dear Sada team, The inspection appointment for my licence was cancelled twice. This is the third time I report it. [NAME], resident of Al-Khalij",permits,noise,permits
+C02742,al_jazira,gulf,ترى المجاري طافحة عند المسجد والريحة واااايد قوية. ضغط الماى ضعيف مرره وما يوصل للخزان فوق. وشكرا. كلموني على [PHONE],water_sewage,water_sewage,water_sewage
+C17480,al_aziziya,gulf,مرحبا ترى المجاري طافحة عند المسجد والريحة وايد قوية. والوضع كل يوم يسوء. تكفون بسرعة. [NAME] - حي العزيزية,water_sewage,water_sewage,water_sewage
+C15035,al_khalij,gulf,السلام عليكم ترى المجاري طافحة عند المسجد والريحة وايد قوية. فيه تسريب مويه من الماسورة في شارع 199 من اسبوع والشارع غرقان. والوضع كل يوم يسوء. الحين صار لها وايد ومحد سوا شي.,water_sewage,water_sewage,water_sewage
+C14968,al_safa,msa,الرصيف في شارع 115 متكسر ولا يستطيع كبار السن المشي عليه.,roads,roads,roads
+C11467,al_faisaliya,gulf,يا system جماعة الطريق لين المسجد ظلمة بالليل ما تشوف شي. شنوكرا. انا [NAME] من سكان الحي.,lighting,lighting,lighting
+C00245,al_marwa,gulf,يا جماعة ماطور كهربا شغال ليل وّنهار في شارع 185. وماحد جا يشوف. الحينه صار لها واااايد ومحد سّوا شي. جوالي [PHONE],noise,noise,noise
+C18338,al_jazira,msa,انقطعت المياه عن منزلنا في شارع 56 منذ 4 أيام دون أي إشعار. بريدي الإلكتروني [EMAIL],water_sewage,water_sewage,water_sewage
+C04553,al_safa,en,"Hi, The public garden on Street 122 is not watered and the grass is dead. It has been like this for a while. [NAME], phone [PHONE]",parks,parks,parks
+C01306,al_marwa,msa,السلام عليكم، ممشى الحي بلا مقاعد كافية لكبار السن. آمل التواصل معي.,parks,parks,parks
+C06864,al_jazira,en,"Hi, My shop licence renewal is stuck in the system with no reason given. The whole neighbourhood is affected. Please fix this soon. Regards, [NAME]",permits,permits,permits
+C16320,al_faisaliya,en,Serious cracks have appeared on the bridge leading to the roundabout. Children and older people are at risk. Please contact me.,roads,roads,roads
+C13066,al_aziziya,msa,اود الإبلاغ عن مشكلة: سيارة النظافة تترك نصف المخلفات على الطريق. ترمى مخلفات البناء بجوار مخبز الحي دون رقابة. والوضع يتكرر كل اسبوع. وشكرا لكم. رقم جوالي [PHONE],waste,waste,waste
+C03322,al_naseem,en,A new speed bump near the mosque has no warning signs. Nobody came to inspect it. Thank you.,roads,roads,roads
+C18721,al_faisaliya,en,Our neighbourhood bin has been broken for a month. I reported it before. This is the third time I report it.,waste,waste,waste
+C01657,al_naseem,msa,اود الإبلاغ عن مشكلة: الحديقة العامة في شارع 177 بلا سقي والعشب جاف. دورات المياه في الحديقة مغلقة منذ أسابيع. والوضع يتكرر كل أسبوع. نرجو سرعة المعالجة. للتواصل: [PHONE],parks,parks,parks
+C00159,al_aziziya,en,Our neighbourhood bin has been broken for a month. Thank you.,waste,waste,waste
+C03109,al_naseem,gulf,فيه تسريب مويا من الماسورة في شارع 145 من أسبوع والشارع غرقان. تكفون بسرعة.,water_sewage,water_sewage,water_sewage
+C01154,al_rawabi,gulf,يا جماعة فيه تسريب ميه من الماسورة في شارع 87 من أسبوع والشارع غرقان. ضغط الماي ضعيف مره وما يوـــصل للخزان فوق. وكل أهل الحي متضررين.,water_sewage,water_sewage,water_sewage
+C17059,al_shati,msa,اتصلت بالرقم الموحد 18 مرات ولم يرد أحد. انتظرت اكثر من ساعتين في الفرع دون خدمة. والوضع يتكرر كل اسبوع. مولد كهربائي يعمل باستمرار في شارع 41 ويسبب ضوضاء.,noise,staff_service,staff_service
+C11145,al_jazira,msa,انقطعت المياه عن منزلنا في شارع 56 منذ 25 ايام دون أي اشعار. وشكرا لكم. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
+C13365,al_aziziya,gulf,مقدم على رخصة بناء من 29 يوم وللحين ما ردوا. اتصلت على الرقم الموحد 7 مرات وماحد رد. جوالي [PHONE],permits,permits,permits
+C15794,al_naseem,gulf,الرصيف مكسر عند مخبز الحي والشيبان ما يقدرون يمشون. وكل أسبوع نفس الشي. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],roads,roads,roads
+C12618,al_jazira,gulf,السلام عليكم فيه ناس يكبون مخلفات بناء جنب مدرسة الحي كل ليلة. الله يعافيكم شوفوا لنا حل. [NAME] - حي الجزيرة,waste,waste,waste
+C06107,al_aziziya,en,A broken pipe on Street 176 is leaking water onto the road. We have had no water at home on Street 46 for 9 days. It has been like this for a while.,water_sewage,water_sewage,water_sewage
+C04035,al_nuzha,gulf,يا جماعة حطوا مطب عند السوق المركزي بدون لوحة وكل يوم حادث. الشارع كله ترقيع وحفر من بعد الأمطار. الله يعافيكم شوفوا لنا حل. ايميلي [EMAIL],roads,roads,roads
+C19540,al_nuzha,en,"Hi, A broken pipe on Street 126 is leaking water onto the road. Water pressure is very low on the upper floors since the start of the month. Nobody came to inspect it. Please fix this soon.",water_sewage,water_sewage,water_sewage
+C02192,al_nuzha,msa,أود الإبلاغ عن مشكلة: توجد حفرة كبيرة في شارع ١٧٨ تسببت في اضرار للسيارات. وقد ابلغت عن ذلك سابقا. دورات المياه في الحديقة مغلقة منذ أسابيع. آمل التواصل معي. رقم الهوية [ID],roads,roads,roads
+C00022,al_safa,msa,عمود إًنارة مَائل في شارع ٢٥ وًيخشى سقوطه. آمل التواصل معي.,lighting,lighting,lighting
+C02878,al_marwa,en,"I waited more than two hours at the branch without being served. The employee at the service centre was rude to me. It is getting worse. A generator on Street 21 runs day and night and the noise is constant. Please contact me. [NAME], phone [PHONE]",noise,staff_service,staff_service
+C16354,al_faisaliya,en,A street light pole on Street 97 is leaning and may fall. The children's play equipment in the park is broken and dangerous. This is the third time I report it.,parks,lighting,lighting
+C00919,al_naseem,en,"Hi, My permit application was rejected without saying which documents were missing. The inspection appointment for my licence was cancelled twice. Nobody came to inspect it. This is the third time I report it.",permits,permits,permits
+C15935,al_marwa,msa,تحية طيبة، اعمال الحفر في شارع 58 متوقفة منذ 23 يوما دون إعادة السفلتة. المطب الجديد أمام مدخل الحي بلا لوحات تحذيرية. وقد أبلغت عن ذلك سابقا. أنا المواطن [NAME].,roads,roads,roads
+C04089,al_marwa,msa,تحيه طيبة، اتصلت بالرقم الموحد ٦ مرات ولم يرد أحد. وهذا يؤثر على الأطفال وكبار السن.,staff_service,staff_service,staff_service
+C17154,al_faisaliya,gulf,موعد الكشف على الطلب انلغى مرتين. رفضوا التصريح وما قالوا ويش الناقص. وكل أسبوع نفس الشي. اللحين صار لها وايد وماحد سوا شي. كلموني على [PHONE],permits,permits,permits
+C13925,al_faisaliya,msa,الرصيف في شارع 63 متكسر ولا يستطيع كبار السن المشي عليه. أنا المواطن [NAME].,roads,roads,roads
+C07215,al_nuzha,msa,ألعاب الأطفال في المسجد مكسوره وخطرة. وهذا يؤثر على الأطفال وكبار السن. وشكرا لكم.,parks,parks,parks
+C14823,al_rawabi,gulf,الشارع غرقان ميه من البيارة اللي عند مخبز الحي. وصار له فترة على هالحال. وشكرا. انا [NAME] من سكان الحي.,water_sewage,water_sewage,water_sewage
+C16266,al_nuzha,msa,رفض طلب التصريح دون ذكر المستندات الناقصة. عمود إنارة مائل في شارع ١٧٧ ويخشى سقوطه. وشكرا لكم.,permits,permits,permits
+C11278,al_wurud,en,"Hi, The inspection appointment for my licence was cancelled twice. The whole neighbourhood is affected. The walking track does not have enough benches for older people. Thank you.",parks,permits,permits
+C05266,al_salam,msa,تقدمت بطلب رخصة بناء منذ 6 يوما ولم يصلني أي رد. والمشكله تزداد سوءا. ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر.,permits,permits,permits
+C05330,al_naseem,msa,اتصلت بالرقم الموحد ١٩ مرات ولم يرد أحد. آمل التواصل معي. اسمي [NAME].,staff_service,staff_service,staff_service
+C05807,al_khalij,msa,تحية طيبة، مولد كهربائي يعمل باستمرار في شارع 115 ويسبب ضوضاء. والمشكلة تزداد سوءا. آمل التواصل معي.,noise,noise,noise
+C03936,al_nuzha,msa,اود الإبلاغ عن مشكلة: ظهرت تشققات خطيرة في الجسر المؤدي إلى السوق المركزي. تقدمت بطلب رخصة بناء منذ 21 يوما ولم يصلني أي رد. آمل التواصل معي. رقم الهوية [ID],roads,roads,roads
+C09771,al_rawabi,msa,تحية طيبة، الرصيف في شارع 39 متكسر ولا يستطيع كبار السن المشي عليه. ظهرت تشققات خطيرة في الجسر المؤدي إلى الدوار. والوضع يتكرر كل أسبوع.,roads,roads,roads
+C01889,al_aziziya,gulf,يا جماعة الزبالة ما انشالت من ١٨ ايام في شارع ١٢٥. وشكرا.,waste,waste,waste
+C18796,al_rawabi,msa,تحية طيبة، تّسربت المياه من أنبوب مَكسور في شارع ١٠٨ وتجمعت فَي الطريق. طلب تجديد رخصة المحل معلق في النظام دون سبب واضح.,water_sewage,water_sewage,water_sewage
+C00539,al_naseem,msa,تحية طيبة، أغلقوا البلاغ السابق دون أي إجراء فعلي. انتظرت أكثر من ساعتين في الفرع دون خدمة. والوضع يتكرر كل أسبوع. آمل التواصل معي. رقم جوالي [PHONE],staff_service,staff_service,staff_service
+C14678,al_naseem,msa,توجد حفرة كبيرة في شارع 15 تسببت في أضرار للسيارات. الرصيف في شارع 112 متكسر ولا يستطيع كبار السن المشي عليه. وهذا يؤثر على الأطفال وكبار السن. نرجو سرعة المعالجة.,roads,roads,roads
+C14418,al_safa,msa,السلام عليكم، اغلقوا البلاغ السابق دون أي اجراء فعلي. وهذا يؤثر على الأطفال وكبار السن. نرجو سرعه المعالجة. رقم جوالي [PHONE],staff_service,staff_service,staff_service
+C06511,al_rawabi,gulf,لو سمحتوا اتصلت على الرقم الموحد ٢٧ مرات ومحد رد. الموظف في مركز الخدمة كان اسلوبه مو زين أبد. ومحد جا يشوف. تكفون بسرعة.,staff_service,staff_service,staff_service
+C18269,al_khalij,gulf,السلام عليكم اّلماي مقـــطوع عندنا من ٢٦ أيام وما أِحد رد علينا. الشارع غرقان مويه من البيارة اللي عند مدخل اْلحي. والوضع كل يوم يسوء. انا [NAME] وهذا رقمي [PHONE],water_sewage,roads,water_sewage
+C10126,al_safa,gulf,مرحبا OK الحفریات فی شارع 127 لها 4 یوم وماحد سفلتها. والعیال والشیبان یتأذون. ویشکرا. جوالي [PHONE],roads,roads,roads
+C07496,al_salam,gulf,لو سمحتوا ماطور كهربا شغال ليل ونهار في شارع 91. البناء اللي جنب مدرسة الحي يبدون قبل الفجر ونصحى من الدق. وكل أهل الحى متضررين. معك [NAME].,noise,noise,noise
+C08310,al_nuzha,en,The lights stay on during the day and go off at night on Street 67. The road to the roundabout is completely dark at night. Nobody came to inspect it. The wedding hall near the bakery plays music far too loud. This is the third time I report it. My name is [NAME].,lighting,lighting,lighting
+C05144,al_marwa,msa,تحية طيبة، لم ترفع النفايات من شارع 192 منذ 6 ايام. الحاوية المخصصه لحينا مكسورة منذ شهر. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],waste,waste,waste
+C04280,al_faisaliya,msa,تحية طيبة، رفض طلب التصريح دون ذكر المستندات الناقصة. ألغي موعد المعاينة لطلب الترخيص مرتين. وهذا يؤثر على الأطفال وكبار السن. أنا المواطن [NAME].,permits,permits,permits
+C19418,al_shati,en,The employee at the service centre was rude to me. This is the third time I report it.,staff_service,parks,staff_service
+C14402,al_nuzha,gulf,لو سمـــحتوا الرصيف مكسر عند مخبز الحي والشيبان ما يقدرون يمشون. ومحد جا يشوف. الله يعافيكم شوفوا لنا حل.,roads,roads,roads
+C04723,al_nuzha,en,"Dear Sada team, The children's play equipment in the park is broken and dangerous. It is getting worse. The manholes on Street 36 fill with sewage after every rain. Regards, [NAME]",parks,parks,parks
+C08450,al_faisaliya,msa,اود الإبلاغ عن مشكلة: انتظرت أكثر من ساعتين في اُلفرع دون خدمة. ورشة في شارع 57 تعمل طوال الليل بأصوات مُزعجة.,noise,staff_service,staff_service
+C19070,al_nuzha,msa,السلام عليكم، لم ترفع النفايات من شارع ١١٦ منذ ٢٩ أيام. حاويات النفايات عند السوق المركزي ممتلئه وتنتشر حولها القطط. ولم يحضر أحد للمعاينة. نرجو سرعة المعالجة. رقم جوالي [PHONE],waste,waste,waste
+C03095,al_faisaliya,msa,أود الإبلاغ عن مشكلة: يوجد طفح للصرف الصحي أمام مدخل الحي والرائحة لا تحتمل. أنا المواطن [NAME].,water_sewage,water_sewage,water_sewage
+C18431,al_faisaliya,en,A broken pipe on Street 107 is leaking water onto the road. My mobile is [PHONE].,water_sewage,waste,water_sewage
+C01137,al_faisaliya,msa,تْحية طيبة، أغلقوا البلاغ السابق دون اي إجراء فًعلي. آمل اْلتواصل معي. رقم الهوية [ID],staff_service,staff_service,staff_service
+C15104,al_marwa,gulf,فيه حفرة كبيرة في شارع 65 خربت كفرات السيارة. ممشى الحى ما فيه كراسي تكفي. الحين صار لها واااايد ومحد سوا شي.,parks,roads,roads
+C19343,al_nuzha,gulf,تجدید ticket رخصة المحل معلق بالنظام وما أدری لیه. رفضوا التصریح وما قالوا وش الناقص. وکل اهل الحی متضررین. ايميلي [EMAIL],permits,permits,permits
+C05437,al_khalij,gulf,رفضوا التصريح وما قالوا وش الناقص. تجديد رخصه المحل معلق بالنظام وما أدري ليه. وكل أهل الحي متضررين. اللحين صار لها وايد ومحد سوا شي.,permits,permits,permits
+C09531,al_aziziya,en,"Hi, There is a large pothole on Street 152 that has damaged several cars. The whole neighbourhood is affected. Please contact me. Call me on [PHONE].",parks,roads,roads
+C12420,al_safa,en,"Hi, Our neighbourhood bin has been broken for a month. It has been like this for a while. Please fix this soon.",waste,waste,waste
+C19153,al_safa,gulf,الماي مقطوع عندنا من 20 ايام وما أحد رد علينا. وشكرا.,water_sewage,water_sewage,water_sewage
+C16322,al_faisaliya,en,"Construction waste is being dumped next to the roundabout every night. Please contact me. [NAME], resident of Al-Faisaliya",waste,waste,waste
+C11686,al_nuzha,en,"Hello, I waited more than two hours at the branch without being served. Children and older people are at risk. Please contact me.",staff_service,staff_service,staff_service
+C12408,al_faisaliya,msa,الطريق المؤدي إلى المسجد مظلم تماما في الليل. عمود إنارة مائل في شارع ٦٢ ويخشى سقوطه. سيارة النظافة تترك نصف المخلفات على الطريق. وشكرا لكم.,lighting,lighting,lighting
+C04054,al_naseem,msa,تحية طيبة، ورشة في شارع 97 تعمل طوال اْلليل بأصوات مزعجة. مكبرات اُلصوت في القاعة المجاورة لـمخبز الحي مرتفعة جدا. نّرجو سرعة المعالجة.,noise,noise,noise
+C06257,al_rawabi,en,"Hi, Our neighbourhood bin has been broken for a month. It is getting worse. Please contact me. Contact: [EMAIL]",waste,waste,waste
+C03895,al_aziziya,en,"Hello, I applied for a building permit 29 days ago and have heard nothing. My permit application was rejected without saying which documents were missing. Please fix this soon. ID number [ID]",permits,permits,permits
+C07928,al_rawabi,msa,غرف التفتيش في شارع 33 ممتلئة بمياه الصرف بعد كل مطر. آمل التواصل معي. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
+C08374,al_salam,msa,اود الـــإبلاغ عن مشكلة: الرصيف في شارع ١٥٢ متكسر ولا يستطيع كبار السن المشي عليه. المطب الجديد امام مخبز الحي بلا لوحات تحذيرية. والوضع على هذه الحال منذ مدة. اسمي [NAME].,roads,roads,roads
+C16762,al_khalij,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب المستوصف كل ليلة. قعدت ساعتين بالفرع وماحد خدمني. الحين صار لها وايد ومحد سوا شي. معك [NAME].,waste,waste,waste
+C19708,al_faisaliya,msa,تحية طيبة، أعمدة الإنارة في شارع 128 مطفأة منذ 30 أيام. آمل التواصل معي.,lighting,lighting,lighting
+C03799,al_rawabi,en,"Hello, The street lights on Street 46 have been off for 8 days. The lights stay on during the day and go off at night on Street 14. Thank you. My name is [NAME].",lighting,lighting,lighting
+C14240,al_rawabi,msa,أود الإبلاغ عن مشكلة: ورشة في شارع ١٣٨ تعمل طوال الليل بأصوات مزعجة. مولد كهربائي يعمل باستمرار في شارع ٢٤ ويسبب ضوضاء. بريدي الإلكتروني [EMAIL],noise,noise,noise
+C12365,al_marwa,en,We have had no water at home on Street 50 for 14 days. This is the third time I report it.,water_sewage,water_sewage,water_sewage
+C11718,al_naseem,gulf,مرحبا المجارى طافحة في شارع 12 جنب المدرسة من أسبوعين والشارع غرقان والريحة وايد، تكفون. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C16318,al_rawabi,msa,أود الإبلاغ عن مشكلة: أغلقوا البلاغ السابق دون أي إجراء فعلي. ويتضرر منها سكان الحي كلهم. رقم جوالي [PHONE],staff_service,staff_service,staff_service
+C15525,al_aziziya,msa,السلام عليكم، أغلقوا البلاغ السابق دون أي إجراء فعلي. وهذا يؤثر على الأطفال وكبار السن. نرجو سرعة المعالجة.,staff_service,staff_service,staff_service
+C19087,al_nuzha,gulf,لو سمحتوا فيه تسريب مويه من الماسورة في شارع 19 من أسبوع والشارع غرقان. وبلغنا قبل وماحد سوا شي. شنوكرا. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C10056,al_faisaliya,msa,اود الإبلاغ عن مشكلة: انقطعت المياه عن منزلنا في شارع ١٧٤ منذ ١٤ ايام دون أي اشعار. نرجو سرعة المعالجة. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
+C07965,al_aziziya,en,"Dear Sada team, My permit application was rejected without saying which documents were missing. I reported it before. Thank you. [NAME], phone [PHONE]",lighting,permits,permits
+C11784,al_naseem,gulf,مرحبا المجاري في شارع 12 عند المدرسة طافحة من أسبوعين والعيال يمرون من وسط المويه، الله يعافيكم. انا [NAME] وهذا رقمي [PHONE],water_sewage,water_sewage,water_sewage
+C02680,al_faisaliya,gulf,یا جماعة مقدم على رخصة بناء من ٢٠ یوم وللحین ما ردوا. وکل أسبوع نفس الشی. الله یعافیکم شوفوا لنا حل. انا [NAME] من سكان الحي.,permits,permits,permits
+C18038,al_shati,msa,اود الإبلاغ عِن مشکلة: الرصیف فًی شارع 48 متکسر ولا یستطیع کبار السن المشی علیه. اسمي [NAME].,roads,roads,roads
+C07431,al_faisaliya,en,"Dear Sada team, I waited more than two hours at the branch without being served. The manholes on Street 192 fill with sewage after every rain. My mobile is [PHONE].",staff_service,staff_service,staff_service
+C10665,al_jazira,gulf,لو سمحتوا الشارع كله ترقيع وحفر من بعد الأمطار. الرصيف مكسر عند مدرسة الحي والشيبان ما يقدرون يمشون. الحديقة اللي في شارع 93 ماحد يسقيها والزرع ميت. تكفون بسرعة. معك [NAME].,parks,roads,roads
+C16216,al_safa,en,"Dear Sada team, I called the hotline 18 times and nobody answered. I reported it before. Please contact me.",staff_service,staff_service,staff_service
+C10778,al_aziziya,msa,رفض طلب التصريح دون ذكر المستندات الناقصة. طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. وهذا يؤثر على الأطفال وكبار السن. اتصلت بالرقم الموحد ٢٩ مرات ولم يرد أحد. آمل التواصل معي. رقم الهوية [ID],permits,staff_service,permits
+C08550,al_wurud,gulf,مرحبا الشارع غرقان مويه من البيارة اللي عند السوق المركزي. تكفون بسرعة.,water_sewage,water_sewage,water_sewage
+C18181,al_naseem,msa,غرف التفتیش فی شارع ٢٩ مًمتلئة بمیاه اّلصرف بعد کل مطر. ضغط المیاه ضعیف جدا فی الأدوار العلیا منذ بِدایة الشهر. نرجو سرعة المعالجة. رقم جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C15155,al_marwa,msa,السلام عليكم، الحاوية المخصصه لحينا مكسورة منذ شهر. لم ترفع النفايات من شارع ١٧ منذ ٢٦ أيام. وهذا يؤثر على الأطفال وكبار السن.,waste,waste,waste
+C14103,al_jazira,msa,ضغط المياه ضعيف جِدا في الأدوار العليا منذ بداية اْلشهر. نرجو سُرعة المعالجة. للتواصل: [PHONE],water_sewage,water_sewage,water_sewage
+C14114,al_faisaliya,en,"Dear Sada team, The lights stay on during the day and go off at night on Street 48. It has been like this for a while. Please contact me.",lighting,lighting,lighting
+C02874,al_faisaliya,en,"Hi, The bins near the central market are overflowing and cats are spreading the waste. Our neighbourhood bin has been broken for a month. It is getting worse. Please fix this soon. My mobile is [PHONE].",waste,waste,waste
+C18478,al_wurud,gulf,السلام عليكم اتصلت على الرقم الموحد 28 مرات ومحد رد. الله يعافيكم شوفوا لنا حل.,staff_service,staff_service,staff_service
+C17036,al_faisaliya,msa,يوجد طفح للصرف الصحي امام مخبز الحي والرائحة لا تحتمل. غرف التفتيش في شارع 109 ممتلئه بمياه الصرف بعد كل مطر. والمشكلة تزداد سوءا. نرجو سرعة المعالجة. بريدي الإلكتروني [EMAIL],water_sewage,water_sewage,water_sewage
+C09855,al_salam,gulf,مرحبا الشارع كله ترقيع وحفر من بعد الأمطار. الحديقة اللي في شارع 107 ماحد يسقيها والزرع ميت. وشكرا. جوالي [PHONE],roads,parks,roads
+C06285,al_rawabi,gulf,يا system جماعة موعد الكشف على الطلب انلغى مرتين. والوضع كل يوم يسوء. الموظف في مركز الخدمه كان اسلوبه مو زين ابد. الحينه صار لها وايد ومحد سوا شي. انا [NAME] وهذا رقمي [PHONE],permits,permits,permits
+C18497,al_faisaliya,msa,انتظرت اكثر من ساعتين في الفرع دون خَدمة. وقد أبلغت عن ذلك سِابقا. نرجو سَرعة المعالجة.,staff_service,staff_service,staff_service
+C01479,al_safa,gulf,يا جماعة اتصلت على الرقم الموحد 14 مرات ومحد رد. وشكرا.,staff_service,water_sewage,staff_service
+C01134,al_salam,gulf,يا جماعه الحفريات في شارع 156 لها 29 يوم ومحد سفلتها. وبلغنا قبل ومحد سوا شي. ماطور كهربا شغال ليل ونهار في شارع 171. جوالي [PHONE],roads,roads,roads
+C01672,al_nuzha,msa,الحاويه المخصصة لحينا مكسورة منذ شهر. لم ترفع النفايات من شارع 90 منذ 7 أيام. والمشكلة تزداد سوءا. تعامل الموظف في مركز الخدمة كان غير لائق. مقدم البلاغ: [NAME]، جوال [PHONE],staff_service,staff_service,waste
+C18890,al_naseem,gulf,سكروا البلاغ اللي قبل وهم ما سووا شي. اَلموظف في مركز الخدمة كان أسلوبه مو زين ابد. وبلغنا قبل ومحد سوا شي. الحين صَار لها وايد ومحد سّوا شي. معك [NAME].,staff_service,staff_service,staff_service
+C13576,al_wurud,en,"Hello, Construction waste is being dumped next to the mosque every night. Rubbish has not been collected from Street 70 for 6 days. They closed my previous report without doing anything. This is the third time I report it. Call me on [PHONE].",waste,waste,waste
+C09364,al_faisaliya,msa,الحاوية المخصصة لحينا مًكسورة مِنذ شهر. سيارة النظافة تترك نصف المخلفات على الطريق. توجد حْفرة كبيره في شارع ١١٧ تسببت في أضرار للسيارات. وشكرا لكم.,waste,waste,waste
+C08179,al_aziziya,msa,المطب الجديد أِمام مًدخل الـــحي بلا لوحات تحذيرية. وًشكرا لكم.,roads,roads,roads
+C00233,al_rawabi,gulf,يا جماعة الطريق لين مخبز الحى ظلمة بالليل ما تشوف شي. فيه عمود نور مايل في شارع 18 بيطيح على أحد. والعيال والشيبان يتأذون. الله يعافيكم شوفوا لنا حل.,lighting,lighting,lighting
+C04736,al_nuzha,gulf,الموظف في مركز الخدمة كان أسلوبه مو زين أبد. قعدت ساعتين بالفرع ومحد خدمني. الله يعافيكم شوفوا لنا حل.,staff_service,staff_service,staff_service
+C18450,al_naseem,en,"Dear Sada team, Excavation works on Street 87 stopped 13 days ago and the road was never resurfaced. It is getting worse. Call me on [PHONE].",roads,water_sewage,roads
+C09911,al_salam,gulf,يا جماعه حاوية حارتنا مكسورة من شهر ومحد بدلها. الزبالة ما انشالت من 5 ايام في شارع 37. ومحد جا يشوف. البناء اللي جنب المستوصف يبدون قبل الفجر ونصحى من الدق. وشكرا. معك [NAME].,noise,waste,waste
+C08934,al_wurud,gulf,لو سمحتوا فيه ناس يكبون مخلفات بناء جنب المستوصف كل ليلة. وشكرا.,waste,waste,waste
+C04063,al_aziziya,gulf,لو سمحتوا ضغط الماي ضعيف مرره وما يوصل للخزان فوق. الشارع غرقان مويه من البيارة اللى عند المستوصف. ويشكرا. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C18747,al_nuzha,gulf,تجديﺩ رخصة ﺍﻝـــمحﻝ معﻝق ﺏﺍﻝﻥظام ﻭُمﺍ ﺍﺩري ليش. ﻡﻭعﺩ ﺍلكشف عﻝى الطﻝﺏ ﺍنلغى مًرﺕﻱﻥ. ﻭكﻝ اِهﻝ ﺍﻝحﻱ ﻡﺕضررﻱﻥ. ﺍلﻝه ﻱعﺍفﻱكﻡ شﻭفﻭﺍ ﻝﻥا حﻝ.,permits,permits,permits
+C18236,al_jazira,gulf,فيه ناس يكبون مًخلفات بًناء جنب مدخل الحي كل ليلة. حاوية حارتنا مكسورة من شهر وًمحد بدلها. الحينه صار لها وايد ومحد سوا شي. معك [NAME].,waste,waste,waste
+C16819,al_shati,msa,أعمال الحفر في شارع 82 متوقفة منذ 17 يوما دون إعاده السفلتة. الرصيف في شارع 186 متكسر ولا يستطيع كبار السن المشي عليه. نرجو سرـــعة المعالجة. رقم جوالي [PHONE],roads,roads,roads
+C19901,al_shati,msa,تًقدمت بطلب رَخصة بناء منذ ١٩ يوما وْلم يصلني أي رد. ولم يحضر أحد للمعاينة. وشكرا لكم.,permits,permits,permits
+C15834,al_salam,msa,تحية طيبة، المطب الجديد امام مخبز الحي بلا لوحات تحذيرية. توجد حفرة كبيرة في شارع 106 تسببت في اضرار للسيارات. والوضع يتكرر كل اسبوع. نرجو سرعه المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],roads,roads,roads
+C10639,al_shati,gulf,البناء اللي جنب مخبز الحي يبدون قبل الفجر ونصحى من الدق. والوضع كل يوم يسوء. اللحين صار لها وايد وماحد سوا شي. جوالي [PHONE],noise,noise,noise
+C19773,al_nuzha,msa,دورات المياه في الحديقة مغلقة منذ اسابيع. والوضع على هذه الحال منذ مدة. الإنارة تعمل في النهار وتنطفئ في الليل في شارع 19. بريدي الإلكتروني [EMAIL],lighting,parks,parks
+C10548,al_shati,gulf,حطوا مطب عند مخبز الحي بدـــون لوحة وكل يوم حادث. جوالي [PHONE],roads,roads,roads
+C12012,al_naseem,gulf,يا جماعة المجاري طافحة في شارع 12 جنب المدرسة من اسبوعين والشارع غرقان والريحة وايد، تكفون. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C06017,al_salam,gulf,يا جماعة الرصيف مكسر عند السوق المركزي والشيبان ما يقدرون يمشون. فيه حفرة كبيرة في شارع 81 خربت كفرات السيارة. وشكرا. معك [NAME].,roads,roads,roads
+C01521,al_shati,msa,تحية طيبة، اغلقوا البلاغ السابق دون أي إجراء فعلي. والمشكلة تزداد سوءا. ممشى الحي بلا مقاعد كافية لكبار السن. أنا المواطن [NAME].,staff_service,staff_service,staff_service
+C12580,al_faisaliya,en,The lights stay on during the day and go off at night on Street 35. The road to the bakery is completely dark at night. Please fix this soon.,lighting,lighting,lighting
+C16523,al_aziziya,en,"Excavation works on Street 187 stopped 4 days ago and the road was never resurfaced. The pavement near the roundabout is broken and elderly people cannot walk on it. The whole neighbourhood is affected. This is the third time I report it. [NAME], resident of Al-Aziziya",roads,roads,roads
+C18285,al_nuzha,msa,اود الإبلاغ عن مشكلة: مولد كهربائي يعمل باستمرار في شارع 118 ويسبب ضوضاء. مكبرات الصوت في القاعة المجاورة لـالسوق المركزي مرتفعة جدا.,noise,noise,noise
+C10307,al_wurud,msa,المطب الجديد أمام مخبز الحي بلا لوحات تحذيرية. وهذا يؤثر على الأطفال وكبار السن. نرجو سرعة المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],roads,roads,roads
+C03858,al_faisaliya,gulf,مرحبا حاوية حارتنا مكسورة من شهر ومحد بدلها. وبلغنا قبل ومـــحد سوا شي. جوالي [PHONE],waste,waste,waste
+C18406,al_rawabi,msa,توجد حفرة كبيرة في شارع 118 تْسببت فّي اضرار للسيارات. ظهرت تشققات خطيرة في الجسر المؤدي إلى مّدخل الحي. اسمي [NAME].,roads,roads,roads
+C17593,al_safa,gulf,لو سمحتوا القاعة اللي جنب مخبز الحي السماعات عندهم عالية مره. البناء اللي جنب السوق المركزي يبدون قبل الفجر ونصحى من الدق. كلموني على [PHONE],noise,noise,noise
+C06637,al_salam,gulf,ممشى الحي ما فيه كراسي تكفي. العاب الياهل في الحديقة مكسرة وخطيرة. اللحين صار لها وايد وماحد سوا شي. انا [NAME] من سكان الحي.,parks,parks,parks
+C00132,al_jazira,msa,ترمى مخلفات البناء بجوار مدخل الحی دون رقابة. وشکرا لکم. للتواصل: [PHONE],waste,waste,waste
+C02732,al_faisaliya,gulf,لو سمحتوا الزبالة ما انشالت من 28 ايام في شارع 46. والوضع كل يوم يسوء. حمامات الـــحديقة مسكرة من اسابيع. وشكرا.,waste,waste,waste
+C06949,al_jazira,en,"Hi, They closed my previous report without doing anything. I reported it before. Please fix this soon. Call me on [PHONE].",staff_service,staff_service,staff_service
+C02165,al_jazira,msa,السلام علیکم، الرصیف فی شارع ٨٠ متکسر ولا یستطیع کبار السن المشی علیه. ویتضرر منها سکان الحى کلهم. وشکرا لکم. للتواصل: [PHONE],roads,roads,roads
+C19204,al_wurud,msa,السلام عليكم، لم ترفع النفايات من شارع 1 منذ 18 أيام. والمشكله تزداد سوءا. ممشى الحي بلا مقاعد كافية لكبار السن. نرجو سرعه المعالجة.,waste,waste,waste
+C01371,al_safa,en,They closed my previous report without doing anything. I reported it before. Contact: [EMAIL],staff_service,staff_service,staff_service
+C08341,al_naseem,gulf,السلام عليكم الحاويات عند مخبز الحي فايضة والقطاوة معفسينها. البناء اللي جنب مخبز الحي يبدون قبل الفجر ونصحى من الدق.,waste,waste,waste
+C04464,al_salam,msa,أود الإبلاغ عن مشکلة: ورشه فی شارع ١٧٦ تِعمل طوال اللیل بأصوات مزعجة. مُولد کهربائی یعمل باستمرار فی شارع ١٣٣ وِیسبب ضوضاء. وشکرا لکم. للتواصل: [PHONE],noise,noise,noise
+C06402,al_naseem,en,The public garden on Street 60 is not watered and the grass is dead. Thank you. Contact: [EMAIL],parks,parks,parks
+C17890,al_nuzha,gulf,حاوية حارتنا مكسورة من شهر ومحد بدلها. وكل أهل الحي متضررين. تكفون بسرعة.,waste,waste,waste
+C06836,al_jazira,gulf,يا جماعة الشارع غرقان مويه من البيارة اللي عند السوق المركزي. وماحد جا يشوف. وشكرا.,water_sewage,water_sewage,water_sewage
+C07716,al_jazira,gulf,فيه ناس يكبون مخلفات بناء جنب مدرسة الحي كل ليلة. تكفون بسرعة. انا [NAME] من سكان الحي.,waste,waste,waste
+C05758,al_rawabi,msa,تحیة طیبة، أعمال البناء بجوار الدوار تبدأ قبل الفجر کل یوم. نرجو سرعه المعالجة. رقم جوالي [PHONE],noise,noise,noise
+C07890,al_salam,gulf,مرحبا حاوية حارتنا مكسورة من شهر ومحد بدلها. تكفون بسرعة. انا [NAME] وهذا رقمي [PHONE],waste,waste,waste
+C11974,al_shati,msa,انتظرت أكثر من ساعتين في الفرع دون خدمة. تعامل الموظف في مركز الخدمة كان غير لائق. والوضع يتكرر كل أسبوع. آمل التواصل معي. رقم جوالي [PHONE],staff_service,staff_service,staff_service
+C02776,al_jazira,gulf,يا جماعة اتصلت على الرقم الموحد 2 مرات ومحد رد. والوضع كل يوم يسوء. انا [NAME] من سكان الحي.,staff_service,staff_service,staff_service
+C13554,al_safa,msa,اود الإبلاغ عن مشكلة: يوـــجد طفح للصرف الصحي أمام مخبز الحي والرائحة لا تحتمل. والمشكلة تزداد سوءا.,water_sewage,water_sewage,water_sewage
+C03309,al_rawabi,en,"Hi, Our neighbourhood bin has been broken for a month. Rubbish has not been collected from Street 107 for 25 days. The whole neighbourhood is affected. Thank you.",waste,waste,waste
+C19539,al_faisaliya,msa,تحية طيبة، حاويات النفايات عند مدخل الحي ممتلئة وتنتشر حولها القطط. وشكرا لكم.,waste,waste,waste
+C06730,al_salam,gulf,مرحبا القاعة اللي جنب المسجد السماعات عندهم عالية مره. وصار له فترة على هالحال. وشكرا. معك [NAME].,noise,noise,noise
+C05875,al_naseem,gulf,السلام عليكم الـــبناء اّللي جَنب المستوصف يبدون قبل الفجر ونصحى من الدق. وصار له فترة على هّالحال. وشكرا. انا [NAME] وهذا رقمي [PHONE],noise,noise,noise
+C16073,al_rawabi,en,I waited more than two hours at the branch without being served. It has been like this for a while. Please fix this soon.,permits,staff_service,staff_service
+C18852,al_aziziya,msa,السلام عِليكم، عمود انارة مائل في شارع 109 ويخشى سقوطه. وُالمشكلة تزداد سوءا. وَشكرا لكم.,noise,lighting,lighting
+C05587,al_marwa,msa,السلام عليكم، اِلحاوية المخصصة لحينا مكسورة منذ شهر. وّهذا يؤثر على الأطفال وكبار اّلسن. آمل التواصل معي.,waste,waste,waste
+C17958,al_aziziya,gulf,الماي مقطوع عندنا من 24 أيام وما احد رد علينا. ضغط الماي ضعيف مرره وما يوصل للخزان فوق. والعيال والشيبان يتأذون. موعد الكشف على الطلب انلغى مرتين. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],permits,water_sewage,water_sewage
+C04389,al_khalij,en,I applied for a building permit 3 days ago and have heard nothing. My shop licence renewal is stuck in the system with no reason given. Children and older people are at risk. Thank you.,permits,permits,permits
+C04346,al_faisaliya,gulf,قعدت ساعتين بالفرع وماحد خدمني. الموظف في مركز الخدمة كان اسلوبه مو زين ابد. وكل اهل الحى متضررين. الله يعافيكم شوفوا لنا حل. انا [NAME] وهذا رقمي [PHONE],lighting,staff_service,staff_service
+C09090,al_naseem,gulf,مرحبا ضغط الماي ضعيف مره وما يوصل للخزان فوق. الماي مقطوع عندنا من 27 أيام وما أحد رد علينا. وصار له فترة على هالحال.,water_sewage,water_sewage,water_sewage
+C02050,al_salam,gulf,مرحبا ماطور كهربا شغال ليل ونهار في شارع 107. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],noise,noise,noise
+C04873,al_faisaliya,gulf,لو سمحتوا الحفريات في شارع 111 لها 9 يوم وماحد سفلتها. وشكرا. انا [NAME] من سكان الحي.,roads,roads,roads
+C17063,al_safa,msa,اﻝطﺭيق ﺍﻝﻡؤدﻱ الى اﻝدوﺍر ﻡظلﻡ تﻡﺍمﺍ في ﺍلﻝيل. ﻭﺍﻝﻡشكﻝة ﺕزدﺍد سوءا. ﺍلحﺩيقه اﻝعامة فﻱ شاﺭع 21 ﺏلا سقي واﻝعشب جﺍف. نرجﻭ سﺭعة ﺍﻝﻡعﺍلجة.,lighting,parks,lighting
+C07900,al_faisaliya,en,"Hello, The lights stay on during the day and go off at night on Street 51. The street lights on Street 95 have been off for 16 days. It is getting worse. This is the third time I report it.",lighting,lighting,lighting
+C02475,al_aziziya,gulf,السلام app علیکم سکروا البلاغ اللی قبل وهم ما سووا شی. كلموني على [PHONE],staff_service,staff_service,staff_service
+C18740,al_marwa,msa,السلام عليكم، الحاوية المخصصة لحينا مكسورة منذ شهر. سيارة النظافة تترك نصف المخلفات على الطريق. ويتضرر منها سكان الحي كلهم. رفض طلب التصريح دون ذكر المستندات الناقصة. وشكرا لكم. رقم جوالي [PHONE],waste,waste,waste
+C10049,al_aziziya,gulf,لو سمحتوا لمبات الشارع طافية في شارع ١٠ من ٢١ ايام. فيه عمود نور مايل في شارع ١١٩ بيطيح على احد. الله يعافيكم شوفوا لنا حل. معك [NAME].,lighting,lighting,lighting
+C05985,al_marwa,gulf,لًو سمحتوا حاوية حارتنا مكسورة مَن شهر وماحد بدلها. سيارة البلدية تشيل الزبالة وْتطيح نصها بالشارع. تكفون بسرعة. انا [NAME] من سكان الحي.,waste,waste,waste
+C17551,al_rawabi,msa,تسربت المياه من أنبوب مكسور في شارع 156 وتجمعت في الطريق. يوجد طفح للصرف الصحي امام المستوصف والرائحة لا تحتمل. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],water_sewage,water_sewage,water_sewage
+C13315,al_aziziya,msa,اتصلت بالرقم الموحد 27 مرات ولم يرد احد. وقد ابلغت عن ذلك سابقا. وشكرا لكم. أنا المواطن [NAME].,staff_service,staff_service,staff_service
+C08741,al_safa,en,"Dear Sada team, The manholes on Street 174 fill with sewage after every rain. A broken pipe on Street 5 is leaking water onto the road. It is getting worse. This is the third time I report it. Call me on [PHONE].",water_sewage,water_sewage,water_sewage
+C03755,al_naseem,msa,انقطعت المياه عن منزلنا في شارع 72 منذ 21 أيام دون أي إشعار. غرف التفتيش في شارع 124 ممتلئة بمياه الصرف بعد كل مطر. والوضع على هذه الحال منذ مدة. آمل التواصل معي.,water_sewage,water_sewage,water_sewage
+C15023,al_nuzha,msa,السلام عليكم، لم ترفع النفايات من شارع 29 منذ 3 أيام. حاويات النفايات عند المستوصف ممتلئة وتنتشر حولها القطط. ويتضرر منها سكان الحي كلهم. مقدم البلاغ: [NAME]، جوال [PHONE],waste,waste,waste
+C06488,al_faisaliya,gulf,السلام online عليكم حطوا مطب عند الدوار بدون لوحة وكل يوم حادث. الزبالة ما انشالت من 25 ايام في شارع 67. تكفون بسرعة. رقم هويتي [ID],roads,roads,roads
+C02588,al_safa,gulf,يا جماعة حاوية حارتنا مكسورة من شهر ومحد بدلها. فيه ناس يكبون مخلفات بناء جنب مدخل الحي كل ليلة. موعد الكشف على الطلب انلغى مرتين. وشكرا. جوالي [PHONE],waste,waste,waste
+C04431,al_faisaliya,en,"Hi, The manholes on Street 137 fill with sewage after every rain. It has been like this for a while. Thank you. ID number [ID]",water_sewage,water_sewage,water_sewage
+C17017,al_aziziya,gulf,اﻝسﻝام online عﻝيكﻡ اﻝعﺍب الﻱﺍهل فﻱ اﻝحﺩيقة ﻡكسﺭة وخطيﺭة. ﺍﻝحدﻱقة ﺍﻝلﻱ في شﺍرع 112 مﺍحﺩ ﻱسقيها ﻭالزﺭع ﻡﻱﺕ. ﺕكفوﻥ بسرعة. كلموني على [PHONE],parks,parks,parks
+C12081,al_nuzha,msa,السلام عليكم، سيارة النظافة تترك نصف المخلفات على الطريق. حاويات النفايات عند السوق المركزى ممتلئة وتنتشر حولها القطط. آمل التواصل معي.,waste,waste,waste
+C10712,al_jazira,gulf,يا جماعة الرصيف مكسر عند مدرسة الحي والشيبان ما يقدرون يمشون. الحين صار لها وايد ومحد سوا شي.,roads,roads,roads
+C10197,al_shati,en,"Hello, The street lights on Street 5 have been off for 17 days. Children and older people are at risk. Please fix this soon. My mobile is [PHONE].",permits,lighting,lighting
+C12854,al_khalij,msa,ألعاب الأطفال في الدوار مكسورة وخطرة. دورات المياه في الحديقة مغلقة منذ أسابيع. آمل التواصل معي. رقم جوالي [PHONE],staff_service,parks,parks
+C19771,al_faisaliya,en,"Hello, A generator on Street 166 runs day and night and the noise is constant. The wedding hall near the central market plays music far too loud. My mobile is [PHONE].",noise,noise,noise
+C11239,al_faisaliya,en,The pavement near the entrance of the district is broken and elderly people cannot walk on it. I reported it before. Construction waste is being dumped next to the bakery every night.,roads,roads,roads
+C18499,al_aziziya,gulf,فيه ورشة في شارع 74 تشتغل طول الليل والإزعاج وايد. تكفون بسرعة. انا [NAME] من سكان الحي.,noise,noise,noise
+C08280,al_marwa,gulf,ترى app المجاري طافحة عّند الدوار والريحة وَايد قوية. الله يعافيكم شوفوا لِنا حل. جوالي [PHONE],water_sewage,water_sewage,water_sewage
+C09049,al_khalij,msa,أود الإبلاغ عن مشكلة: ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. ولم يحضر أحد للمعاينة. الحديقة العامة في شارع 121 بلا سقي والعشب جاف. وشكرا لكم. أنا المواطن [NAME].,water_sewage,parks,water_sewage
+C06313,al_jazira,gulf,لو سمحتوا القاعه اللي جنب مدخل الحي السماعات عندهم عاليه مره. ماطور كهربا شغال ليل ونهار في شارع ١٢٣. تكفون بسرعة.,noise,noise,noise
+C13656,al_safa,en,"Hello, Sewage is overflowing in front of the roundabout and the smell is unbearable. The walking track does not have enough benches for older people. This is the third time I report it.",water_sewage,water_sewage,water_sewage
+C07456,al_rawabi,en,"Hello, Our neighbourhood bin has been broken for a month. A broken pipe on Street 75 is leaking water onto the road. Please fix this soon. Call me on [PHONE].",waste,waste,waste
+C16968,al_safa,msa,السلام عليكم، أعمال البناء بجوار المسجد تبدأ قبل الفجر كل يوم. وقد ابلغت عن ذلك سابقا. نرجو سرعة المعالجة. رقم جوالي [PHONE],waste,noise,noise
+C08185,al_aziziya,msa,الحاوية المخصصة لحينا مكسورة منذ شهر. وهذا يؤثر على الأطفال وكبار السن. عمود انارة مائل في شارع 24 ويخشى سقوطه. نرجو سرعة المعالجة. بريدي الإلكتروني [EMAIL],waste,waste,waste
+C01859,al_naseem,gulf,ماطور كهربا شغال ليل ونهار في شارع ١١١. وماحد جا يشوف.,noise,noise,noise
+C08180,al_nuzha,msa,السلام عليكم، عمود إنارة مائل في شارع 94 ويخشى سقوطه. ويتضرر منها سكان الحي كلهم. نرجو سرعة المعالجة.,lighting,lighting,lighting
+C03620,al_naseem,gulf,مرحبا الحديقة اللي في شارع 71 محد يسقيها والزرع ميت. حمامات الحديقة مسكرة من أسابيع. الشارع كله ترقيع وحفر من بعد الأمطار. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],parks,parks,parks
+C04959,al_khalij,msa,توجد حفرة كبـــيرة في شارع 174 تسببت في أضرار للسيارات. وقد ابلغت عن ذلك سابقا. آمل التواصل معي.,roads,noise,roads
+C19145,al_aziziya,en,"Hi, They closed my previous report without doing anything. The whole neighbourhood is affected. Please contact me. My mobile is [PHONE].",staff_service,staff_service,staff_service
+C00531,al_khalij,msa,أعمال الحفر في شارع 25 متوقفة منذ 20 يوما دون إعادة السفلتة. ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر.,roads,roads,roads
+C01056,al_jazira,gulf,ضغط الماي ضعيف مره وما يوصل للخزان فوق. ترى المجاري طافحة عند مدخل الحي والريحة وايد قوية. وصار له فترة على هالحال. الله يعافيكم شوفوا لنا حل. معك [NAME].,water_sewage,water_sewage,water_sewage
+C19795,al_faisaliya,gulf,مرحبا الشارع کله ترقیع وحفر من بعد الأمطار. الرصیف مکسر عند مدخل الحی والشیبان مْا یقدرون یمشون. وکـــل اهل الحی متضررین. مُاطور کهربا شغال لیل وَنهار فی شارع 116.,noise,roads,roads
+C15166,al_wurud,msa,طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. رفض طلب التصريح دون ذكر المستندات الناقصة. رقم جوالي [PHONE],permits,permits,permits
+C13932,al_safa,msa,تحية طيبة، اتصلت بالرقم الموحد 16 مرات ولم يرد أحد. مكبرات الصوت في القاعة المجاورة لـمخبز الحى مرتفعة جدا. نرجو سرعة المعالجة.,staff_service,noise,staff_service
+C02349,al_marwa,en,"Hello, Construction waste is being dumped next to the mosque every night. It has been like this for a while. The children's play equipment in the park is broken and dangerous. This is the third time I report it. Contact: [EMAIL]",parks,parks,waste
+C03263,al_safa,gulf,مرحبا الطريق لين المستوصف ظلمة بِالليل ما تشوف شي. وبلغنا قُبل وماحد سّوا شي. تكفون بسرعة. جوالي [PHONE],lighting,lighting,lighting
+C01722,al_safa,gulf,الحفريات في شارع ٢٤ لها ٢٤ يوم وماحد سفلتها. والوضع كل يوم يسوء. سكروا البلاغ اللي قبل وهم ما سووا شي. اللحين صار لها وايد ومحد سوا شي. جوالي [PHONE],roads,staff_service,roads
+C17951,al_wurud,msa,اود الإبلاغ عن مشكلة: غرف التفتيش في شارع ٢٦ مّمتلئة بمياه الصرف بعد كل مطر. ضغط المياه ضعيف جدا في الأدوار العليا منذ بدايه الشهر. وَلم يحضر احد للمعاينة. سيارة النظافة تترك نصف اّلمخلفات على الطريق. اسمي [NAME].,water_sewage,water_sewage,water_sewage
+C09446,al_safa,gulf,سِيارة اُلبلدية تشيل الزباله وتطيح نصها بالشارع. الحين صار لها وايد ومحد سًوا شي.,waste,waste,waste
+C19348,al_faisaliya,msa,تحية طيبة، مولد كهربائي يعمل باستمرار في شارع ١٨٢ ويسبب ضوضاء. آمل التواصل معي.,noise,noise,noise
+C15951,al_rawabi,msa,غرف التفتيش في شارع 112 ممتلئة بمياه الصرف بعد كل مطر. تسربت المياه من انبوب مكسور في شارع 82 وتجمعت في الطريق.,water_sewage,water_sewage,water_sewage
+C16836,al_marwa,gulf,مرحبا الموظف في مركز الخدمة كان أسلوبه مو زين أبد. وكل اسبوع نفس الشي.,staff_service,staff_service,staff_service
+C01443,al_shati,en,"Hi, Construction waste is being dumped next to the entrance of the district every night. The bins near the clinic are overflowing and cats are spreading the waste. Children and older people are at risk. My mobile is [PHONE].",waste,waste,waste
+C13689,al_safa,msa,السلام عليكم، ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. وقد أبلغت عن ذلـــك سابقا. أنا المواطن [NAME].,water_sewage,water_sewage,water_sewage
+C01938,al_aziziya,gulf,يا جماعه فيه حفرة كبيرة في شارع 177 خربت كفرات السيارة.,roads,roads,roads
+C06026,al_naseem,gulf,فيه حفرة كبيرة في شارع 179 خربت كفرات السيارة. الرصيف مكسر عند السوق المركزي والشيبان ما يقدرون يمشون. وكل أسبوع نفس الشي. جوالي [PHONE],roads,roads,roads
+C00639,al_rawabi,msa,تعامل الموظف في مركز الخدمة كان غير لائق. نرجو سرعة المعالجة.,staff_service,staff_service,staff_service
+C11877,al_naseem,gulf,يا جماعة المجاري طافحة في شارع 12 جنب المدرسة من أسبوعين والشارع غرقان والريحة وايد، نبي حل. [NAME] - حي النسيم,water_sewage,water_sewage,water_sewage
+C17190,al_nuzha,msa,تحية طيبة، الرصيف في شارع ١٦٨ متكسر ولا يستطيع كبار السن المشي عليه. وشكرا لكم. اسمي [NAME].,roads,roads,roads
+C06969,al_faisaliya,msa,أود الإبلاغ عن مشكلة: ضغط المياه ضعيف جدا في الأدوار العليا منذ بداية الشهر. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],water_sewage,water_sewage,water_sewage
+C11597,al_naseem,msa,تحية طيبة، مياه الصرف الصحي طافحة في شارع 12 عند المدرسة منذ أسبوعين واـــلرائحة لا تحتمل. [NAME] - حي النسيم,water_sewage,water_sewage,water_sewage
+C16025,al_rawabi,msa,أود الإبلاغ عن مشكلة: ألعاب الأطفال في المستوصف مكسورة وخطرة. والمشكلة تزداد سوءا. وشكرا لكم. للتواصل: [PHONE],parks,parks,parks
+C15281,al_jazira,gulf,مرحبا ضغط الماي ضعيف مرـــره وما يوصل للخزان فوق. وصار له فترة على هالحال. تجديد رخصة المحل معلق بالنظام وما أدرى ليش. الله يعافيكم شوفوا لنا حل. معك [NAME].,water_sewage,water_sewage,water_sewage
+C18458,al_salam,gulf,قعدت ساعتين بالفرع ومحد خدمني. الموظف في مركز الخدمه كان أسلوبه مو زين أبد. وصار له فترة على هالحال. تكفون بسرعة.,staff_service,staff_service,staff_service
+C00208,al_salam,en,The lights stay on during the day and go off at night on Street 87. The street lights on Street 133 have been off for 5 days.,lighting,lighting,lighting
+C15926,al_rawabi,gulf,البناء اللي جنب الدوار يبدون قبل الفجر ونصحى من الدق. والوضع كل يوم يسوء. الحين صار لها وايد ومحد سوا شي.,noise,noise,noise

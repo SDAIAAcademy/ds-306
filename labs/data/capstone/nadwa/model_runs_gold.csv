@@ -107,13 +107,13 @@ N01397,P1,3,collections
 N01397,P2,1,collections
 N01397,P2,2,collections
 N01397,P2,3,collections
-N00370,P1,1,events
+N00370,P1,1,collections
 N00370,P1,2,events
 N00370,P1,3,events
 N00370,P2,1,opening_hours
 N00370,P2,2,opening_hours
 N00370,P2,3,opening_hours
-N01320,P1,1,facilities
+N01320,P1,1,events
 N01320,P1,2,facilities
 N01320,P1,3,facilities
 N01320,P2,1,collections
@@ -161,7 +161,7 @@ N00521,P1,3,facilities
 N00521,P2,1,collections
 N00521,P2,2,collections
 N00521,P2,3,collections
-N01939,P1,1,collections
+N01939,P1,1,events
 N01939,P1,2,collections
 N01939,P1,3,collections
 N01939,P2,1,events
@@ -215,9 +215,9 @@ N02456,P1,3,opening_hours
 N02456,P2,1,opening_hours
 N02456,P2,2,opening_hours
 N02456,P2,3,opening_hours
-N01648,P1,1,opening_hours
-N01648,P1,2,opening_hours
-N01648,P1,3,staff
+N01648,P1,1,staff
+N01648,P1,2,staff
+N01648,P1,3,opening_hours
 N01648,P2,1,staff
 N01648,P2,2,staff
 N01648,P2,3,staff
@@ -230,7 +230,7 @@ N00946,P2,3,opening_hours
 N01564,P1,1,events
 N01564,P1,2,events
 N01564,P1,3,events
-N01564,P2,1,facilities
+N01564,P2,1,opening_hours
 N01564,P2,2,facilities
 N01564,P2,3,facilities
 N01565,P1,1,collections
@@ -266,7 +266,7 @@ N00707,P2,3,facilities
 N00503,P1,1,facilities
 N00503,P1,2,facilities
 N00503,P1,3,facilities
-N00503,P2,1,facilities
+N00503,P2,1,opening_hours
 N00503,P2,2,facilities
 N00503,P2,3,opening_hours
 N00976,P1,1,staff
@@ -287,9 +287,9 @@ N01281,P1,3,facilities
 N01281,P2,1,staff
 N01281,P2,2,staff
 N01281,P2,3,staff
-N02364,P1,1,facilities
-N02364,P1,2,opening_hours
-N02364,P1,3,facilities
+N02364,P1,1,opening_hours
+N02364,P1,2,facilities
+N02364,P1,3,opening_hours
 N02364,P2,1,facilities
 N02364,P2,2,facilities
 N02364,P2,3,facilities
@@ -374,7 +374,7 @@ N00964,P2,3,events
 N02306,P1,1,collections
 N02306,P1,2,collections
 N02306,P1,3,collections
-N02306,P2,1,facilities
+N02306,P2,1,collections
 N02306,P2,2,facilities
 N02306,P2,3,events
 N01185,P1,1,facilities
@@ -401,7 +401,7 @@ N00661,P1,3,facilities
 N00661,P2,1,facilities
 N00661,P2,2,staff
 N00661,P2,3,facilities
-N01524,P1,1,facilities
+N01524,P1,1,opening_hours
 N01524,P1,2,facilities
 N01524,P1,3,facilities
 N01524,P2,1,facilities
@@ -443,7 +443,7 @@ N01313,P1,3,collections
 N01313,P2,1,collections
 N01313,P2,2,collections
 N01313,P2,3,collections
-N01030,P1,1,events
+N01030,P1,1,staff
 N01030,P1,2,events
 N01030,P1,3,events
 N01030,P2,1,events
@@ -479,7 +479,7 @@ N00745,P1,3,opening_hours
 N00745,P2,1,facilities
 N00745,P2,2,facilities
 N00745,P2,3,opening_hours
-N01597,P1,1,staff
+N01597,P1,1,collections
 N01597,P1,2,staff
 N01597,P1,3,staff
 N01597,P2,1,facilities
@@ -569,7 +569,7 @@ N00953,P1,3,collections
 N00953,P2,1,collections
 N00953,P2,2,collections
 N00953,P2,3,collections
-N01546,P1,1,collections
+N01546,P1,1,facilities
 N01546,P1,2,collections
 N01546,P1,3,facilities
 N01546,P2,1,collections
@@ -578,7 +578,7 @@ N01546,P2,3,collections
 N00923,P1,1,events
 N00923,P1,2,events
 N00923,P1,3,events
-N00923,P2,1,events
+N00923,P2,1,opening_hours
 N00923,P2,2,events
 N00923,P2,3,events
 N01670,P1,1,opening_hours
@@ -608,13 +608,13 @@ N00846,P2,3,staff
 N01071,P1,1,events
 N01071,P1,2,staff
 N01071,P1,3,staff
-N01071,P2,1,staff
+N01071,P2,1,events
 N01071,P2,2,staff
 N01071,P2,3,events
 N00870,P1,1,opening_hours
 N00870,P1,2,opening_hours
 N00870,P1,3,opening_hours
-N00870,P2,1,opening_hours
+N00870,P2,1,collections
 N00870,P2,2,opening_hours
 N00870,P2,3,opening_hours
 N01371,P1,1,opening_hours
@@ -671,7 +671,7 @@ N02081,P1,3,facilities
 N02081,P2,1,events
 N02081,P2,2,events
 N02081,P2,3,events
-N02068,P1,1,opening_hours
+N02068,P1,1,events
 N02068,P1,2,opening_hours
 N02068,P1,3,opening_hours
 N02068,P2,1,opening_hours
@@ -686,13 +686,13 @@ N02109,P2,3,facilities
 N00755,P1,1,opening_hours
 N00755,P1,2,opening_hours
 N00755,P1,3,opening_hours
-N00755,P2,1,events
+N00755,P2,1,facilities
 N00755,P2,2,opening_hours
 N00755,P2,3,events
 N02270,P1,1,facilities
 N02270,P1,2,facilities
 N02270,P1,3,facilities
-N02270,P2,1,collections
+N02270,P2,1,facilities
 N02270,P2,2,collections
 N02270,P2,3,collections
 N02189,P1,1,events
@@ -716,7 +716,7 @@ N01242,P2,3,collections
 N00456,P1,1,staff
 N00456,P1,2,staff
 N00456,P1,3,staff
-N00456,P2,1,facilities
+N00456,P2,1,opening_hours
 N00456,P2,2,facilities
 N00456,P2,3,facilities
 N00906,P1,1,collections
@@ -851,7 +851,7 @@ N00180,P1,3,staff
 N00180,P2,1,staff
 N00180,P2,2,staff
 N00180,P2,3,staff
-N01690,P1,1,facilities
+N01690,P1,1,events
 N01690,P1,2,facilities
 N01690,P1,3,facilities
 N01690,P2,1,events
@@ -902,7 +902,7 @@ N01507,P2,3,events
 N00264,P1,1,opening_hours
 N00264,P1,2,events
 N00264,P1,3,opening_hours
-N00264,P2,1,opening_hours
+N00264,P2,1,staff
 N00264,P2,2,opening_hours
 N00264,P2,3,opening_hours
 N01752,P1,1,facilities
@@ -941,7 +941,7 @@ N01840,P1,3,opening_hours
 N01840,P2,1,opening_hours
 N01840,P2,2,opening_hours
 N01840,P2,3,opening_hours
-N01496,P1,1,opening_hours
+N01496,P1,1,collections
 N01496,P1,2,opening_hours
 N01496,P1,3,opening_hours
 N01496,P2,1,opening_hours
@@ -998,7 +998,7 @@ N02020,P2,3,staff
 N01790,P1,1,opening_hours
 N01790,P1,2,opening_hours
 N01790,P1,3,opening_hours
-N01790,P2,1,opening_hours
+N01790,P2,1,facilities
 N01790,P2,2,opening_hours
 N01790,P2,3,opening_hours
 N01714,P1,1,facilities
@@ -1022,7 +1022,7 @@ N02246,P2,3,events
 N02344,P1,1,staff
 N02344,P1,2,staff
 N02344,P1,3,staff
-N02344,P2,1,staff
+N02344,P2,1,events
 N02344,P2,2,staff
 N02344,P2,3,staff
 N01783,P1,1,staff
@@ -1031,7 +1031,7 @@ N01783,P1,3,staff
 N01783,P2,1,staff
 N01783,P2,2,staff
 N01783,P2,3,staff
-N00576,P1,1,collections
+N00576,P1,1,opening_hours
 N00576,P1,2,collections
 N00576,P1,3,collections
 N00576,P2,1,collections
@@ -1055,7 +1055,7 @@ N00416,P1,3,facilities
 N00416,P2,1,facilities
 N00416,P2,2,facilities
 N00416,P2,3,facilities
-N00436,P1,1,events
+N00436,P1,1,opening_hours
 N00436,P1,2,events
 N00436,P1,3,events
 N00436,P2,1,events
@@ -1070,7 +1070,7 @@ N01040,P2,3,staff
 N01193,P1,1,opening_hours
 N01193,P1,2,opening_hours
 N01193,P1,3,opening_hours
-N01193,P2,1,staff
+N01193,P2,1,opening_hours
 N01193,P2,2,staff
 N01193,P2,3,staff
 N00876,P1,1,collections
@@ -1082,7 +1082,7 @@ N00876,P2,3,collections
 N00124,P1,1,collections
 N00124,P1,2,collections
 N00124,P1,3,collections
-N00124,P2,1,collections
+N00124,P2,1,facilities
 N00124,P2,2,collections
 N00124,P2,3,collections
 N00624,P1,1,facilities
@@ -1109,7 +1109,7 @@ N01448,P1,3,opening_hours
 N01448,P2,1,collections
 N01448,P2,2,collections
 N01448,P2,3,collections
-N01942,P1,1,facilities
+N01942,P1,1,collections
 N01942,P1,2,facilities
 N01942,P1,3,facilities
 N01942,P2,1,facilities

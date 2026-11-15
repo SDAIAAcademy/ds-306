@@ -1,0 +1,42 @@
+[
+ {
+  "group": "all",
+  "n": 300,
+  "value": 0.893,
+  "low": 0.857,
+  "high": 0.927,
+  "metric": "accuracy"
+ },
+ {
+  "group": "en",
+  "n": 66,
+  "value": 0.879,
+  "low": 0.788,
+  "high": 0.955,
+  "metric": "accuracy"
+ },
+ {
+  "group": "gulf",
+  "n": 120,
+  "value": 0.908,
+  "low": 0.858,
+  "high": 0.958,
+  "metric": "accuracy"
+ },
+ {
+  "group": "msa",
+  "n": 114,
+  "value": 0.886,
+  "low": 0.825,
+  "high": 0.939,
+  "metric": "accuracy"
+ },
+ {
+  "group": "all",
+  "n": 300,
+  "value": 0.878,
+  "low": 0.834,
+  "high": 0.918,
+  "metric": "macro_f1"
+ }
+]

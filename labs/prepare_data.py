@@ -410,7 +410,7 @@ def make_complaints():
         channel = choice_w(r, CHANNELS)
         if variety == "gulf" and r.random() < 0.3:
             channel = "call_centre"
-        ambiguous = r.random() < 0.12
+        ambiguous = r.random() < 0.25
         text, second, pii = compose(r, category, variety, d, ambiguous, channel)
         if variety == "en":
             form_lang = "en" if r.random() < 0.97 else "ar"
@@ -475,7 +475,7 @@ def redact_known(text: str, pii: list[dict]) -> str:
 # ---------------------------------------------------------------- coders and the model stand-in for recorded runs
 
 def human_label(r: random.Random, row: dict) -> str:
-    acc = 0.68 if row["_second"] else 0.95
+    acc = 0.75 if row["_second"] else 0.96
     if r.random() < acc:
         return row["_category"]
     if row["_second"]:
@@ -491,9 +491,9 @@ CONFUSE = {"permits": "staff_service", "staff_service": "permits", "waste": "par
 def latent_label(doc_id: str, row: dict, prompt: str, categories=CATEGORIES, acc_table=None) -> str:
     """Fahim's answer for a document and a prompt, before run-to-run variation (synthetic)."""
     r = rnd("latent", doc_id, prompt)
-    acc = (acc_table or {"P1": {"msa": 0.88, "gulf": 0.72, "en": 0.90}, "P2": {"msa": 0.87, "gulf": 0.75, "en": 0.91}})[prompt][row["_variety"]]
+    acc = (acc_table or {"P1": {"msa": 0.92, "gulf": 0.78, "en": 0.93}, "P2": {"msa": 0.91, "gulf": 0.82, "en": 0.93}})[prompt][row["_variety"]]
     if row["_second"]:
-        acc *= 0.72
+        acc *= 0.80
     if r.random() < acc:
         return row["_category"]
     if row["_second"] and r.random() < 0.7:
@@ -510,9 +510,7 @@ def latent_label(doc_id: str, row: dict, prompt: str, categories=CATEGORIES, acc
 
 def run_label(doc_id: str, row: dict, prompt: str, run: int, categories=CATEGORIES, acc_table=None) -> str:
     base = latent_label(doc_id, row, prompt, categories, acc_table)
-    if run == 1:
-        return base
-    r = rnd("run", doc_id, prompt, run)
+    r = rnd("run", doc_id, prompt, run)  # every run, the first included, varies the same way
     flip = 0.22 if row["_second"] else 0.035
     if r.random() < flip:
         options = [row["_category"], row["_second"]] if row["_second"] else categories
