@@ -1,0 +1,38 @@
+[
+ {
+  "field": "district",
+  "precision": 1.0,
+  "recall": 0.942,
+  "empty_kept_empty": NaN
+ },
+ {
+  "field": "inspection_date",
+  "precision": 0.966,
+  "recall": 0.966,
+  "empty_kept_empty": NaN
+ },
+ {
+  "field": "defect_type",
+  "precision": 0.968,
+  "recall": 0.968,
+  "empty_kept_empty": NaN
+ },
+ {
+  "field": "severity",
+  "precision": 0.968,
+  "recall": 0.968,
+  "empty_kept_empty": NaN
+ },
+ {
+  "field": "hazard_to_public",
+  "precision": 0.908,
+  "recall": 0.908,
+  "empty_kept_empty": NaN
+ },
+ {
+  "field": "repair_deadline_days",
+  "precision": 0.87,
+  "recall": 0.972,
+  "empty_kept_empty": 0.734
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "documents": 1580,
+ "requests_per_1000": 15.8,
+ "seconds_per_1000": 19.7,
+ "usd_per_1000_free": 0.0,
+ "paid_endpoint": null,
+ "days_for_20000_at_50_requests": 6.2
+}

@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2 · Labels you can trust · Text and Unstructured Data for Data Science</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day2.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Text and Unstructured Data for Data Science" data-track="data-science" data-day="Day 2">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Text and Unstructured Data for Data Science</div>
+  <h1>Labels you can trust</h1>
+  <p class="lead mt">Day 2: A gold set, chance-corrected agreement and two classifiers compared on the same documents</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-306</span></div>
+  <aside class="notes"><p>Yesterday ended with a cleaned, redacted corpus and its miss rate. Today the question changes from "is the text clean?" to "are the labels right?". Same rhythm: concepts, one checkpoint, a 25-minute lab. Breaks are yours: press B.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Labels you can trust</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Gold sets and agreement</b><small>A gold set from a codebook, and agreement that is corrected for chance</small></div></div><div class="item"><div><b>Session 2 · Sparse baselines</b><small>Character n-grams and a linear model: the baseline every other classifier must beat</small></div></div><div class="item"><div><b>Session 3 · Embeddings as features</b><small>Vectors from a hosted embedding model as features, within a budget of calls</small></div></div><div class="item"><div><b>Session 4 · Comparing classifiers fairly</b><small>Two classifiers on the same 300 documents: a paired bootstrap by language and a decision with its cost</small></div></div></div>
+  <aside class="notes"><p>Session 1 is AI-off: participants label with a partner. Sessions 2 to 4 build two classifiers and compare them fairly. Every lab starts from the supplied redacted files, so nobody needs yesterday's outputs.</p></aside>
+</section>
+
+<section class="slide" id="review-day1" data-lo="LO1" data-n="3">
+  <div class="kicker">Review of Day 1</div>
+  <h2>What does the redaction miss rate tell Ashwaq?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="review-day1-q1">
+    <p class="lead">The redaction left 26 of 122 marked names readable in the audited sample, and no phone or identity number. What follows for the release of redacted text?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads a zero on the sample as a zero in the corpus: a sample bounds the miss rate, it does not prove none" data-k="A">Phone numbers are proven absent from the redacted corpus</div>
+      <div class="opt" data-ok data-k="B">About one name in five survives: a name rule or a review is needed before release</div>
+      <div class="opt" data-why="Averages a serious gap away: the overall rate hides that the misses are all names" data-k="C">The overall miss rate of 7.7% is low enough to release</div>
+      <div class="opt" data-why="Blames the reference: the misses follow a clear pattern, names without a cue word" data-k="D">The audited sample must be re-marked before anything is decided</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The misses sit in one type with a clear cause. The decision follows the type, not the average.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. Two minutes at most. The habit of reading a rate by type and by group is the habit of today and of Day 3.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Gold sets and agreement</h1>
+  <ul class="bullets outcomes"><li>Label complaints from a codebook without AI help</li><li>Compute percent agreement and Cohen's kappa from a confusion table</li><li>Explain why a rare category can show high agreement and low kappa</li></ul>
+  <div class="sess-no">01</div>
+  <aside class="notes"><p>This session is AI-off. Phones away for the labelling: the labels must be yours, because they are the measuring stick for everything after.</p></aside>
+</section>
+
+<section class="slide" id="why-gold" data-lo="LO2 LO5" data-n="5" data-session="1">
+  <div class="kicker">The measuring stick</div>
+  <h2>Every score this week is a comparison with labels people made</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Codebook</b>Categories, what each includes and excludes</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Random sample</b>300 complaints from the cleaned corpus</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Two coders</b>Independently, AI-off</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Adjudication</b>Disagreements resolved against the codebook</div>
+  </div>
+  <p class="small mt">At Sada the codebook and the adjudicated gold set are supplied. Writing a labelling guideline and running adjudication are taught in DS-311.</p>
+  <aside class="notes"><p>The handover to DS-311 is deliberate: this course uses a gold set; DS-311 teaches how to build one at scale (guidelines, pilots, golden questions, review queues). What this session adds is how to read agreement as a measurement.</p></aside>
+</section>
+
+<section class="slide" id="codebook-boundary" data-lo="LO5" data-n="6" data-session="1">
+  <div class="kicker">The codebook</div>
+  <h2>Most disagreements live in the "does not include" column</h2>
+  <table class="t small">
+    <tr><th>Code</th><th>Includes</th><th>Does not include</th></tr>
+    <tr><td><code>water_sewage</code></td><td>A street flooded by sewage or a burst pipe</td><td>Rain on a damaged road, no pipe named (<code>roads</code>)</td></tr>
+    <tr><td><code>permits</code></td><td>Applications, renewals, rejections</td><td>Rude staff at a permits counter (<code>staff_service</code>)</td></tr>
+    <tr><td><code>lighting</code></td><td>Street lights and poles</td><td>Lighting inside a park (<code>parks</code>)</td></tr>
+  </table>
+  <p class="small mt-s">One rule decides complaints with two problems: the main one is described first and at more length.</p>
+  <aside class="notes"><p>From data/codebook.md, version 3, owned by Muhannad Al-Oqaili. Ask the room to find a complaint in pair40.csv that tests each boundary. The two-problem rule matters: a quarter of the complaints mention a second problem.</p></aside>
+</section>
+
+<section class="slide" id="gold-sample" data-lo="LO2 LO4" data-n="7" data-session="1">
+  <div class="kicker">Who is in the gold set</div>
+  <h2>The gold set is a random sample, so it carries the corpus's mix of varieties</h2>
+  <div class="bars">
+    <div class="row"><span>Gulf dialect</span><div class="bar c-coral" style="--w:100%"></div><span class="val">120</span></div>
+    <div class="row"><span>Modern Standard Arabic</span><div class="bar c-teal" style="--w:95%"></div><span class="val">114</span></div>
+    <div class="row"><span>English</span><div class="bar c-cyan" style="--w:55%"></div><span class="val">66</span></div>
+  </div>
+  <ul class="bullets mt">
+    <li>Random: on Day 4 its errors can be carried to the whole corpus</li>
+    <li>Small groups get wide intervals: 66 English complaints is the limit of what it can say about English</li>
+  </ul>
+  <aside class="notes"><p>Counts from data/gold.csv. A stratified gold set (equal numbers per variety) gives tighter intervals per group but needs weights to estimate anything about the corpus; the course keeps it simple and random. Mention the trade-off; the capstone may choose either if it says so.</p></aside>
+</section>
+
+<section class="slide" id="percent-agreement" data-lo="LO5" data-n="8" data-session="1">
+  <div class="kicker">Lab 2.1, the reference pair</div>
+  <h2>Two careful coders agree on three complaints in four</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">0.750</div><div class="lbl">percent agreement of the two reference coders on the 40 complaints</div></div>
+    <ul class="bullets">
+      <li>Two-problem complaints cause most disagreements</li>
+      <li>Some agreement happens by chance: two coders who both say <code>roads</code> often agree without reading</li>
+      <li>Percent agreement cannot tell the two apart</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 2.1 with the reference coders. Your room's pairs will vary: collect three or four kappas on the board after the lab and compare. Pairs usually land between 0.6 and 0.85.</p></aside>
+</section>
+
+<section class="slide" id="kappa" data-lo="LO5" data-n="9" data-session="1">
+  <div class="kicker">Correcting for chance</div>
+  <h2>Kappa is the agreement beyond chance, as a share of what was possible beyond chance</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">(p<sub>o</sub> − p<sub>e</sub>) / (1 − p<sub>e</sub>)</div><div class="lbl">p<sub>e</sub>: the sum over categories of each coder's share in it, multiplied</div></div>
+    <table class="t">
+      <tr><th>Reference pair</th><th class="num">Value</th></tr>
+      <tr><td>Observed agreement p<sub>o</sub></td><td class="num">0.750</td></tr>
+      <tr><td>Chance agreement p<sub>e</sub></td><td class="num">0.144</td></tr>
+      <tr class="hl"><td>Cohen's kappa</td><td class="num">0.708</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>Work p_e out loud for two categories so the formula is concrete. With eight fairly balanced categories chance agreement is low, so kappa is close to agreement. The next slide is the case where it is not. Sources: scikit-learn, cohen_kappa_score.</p></aside>
+</section>
+
+<section class="slide" id="prevalence-trap" data-lo="LO5" data-n="10" data-session="1">
+  <div class="kicker">Lab 2.1, step 4</div>
+  <h2>For a rare category, high agreement can hide a weak kappa</h2>
+  <table class="t">
+    <tr><th>"This category or not"</th><th class="num">Share</th><th class="num">Agreement</th><th class="num">Kappa</th></tr>
+    <tr class="hl"><td>Parks</td><td class="num">4.7%</td><td class="num">0.957</td><td class="num">0.644</td></tr>
+    <tr><td>Street lighting</td><td class="num">7.7%</td><td class="num">0.970</td><td class="num">0.775</td></tr>
+    <tr><td>Waste</td><td class="num">15.3%</td><td class="num">0.977</td><td class="num">0.911</td></tr>
+    <tr><td>Water and sewage</td><td class="num">21.3%</td><td class="num">0.967</td><td class="num">0.900</td></tr>
+  </table>
+  <p class="small mt-s">Gold set, two coders, 300 complaints. Over all eight categories: agreement 0.853, kappa 0.829.</p>
+  <aside class="notes"><p>From Lab 2.1, step 4. Parks: the coders agree on 96% of complaints, almost all of them "not parks". Kappa shows the agreement on the parks complaints themselves is weaker. The overall kappa of 0.829 is the bar Fahim meets on Day 3.</p></aside>
+</section>
+
+<section class="slide" id="labelling-bias" data-lo="LO5" data-n="11" data-session="1">
+  <div class="kicker">What agreement cannot show</div>
+  <h2>Two coders can agree and both be wrong in the same way</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Kappa measures consistency, not correctness</li>
+      <li>Coders trained together share their blind spots</li>
+      <li>SDAIA's AI Bias Reference Guide names this <b>labelling bias</b>: labels shaped by the annotators' own interpretations</li>
+    </ul>
+    <div class="card c-teal"><h4>What the guide recommends</h4><p class="small mb0">Clear, objective criteria; annotators of diverse backgrounds; several annotators per item with disagreements resolved by consensus or expert review.</p></div>
+  </div>
+  <aside class="notes"><p>Read from the guide's entry on labelling bias, in our own words. At Sada this is why the coders include speakers of Gulf dialect: a coder who reads Gulf text slowly makes systematic errors that a second coder of the same background repeats. Sources: AI Bias Reference Guide, first edition (SDAIA, May 2026).</p></aside>
+</section>
+
+<section class="slide" id="check-kappa" data-lo="LO5" data-n="12" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which pair of coders is more reliable?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-kappa-q1">
+    <p class="lead">Pair A agrees on 94% of complaints for "staff conduct or not", with kappa 0.52. Pair B agrees on 88% for "water and sewage or not", with kappa 0.71. Staff conduct is rare. Which statement holds?</p>
+    <div class="opts">
+      <div class="opt" data-why="Ranks by raw agreement, which a rare category inflates with easy negatives" data-k="A">Pair A, since they agree more often</div>
+      <div class="opt" data-why="Treats kappa as accuracy: neither number says who is right" data-k="B">Pair B labels water and sewage more correctly</div>
+      <div class="opt" data-why="Thinks different categories make the numbers incomparable in every way: kappa is designed to compare beyond chance" data-k="C">They cannot be compared at all</div>
+      <div class="opt" data-ok data-k="D">Pair B agrees more beyond chance; Pair A's 94% is mostly agreement on "no"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> With a rare category most agreement is on the negative and would happen by chance; kappa removes it.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. The second option is the subtle trap: kappa is reliability, not validity.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-1" data-auto="lab" data-lab="2.1" data-label="Lab 2.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.1 · 25 min</div><h2>Agreement with a partner</h2><p class="lead small">Label 40 complaints with a partner from the supplied codebook, compute percent agreement and Cohen's kappa by hand, and meet the prevalence trap.</p><a class="nb" href="../labs/D2_1_agreement.ipynb">D2_1_agreement.ipynb</a></div><ul class="checklist"><li>Read the codebook <span class="min">5 min</span></li><li>Label 40 complaints with a partner (AI-off) <span class="min">10 min</span></li><li>Percent agreement and kappa by hand <span class="min">5 min</span></li><li>The prevalence trap <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Krippendorff's alpha for you, your partner and the two reference coders</li></ul></div>
+  <aside class="notes"><p>Pairs label in the spreadsheet written to artifacts/day2/pair40_to_label.csv; enforce AI-off. If the file is not completed, the notebook uses the two reference coders and says so. Common errors: typing a category name in Arabic or with a capital letter; the check rejects anything outside the codebook. Collect three pairs' kappas for the board.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="14">
+  <div class="kicker">Session 2</div>
+  <h1>Sparse baselines</h1>
+  <ul class="bullets outcomes"><li>Build character n-gram features for Arabic and English text</li><li>Train a linear classifier on a noisy training pool</li><li>Score it on the gold set with bootstrap intervals by language</li></ul>
+  <div class="sess-no">02</div>
+  <aside class="notes"><p>The baseline first: cheap, local and hard to beat. Everything after it must earn its place against this number.</p></aside>
+</section>
+
+<section class="slide" id="baseline-first" data-lo="LO2" data-n="15" data-session="2">
+  <div class="kicker">The first rung</div>
+  <h2>A sparse baseline sets the bar every other classifier must clear</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Cheap</h4><p class="small mb0">Trains and predicts in seconds on a laptop processor.</p></div>
+    <div class="card c-cyan"><h4>Local</h4><p class="small mb0">No text leaves the computer: no classification question to settle.</p></div>
+    <div class="card c-coral"><h4>Readable</h4><p class="small mb0">Each weight belongs to a piece of text you can print.</p></div>
+  </div>
+  <aside class="notes"><p>DS-204's baseline ladder applies unchanged: a model that cannot beat the simple rung is not a model the centre needs. Here the rung is not trivial: for topic labels on short complaints, character n-grams are strong.</p></aside>
+</section>
+
+<section class="slide" id="char-ngrams" data-lo="LO2" data-n="16" data-session="2">
+  <div class="kicker">Features</div>
+  <h2>Character n-grams let different forms of one Arabic word share evidence</h2>
+  <div class="tokens"><span>الحديقه</span><span>حديق</span><span>ديقه</span><span>حديقتنا</span><span>حديق</span><span>ديقت</span></div>
+  <ul class="bullets mt">
+    <li>The article ال and suffixes such as نا change the word but keep most of its pieces</li>
+    <li><code>char_wb</code>: n-grams inside word boundaries, 2 to 5 characters</li>
+    <li>Normalisation and the dialect map from Day 1 run first, so spelling variants collapse</li>
+  </ul>
+  <aside class="notes"><p>The chips show the shared four-character pieces of "the garden" and "our garden". A word-level model sees two unrelated words. The stretch of Lab 2.2 tests this: in the course's run word n-grams lost most on Modern Standard Arabic.</p></aside>
+</section>
+
+<section class="slide" id="tfidf" data-lo="LO2" data-n="17" data-session="2">
+  <div class="kicker">Weights</div>
+  <h2>TF-IDF weights a piece by how often it appears here and how rare it is elsewhere</h2>
+  <pre class="code" data-file="lab 2.2"><code class="language-python">vec = TfidfVectorizer(analyzer=<span class="hljs-string">&quot;char_wb&quot;</span>, ngram_range=(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>),
+                      min_df=<span class="hljs-number">2</span>, sublinear_tf=<span class="hljs-literal">True</span>)
+X_pool = vec.fit_transform(prep(pool.text))   <span class="hljs-comment"># fit on the pool only</span>
+X_gold = vec.transform(prep(gold.text))
+model = LogisticRegression(max_iter=<span class="hljs-number">2000</span>, C=<span class="hljs-number">5</span>).fit(X_pool, pool.routing_label)</code></pre>
+  <p class="small mt-s">8,566 features; trained and scored in 6.4 seconds on a laptop.</p>
+  <aside class="notes"><p>Point at "fit on the pool only": fitting the vectoriser on the gold set lets the test vocabulary into training. The 6.4 seconds is from the course's run on an ordinary laptop processor. Sources: scikit-learn, TfidfVectorizer.</p></aside>
+</section>
+
+<section class="slide" id="noisy-pool" data-lo="LO2" data-n="18" data-session="2">
+  <div class="kicker">The training labels</div>
+  <h2>The pool's labels are the intake team's routing, fast and unchecked</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>3,000 redacted complaints, each routed once by intake</li>
+      <li>Some routing is wrong, and not at random: permits and staff conduct trade places, so do waste and parks</li>
+      <li>A model trained on them learns the habits too</li>
+    </ul>
+    <div class="card c-coral"><h4>The rule</h4><p class="small mb0">Train on the noisy labels, score on the gold set. Never score on the labels you trained on.</p></div>
+  </div>
+  <aside class="notes"><p>The generator routes about 12% of pool complaints to the wrong category, mostly to a neighbouring one; that is the trainer's answer key, not something participants can see. Scattered errors average out; systematic ones are learnt. The gold set is how you find out which.</p></aside>
+</section>
+
+<section class="slide" id="sparse-results" data-lo="LO2" data-n="19" data-session="2">
+  <div class="kicker">Lab 2.2, the scores</div>
+  <h2>The character n-gram classifier is right on 93% of the gold set</h2>
+  <table class="t">
+    <tr><th>Gold complaints</th><th class="num">n</th><th class="num">Accuracy</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>All</td><td class="num">300</td><td class="num">0.930</td><td class="num">0.900 to 0.957</td></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.921</td><td class="num">0.868 to 0.965</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">120</td><td class="num">0.942</td><td class="num">0.900 to 0.983</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.924</td><td class="num">0.848 to 0.985</td></tr>
+  </table>
+  <p class="small mt-s">Macro F1 over the eight categories: 0.917.</p>
+  <aside class="notes"><p>From Lab 2.2, 2,000 bootstrap resamples of the gold complaints. Note that the baseline shows no dialect gap: it learnt Gulf text from Gulf training examples. Keep that in mind for Day 3, where a model that never saw Sada's training data does show one.</p></aside>
+</section>
+
+<section class="slide" id="interval-width" data-lo="LO2" data-n="20" data-session="2">
+  <div class="kicker">Reading an interval</div>
+  <h2>The interval for English is twice as wide because it rests on 66 complaints</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Bootstrap: resample the gold complaints with replacement, recompute, repeat 2,000 times</li>
+      <li>The middle 95% of the results is the interval</li>
+      <li>Width shrinks with the square root of n: four times the complaints halves it</li>
+    </ul>
+    <div class="callout warn"><b>What goes wrong.</b> "English is 0.924 and Arabic 0.921, so they are equal." The intervals say the gold set cannot tell.</div>
+  </div>
+  <aside class="notes"><p>Ask: how many English gold complaints would make the English interval as narrow as the overall one? About 300. That is a gold-set design question for the capstone.</p></aside>
+</section>
+
+<section class="slide" id="word-vs-char" data-lo="LO2" data-n="21" data-session="2">
+  <div class="kicker">Lab 2.2, stretch</div>
+  <h2>Word n-grams lose most on formal Arabic, where words carry prefixes and suffixes</h2>
+  <table class="t">
+    <tr><th>Accuracy</th><th class="num">Characters</th><th class="num">Words</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">0.921</td><td class="num">0.886</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">0.942</td><td class="num">0.925</td></tr>
+    <tr><td>English</td><td class="num">0.924</td><td class="num">0.955</td></tr>
+  </table>
+  <p class="small mt-s">Differences of this size sit inside the intervals: a direction to check, not a finding.</p>
+  <aside class="notes"><p>From the stretch of Lab 2.2 (point estimates only). The pattern matches the reason given two slides back, but the gold set is too small to prove it. This is a good example of how to report a small effect honestly.</p></aside>
+</section>
+
+<section class="slide" id="check-sparse" data-lo="LO2" data-n="22" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Where should the classifier be scored?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-sparse-q1">
+    <p class="lead">A colleague reports 0.97 accuracy for the n-gram classifier, measured on a random fifth of the 3,000 pool complaints held out from training. What is wrong with the number?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">It is scored against routing labels nobody checked, which share the model's own training habits</div>
+      <div class="opt" data-why="Thinks the size of the test set is the problem: 600 complaints is larger than the gold set" data-k="B">600 complaints are too few to score on</div>
+      <div class="opt" data-why="Treats a held-out split as leakage: the complaints were not used for training" data-k="C">The held-out complaints leaked into training</div>
+      <div class="opt" data-why="Blames the metric: macro F1 would be measured against the same unchecked labels" data-k="D">Accuracy should have been macro F1</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A score is only as good as the labels it is compared with. The gold set was coded twice and adjudicated; the routing labels were not.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option. A model that learnt the intake team's systematic errors scores well against labels that contain the same errors.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-2" data-auto="lab" data-lab="2.2" data-label="Lab 2.2" data-n="23" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.2 · 25 min</div><h2>A character n-gram classifier</h2><p class="lead small">Train a character n-gram classifier on the 3,000-document pool and score it on the 300-document gold set, with intervals by language.</p><a class="nb" href="../labs/D2_2_sparse.ipynb">D2_2_sparse.ipynb</a></div><ul class="checklist"><li>Load the pool and the gold set <span class="min">3 min</span></li><li>Character n-grams with TF-IDF <span class="min">6 min</span></li><li>A logistic classifier <span class="min">5 min</span></li><li>Macro F1 and accuracy on the gold set <span class="min">5 min</span></li><li>Bootstrap intervals by language <span class="min">6 min</span></li><li class="stretch">✱ Stretch: Word n-grams instead: which language loses most?</li></ul></div>
+  <aside class="notes"><p>The prep step (normalise and dialect map) takes a few seconds per thousand complaints. Watch for participants fitting the vectoriser on both sets together. The check that English has the fewest gold complaints is there to make them look at n before reading any interval.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="24">
+  <div class="kicker">Session 3</div>
+  <h1>Embeddings as features</h1>
+  <ul class="bullets outcomes"><li>Explain what an embedding vector keeps and loses</li><li>Train a classifier on embeddings fetched within a call budget</li><li>Report scores per language with the cost of the vectors</li></ul>
+  <div class="sess-no">03</div>
+  <aside class="notes"><p>The first lab that sends text to a hosted service. Begin by asking: which text may go, and who decided?</p></aside>
+</section>
+
+<section class="slide" id="what-a-vector-is" data-lo="LO2" data-n="25" data-session="3">
+  <div class="kicker">Embeddings</div>
+  <h2>An embedding places texts so that similar meanings sit close together</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>A model reads the text and returns a fixed-length vector</li>
+      <li>Close vectors: complaints about the same thing, even in different words or languages</li>
+      <li>A simple classifier on top learns the categories from a few examples each</li>
+    </ul>
+    <div class="card c-coral"><h4>What it loses</h4><p class="small mb0">Which words carried the decision. A wrong label is harder to explain than with n-gram weights.</p></div>
+  </div>
+  <aside class="notes"><p>Multilingual embedding models put an Arabic and an English complaint about a broken street light near each other; character n-grams cannot. Whether that helps depends on whether the training data already covers each language, which at Sada it does. Sources: Sentence Transformers documentation.</p></aside>
+</section>
+
+<section class="slide" id="hosted-embeddings" data-lo="LO2" data-n="26" data-session="3">
+  <div class="kicker">The tool slot</div>
+  <h2>A free hosted embedding model, within a budget of requests</h2>
+  <table class="t small">
+    <tr><th>Setting</th><th>Value, checked this month</th></tr>
+    <tr><td>Default model</td><td><code>nvidia/nemotron-3.5-embed-1b:free</code> on OpenRouter</td></tr>
+    <tr><td>Free requests</td><td>20 a minute; 50 a day, or 1,000 a day after a one-time purchase of 10 credits</td></tr>
+    <tr><td>Texts per request</td><td>Up to 64 in the labs, cached on disk</td></tr>
+    <tr><td>Paid endpoint of this model</td><td>None listed</td></tr>
+  </table>
+  <p class="small mt-s">Other examples for the same slot: sentence-transformers models served elsewhere, or a commercial embedding API.</p>
+  <aside class="notes"><p>Facts from OpenRouter's limits page and its public list of embedding models, read on 2026-11-15. Free models change often: the README says how to pick another one. A local sentence-transformers model is the usual choice in practice; the course does not download models to laptops. Sources: OpenRouter API rate limits; OpenRouter Embeddings API; OpenRouter list of embedding models.</p></aside>
+</section>
+
+<section class="slide" id="call-budget" data-lo="LO2" data-n="27" data-session="3">
+  <div class="kicker">Lab 2.3, step 1</div>
+  <h2>A budget of 25 requests buys 1,280 training complaints and the gold set</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Gold first</b>300 complaints: 5 requests of 64</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>The rest</b>20 requests: 1,280 pool complaints</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Stratified</b>Sampled by routing label, so every category is there</div>
+  </div>
+  <p class="small mt">Every vector is cached: a rerun of the notebook costs no request.</p>
+  <aside class="notes"><p>The first version of the lab spent 26 requests: 1,300 plus 300 looks like 25 requests of 64, but the two sets are sent separately and each rounds up. Count requests per set. This is the fixed budget the outcome names.</p></aside>
+</section>
+
+<section class="slide" id="standin-honesty" data-lo="LO2" data-n="28" data-session="3">
+  <div class="kicker">When no key works</div>
+  <h2>Without a working key, the lab says so on every number it prints</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The stand-in hashes character pieces into 384 numbers</li>
+      <li>It is lexical, like the sparse model: it measures the lab's code, not an embedding model</li>
+      <li>The course's own run used it: no key that worked was available</li>
+    </ul>
+    <div class="callout warn"><b>What goes wrong.</b> A stand-in score is quoted as "the embedding model". Every table from such a run carries the words "stand-in".</div>
+  </div>
+  <aside class="notes"><p>Be direct with the room: the numbers on the next two slides come from the stand-in. Participants with a key get real vectors; ask two of them to read out their gold accuracy and compare. The method of the session does not change.</p></aside>
+</section>
+
+<section class="slide" id="embed-results" data-lo="LO2" data-n="29" data-session="3">
+  <div class="kicker">Lab 2.3, the scores (stand-in vectors)</div>
+  <h2>The stand-in classifier is right on 89% of the gold set</h2>
+  <table class="t">
+    <tr><th>Gold complaints</th><th class="num">n</th><th class="num">Accuracy</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>All</td><td class="num">300</td><td class="num">0.893</td><td class="num">0.857 to 0.927</td></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.886</td><td class="num">0.825 to 0.939</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">120</td><td class="num">0.908</td><td class="num">0.858 to 0.958</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.879</td><td class="num">0.788 to 0.955</td></tr>
+  </table>
+  <p class="small mt-s">Trained on 1,280 pool complaints, a little under half the sparse model's 3,000.</p>
+  <aside class="notes"><p>From Lab 2.3 with stand-in vectors. With a hosted model the numbers will differ; the table's structure (overall and by variety, with intervals) is what the outcome asks for. Note the training set is smaller than in Lab 2.2: part of any difference is the budget, not the method.</p></aside>
+</section>
+
+<section class="slide" id="embed-cost" data-lo="LO2" data-n="30" data-session="3">
+  <div class="kicker">Lab 2.3, step 4</div>
+  <h2>Free is not free: requests, waiting and text that leaves the building</h2>
+  <table class="t">
+    <tr><th>Per 1,000 complaints</th><th class="num">Value</th></tr>
+    <tr><td>Requests</td><td class="num">15.8</td></tr>
+    <tr><td>Money on the free endpoint</td><td class="num">0</td></tr>
+    <tr><td>Days to embed all 20,000 at 50 requests a day</td><td class="num">6.2</td></tr>
+  </table>
+  <div class="callout warn mt"><b>And the data.</b> Each request sends redacted complaints to a third party. The classification of that text decides whether this lab is allowed at all with real data.</div>
+  <aside class="notes"><p>From Lab 2.3's cost table. The seconds are not on the slide because the stand-in's seconds are the laptop's, not the network's. With credits the daily limit rises to 1,000 requests and the 20,000 complaints take under an hour of pacing at 20 requests a minute.</p></aside>
+</section>
+
+<section class="slide" id="check-embeddings" data-lo="LO2" data-n="31" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What can you report from a stand-in run?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-embeddings-q1">
+    <p class="lead">Your key failed and Lab 2.3 ran on the stand-in vectors, with 0.893 gold accuracy. Dr. Ebtisam asks whether embeddings beat the n-gram baseline. What do you answer?</p>
+    <div class="opts">
+      <div class="opt" data-why="Quotes a stand-in result as a model's: the stand-in is lexical and measures nothing about embeddings" data-k="A">"No: embeddings reach 0.893 against 0.930"</div>
+      <div class="opt" data-why="Fills a gap with a general belief: no measurement on Sada's data supports it" data-k="B">"Yes: embeddings usually beat n-grams"</div>
+      <div class="opt" data-ok data-k="C">"Not measured yet: the code works, the comparison needs a run with the hosted model"</div>
+      <div class="opt" data-why="Treats a failed key as a reason to drop an outcome: the run can be repeated" data-k="D">"Embeddings cannot be used at the centre"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A stand-in proves the pipeline runs. It says nothing about the model the question is about.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. The point is honesty under a broken dependency, which happens in real projects more often than a clean run.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-3" data-auto="lab" data-lab="2.3" data-label="Lab 2.3" data-n="32" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.3 · 25 min</div><h2>An embedding classifier</h2><p class="lead small">Embed the pool and the gold set with a free hosted model within a call budget, train a classifier on the vectors and score it per language.</p><a class="nb" href="../labs/D2_3_embeddings.ipynb">D2_3_embeddings.ipynb</a></div><ul class="checklist"><li>Embed the pool and the gold set within the budget <span class="min">7 min</span></li><li>A logistic head on the vectors <span class="min">5 min</span></li><li>Scores per language with intervals <span class="min">7 min</span></li><li>Calls, seconds and cost per thousand documents <span class="min">6 min</span></li><li class="stretch">✱ Stretch: Join the sparse and the embedding features: does the union beat both?</li></ul></div>
+  <aside class="notes"><p>Keys go in labs/.env (local) or the Colab Secrets panel as OPENROUTER_API_KEY. A 429 means the free limit: the helper waits and retries. A 401 or a connection error switches to the stand-in for the rest of the run and prints a warning. Quick mode embeds 400 pool complaints.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="33">
+  <div class="kicker">Session 4</div>
+  <h1>Comparing classifiers fairly</h1>
+  <ul class="bullets outcomes"><li>Explain why scores on the same documents are compared in pairs</li><li>Compute a paired bootstrap interval for a difference in accuracy</li><li>Decide between classifiers by language with cost in view</li></ul>
+  <div class="sess-no">04</div>
+  <aside class="notes"><p>Two numbers, 0.930 and 0.893. The session is about the honest way to compare them.</p></aside>
+</section>
+
+<section class="slide" id="recap-pairing" data-lo="LO2" data-n="34" data-session="4">
+  <div class="kicker">Recap from DS-204</div>
+  <h2>In DS-204 you paired models by fold; here you pair them by document</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>DS-204</h4><p class="small mb0">Champion and challenger scored on the same five folds: five paired differences, an interval on their mean.</p></div>
+    <div class="card c-coral"><h4>Here</h4><p class="small mb0">Both classifiers labelled the same 300 gold complaints: 300 paired differences of right minus right.</p></div>
+  </div>
+  <aside class="notes"><p>One slide: the idea is DS-204 Day 2 session 4. What is new is the unit (documents) and the breakdown by language.</p></aside>
+</section>
+
+<section class="slide" id="two-by-two" data-lo="LO2" data-n="35" data-session="4">
+  <div class="kicker">Lab 2.4, step 2</div>
+  <h2>Only 33 of the 300 complaints decide the comparison</h2>
+  <div class="matrix" style="grid-template-columns: repeat(3, 1fr)">
+    <div class="lbl"></div><div class="lbl">Embedding right</div><div class="lbl">Embedding wrong</div>
+    <div class="lbl">Sparse right</div><div>257</div><div>22</div>
+    <div class="lbl">Sparse wrong</div><div>11</div><div>10</div>
+  </div>
+  <p class="small mt">Where both are right or both wrong, the difference is zero. The 22 and the 11 are the evidence.</p>
+  <aside class="notes"><p>From Lab 2.4, stand-in vectors for the embedding side. The same table drives McNemar's test, which some participants know; the bootstrap gives an interval for the difference in accuracy, which is what the decision needs.</p></aside>
+</section>
+
+<section class="slide" id="paired-bootstrap" data-lo="LO2" data-n="36" data-session="4">
+  <div class="kicker">Lab 2.4, step 3</div>
+  <h2>A paired bootstrap resamples complaints, keeping each pair together</h2>
+  <pre class="code" data-file="lab 2.4"><code class="language-python">diff = ok_sparse - ok_embed            <span class="hljs-comment"># one value per complaint: -1, 0 or 1</span>
+means = [diff[rng.integers(<span class="hljs-number">0</span>, <span class="hljs-number">300</span>, <span class="hljs-number">300</span>)].mean() <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2000</span>)]
+low, high = np.percentile(means, [<span class="hljs-number">2.5</span>, <span class="hljs-number">97.5</span>])</code></pre>
+  <div class="stat center mt"><div class="big">+0.037</div><div class="lbl">sparse minus embedding, 95% interval −0.003 to +0.073</div></div>
+  <aside class="notes"><p>From Lab 2.4. The interval just reaches zero: the gold set leans towards the sparse model but cannot rule out no difference. Read it aloud that way, not as "not significant, so equal".</p></aside>
+</section>
+
+<section class="slide" id="paired-by-language" data-lo="LO2" data-n="37" data-session="4">
+  <div class="kicker">Lab 2.4, step 4</div>
+  <h2>By language, every interval crosses zero</h2>
+  <table class="t">
+    <tr><th>Variety</th><th class="num">n</th><th class="num">Sparse minus embedding</th><th class="num">95% interval</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">+0.035</td><td class="num">−0.026 to +0.096</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">120</td><td class="num">+0.033</td><td class="num">−0.017 to +0.092</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">+0.045</td><td class="num">−0.030 to +0.121</td></tr>
+  </table>
+  <p class="small mt-s">The same direction in all three; no variety where the gold set can separate them.</p>
+  <aside class="notes"><p>From Lab 2.4. Splitting by language costs precision: each group has fewer complaints. Consistent direction across groups is weak evidence on its own; it is worth saying, not worth deciding on.</p></aside>
+</section>
+
+<section class="slide" id="paired-vs-unpaired" data-lo="LO2" data-n="38" data-session="4">
+  <div class="kicker">Lab 2.4, stretch</div>
+  <h2>Pairing narrows the interval because hard complaints are hard for both</h2>
+  <div class="bars">
+    <div class="row"><span>Unpaired</span><div class="bar c-coral" style="--w:100%"></div><span class="val">0.093 wide</span></div>
+    <div class="row"><span>Paired</span><div class="bar c-teal" style="--w:83%"></div><span class="val">0.077 wide</span></div>
+  </div>
+  <p class="small mt">Resampling the two columns independently counts the shared difficulty of each complaint twice.</p>
+  <aside class="notes"><p>From the stretch of Lab 2.4. The gain here is modest because both classifiers are right on most complaints; it grows when two models share many errors, as two prompts of one language model will on Day 3.</p></aside>
+</section>
+
+<section class="slide" id="decision-cost" data-lo="LO2" data-n="39" data-session="4">
+  <div class="kicker">Lab 2.4, step 5</div>
+  <h2>When the scores cannot separate two classifiers, cost and risk decide</h2>
+  <table class="t">
+    <tr><th></th><th>Character n-grams</th><th>Hosted embeddings</th></tr>
+    <tr><td>Gold accuracy</td><td>0.930</td><td>0.893 (stand-in)</td></tr>
+    <tr><td>Per 1,000 complaints</td><td>Seconds of laptop time</td><td>About 16 requests, a daily limit</td></tr>
+    <tr><td>Text leaves the centre</td><td>No</td><td>Yes, redacted</td></tr>
+  </table>
+  <div class="callout tip mt"><b>The decision written in the lab.</b> Keep the n-gram classifier; rerun the comparison with the hosted model before it is final.</div>
+  <aside class="notes"><p>The decision text is saved to artifacts/day2/decision.txt. Push the room to write the condition that would change it: for example, a new category with no training examples, where a classifier that needs no training data has the advantage. That is tomorrow.</p></aside>
+</section>
+
+<section class="slide" id="check-paired" data-lo="LO2" data-n="40" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>How do you read +0.037 with an interval of −0.003 to +0.073?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-paired-q1">
+    <p class="lead">The paired difference in gold accuracy, sparse minus embedding, is +0.037 with a 95% interval from −0.003 to +0.073. Which sentence belongs in the report?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads an interval that touches zero as proof of equality: absence of evidence is not evidence of no difference" data-k="A">The two classifiers perform the same</div>
+      <div class="opt" data-ok data-k="B">The sparse classifier is probably better by up to seven points, but a difference of zero cannot be ruled out</div>
+      <div class="opt" data-why="Ignores the interval entirely and reports the point estimate as certain" data-k="C">The sparse classifier is 3.7 points better</div>
+      <div class="opt" data-why="Thinks a slightly negative bound makes the embedding model better: the interval is mostly positive" data-k="D">The embedding classifier may be the better one, since the interval is negative</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The interval states the range of differences the gold set allows: mostly in favour of the sparse model, zero just inside.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. Spend a minute on the first option: "same performance" is the most common misreading in written reports.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-4" data-auto="lab" data-lab="2.4" data-label="Lab 2.4" data-n="41" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.4 · 25 min</div><h2>Compare classifiers fairly</h2><p class="lead small">Compare the sparse and embedding classifiers on the gold set with paired bootstrap intervals, overall and by language, and write the decision.</p><a class="nb" href="../labs/D2_4_paired_bootstrap.ipynb">D2_4_paired_bootstrap.ipynb</a></div><ul class="checklist"><li>Load both classifiers' predictions on the gold set <span class="min">4 min</span></li><li>Paired differences per document <span class="min">5 min</span></li><li>A paired bootstrap interval <span class="min">7 min</span></li><li>The same, by language <span class="min">5 min</span></li><li>The decision, with cost <span class="min">4 min</span></li><li class="stretch">✱ Stretch: An unpaired bootstrap of the same difference: how much wider is it?</li></ul></div>
+  <aside class="notes"><p>The lab reads the predictions written by Labs 2.2 and 2.3 and falls back to the course's reference predictions. Make sure the pairing is by id: a merge, not two lists that might be in different orders. Writing the decision is part of the lab, not optional.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="42" data-session="4">
+  <div class="kicker">Day 2 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Agreement beyond chance</h4><p class="small mb0">Kappa, by category, with the rare categories read carefully. It measures consistency, not truth.</p></div>
+    <div class="card c-coral"><h4>Score on gold</h4><p class="small mb0">Train on the labels you have; score on the labels people checked, with intervals by language.</p></div>
+    <div class="card c-purple"><h4>Pair the comparison</h4><p class="small mb0">Same documents, paired differences, an interval, then cost and risk.</p></div>
+  </div>
+  <aside class="notes"><p>Ask which classifier each table would deploy tomorrow, and what evidence would change their mind.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="43" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 3: Language models as instruments</h2>
+  <p class="lead">Tomorrow Fahim, a prompted open-weight model, labels the gold set. Read data/prompts/fahim_p1.md and note one sentence you would change.</p>
+  <aside class="notes"><p>Day 3 works mostly from the recorded runs, so a key is optional; with one, participants run ten complaints live in Lab 3.1 and twenty in the stretch of Lab 3.2.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"../index.html"},"deck":{"id":"day2","kind":"day","day":2,"label":"Day 2","title":"Labels you can trust","prev":"day1.html","next":"day3.html","md":"day2.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Gold sets and agreement","slide":"s1","outcomes":["Label complaints from a codebook without AI help","Compute percent agreement and Cohen's kappa from a confusion table","Explain why a rare category can show high agreement and low kappa"],"minutes":50,"lab":{"id":"2.1","title":"Agreement with a partner","minutes":25,"href":"../labs/D2_1_agreement.ipynb"}},{"n":2,"label":"Session 2","title":"Sparse baselines","slide":"s2","outcomes":["Build character n-gram features for Arabic and English text","Train a linear classifier on a noisy training pool","Score it on the gold set with bootstrap intervals by language"],"minutes":50,"lab":{"id":"2.2","title":"A character n-gram classifier","minutes":25,"href":"../labs/D2_2_sparse.ipynb"}},{"n":3,"label":"Session 3","title":"Embeddings as features","slide":"s3","outcomes":["Explain what an embedding vector keeps and loses","Train a classifier on embeddings fetched within a call budget","Report scores per language with the cost of the vectors"],"minutes":50,"lab":{"id":"2.3","title":"An embedding classifier","minutes":25,"href":"../labs/D2_3_embeddings.ipynb"}},{"n":4,"label":"Session 4","title":"Comparing classifiers fairly","slide":"s4","outcomes":["Explain why scores on the same documents are compared in pairs","Compute a paired bootstrap interval for a difference in accuracy","Decide between classifiers by language with cost in view"],"minutes":50,"lab":{"id":"2.4","title":"Compare classifiers fairly","minutes":25,"href":"../labs/D2_4_paired_bootstrap.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Labels you can trust","kind":"title","session":0,"hash":"47fdba4e","md":"#### [day2#title] Labels you can trust\n\n*SDAIA Academy · Text and Unstructured Data for Data Science*\n\nDay 2: A gold set, chance-corrected agreement and two classifiers compared on the same documents\n\nData Science Track · 4 teaching days + capstone day · 4 sessions · 4 labs · DS-306","notes":"Yesterday ended with a cleaned, redacted corpus and its miss rate. Today the question changes from \"is the text clean?\" to \"are the labels right?\". Same rhythm: concepts, one checkpoint, a 25-minute lab. Breaks are yours: press B.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Labels you can trust","kind":"content","session":0,"hash":"578db9fa","md":"#### [day2#agenda] Labels you can trust\n\n*Today*\n\n- **Session 1 · Gold sets and agreement**: A gold set from a codebook, and agreement that is corrected for chance\n- **Session 2 · Sparse baselines**: Character n-grams and a linear model: the baseline every other classifier must beat\n- **Session 3 · Embeddings as features**: Vectors from a hosted embedding model as features, within a budget of calls\n- **Session 4 · Comparing classifiers fairly**: Two classifiers on the same 300 documents: a paired bootstrap by language and a decision with its cost","notes":"Session 1 is AI-off: participants label with a partner. Sessions 2 to 4 build two classifiers and compare them fairly. Every lab starts from the supplied redacted files, so nobody needs yesterday's outputs.","minutes":null,"lo":[]},{"id":"review-day1","n":3,"title":"What does the redaction miss rate tell Ashwaq?","kind":"quiz","session":0,"hash":"7eb0e4bf","md":"#### [day2#review-day1] What does the redaction miss rate tell Ashwaq?\n\n*Review of Day 1*\n\n**Question:** The redaction left 26 of 122 marked names readable in the audited sample, and no phone or identity number. What follows for the release of redacted text?\n\n- A. Phone numbers are proven absent from the redacted corpus\n- B. About one name in five survives: a name rule or a review is needed before release\n- C. The overall miss rate of 7.7% is low enough to release\n- D. The audited sample must be re-marked before anything is decided","notes":"Answer: the second option. Two minutes at most. The habit of reading a rate by type and by group is the habit of today and of Day 3.","minutes":null,"lo":["LO1"]},{"id":"s1","n":4,"title":"Gold sets and agreement","kind":"section","session":1,"hash":"4dd12584","md":"#### [day2#s1] Gold sets and agreement\n\n*Session 1*\n\n- Label complaints from a codebook without AI help\n- Compute percent agreement and Cohen's kappa from a confusion table\n- Explain why a rare category can show high agreement and low kappa","notes":"This session is AI-off. Phones away for the labelling: the labels must be yours, because they are the measuring stick for everything after.","minutes":null,"lo":["LO2","LO5"]},{"id":"why-gold","n":5,"title":"Every score this week is a comparison with labels people made","kind":"content","session":1,"hash":"349a264b","md":"#### [day2#why-gold] Every score this week is a comparison with labels people made\n\n*The measuring stick*\n\n1. **Codebook** Categories, what each includes and excludes\n2. **Random sample** 300 complaints from the cleaned corpus\n3. **Two coders** Independently, AI-off\n4. **Adjudication** Disagreements resolved against the codebook\n\nAt Sada the codebook and the adjudicated gold set are supplied. Writing a labelling guideline and running adjudication are taught in DS-311.","notes":"The handover to DS-311 is deliberate: this course uses a gold set; DS-311 teaches how to build one at scale (guidelines, pilots, golden questions, review queues). What this session adds is how to read agreement as a measurement.","minutes":null,"lo":["LO2","LO5"]},{"id":"codebook-boundary","n":6,"title":"Most disagreements live in the \"does not include\" column","kind":"content","session":1,"hash":"49b17d34","md":"#### [day2#codebook-boundary] Most disagreements live in the \"does not include\" column\n\n*The codebook*\n\n| Code | Includes | Does not include |\n| --- | --- | --- |\n| `water_sewage` | A street flooded by sewage or a burst pipe | Rain on a damaged road, no pipe named (`roads`) |\n| `permits` | Applications, renewals, rejections | Rude staff at a permits counter (`staff_service`) |\n| `lighting` | Street lights and poles | Lighting inside a park (`parks`) |\n\nOne rule decides complaints with two problems: the main one is described first and at more length.","notes":"From data/codebook.md, version 3, owned by Muhannad Al-Oqaili. Ask the room to find a complaint in pair40.csv that tests each boundary. The two-problem rule matters: a quarter of the complaints mention a second problem.","minutes":null,"lo":["LO5"]},{"id":"gold-sample","n":7,"title":"The gold set is a random sample, so it carries the corpus's mix of varieties","kind":"content","session":1,"hash":"933aee7a","md":"#### [day2#gold-sample] The gold set is a random sample, so it carries the corpus's mix of varieties\n\n*Who is in the gold set*\n\n| Item | Value |\n| --- | --- |\n| Gulf dialect | 120 |\n| Modern Standard Arabic | 114 |\n| English | 66 |\n\n- Random: on Day 4 its errors can be carried to the whole corpus\n- Small groups get wide intervals: 66 English complaints is the limit of what it can say about English","notes":"Counts from data/gold.csv. A stratified gold set (equal numbers per variety) gives tighter intervals per group but needs weights to estimate anything about the corpus; the course keeps it simple and random. Mention the trade-off; the capstone may choose either if it says so.","minutes":null,"lo":["LO2","LO4"]},{"id":"percent-agreement","n":8,"title":"Two careful coders agree on three complaints in four","kind":"content","session":1,"hash":"94a3e959","md":"#### [day2#percent-agreement] Two careful coders agree on three complaints in four\n\n*Lab 2.1, the reference pair*\n\n**0.750** percent agreement of the two reference coders on the 40 complaints\n\n- Two-problem complaints cause most disagreements\n- Some agreement happens by chance: two coders who both say `roads` often agree without reading\n- Percent agreement cannot tell the two apart","notes":"From Lab 2.1 with the reference coders. Your room's pairs will vary: collect three or four kappas on the board after the lab and compare. Pairs usually land between 0.6 and 0.85.","minutes":null,"lo":["LO5"]},{"id":"kappa","n":9,"title":"Kappa is the agreement beyond chance, as a share of what was possible beyond chance","kind":"content","session":1,"hash":"768a56c8","md":"#### [day2#kappa] Kappa is the agreement beyond chance, as a share of what was possible beyond chance\n\n*Correcting for chance*\n\n**(po − pe) / (1 − pe)** pe: the sum over categories of each coder's share in it, multiplied\n\n| Reference pair | Value |\n| --- | --- |\n| Observed agreement po | 0.750 |\n| Chance agreement pe | 0.144 |\n| Cohen's kappa | 0.708 |","notes":"Work p_e out loud for two categories so the formula is concrete. With eight fairly balanced categories chance agreement is low, so kappa is close to agreement. The next slide is the case where it is not. Sources: scikit-learn, cohen_kappa_score.","minutes":null,"lo":["LO5"]},{"id":"prevalence-trap","n":10,"title":"For a rare category, high agreement can hide a weak kappa","kind":"content","session":1,"hash":"72e9c157","md":"#### [day2#prevalence-trap] For a rare category, high agreement can hide a weak kappa\n\n*Lab 2.1, step 4*\n\n| \"This category or not\" | Share | Agreement | Kappa |\n| --- | --- | --- | --- |\n| Parks | 4.7% | 0.957 | 0.644 |\n| Street lighting | 7.7% | 0.970 | 0.775 |\n| Waste | 15.3% | 0.977 | 0.911 |\n| Water and sewage | 21.3% | 0.967 | 0.900 |\n\nGold set, two coders, 300 complaints. Over all eight categories: agreement 0.853, kappa 0.829.","notes":"From Lab 2.1, step 4. Parks: the coders agree on 96% of complaints, almost all of them \"not parks\". Kappa shows the agreement on the parks complaints themselves is weaker. The overall kappa of 0.829 is the bar Fahim meets on Day 3.","minutes":null,"lo":["LO5"]},{"id":"labelling-bias","n":11,"title":"Two coders can agree and both be wrong in the same way","kind":"content","session":1,"hash":"4c929eb5","md":"#### [day2#labelling-bias] Two coders can agree and both be wrong in the same way\n\n*What agreement cannot show*\n\n- Kappa measures consistency, not correctness\n- Coders trained together share their blind spots\n- SDAIA's AI Bias Reference Guide names this **labelling bias**: labels shaped by the annotators' own interpretations\n\n- **What the guide recommends.** Clear, objective criteria; annotators of diverse backgrounds; several annotators per item with disagreements resolved by consensus or expert review.","notes":"Read from the guide's entry on labelling bias, in our own words. At Sada this is why the coders include speakers of Gulf dialect: a coder who reads Gulf text slowly makes systematic errors that a second coder of the same background repeats. Sources: AI Bias Reference Guide, first edition (SDAIA, May 2026).","minutes":null,"lo":["LO5"]},{"id":"check-kappa","n":12,"title":"Which pair of coders is more reliable?","kind":"quiz","session":1,"hash":"ded7a245","md":"#### [day2#check-kappa] Which pair of coders is more reliable?\n\n*Checkpoint*\n\n**Question:** Pair A agrees on 94% of complaints for \"staff conduct or not\", with kappa 0.52. Pair B agrees on 88% for \"water and sewage or not\", with kappa 0.71. Staff conduct is rare. Which statement holds?\n\n- A. Pair A, since they agree more often\n- B. Pair B labels water and sewage more correctly\n- C. They cannot be compared at all\n- D. Pair B agrees more beyond chance; Pair A's 94% is mostly agreement on \"no\"","notes":"Answer: the fourth option. The second option is the subtle trap: kappa is reliability, not validity.","minutes":null,"lo":["LO5"]},{"id":"lab-2-1","n":13,"title":"Agreement with a partner","kind":"lab","session":1,"hash":"50cfced2","md":"#### [day2#lab-2-1] Agreement with a partner\n\nLab 2.1 · 25 min\n\nLabel 40 complaints with a partner from the supplied codebook, compute percent agreement and Cohen's kappa by hand, and meet the prevalence trap.\n\n[D2_1_agreement.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D2_1_agreement.ipynb)\n\n- [ ] Read the codebook (5 min)\n- [ ] Label 40 complaints with a partner (AI-off) (10 min)\n- [ ] Percent agreement and kappa by hand (5 min)\n- [ ] The prevalence trap (5 min)\n- [ ] ✱ Stretch: Krippendorff's alpha for you, your partner and the two reference coders","notes":"Pairs label in the spreadsheet written to artifacts/day2/pair40_to_label.csv; enforce AI-off. If the file is not completed, the notebook uses the two reference coders and says so. Common errors: typing a category name in Arabic or with a capital letter; the check rejects anything outside the codebook. Collect three pairs' kappas for the board.","minutes":null,"lo":[]},{"id":"s2","n":14,"title":"Sparse baselines","kind":"section","session":2,"hash":"ccefe66b","md":"#### [day2#s2] Sparse baselines\n\n*Session 2*\n\n- Build character n-gram features for Arabic and English text\n- Train a linear classifier on a noisy training pool\n- Score it on the gold set with bootstrap intervals by language","notes":"The baseline first: cheap, local and hard to beat. Everything after it must earn its place against this number.","minutes":null,"lo":["LO2"]},{"id":"baseline-first","n":15,"title":"A sparse baseline sets the bar every other classifier must clear","kind":"content","session":2,"hash":"55699541","md":"#### [day2#baseline-first] A sparse baseline sets the bar every other classifier must clear\n\n*The first rung*\n\n- **Cheap.** Trains and predicts in seconds on a laptop processor.\n- **Local.** No text leaves the computer: no classification question to settle.\n- **Readable.** Each weight belongs to a piece of text you can print.","notes":"DS-204's baseline ladder applies unchanged: a model that cannot beat the simple rung is not a model the centre needs. Here the rung is not trivial: for topic labels on short complaints, character n-grams are strong.","minutes":null,"lo":["LO2"]},{"id":"char-ngrams","n":16,"title":"Character n-grams let different forms of one Arabic word share evidence","kind":"content","session":2,"hash":"66b9cfb0","md":"#### [day2#char-ngrams] Character n-grams let different forms of one Arabic word share evidence\n\n*Features*\n\n`الحديقه` `حديق` `ديقه` `حديقتنا` `حديق` `ديقت`\n\n- The article ال and suffixes such as نا change the word but keep most of its pieces\n- `char_wb`: n-grams inside word boundaries, 2 to 5 characters\n- Normalisation and the dialect map from Day 1 run first, so spelling variants collapse","notes":"The chips show the shared four-character pieces of \"the garden\" and \"our garden\". A word-level model sees two unrelated words. The stretch of Lab 2.2 tests this: in the course's run word n-grams lost most on Modern Standard Arabic.","minutes":null,"lo":["LO2"]},{"id":"tfidf","n":17,"title":"TF-IDF weights a piece by how often it appears here and how rare it is elsewhere","kind":"content","session":2,"hash":"5ad12036","md":"#### [day2#tfidf] TF-IDF weights a piece by how often it appears here and how rare it is elsewhere\n\n*Weights*\n\n```python\n# file: lab 2.2\nvec = TfidfVectorizer(analyzer=\"char_wb\", ngram_range=(2, 5),\n                      min_df=2, sublinear_tf=True)\nX_pool = vec.fit_transform(prep(pool.text))   # fit on the pool only\nX_gold = vec.transform(prep(gold.text))\nmodel = LogisticRegression(max_iter=2000, C=5).fit(X_pool, pool.routing_label)\n```\n\n8,566 features; trained and scored in 6.4 seconds on a laptop.","notes":"Point at \"fit on the pool only\": fitting the vectoriser on the gold set lets the test vocabulary into training. The 6.4 seconds is from the course's run on an ordinary laptop processor. Sources: scikit-learn, TfidfVectorizer.","minutes":null,"lo":["LO2"]},{"id":"noisy-pool","n":18,"title":"The pool's labels are the intake team's routing, fast and unchecked","kind":"content","session":2,"hash":"b8386b4f","md":"#### [day2#noisy-pool] The pool's labels are the intake team's routing, fast and unchecked\n\n*The training labels*\n\n- 3,000 redacted complaints, each routed once by intake\n- Some routing is wrong, and not at random: permits and staff conduct trade places, so do waste and parks\n- A model trained on them learns the habits too\n\n- **The rule.** Train on the noisy labels, score on the gold set. Never score on the labels you trained on.","notes":"The generator routes about 12% of pool complaints to the wrong category, mostly to a neighbouring one; that is the trainer's answer key, not something participants can see. Scattered errors average out; systematic ones are learnt. The gold set is how you find out which.","minutes":null,"lo":["LO2"]},{"id":"sparse-results","n":19,"title":"The character n-gram classifier is right on 93% of the gold set","kind":"content","session":2,"hash":"e28f77a0","md":"#### [day2#sparse-results] The character n-gram classifier is right on 93% of the gold set\n\n*Lab 2.2, the scores*\n\n| Gold complaints | n | Accuracy | 95% interval |\n| --- | --- | --- | --- |\n| All | 300 | 0.930 | 0.900 to 0.957 |\n| Modern Standard Arabic | 114 | 0.921 | 0.868 to 0.965 |\n| Gulf dialect | 120 | 0.942 | 0.900 to 0.983 |\n| English | 66 | 0.924 | 0.848 to 0.985 |\n\nMacro F1 over the eight categories: 0.917.","notes":"From Lab 2.2, 2,000 bootstrap resamples of the gold complaints. Note that the baseline shows no dialect gap: it learnt Gulf text from Gulf training examples. Keep that in mind for Day 3, where a model that never saw Sada's training data does show one.","minutes":null,"lo":["LO2"]},{"id":"interval-width","n":20,"title":"The interval for English is twice as wide because it rests on 66 complaints","kind":"content","session":2,"hash":"c7b80136","md":"#### [day2#interval-width] The interval for English is twice as wide because it rests on 66 complaints\n\n*Reading an interval*\n\n- Bootstrap: resample the gold complaints with replacement, recompute, repeat 2,000 times\n- The middle 95% of the results is the interval\n- Width shrinks with the square root of n: four times the complaints halves it\n\n> **What goes wrong.** \"English is 0.924 and Arabic 0.921, so they are equal.\" The intervals say the gold set cannot tell.","notes":"Ask: how many English gold complaints would make the English interval as narrow as the overall one? About 300. That is a gold-set design question for the capstone.","minutes":null,"lo":["LO2"]},{"id":"word-vs-char","n":21,"title":"Word n-grams lose most on formal Arabic, where words carry prefixes and suffixes","kind":"content","session":2,"hash":"651f17f7","md":"#### [day2#word-vs-char] Word n-grams lose most on formal Arabic, where words carry prefixes and suffixes\n\n*Lab 2.2, stretch*\n\n| Accuracy | Characters | Words |\n| --- | --- | --- |\n| Modern Standard Arabic | 0.921 | 0.886 |\n| Gulf dialect | 0.942 | 0.925 |\n| English | 0.924 | 0.955 |\n\nDifferences of this size sit inside the intervals: a direction to check, not a finding.","notes":"From the stretch of Lab 2.2 (point estimates only). The pattern matches the reason given two slides back, but the gold set is too small to prove it. This is a good example of how to report a small effect honestly.","minutes":null,"lo":["LO2"]},{"id":"check-sparse","n":22,"title":"Where should the classifier be scored?","kind":"quiz","session":2,"hash":"edde7221","md":"#### [day2#check-sparse] Where should the classifier be scored?\n\n*Checkpoint*\n\n**Question:** A colleague reports 0.97 accuracy for the n-gram classifier, measured on a random fifth of the 3,000 pool complaints held out from training. What is wrong with the number?\n\n- A. It is scored against routing labels nobody checked, which share the model's own training habits\n- B. 600 complaints are too few to score on\n- C. The held-out complaints leaked into training\n- D. Accuracy should have been macro F1","notes":"Answer: the first option. A model that learnt the intake team's systematic errors scores well against labels that contain the same errors.","minutes":null,"lo":["LO2"]},{"id":"lab-2-2","n":23,"title":"A character n-gram classifier","kind":"lab","session":2,"hash":"46dbf0df","md":"#### [day2#lab-2-2] A character n-gram classifier\n\nLab 2.2 · 25 min\n\nTrain a character n-gram classifier on the 3,000-document pool and score it on the 300-document gold set, with intervals by language.\n\n[D2_2_sparse.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D2_2_sparse.ipynb)\n\n- [ ] Load the pool and the gold set (3 min)\n- [ ] Character n-grams with TF-IDF (6 min)\n- [ ] A logistic classifier (5 min)\n- [ ] Macro F1 and accuracy on the gold set (5 min)\n- [ ] Bootstrap intervals by language (6 min)\n- [ ] ✱ Stretch: Word n-grams instead: which language loses most?","notes":"The prep step (normalise and dialect map) takes a few seconds per thousand complaints. Watch for participants fitting the vectoriser on both sets together. The check that English has the fewest gold complaints is there to make them look at n before reading any interval.","minutes":null,"lo":[]},{"id":"s3","n":24,"title":"Embeddings as features","kind":"section","session":3,"hash":"4586d834","md":"#### [day2#s3] Embeddings as features\n\n*Session 3*\n\n- Explain what an embedding vector keeps and loses\n- Train a classifier on embeddings fetched within a call budget\n- Report scores per language with the cost of the vectors","notes":"The first lab that sends text to a hosted service. Begin by asking: which text may go, and who decided?","minutes":null,"lo":["LO2"]},{"id":"what-a-vector-is","n":25,"title":"An embedding places texts so that similar meanings sit close together","kind":"content","session":3,"hash":"8cf1ea3f","md":"#### [day2#what-a-vector-is] An embedding places texts so that similar meanings sit close together\n\n*Embeddings*\n\n- A model reads the text and returns a fixed-length vector\n- Close vectors: complaints about the same thing, even in different words or languages\n- A simple classifier on top learns the categories from a few examples each\n\n- **What it loses.** Which words carried the decision. A wrong label is harder to explain than with n-gram weights.","notes":"Multilingual embedding models put an Arabic and an English complaint about a broken street light near each other; character n-grams cannot. Whether that helps depends on whether the training data already covers each language, which at Sada it does. Sources: Sentence Transformers documentation.","minutes":null,"lo":["LO2"]},{"id":"hosted-embeddings","n":26,"title":"A free hosted embedding model, within a budget of requests","kind":"content","session":3,"hash":"af3fea57","md":"#### [day2#hosted-embeddings] A free hosted embedding model, within a budget of requests\n\n*The tool slot*\n\n| Setting | Value, checked this month |\n| --- | --- |\n| Default model | `nvidia/nemotron-3.5-embed-1b:free` on OpenRouter |\n| Free requests | 20 a minute; 50 a day, or 1,000 a day after a one-time purchase of 10 credits |\n| Texts per request | Up to 64 in the labs, cached on disk |\n| Paid endpoint of this model | None listed |\n\nOther examples for the same slot: sentence-transformers models served elsewhere, or a commercial embedding API.","notes":"Facts from OpenRouter's limits page and its public list of embedding models, read on 2026-11-15. Free models change often: the README says how to pick another one. A local sentence-transformers model is the usual choice in practice; the course does not download models to laptops. Sources: OpenRouter API rate limits; OpenRouter Embeddings API; OpenRouter list of embedding models.","minutes":null,"lo":["LO2"]},{"id":"call-budget","n":27,"title":"A budget of 25 requests buys 1,280 training complaints and the gold set","kind":"content","session":3,"hash":"c5faf286","md":"#### [day2#call-budget] A budget of 25 requests buys 1,280 training complaints and the gold set\n\n*Lab 2.3, step 1*\n\n1. **Gold first** 300 complaints: 5 requests of 64\n2. **The rest** 20 requests: 1,280 pool complaints\n3. **Stratified** Sampled by routing label, so every category is there\n\nEvery vector is cached: a rerun of the notebook costs no request.","notes":"The first version of the lab spent 26 requests: 1,300 plus 300 looks like 25 requests of 64, but the two sets are sent separately and each rounds up. Count requests per set. This is the fixed budget the outcome names.","minutes":null,"lo":["LO2"]},{"id":"standin-honesty","n":28,"title":"Without a working key, the lab says so on every number it prints","kind":"content","session":3,"hash":"4c0b738b","md":"#### [day2#standin-honesty] Without a working key, the lab says so on every number it prints\n\n*When no key works*\n\n- The stand-in hashes character pieces into 384 numbers\n- It is lexical, like the sparse model: it measures the lab's code, not an embedding model\n- The course's own run used it: no key that worked was available\n\n> **What goes wrong.** A stand-in score is quoted as \"the embedding model\". Every table from such a run carries the words \"stand-in\".","notes":"Be direct with the room: the numbers on the next two slides come from the stand-in. Participants with a key get real vectors; ask two of them to read out their gold accuracy and compare. The method of the session does not change.","minutes":null,"lo":["LO2"]},{"id":"embed-results","n":29,"title":"The stand-in classifier is right on 89% of the gold set","kind":"content","session":3,"hash":"ccb027e5","md":"#### [day2#embed-results] The stand-in classifier is right on 89% of the gold set\n\n*Lab 2.3, the scores (stand-in vectors)*\n\n| Gold complaints | n | Accuracy | 95% interval |\n| --- | --- | --- | --- |\n| All | 300 | 0.893 | 0.857 to 0.927 |\n| Modern Standard Arabic | 114 | 0.886 | 0.825 to 0.939 |\n| Gulf dialect | 120 | 0.908 | 0.858 to 0.958 |\n| English | 66 | 0.879 | 0.788 to 0.955 |\n\nTrained on 1,280 pool complaints, a little under half the sparse model's 3,000.","notes":"From Lab 2.3 with stand-in vectors. With a hosted model the numbers will differ; the table's structure (overall and by variety, with intervals) is what the outcome asks for. Note the training set is smaller than in Lab 2.2: part of any difference is the budget, not the method.","minutes":null,"lo":["LO2"]},{"id":"embed-cost","n":30,"title":"Free is not free: requests, waiting and text that leaves the building","kind":"content","session":3,"hash":"b1855d6f","md":"#### [day2#embed-cost] Free is not free: requests, waiting and text that leaves the building\n\n*Lab 2.3, step 4*\n\n| Per 1,000 complaints | Value |\n| --- | --- |\n| Requests | 15.8 |\n| Money on the free endpoint | 0 |\n| Days to embed all 20,000 at 50 requests a day | 6.2 |\n\n> **And the data.** Each request sends redacted complaints to a third party. The classification of that text decides whether this lab is allowed at all with real data.","notes":"From Lab 2.3's cost table. The seconds are not on the slide because the stand-in's seconds are the laptop's, not the network's. With credits the daily limit rises to 1,000 requests and the 20,000 complaints take under an hour of pacing at 20 requests a minute.","minutes":null,"lo":["LO2"]},{"id":"check-embeddings","n":31,"title":"What can you report from a stand-in run?","kind":"quiz","session":3,"hash":"98305a23","md":"#### [day2#check-embeddings] What can you report from a stand-in run?\n\n*Checkpoint*\n\n**Question:** Your key failed and Lab 2.3 ran on the stand-in vectors, with 0.893 gold accuracy. Dr. Ebtisam asks whether embeddings beat the n-gram baseline. What do you answer?\n\n- A. \"No: embeddings reach 0.893 against 0.930\"\n- B. \"Yes: embeddings usually beat n-grams\"\n- C. \"Not measured yet: the code works, the comparison needs a run with the hosted model\"\n- D. \"Embeddings cannot be used at the centre\"","notes":"Answer: the third option. The point is honesty under a broken dependency, which happens in real projects more often than a clean run.","minutes":null,"lo":["LO2"]},{"id":"lab-2-3","n":32,"title":"An embedding classifier","kind":"lab","session":3,"hash":"f12a1bde","md":"#### [day2#lab-2-3] An embedding classifier\n\nLab 2.3 · 25 min\n\nEmbed the pool and the gold set with a free hosted model within a call budget, train a classifier on the vectors and score it per language.\n\n[D2_3_embeddings.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D2_3_embeddings.ipynb)\n\n- [ ] Embed the pool and the gold set within the budget (7 min)\n- [ ] A logistic head on the vectors (5 min)\n- [ ] Scores per language with intervals (7 min)\n- [ ] Calls, seconds and cost per thousand documents (6 min)\n- [ ] ✱ Stretch: Join the sparse and the embedding features: does the union beat both?","notes":"Keys go in labs/.env (local) or the Colab Secrets panel as OPENROUTER_API_KEY. A 429 means the free limit: the helper waits and retries. A 401 or a connection error switches to the stand-in for the rest of the run and prints a warning. Quick mode embeds 400 pool complaints.","minutes":null,"lo":[]},{"id":"s4","n":33,"title":"Comparing classifiers fairly","kind":"section","session":4,"hash":"c01a2a46","md":"#### [day2#s4] Comparing classifiers fairly\n\n*Session 4*\n\n- Explain why scores on the same documents are compared in pairs\n- Compute a paired bootstrap interval for a difference in accuracy\n- Decide between classifiers by language with cost in view","notes":"Two numbers, 0.930 and 0.893. The session is about the honest way to compare them.","minutes":null,"lo":["LO2"]},{"id":"recap-pairing","n":34,"title":"In DS-204 you paired models by fold; here you pair them by document","kind":"content","session":4,"hash":"780d318e","md":"#### [day2#recap-pairing] In DS-204 you paired models by fold; here you pair them by document\n\n*Recap from DS-204*\n\n- **DS-204.** Champion and challenger scored on the same five folds: five paired differences, an interval on their mean.\n- **Here.** Both classifiers labelled the same 300 gold complaints: 300 paired differences of right minus right.","notes":"One slide: the idea is DS-204 Day 2 session 4. What is new is the unit (documents) and the breakdown by language.","minutes":null,"lo":["LO2"]},{"id":"two-by-two","n":35,"title":"Only 33 of the 300 complaints decide the comparison","kind":"content","session":4,"hash":"b5cea616","md":"#### [day2#two-by-two] Only 33 of the 300 complaints decide the comparison\n\n*Lab 2.4, step 2*\n\n|  | Embedding right | Embedding wrong |\n| --- | --- | --- |\n| Sparse right | 257 | 22 |\n| Sparse wrong | 11 | 10 |\n\nWhere both are right or both wrong, the difference is zero. The 22 and the 11 are the evidence.","notes":"From Lab 2.4, stand-in vectors for the embedding side. The same table drives McNemar's test, which some participants know; the bootstrap gives an interval for the difference in accuracy, which is what the decision needs.","minutes":null,"lo":["LO2"]},{"id":"paired-bootstrap","n":36,"title":"A paired bootstrap resamples complaints, keeping each pair together","kind":"content","session":4,"hash":"ab299d63","md":"#### [day2#paired-bootstrap] A paired bootstrap resamples complaints, keeping each pair together\n\n*Lab 2.4, step 3*\n\n```python\n# file: lab 2.4\ndiff = ok_sparse - ok_embed            # one value per complaint: -1, 0 or 1\nmeans = [diff[rng.integers(0, 300, 300)].mean() for _ in range(2000)]\nlow, high = np.percentile(means, [2.5, 97.5])\n```\n\n**+0.037** sparse minus embedding, 95% interval −0.003 to +0.073","notes":"From Lab 2.4. The interval just reaches zero: the gold set leans towards the sparse model but cannot rule out no difference. Read it aloud that way, not as \"not significant, so equal\".","minutes":null,"lo":["LO2"]},{"id":"paired-by-language","n":37,"title":"By language, every interval crosses zero","kind":"content","session":4,"hash":"23351105","md":"#### [day2#paired-by-language] By language, every interval crosses zero\n\n*Lab 2.4, step 4*\n\n| Variety | n | Sparse minus embedding | 95% interval |\n| --- | --- | --- | --- |\n| Modern Standard Arabic | 114 | +0.035 | −0.026 to +0.096 |\n| Gulf dialect | 120 | +0.033 | −0.017 to +0.092 |\n| English | 66 | +0.045 | −0.030 to +0.121 |\n\nThe same direction in all three; no variety where the gold set can separate them.","notes":"From Lab 2.4. Splitting by language costs precision: each group has fewer complaints. Consistent direction across groups is weak evidence on its own; it is worth saying, not worth deciding on.","minutes":null,"lo":["LO2"]},{"id":"paired-vs-unpaired","n":38,"title":"Pairing narrows the interval because hard complaints are hard for both","kind":"content","session":4,"hash":"5c55ca89","md":"#### [day2#paired-vs-unpaired] Pairing narrows the interval because hard complaints are hard for both\n\n*Lab 2.4, stretch*\n\n| Item | Value |\n| --- | --- |\n| Unpaired | 0.093 wide |\n| Paired | 0.077 wide |\n\nResampling the two columns independently counts the shared difficulty of each complaint twice.","notes":"From the stretch of Lab 2.4. The gain here is modest because both classifiers are right on most complaints; it grows when two models share many errors, as two prompts of one language model will on Day 3.","minutes":null,"lo":["LO2"]},{"id":"decision-cost","n":39,"title":"When the scores cannot separate two classifiers, cost and risk decide","kind":"content","session":4,"hash":"3cd65b40","md":"#### [day2#decision-cost] When the scores cannot separate two classifiers, cost and risk decide\n\n*Lab 2.4, step 5*\n\n|  | Character n-grams | Hosted embeddings |\n| --- | --- | --- |\n| Gold accuracy | 0.930 | 0.893 (stand-in) |\n| Per 1,000 complaints | Seconds of laptop time | About 16 requests, a daily limit |\n| Text leaves the centre | No | Yes, redacted |\n\n> **The decision written in the lab.** Keep the n-gram classifier; rerun the comparison with the hosted model before it is final.","notes":"The decision text is saved to artifacts/day2/decision.txt. Push the room to write the condition that would change it: for example, a new category with no training examples, where a classifier that needs no training data has the advantage. That is tomorrow.","minutes":null,"lo":["LO2"]},{"id":"check-paired","n":40,"title":"How do you read +0.037 with an interval of −0.003 to +0.073?","kind":"quiz","session":4,"hash":"88dc2235","md":"#### [day2#check-paired] How do you read +0.037 with an interval of −0.003 to +0.073?\n\n*Checkpoint*\n\n**Question:** The paired difference in gold accuracy, sparse minus embedding, is +0.037 with a 95% interval from −0.003 to +0.073. Which sentence belongs in the report?\n\n- A. The two classifiers perform the same\n- B. The sparse classifier is probably better by up to seven points, but a difference of zero cannot be ruled out\n- C. The sparse classifier is 3.7 points better\n- D. The embedding classifier may be the better one, since the interval is negative","notes":"Answer: the second option. Spend a minute on the first option: \"same performance\" is the most common misreading in written reports.","minutes":null,"lo":["LO2"]},{"id":"lab-2-4","n":41,"title":"Compare classifiers fairly","kind":"lab","session":4,"hash":"93076de6","md":"#### [day2#lab-2-4] Compare classifiers fairly\n\nLab 2.4 · 25 min\n\nCompare the sparse and embedding classifiers on the gold set with paired bootstrap intervals, overall and by language, and write the decision.\n\n[D2_4_paired_bootstrap.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D2_4_paired_bootstrap.ipynb)\n\n- [ ] Load both classifiers' predictions on the gold set (4 min)\n- [ ] Paired differences per document (5 min)\n- [ ] A paired bootstrap interval (7 min)\n- [ ] The same, by language (5 min)\n- [ ] The decision, with cost (4 min)\n- [ ] ✱ Stretch: An unpaired bootstrap of the same difference: how much wider is it?","notes":"The lab reads the predictions written by Labs 2.2 and 2.3 and falls back to the course's reference predictions. Make sure the pairing is by id: a merge, not two lists that might be in different orders. Writing the decision is part of the lab, not optional.","minutes":null,"lo":[]},{"id":"wrap-up","n":42,"title":"Three things to keep","kind":"content","session":4,"hash":"7ab6cc9d","md":"#### [day2#wrap-up] Three things to keep\n\n*Day 2 · wrap-up*\n\n- **Agreement beyond chance.** Kappa, by category, with the rare categories read carefully. It measures consistency, not truth.\n- **Score on gold.** Train on the labels you have; score on the labels people checked, with intervals by language.\n- **Pair the comparison.** Same documents, paired differences, an interval, then cost and risk.","notes":"Ask which classifier each table would deploy tomorrow, and what evidence would change their mind.","minutes":null,"lo":[]},{"id":"next","n":43,"title":"Day 3: Language models as instruments","kind":"content","session":4,"hash":"b22fde60","md":"#### [day2#next] Day 3: Language models as instruments\n\n*Next*\n\nTomorrow Fahim, a prompted open-weight model, labels the gold set. Read data/prompts/fahim_p1.md and note one sentence you would change.","notes":"Day 3 works mostly from the recorded runs, so a key is optional; with one, participants run ten complaints live in Lab 3.1 and twenty in the stretch of Lab 3.2.","minutes":null,"lo":[]}],"activities":[{"id":"review-day1-q1","slide":"review-day1","type":"single","prompt":"The redaction left 26 of 122 marked names readable in the audited sample, and no phone or identity number. What follows for the release of redacted text?","options":[{"key":"A","text":"Phone numbers are proven absent from the redacted corpus"},{"key":"B","text":"About one name in five survives: a name rule or a review is needed before release"},{"key":"C","text":"The overall miss rate of 7.7% is low enough to release"},{"key":"D","text":"The audited sample must be re-marked before anything is decided"}],"correct":[1],"explanation":"The misses sit in one type with a clear cause. The decision follows the type, not the average.","misconceptions":["Reads a zero on the sample as a zero in the corpus: a sample bounds the miss rate, it does not prove none","","Averages a serious gap away: the overall rate hides that the misses are all names","Blames the reference: the misses follow a clear pattern, names without a cue word"],"lo":["LO1"]},{"id":"check-kappa-q1","slide":"check-kappa","type":"single","prompt":"Pair A agrees on 94% of complaints for \"staff conduct or not\", with kappa 0.52. Pair B agrees on 88% for \"water and sewage or not\", with kappa 0.71. Staff conduct is rare. Which statement holds?","options":[{"key":"A","text":"Pair A, since they agree more often"},{"key":"B","text":"Pair B labels water and sewage more correctly"},{"key":"C","text":"They cannot be compared at all"},{"key":"D","text":"Pair B agrees more beyond chance; Pair A's 94% is mostly agreement on \"no\""}],"correct":[3],"explanation":"With a rare category most agreement is on the negative and would happen by chance; kappa removes it.","misconceptions":["Ranks by raw agreement, which a rare category inflates with easy negatives","Treats kappa as accuracy: neither number says who is right","Thinks different categories make the numbers incomparable in every way: kappa is designed to compare beyond chance",""],"lo":["LO5"]},{"id":"check-sparse-q1","slide":"check-sparse","type":"single","prompt":"A colleague reports 0.97 accuracy for the n-gram classifier, measured on a random fifth of the 3,000 pool complaints held out from training. What is wrong with the number?","options":[{"key":"A","text":"It is scored against routing labels nobody checked, which share the model's own training habits"},{"key":"B","text":"600 complaints are too few to score on"},{"key":"C","text":"The held-out complaints leaked into training"},{"key":"D","text":"Accuracy should have been macro F1"}],"correct":[0],"explanation":"A score is only as good as the labels it is compared with. The gold set was coded twice and adjudicated; the routing labels were not.","misconceptions":["","Thinks the size of the test set is the problem: 600 complaints is larger than the gold set","Treats a held-out split as leakage: the complaints were not used for training","Blames the metric: macro F1 would be measured against the same unchecked labels"],"lo":["LO2"]},{"id":"check-embeddings-q1","slide":"check-embeddings","type":"single","prompt":"Your key failed and Lab 2.3 ran on the stand-in vectors, with 0.893 gold accuracy. Dr. Ebtisam asks whether embeddings beat the n-gram baseline. What do you answer?","options":[{"key":"A","text":"\"No: embeddings reach 0.893 against 0.930\""},{"key":"B","text":"\"Yes: embeddings usually beat n-grams\""},{"key":"C","text":"\"Not measured yet: the code works, the comparison needs a run with the hosted model\""},{"key":"D","text":"\"Embeddings cannot be used at the centre\""}],"correct":[2],"explanation":"A stand-in proves the pipeline runs. It says nothing about the model the question is about.","misconceptions":["Quotes a stand-in result as a model's: the stand-in is lexical and measures nothing about embeddings","Fills a gap with a general belief: no measurement on Sada's data supports it","","Treats a failed key as a reason to drop an outcome: the run can be repeated"],"lo":["LO2"]},{"id":"check-paired-q1","slide":"check-paired","type":"single","prompt":"The paired difference in gold accuracy, sparse minus embedding, is +0.037 with a 95% interval from −0.003 to +0.073. Which sentence belongs in the report?","options":[{"key":"A","text":"The two classifiers perform the same"},{"key":"B","text":"The sparse classifier is probably better by up to seven points, but a difference of zero cannot be ruled out"},{"key":"C","text":"The sparse classifier is 3.7 points better"},{"key":"D","text":"The embedding classifier may be the better one, since the interval is negative"}],"correct":[1],"explanation":"The interval states the range of differences the gold set allows: mostly in favour of the sparse model, zero just inside.","misconceptions":["Reads an interval that touches zero as proof of equality: absence of evidence is not evidence of no difference","","Ignores the interval entirely and reports the point estimate as certain","Thinks a slightly negative bound makes the embedding model better: the interval is mostly positive"],"lo":["LO2"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day2.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

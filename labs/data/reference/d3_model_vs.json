@@ -1,0 +1,26 @@
+[
+ {
+  "variety": "all",
+  "vs_coder_a": 0.709,
+  "vs_coder_b": 0.743,
+  "vs_gold": 0.778
+ },
+ {
+  "variety": "en",
+  "vs_coder_a": 0.72,
+  "vs_coder_b": 0.772,
+  "vs_gold": 0.824
+ },
+ {
+  "variety": "gulf",
+  "vs_coder_a": 0.639,
+  "vs_coder_b": 0.676,
+  "vs_gold": 0.685
+ },
+ {
+  "variety": "msa",
+  "vs_coder_a": 0.772,
+  "vs_coder_b": 0.793,
+  "vs_gold": 0.845
+ }
+]

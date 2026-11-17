@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="page" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text and Unstructured Data for Data Science · SDAIA Academy</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<meta name="description" content="Turn Arabic and English text into measurements you can defend: clean and redact a corpus, score sparse, embedding and prompted classifiers on one gold set, test a language model as an annotator and correct the estimates its labels feed">
+<link rel="icon" href="_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="index.md">
+<link rel="describedby" href="llms.txt">
+<link rel="stylesheet" href="_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo" id="logo"></div><nav><a href="slides/day1.html">Slides</a><a href="practice.html">Practice</a><a href="index.md" type="text/markdown">Markdown</a></nav></div>
+<div class="kicker">Data Science Track · SDAIA Academy · DS-306</div>
+<h1>Text and Unstructured Data for Data Science<span class="sub ar" lang="ar" dir="rtl">النصوص والبيانات غير المهيكلة في علم البيانات</span></h1>
+<p>Turn Arabic and English text into measurements you can defend: clean and redact a corpus, score sparse, embedding and prompted classifiers on one gold set, test a language model as an annotator and correct the estimates its labels feed</p>
+<div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>26 hours</span><span>Level 300</span><span>Data Science · Associate badge</span></div>
+</div>
+</header>
+<main class="wrap">
+<h2>About the course</h2>
+<p>Participants turn text into measurements they can defend. For the Sada Citizen Voice Centre, a fictional agency receiving complaints in Arabic and English, they normalise Arabic script and dialect spellings, redact personal data, build sparse and embedding-based classifiers, classify and extract fields with a prompted open-weight language model, and treat every model-made label as a measurement: agreement with a human gold set, stability across runs and prompts, gaps between dialects and the bias it carries into estimates. Writing labelling guidelines and adjudication are in DS-311.</p>
+<p><b>Who it is for:</b> Specialists. Analysts and data scientists who have completed the level 200 set or can show equivalent work: an analysis or model they built, validated and can explain.</p>
+<p><b>Format:</b> Intensive: 4 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task</p>
+<h2>The case study</h2>
+<div class="note info"><b>Sada Citizen Voice Centre.</b> Sada Citizen Voice Centre is a fictional government centre that receives complaints about municipal services in Modern Standard Arabic, Gulf dialect and English. Participants work on 20,000 synthetic complaints from 12 districts, a 300-document gold set coded by two people, 500 inspection reports and the recorded runs of Fahim, the centre's prompted labelling instruction on an open-weight model: they clean and redact the corpus, compare three classifiers, measure Fahim as an instrument and correct the district complaint rates its labels produce. All data are synthetic and written with a fixed seed; the recorded model runs are synthetic too.</div>
+<h2>The course</h2>
+<div class="day">
+<div class="day-head c-teal"><div><div class="t">Day 1 · 4 sessions · 4 labs</div><h3>Text into clean data</h3></div><a class="btn" href="slides/day1.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Text as a data source</b><br>Who writes to the centre, through which channel and in which language: a profile before any model<ul><li>Describe how a complaint corpus samples the people affected</li><li>Profile a corpus by language, length and channel</li><li>Measure the exact duplicate rate and say what it does to a count</li></ul></td><td><a href="labs/D1_1_profile.ipynb">Lab 1.1 · Profile the corpus</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D1_1_profile.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Preparing Arabic text</b><br>Script variants, marks, digits and dialect spellings, and what each normalisation rule costs<ul><li>Identify the script variants in an Arabic corpus</li><li>Write a normalisation function in named layers</li><li>Measure the vocabulary change of each layer and name what it merges</li></ul></td><td><a href="labs/D1_2_normalise.ipynb">Lab 1.2 · Normalise Arabic text</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D1_2_normalise.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Near-duplicates</b><br>Shingles, Jaccard similarity and MinHash, and a keep rule that the count can defend<ul><li>Compute the Jaccard similarity of two texts from character shingles</li><li>Find near-duplicate candidates with MinHash and banding</li><li>Write a keep rule that separates resubmissions from a campaign</li></ul></td><td><a href="labs/D1_3_near_duplicates.ipynb">Lab 1.3 · Find near-duplicates</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D1_3_near_duplicates.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Redacting personal data</b><br>Personal data in free text: patterns, cue words and a miss rate measured on an audited sample<ul><li>Explain why identifiers are removed before text reaches a hosted model</li><li>Write patterns for phone and identity numbers in both digit systems</li><li>Measure a redaction miss rate by type and language on an audited sample</li></ul></td><td><a href="labs/D1_4_redaction.ipynb">Lab 1.4 · Redact and measure misses</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D1_4_redaction.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-cyan"><div><div class="t">Day 2 · 4 sessions · 4 labs</div><h3>Labels you can trust</h3></div><a class="btn" href="slides/day2.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Gold sets and agreement</b><br>A gold set from a codebook, and agreement that is corrected for chance<ul><li>Label complaints from a codebook without AI help</li><li>Compute percent agreement and Cohen's kappa from a confusion table</li><li>Explain why a rare category can show high agreement and low kappa</li></ul></td><td><a href="labs/D2_1_agreement.ipynb">Lab 2.1 · Agreement with a partner</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D2_1_agreement.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Sparse baselines</b><br>Character n-grams and a linear model: the baseline every other classifier must beat<ul><li>Build character n-gram features for Arabic and English text</li><li>Train a linear classifier on a noisy training pool</li><li>Score it on the gold set with bootstrap intervals by language</li></ul></td><td><a href="labs/D2_2_sparse.ipynb">Lab 2.2 · A character n-gram classifier</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D2_2_sparse.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Embeddings as features</b><br>Vectors from a hosted embedding model as features, within a budget of calls<ul><li>Explain what an embedding vector keeps and loses</li><li>Train a classifier on embeddings fetched within a call budget</li><li>Report scores per language with the cost of the vectors</li></ul></td><td><a href="labs/D2_3_embeddings.ipynb">Lab 2.3 · An embedding classifier</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D2_3_embeddings.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Comparing classifiers fairly</b><br>Two classifiers on the same 300 documents: a paired bootstrap by language and a decision with its cost<ul><li>Explain why scores on the same documents are compared in pairs</li><li>Compute a paired bootstrap interval for a difference in accuracy</li><li>Decide between classifiers by language with cost in view</li></ul></td><td><a href="labs/D2_4_paired_bootstrap.ipynb">Lab 2.4 · Compare classifiers fairly</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D2_4_paired_bootstrap.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-coral"><div><div class="t">Day 3 · 4 sessions · 4 labs</div><h3>Language models as instruments</h3></div><a class="btn" href="slides/day3.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Prompted classification</b><br>A prompt is an instrument: codebook, label set, output format, batch and a version record<ul><li>Write a classification prompt from a codebook with a fixed output format</li><li>Classify documents in batches within a call budget and parse every reply</li><li>Record model, prompt version and settings with every label set</li></ul></td><td><a href="labs/D3_1_prompted.ipynb">Lab 3.1 · Prompted classification</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D3_1_prompted.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Ask it twice</b><br>Run stability and prompt stability, measured as agreement of the model with itself<ul><li>Measure how often labels change between runs of one prompt</li><li>Measure the shift caused by rewording a prompt</li><li>Name the documents that move and why</li></ul></td><td><a href="labs/D3_2_stability.ipynb">Lab 3.2 · Ask it twice</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D3_2_stability.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Dialect gaps</b><br>Agreement by language variety, the confusions behind a gap, and what a gap does to a count<ul><li>Measure agreement by language variety with intervals</li><li>Find the confusion that drives a dialect gap</li><li>Estimate how a gap under-counts a category in some districts</li></ul></td><td><a href="labs/D3_3_dialect_gaps.ipynb">Lab 3.3 · Dialect gaps</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D3_3_dialect_gaps.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Is the model a good annotator</b><br>A model as a second coder: criteria fixed before looking, evidence, and a written decision<ul><li>Compare model-human agreement with human-human agreement</li><li>Set decision criteria before reading the results</li><li>Write a reliability memo with a decision and its limits</li></ul></td><td><a href="labs/D3_4_annotator.ipynb">Lab 3.4 · A good annotator?</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D3_4_annotator.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-purple"><div><div class="t">Day 4 · 4 sessions · 4 labs</div><h3>From documents to tables</h3></div><a class="btn" href="slides/day4.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Schema-constrained extraction</b><br>A schema the model must fill, validation of every reply, and nulls instead of invented values<ul><li>Define a schema with types, ranges and allowed values for six fields</li><li>Request schema-constrained output and validate every reply</li><li>Return a null for a field the text does not state</li></ul></td><td><a href="labs/D4_1_extraction.ipynb">Lab 4.1 · Six fields, validated</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D4_1_extraction.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Field-level validation</b><br>Precision and recall per field, with nulls counted correctly, and the commonest errors<ul><li>Define precision and recall for a field that may be empty</li><li>Compute them per field over 500 reports</li><li>List the commonest errors per field and the rule that would catch each</li></ul></td><td><a href="labs/D4_2_field_validation.ipynb">Lab 4.2 · Field-level validation</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D4_2_field_validation.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Structure in text</b><br>Clusters of embeddings as a way to see a corpus, and why a cluster is not a category<ul><li>Cluster document vectors and choose a number of clusters</li><li>Name clusters from their terms and examples</li><li>Compare clusters with codebook categories and say what each shows</li></ul></td><td><a href="labs/D4_3_clusters.ipynb">Lab 4.3 · Structure in text</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D4_3_clusters.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Errors downstream</b><br>A complaint rate from model labels, corrected with the human sample, with intervals<ul><li>Compute a naive district rate from model labels</li><li>Correct it with the gold set, stratified by language</li><li>Report naive and corrected rates with intervals and a version record</li></ul></td><td><a href="labs/D4_4_corrected_rates.ipynb">Lab 4.4 · Corrected rates</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-306/blob/main/labs/D4_4_corrected_rates.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-amber"><div><div class="t">Capstone</div><h3>Capstone: a text measurement defended live</h3></div><a class="btn" href="slides/capstone.html">Open the slides</a></div>
+<div class="scroll"><table><tr><td>Each participant defends a text-measurement pipeline in eight minutes, then re-labels ten documents chosen by the assessor and answers questions</td></tr></table></div>
+</div>
+<h2>Capstone</h2>
+<div class="two">
+<div><p>A text-measurement project on a supplied or public corpus, in a public repository whose README reports the gold set, agreement, model and extraction results and a reliability memo; eight-minute defence plus questions</p><p><b>What you submit:</b> A link to a public GitHub repository: the cleaning and redaction script with its miss rate, the gold set and agreement, the classifier and extraction results with model and prompt versions, the saved model outputs and run logs, the corrected estimate and the reliability memo, with a lock file and a README that reports all of them; prompts and agent transcripts are committed with it</p><p><b>Format:</b> 8 min talk and demo · 7 min Q&amp;A</p></div>
+<div><h3>Rubric</h3><div class="bar c-teal"><span>Preparation and redaction<i style="--w:100%"></i></span><b>25%</b></div><div class="bar c-cyan"><span>Gold set and agreement<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-coral"><span>Models and extraction<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-purple"><span>Reliability memo<i style="--w:100%"></i></span><b>25%</b></div><div class="bar c-amber"><span>Reproducibility<i style="--w:40%"></i></span><b>10%</b></div></div>
+</div>
+<h2>Outcomes</h2>
+<p>By the end of the course, participants can:</p>
+<div class="day"><div class="scroll"><table>
+<tr><th></th><th>Outcomes</th><th>Level</th><th>Evidence</th></tr>
+<tr><td><b>LO1</b></td><td>Prepare a bilingual corpus by normalising script, removing near-duplicates and redacting personal data, given 20,000 raw complaints with mixed scripts and embedded phone numbers</td><td>Applied</td><td>a cleaning script and a profile report with the redaction miss rate</td></tr>
+<tr><td><b>LO2</b></td><td>Implement sparse, embedding-based and prompted classifiers and score them on one held-out gold set, given a training pool and a fixed budget of model calls</td><td>Applied</td><td>results with intervals by language and cost per thousand documents</td></tr>
+<tr><td><b>LO3</b></td><td>Implement schema-constrained field extraction and measure field-level precision and recall, given 500 synthetic inspection reports with reference extractions</td><td>Applied</td><td>an extraction script and a per-field validation report</td></tr>
+<tr><td><b>LO4</b></td><td>Compute a district complaint rate from model labels corrected with a human-labelled sample and compare it with the uncorrected rate, given model labels for all complaints and a 300-document human gold set with measured agreement</td><td>Applied</td><td>a table of naive and corrected rates with intervals</td></tr>
+<tr><td><b>LO5</b></td><td>Evaluate a language model as an annotator and decide whether its labels can feed a downstream estimate, given labels from two prompts and three runs over the gold set</td><td>Performance</td><td>a reliability memo on agreement, stability, dialect gaps and the decision</td></tr>
+<tr><td><b>LO6</b></td><td>Design a text-measurement pipeline for a stakeholder question and defend each measurement choice, given a supplied corpus and a written brief</td><td>Performance</td><td>a repository and report defended live</td></tr>
+</table></div></div>
+<h2>Tools</h2>
+<div class="grid">
+<div class="card c-teal"><h3>Language model through a chat-completions style endpoint</h3><p>a locally served Arabic-capable open-weight model such as ALLaM 7B · a free hosted open-weight model · any commercial API</p></div>
+<div class="card c-cyan"><h3>Local model serving</h3><p>llama.cpp · Ollama</p></div>
+<div class="card c-coral"><h3>Arabic text processing</h3><p>CAMeL Tools · course-provided normalisation rules</p></div>
+<div class="card c-purple"><h3>Embeddings, classifiers and clustering</h3><p>sentence-transformers · scikit-learn · BERTopic</p></div>
+<div class="card c-green"><h3>Schema validation for extracted fields</h3><p>Pydantic · JSON Schema</p></div>
+<div class="card c-teal"><h3>Annotation</h3><p>Label Studio · doccano</p></div>
+</div>
+<h2>Before you start</h2>
+<h3>Prerequisites</h3>
+<ul><li>DS-202 Data Acquisition, Preparation and Quality</li><li>DS-204 Machine Learning for Tabular Data: Baselines and Validation</li><li>Calls a web API from Python and parses JSON</li></ul>
+<div class="note tip">The labs are notebooks. Open each one in Google Colab from the table above, or clone the repository and run them locally.</div>
+<h2>Sources</h2>
+<h3>National references</h3>
+<ul><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf">Personal Data Protection Law (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf">Implementing Regulation of the Personal Data Protection Law (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf">Data Classification Policy (National Data Management Office, SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf">Generative AI Guideline for Government (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf">Generative AI Guideline for Public (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/MediaCenter/KnowledgeCenter/ResearchLibrary/EN-AI-BIAS.pdf">AI Bias Reference Guide, first edition (SDAIA, May 2026)</a></li></ul>
+<h3>Models and endpoints</h3>
+<ul><li><a href="https://openrouter.ai/docs/api-reference/limits">OpenRouter: API rate limits, including free models</a></li><li><a href="https://openrouter.ai/docs/api-reference/embeddings">OpenRouter: Embeddings API</a></li><li><a href="https://openrouter.ai/google/gemma-4-31b-it">OpenRouter: Gemma 4 31B Instruct (Google), model page and prices</a></li><li><a href="https://openrouter.ai/api/v1/embeddings/models">OpenRouter: list of embedding models</a></li><li><a href="https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview">ALLaM 7B Instruct (preview), model card on the Hugging Face Hub</a></li><li><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></li><li><a href="https://ollama.com/">Ollama</a></li></ul>
+<h3>Arabic text and near-duplicates</h3>
+<ul><li><a href="https://camel-tools.readthedocs.io/en/latest/api/utils/normalize.html">CAMeL Tools documentation: utils.normalize</a></li><li><a href="https://pypi.org/project/camel-tools/">camel-tools on PyPI</a></li><li><a href="https://unicode.org/reports/tr15/">Unicode Standard Annex 15: Unicode Normalization Forms</a></li><li><a href="https://docs.python.org/3/library/unicodedata.html">Python documentation: unicodedata</a></li><li><a href="http://www.mmds.org/">Leskovec, Rajaraman and Ullman: Mining of Massive Datasets, chapter 3, Finding Similar Items</a></li></ul>
+<h3>Labels, classifiers and estimates</h3>
+<ul><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html">scikit-learn: cohen_kappa_score</a></li><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">scikit-learn: TfidfVectorizer</a></li><li><a href="https://scikit-learn.org/stable/modules/clustering.html">scikit-learn: clustering</a></li><li><a href="https://www.sbert.net/">Sentence Transformers documentation</a></li><li><a href="https://maartengr.github.io/BERTopic/">BERTopic documentation</a></li><li><a href="https://arxiv.org/abs/2301.09633">Angelopoulos, Bates, Fannjiang, Jordan and Zrnic (2023): Prediction-Powered Inference</a></li><li><a href="https://arxiv.org/abs/2501.10970">Calderon, Reichart and Dror (2025): The Alternative Annotator Test for LLM-as-a-Judge</a></li><li><a href="https://labelstud.io/">Label Studio</a></li><li><a href="https://github.com/doccano/doccano">doccano</a></li></ul>
+<h3>Extraction</h3>
+<ul><li><a href="https://docs.pydantic.dev/latest/concepts/json_schema/">Pydantic documentation: JSON Schema</a></li><li><a href="https://json-schema.org/">JSON Schema</a></li></ul>
+<h2>Files and links</h2>
+<div class="files">
+<a href="practice.html"><b>practice.html</b><span>Practice questions with feedback</span></a>
+<a href="index.md"><b>index.md</b><span>This page as Markdown, for an AI assistant</span></a>
+<a href="llms.txt"><b>llms.txt</b><span>The course for AI assistants (llms.txt)</span></a>
+<a href="https://github.com/SDAIAAcademy/ds-306"><b>SDAIAAcademy/ds-306</b><span>The course repository</span></a>
+</div>
+</main>
+<footer><div class="wrap">SDAIA Academy · Data Science Track · Text and Unstructured Data for Data Science<br><span class="muted">Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit b4603d2</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"index.html"},"ai":{"context":{"course":"context/course.md","courseJs":"context/course.js","day":null,"llms":"llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="_engine/academy.js"></script>
+</body>
+</html>

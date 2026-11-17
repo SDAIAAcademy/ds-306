@@ -1,0 +1,23 @@
+[
+ {
+  "variety": "en",
+  "n": 66,
+  "difference": 0.045,
+  "low": -0.03,
+  "high": 0.121
+ },
+ {
+  "variety": "gulf",
+  "n": 120,
+  "difference": 0.033,
+  "low": -0.017,
+  "high": 0.092
+ },
+ {
+  "variety": "msa",
+  "n": 114,
+  "difference": 0.035,
+  "low": -0.026,
+  "high": 0.096
+ }
+]

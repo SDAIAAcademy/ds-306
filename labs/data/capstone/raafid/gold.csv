@@ -1,0 +1,201 @@
+id,text,variety,coder_a,coder_b,gold
+R01979,طلبوا مني مستندا قدمته من قبل.,msa,documents,documents,documents
+R00417,مرحبا محد رد على اتصالاتي. تكفون بسرعة.,gulf,staff,staff,staff
+R00657,لغوا موعدي وما علموني. كلموني على [PHONE],gulf,appointments,appointments,appointments
+R02019,لا افهم سبب عدم أهلیتی للدعم. نرجو سرعة المعالجة.,msa,eligibility,eligibility,eligibility
+R01045,السلام عليكم النظام ما يقبل ارفع الأوراق. الموظف ما رضى يشرح القرار. تكفون بسرعة. كلموني على [PHONE],gulf,documents,documents,documents
+R00709,طلبوا مني مستندا قدمته من قبل. آمل التواصل معي.,msa,appointments,documents,documents
+R01389,أود الإبلاغ عن مشكلة: النظام لا يقبل رفع المستندات.,msa,documents,documents,documents
+R00385,"Hello, I do not understand why I am not eligible. Please contact me. Call me on [PHONE].",en,eligibility,eligibility,eligibility
+R01332,مرحبا النظام ما يقبل ارفع الـــأوراق. وشكرا. [NAME] - الحي,gulf,documents,documents,documents
+R02256,مرحبا المبلغ نازل أقل من العادة. الله يعافيكم شوفوا لنا حل.,gulf,payments,payments,payments
+R02051,لا توجد مواعید متاحة فی الفرع. نرجو سرعة المعالجة. بريدي الإلكتروني [EMAIL],msa,appointments,appointments,appointments
+R00964,تحية طيبة، النظام لا يقبل رفع المستندات. آمل التواصل معي.,msa,documents,staff,documents
+R01182,"Hi, I do not understand why I am not eligible. Thank you.",en,eligibility,eligibility,eligibility
+R01593,تحية طيبة، رفض طلبي رغم أنني أستوفي الشروط. نرجو سرعة المعالجة. رقم جوالي [PHONE],msa,eligibility,payments,eligibility
+R01605,ما فهمت ليش ما طلعت مستحق. الدعم تأـــخر هالشهر.,gulf,payments,eligibility,eligibility
+R02017,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبـــل. وشكرا لكم. أنا المواطن [NAME].,msa,documents,documents,documents
+R01624,تأخر صرف الدعم لهذا الشهر. لم يرد احد على اتصالاتي. وشكرا لكم.,msa,payments,payments,payments
+R02202,يًا جّماعة مْحد رد على اتصالاتي. جوالي [PHONE],gulf,staff,staff,staff
+R01106,تحـــیة طیبة، لم یرد أحد على اتصالاتی. للتواصل: [PHONE],msa,staff,staff,staff
+R00053,"Hi, The employee refused to explain the decision. [NAME], a member",en,staff,staff,staff
+R02327,لا توجد مواعيد متاحه في الـــفرع.,msa,appointments,appointments,appointments
+R00948,طلبوا مني مستندا قدمته من قبل. آمل التواصل معي.,msa,documents,documents,documents
+R00128,My application was rejected although I meet the conditions. This is the third time I report it. Call me on [PHONE].,en,eligibility,eligibility,eligibility
+R00503,يا جُماعة طلبوا مني ورقة عُطيتهم اياها قْبل. تكفون بسرعة.,gulf,documents,documents,documents
+R02299,يا جماعة الدعم تأخر هالشهر. وشكرا. جوالي [PHONE],gulf,payments,payments,payments
+R00200,المبلغ المصروف أقل مًن المعتاد. نِرجو سرعة اًلمعالجة.,msa,payments,payments,payments
+R00997,تحية طيبة، لا افهم سبب عدم اهليتى للدعم.,msa,eligibility,eligibility,eligibility
+R01538,اِلسلام عليكم النظام ما يقبل ارفع اُلأوراق. محد رد على اتصالاتي. الحين صار لها وايد وْمحد سوا شي.,gulf,staff,documents,documents
+R02103,لا افهم سبب عدم اهليتي للدعم. نرجو سرعة الـــمعالجة.,msa,eligibility,eligibility,eligibility
+R02281,يا جماعة المبلغ نازل أقل من العادة.,gulf,payments,payments,payments
+R00465,ما فهمت ليش ما طلعت مستحق. الله يعافيكم شوفوا لنا حل.,gulf,eligibility,appointments,eligibility
+R01154,النظام لا يقبل رفع المستندات.,msa,payments,documents,documents
+R00485,السلام عليكم، طلبوا مني مستندا قدمته من قبل. وشكرا لكم.,msa,documents,eligibility,documents
+R00047,"Hello, The system will not accept my documents. Thank you. My mobile is [PHONE].",en,documents,documents,documents
+R00943,تحيه طيبة، لّم يرد احد عًلى اتصالاتي. وْشكرا لكم.,msa,staff,staff,staff
+R02489,Nobody answered my calls. Please contact me. Call me on [PHONE].,en,staff,staff,staff
+R02259,"Hi, Nobody answered my calls. Please fix this soon. ID number [ID]",en,staff,staff,staff
+R01401,ما فيه مواعيد بالفرع. محد رد على اتصالاتي. وشكرا. كلموني على [PHONE],gulf,staff,appointments,appointments
+R01555,طلبوا مني مستندا قدمته من قبل. رقم جوالي [PHONE],msa,documents,documents,documents
+R00295,اود الإبلاغ عن مًشكلة: اَلموظف رفض شرح القرار. آّمل التواصل معي.,msa,staff,staff,staff
+R02411,السلام عليكم، رفض طلبي رغم أنني أستوفي الشروط. آمل التواصل معي. للتواصل: [PHONE],msa,eligibility,eligibility,eligibility
+R01530,طلبوا مني مستندا قدمته مًن قبل. لْا أفهم سبب عدم أهليتي للدعم. آمل اْلتواصل معي.,msa,eligibility,documents,documents
+R01541,النظام ما يقبل ارفع الأوراق. تكفون بسرعة. انا [NAME] من سكان الحي.,gulf,documents,documents,documents
+R01571,لا توجد موـــاعيد متاحة في الفرع. اسمي [NAME].,msa,appointments,appointments,appointments
+R01754,أود الإبلاغ عن مشكلة: لا أفهم سبب عدم اهليتي للدعم. آمل التواصل معي.,msa,eligibility,eligibility,eligibility
+R00992,"Hello, My application was rejected although I meet the conditions. Please contact me.",en,eligibility,appointments,eligibility
+R02166,تحيه طيبة، طلبوا مني مستندا قدـــمته من قبل. [NAME] - الحي,msa,documents,documents,documents
+R01324,"Dear team, Nobody answered my calls.",en,staff,staff,staff
+R00575,تّأخر صرف الدعم لّهذا اْلشهر. وشكرا لكم.,msa,payments,payments,payments
+R02401,ألغي موعدي دون اشعار. نرجو سرعة المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],msa,appointments,appointments,appointments
+R01306,"Hi, This month's payment is late. Please fix this soon.",en,payments,payments,payments
+R02231,طلبوا مني ورقة عطيتهم اياها قبل. كلموني على [PHONE],gulf,documents,documents,documents
+R01544,"Hi, I do not understand why I am not eligible. Thank you.",en,eligibility,eligibility,eligibility
+R01030,مرحبا محد رد على اتصالاتی. كلموني على [PHONE],gulf,staff,staff,staff
+R00034,تحية طيبة، طلبوا مني مستندا قدمته من قبل. مقدم البلاغ: [NAME]، جوال [PHONE],msa,documents,documents,documents
+R01690,I do not understand why I am not eligible. The system will not accept my documents. Please contact me. Contact: [EMAIL],en,eligibility,documents,eligibility
+R02039,السلام عليكم، لم يرد احد على اتصالاتي. وشكرا لكم. رقم الهوية [ID],msa,staff,staff,staff
+R01663,مرحبا رفضوا طلبي وانا مستوفي الشروط. كلموني على [PHONE],gulf,eligibility,eligibility,eligibility
+R01588,طلبوا مني مُستندا قّدمته من قبل. نرجو سرعة اًلمعالجة.,msa,documents,documents,documents
+R01275,طلبوا مني ورقة عطيتهم اياها قبل. الحين صار لها وايد ومحد سوا شي.,gulf,documents,documents,documents
+R01515,السلام عليكم، المبلغ المصروف اقل من المعتاد. آمل التواصل معي.,msa,payments,payments,payments
+R00563,ما فهمت لیش ما طلعت مستحق. الحین صار لها واید ومحد سوا شی. رقم هويتي [ID],gulf,eligibility,eligibility,eligibility
+R01081,تأخر صرف الدعم لهذا الشهر.,msa,payments,payments,payments
+R02306,مّرحبا طّلبوا مني ورقة عطيتهم اياها قَبل. الله يعافيكم شوفوا لنا حل.,gulf,documents,documents,documents
+R00682,رفض طلبی رغم أننى أستوفى الشروط. آمل التواصل معی.,msa,eligibility,eligibility,eligibility
+R00116,مرحبا المبلغ نُازل أقل من اَلعادة. تكفون بّسرعة.,gulf,payments,payments,payments
+R01034,أود الإبلاغ عن مشكلة: النظام لا يقبل رفع المستندات.,msa,documents,documents,documents
+R01841,السلام عليكم محد رد على اتصالاتي. الحين صار لها وايد ومحد سوا شي. رقم هويتي [ID],gulf,staff,payments,staff
+R00603,السلام عليكم، لا توجد مواعيد متاحة في الفرع. رقم جوالي [PHONE],msa,appointments,appointments,appointments
+R00737,"The employee refused to explain the decision. This is the third time I report it. [NAME], phone [PHONE]",en,staff,staff,staff
+R01200,أود الإبلاغ عن مشـــكلة: لا أفهم سبب عدم أهليتى للدعم. آمل التواصل معي. رقم جوالي [PHONE],msa,eligibility,eligibility,eligibility
+R00079,Nobody answered my calls. Thank you. My mobile is [PHONE].,en,staff,staff,staff
+R01825,لو سمحتوا الدعم تأخر هالشهر. تكفون بسرعة.,gulf,payments,payments,payments
+R00130,المبلغ المصروف أقل من المعتاد. نرجو سرعه المعالجة.,msa,payments,payments,payments
+R01843,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبل. وشكرا لكم.,msa,documents,documents,documents
+R00193,I do not understand why I am not eligible. Please fix this soon. My mobile is [PHONE].,en,eligibility,eligibility,eligibility
+R01094,رَفض طْلبی رغم أننی استوفى الشروط. لم یرد احد عْلى اتصالاتی. رقم الهوية [ID],msa,eligibility,eligibility,eligibility
+R01171,طلبوا مني مستندا قدمته من قبل. آمل التواصل معي.,msa,payments,documents,documents
+R01458,لغوا موعدي وما علموني.,gulf,appointments,appointments,appointments
+R00059,يا جماعه النظام ما يقبل ارفع الأوراق. الحين صار لها وايد ومحد سوا شي. انا [NAME] من سكان الحي.,gulf,documents,documents,documents
+R02488,يا جَماعه ما فهمت ليش ما طلعت مّستحق. الله يعافيكم شِوفوا لنا حلـــ. جوالي [PHONE],gulf,eligibility,eligibility,eligibility
+R01080,أﻭد ﺍﻝإﺏﻝﺍغ عﻥ مشكﻝة: طﻝبوا ﻡﻥي ﻡسﺕﻥدﺍ قدمﺕه مﻥ قﺏﻝ. آﻡل ﺍﻝتﻭاصﻝ معي. رقم الهوية [ID],msa,documents,documents,documents
+R01241,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبل.,msa,documents,documents,documents
+R02408,I do not understand why I am not eligible. Please fix this soon. My name is [NAME].,en,eligibility,eligibility,eligibility
+R00151,This month's payment is late.,en,payments,payments,payments
+R00082,أود الإبلاغ عن مشكلة: لم يرد أحد علـــى اتصالاتي. تأخر صرف الدعم لهذا الشهر.,msa,staff,staff,staff
+R00104,أود الإبلاغ عن مشكلة: المبلغ المصروف اقل من المعتاد. نرجو سرعة المعالجة.,msa,payments,payments,payments
+R00444,My application was rejected although I meet the conditions. Please fix this soon.,en,eligibility,eligibility,eligibility
+R00914,طلبوا مني مستندا قدمته من قبل.,msa,documents,documents,documents
+R01063,يا جماعة رفضوا طلبي وانا مستوفي الشروط. انا [NAME] وهذا رقمي [PHONE],gulf,eligibility,eligibility,eligibility
+R00723,المبلغ المصروف أقل من المعتاد. للتواصل: [PHONE],msa,eligibility,payments,payments
+R01018,مرحبا طلبوا منى ورقة عطيتهم اياها قبل. الحين صار لها وايد ومحد سوا شي.,gulf,documents,documents,documents
+R00176,مرحبا النظام ما يقبل ارفع الأوراق.,gulf,documents,documents,documents
+R00408,This month's payment is late. Please contact me. My mobile is [PHONE].,en,payments,payments,payments
+R01031,اود الإبلاغ عن مشكلة: لا أفهم سبب عدم اهليتي للدعم. اسمي [NAME].,msa,eligibility,eligibility,eligibility
+R02009,"Hello, The amount paid is lower than usual. Please contact me. My mobile is [PHONE].",en,payments,payments,payments
+R01753,"Dear team, My application was rejected although I meet the conditions. Please contact me.",en,eligibility,eligibility,eligibility
+R01635,تحيه طيبة، لا افهم سبب عدم اهليتي للدعم. للتواصل: [PHONE],msa,eligibility,eligibility,eligibility
+R02237,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبل. نرجو سرعة المعالجة.,msa,documents,documents,documents
+R00542,"Hi, They asked for a document I already submitted. Please fix this soon.",en,documents,documents,documents
+R02399,رفض طلبي رغم انني استوفي الشروط. نرجو سرعة المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],msa,eligibility,eligibility,eligibility
+R00327,السلام عليكم، طلبوا مني مستندا قدمته من قبل. رقم الهوية [ID],msa,documents,documents,documents
+R00927,My appointment was cancelled without notice. Please contact me. Contact: [EMAIL],en,appointments,appointments,appointments
+R00890,اﻝسﻝﺍم عﻝيكم، ﻝُم يﺭد أحﺩ على ﺍﺕصﺍلﺍتﻱ. ﻝْا أفهﻡ سﺏب عﺩﻡ أَهﻝﻱﺕﻱ للﺩعم. مقدم البلاغ: [NAME]، جوال [PHONE],msa,staff,staff,staff
+R01526,They asked for a document I already submitted. Thank you.,en,documents,documents,documents
+R01548,"Hi, This month's payment is late. Thank you. Call me on [PHONE].",en,payments,payments,payments
+R00822,"Hello, Nobody answered my calls. Please contact me.",en,staff,staff,staff
+R01622,لو سمحتوا طلبوا مني ورقة عطيتهم اياها قبل. تكفون بسرعة. جوالي [PHONE],gulf,documents,documents,documents
+R02002,اًلمبلغ نُازل اقل مُن العادة. [NAME] - الحي,gulf,payments,payments,payments
+R00132,I do not understand why I am not eligible. My mobile is [PHONE].,en,eligibility,eligibility,eligibility
+R02155,الموظف رفض شرح القرار. النظام لا يقبل رفع المستندات. للتواصل: [PHONE],msa,documents,staff,staff
+R00471,السلام عليكم طلبوا مني ورقة عطيتهم اياها قبـــل. الله يعافيكم شوفوا لنا حل.,gulf,documents,documents,documents
+R01674,لغوا موعدي وما علموني. الحين صار لها وايد ومحد سوا شيـــ.,gulf,appointments,appointments,appointments
+R00018,أود الإبلاغ عن مًشکلة: لِا توجد مواعید متاحة فی اْلفرع. وشکرا لکم. رقم جوالي [PHONE],msa,appointments,appointments,appointments
+R00616,لا أفهم سبب عدم أهليتي للدعم.,msa,eligibility,eligibility,eligibility
+R00983,"Hi, The employee refused to explain the decision. Please fix this soon.",en,staff,staff,staff
+R02341,"Hello, My application was rejected although I meet the conditions. Regards, [NAME]",en,eligibility,eligibility,eligibility
+R01444,طلبوا مني ورقة عطيتهم اياها قبل. تكفون بسرعة. كلموني على [PHONE],gulf,documents,documents,documents
+R00671,لا أفهم سبب عدم اهليتي للدعم. الغي موعدى دون اشعار. وشكرا لكم. اسمي [NAME].,msa,appointments,eligibility,eligibility
+R02076,طلبوا مني مستندا قدمته من قبل. بريدي الإلكتروني [EMAIL],msa,documents,appointments,documents
+R02089,تحية طيبة، تأخر صرف الدعم لهذا الشهر. رفض طلبي رغم انني أستوفي الشروط. أنا المواطن [NAME].,msa,eligibility,eligibility,payments
+R01654,رفض طلبی رغم أننی أستوفی الشروط. للتواصل: [PHONE],msa,eligibility,eligibility,eligibility
+R00754,المبلغ المصروف أقل من المعتاد.,msa,payments,payments,payments
+R00383,مرحبا الدعم تأخر هالشهر. انا [NAME] وهذا رقمي [PHONE],gulf,payments,payments,payments
+R01083,The employee refused to explain the decision. Please fix this soon. My mobile is [PHONE].,en,staff,staff,staff
+R01950,أود الإبلاغ عن مشکلة: الموظف رفض شرح القرار. تأخر صرف الدعم لهذا الشهر. للتواصل: [PHONE],msa,staff,payments,staff
+R01909,محد رد على اتصالاتي. الحين صار لهـــا وايد ومحد سوا شي.,gulf,staff,staff,staff
+R00183,السلام عليكم، الموظف رفض شرح القرار. آمل التواصل معي.,msa,staff,staff,staff
+R00970,The employee refused to explain the decision. Please fix this soon. My name is [NAME].,en,staff,staff,staff
+R00028,أود الإبلاغ عن مشكلة: طلبوا مني مستندا قدمته من قبل. نرجو سرعة المعالجة.,msa,documents,documents,documents
+R01619,النظام ما يقبل ارفع الأوراق. الدعم تأخر هالشهر. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],gulf,payments,documents,documents
+R01567,السلام عليكم محد رد على اتصالاتي. [NAME] - الحي,gulf,staff,appointments,staff
+R01367,المبلغ المصروف أقل من المعتاد. آمل التواصل معي. للتواصل: [PHONE],msa,payments,payments,payments
+R00845,تحية طيبة، لا أفهم سبب عدم أهليتي للدعم. آمل التواصل معي. [NAME] - الحي,msa,eligibility,eligibility,eligibility
+R01441,طْﻝﺏﻭﺍ ﻡﻥﻱ ﻡستنﺩﺍ قﺩﻡﺕه ﻡن قُبل. ﻥْرجﻭ سﺭعة الﻡعﺍلجة. اسمي [NAME].,msa,documents,payments,documents
+R00625,"Dear team, The system will not accept my documents. Please fix this soon.",en,documents,documents,documents
+R01826,تحیة طیبة، لم یرد احد على اتصالاتی. وشکرا لکم. أنا المواطن [NAME].,msa,staff,staff,staff
+R00599,أﻭﺩ اﻝإبﻝاغ عﻥ ﻡشكﻝة: ﺍﻝنظﺍﻡ لﺍ يقﺏﻝ رفع ﺍﻝﻡستنﺩﺍت.,msa,documents,documents,documents
+R00251,السﻝاﻡ عﻝﻱكم، المﺏﻝغ ﺍﻝمصﺭﻭف أقﻝ من اﻝمعﺕﺍﺩ.,msa,payments,payments,payments
+R00883,الموظف رفض شرح القرار. نرجو سرعة المعالجة. للتواصل: [PHONE],msa,appointments,staff,staff
+R00092,طلبوا مني ورقة عطيتهم اياها قبل. الله يعافيكم شوفوا لنا حل. كلموني على [PHONE],gulf,documents,documents,documents
+R01590,السلام عليكم ما فهمت ليش ما طلعت مستحق. وشكرا. رقم هويتي [ID],gulf,eligibility,eligibility,eligibility
+R01977,مرحبا لغوا مُوعدي وًما علموني. الحين صار لها وايد ومحد سوا شًي.,gulf,appointments,appointments,appointments
+R00987,رفض طلبي رغم أنني استوفي الشروط. آمل التواصل معي.,msa,eligibility,eligibility,eligibility
+R00951,يا جماعة المبلغ نازل أقل من الـــعادة. وشكرا. كلموني على [PHONE],gulf,payments,payments,payments
+R02466,تحية طيبة، طلبوا مْنى مستندا قِدمته من قًبل. اسمي [NAME].,msa,documents,documents,documents
+R01269,أود الإبلاغ عن مشكلة: الموظف رفض شرح القرار.,msa,staff,staff,staff
+R00289,أود الإبلاغ عن مشكلة: رفض طلبي رغم أنني استوفي الشروط. نرجو سرعة المعالجة.,msa,eligibility,eligibility,eligibility
+R00954,لا توجد مواعيد متاحة في الفرع. وشكرا لكم. أنا المواطن [NAME].,msa,appointments,appointments,appointments
+R00283,طلبوﺍ ﻡﻥﻱ ورقة عطيتهم اﻱﺍهﺍ قبﻝ. ﻭشكﺭﺍ.,gulf,documents,documents,documents
+R02101,تحيه طيبة، لم يرد احد على اتصالاتي. آمل التواصل معي.,msa,staff,staff,staff
+R01750,تحیة طیبة، النظام لا یقبل رفع المستندات. آمل التواصل معی. اسمي [NAME].,msa,documents,documents,documents
+R01658,ما فهمت ليش ما طلعت مستحق. وشكرا. كلموني على [PHONE],gulf,eligibility,eligibility,eligibility
+R02344,تحية طيبة، طَلبوا مني مستندا قّدمته مًن قبل. بريدي الإلكتروني [EMAIL],msa,documents,documents,documents
+R00493,I do not understand why I am not eligible. Please fix this soon. My name is [NAME].,en,eligibility,eligibility,eligibility
+R00248,یا جماعة المبلغ نازل أقل من العادة.,gulf,payments,payments,payments
+R01743,"Hi, I do not understand why I am not eligible. Please fix this soon. My name is [NAME].",en,eligibility,eligibility,eligibility
+R00271,لّا أفهم سّبب عدم أهلیتی لِلدعم.,msa,eligibility,documents,eligibility
+R00488,الدعم تأخر هالشهر. وشكرا. انا [NAME] من سكان الحي.,gulf,payments,payments,payments
+R02382,لو سمحتوا النظام ما يقبل ارفع الأوراق. وشكرا. رقم هويتي [ID],gulf,documents,documents,documents
+R01893,ﺍﻝسلﺍﻡ عﻝيكم الﺩعم تأخر هﺍﻝشهﺭ. ﺍﻝحيﻥ صاﺭ ﻝهﺍ ﻭاﻱﺩ ﻭﻡحﺩ سﻭﺍ شي. ايميلي [EMAIL],gulf,payments,payments,payments
+R00061,لو سمحتوا طلبوا مني ورقة عطيتهم اياها قبل. رفضوا طلبي وانا مستوفي الشروط. الله يعافيكم شوفوا لنا حل. معك [NAME].,gulf,documents,documents,documents
+R00305,السلام عليكم، طلبوا مني مستندا قدمته من قبل. آمل التواصل معي.,msa,documents,documents,documents
+R00711,السلام عليكم النظام ما يقبل ارفع الأوراق. تكفون بسرعة. معك [NAME].,gulf,documents,documents,documents
+R01137,"Hi, I do not understand why I am not eligible. Thank you.",en,eligibility,eligibility,eligibility
+R02077,اﻭﺩ ﺍﻝإبلﺍغ عﻥ مشكلة: ﻝا ﺕوجد مﻭﺍعﻱﺩ ﻡتﺍحة فﻱ ﺍﻝفﺭع.,msa,appointments,appointments,appointments
+R02128,مرحبا المبلغ نازل أقل من العادة. تكفون بسرعة. انا [NAME] من سكان الحي.,gulf,payments,payments,payments
+R02366,النظام لا يقبل رفع المستندات. آمل التواصل معي.,msa,documents,documents,documents
+R02198,"The amount paid is lower than usual. Regards, [NAME]",en,payments,payments,payments
+R01697,المبلغ نازل اقل من العادة. وشكرا.,gulf,payments,payments,payments
+R01927,طلبوا منى ورقه عطيتهم اياها قبل.,gulf,documents,documents,documents
+R00729,تحیه طیبة، تأخر صرف الدعم لهذا الشهر. وشکرا لکم.,msa,payments,payments,payments
+R01291,طلبوا مني ورقة عطيتهم اياها قبل. الحين صار لها وايد ومحد سوا شي.,gulf,documents,documents,documents
+R00532,مرحبا لغوا موعدي وما علموني. الله يعافيكم شوفوا لنا حل. انا [NAME] من سكان الحي.,gulf,appointments,appointments,appointments
+R01809,ألغي موعدي دون اشعار. وشكرا لكم. رقم جوالي [PHONE],msa,appointments,appointments,appointments
+R01983,"Hi, The amount paid is lower than usual. Please contact me.",en,payments,payments,payments
+R01449,There are no appointments available at the branch. Thank you.,en,appointments,appointments,appointments
+R01267,السلام عليكم، رفض طلبي رغم انني استوفي الشروط. نرجو سرعة المعالجة.,msa,eligibility,eligibility,eligibility
+R01572,لم يرد أحد علـــى اتصالاتي. للتواصل: [PHONE],msa,staff,staff,staff
+R01542,رفض طلبي رغم أنني أستوفي الشروط.,msa,eligibility,eligibility,eligibility
+R00728,الموظف ما رضى يشرح القرار. المبلغ نازل أقل من العادة. الحين صار لها وايد ومحد سوا شي. رقم هويتي [ID],gulf,payments,payments,staff
+R01206,تأخر صرف الدعم لهذا الشهر. مقدم البلاغ: [NAME]، جوال [PHONE],msa,payments,payments,payments
+R00537,أود الإبلاغ عن مشكلة: النظام لا يقبل رفع المستندات. [NAME] - الحي,msa,documents,documents,documents
+R02018,السلام عليكم الدعم تأخر هالشهر. الـــله يعافيكم شوفوا لنا حل.,gulf,staff,eligibility,payments
+R02030,لو سمحتوا النظام ما یقبل ارفع الأوراق. تکفون بسرعة. جوالي [PHONE],gulf,documents,documents,documents
+R00087,"Hi, My application was rejected although I meet the conditions. This is the third time I report it.",en,eligibility,eligibility,eligibility
+R00025,مرحبا الموظف ما رضى يشرح القرار. الله يعافيكم شوفوا لنا حل.,gulf,staff,staff,staff
+R00760,"Hi, The amount paid is lower than usual. This is the third time I report it.",en,payments,payments,payments
+R01873,أود الإبلاغ عن مشكلة: لا توجد مواعيد متاحة في الفرع.,msa,appointments,appointments,appointments
+R00311,السلام عْليكم، لم يرد أَحد عًلى اتصالاتي.,msa,staff,staff,staff
+R00096,تحية طيبة، لا أفهم سبب عدم أهليتي للدعم. طلبوا مني مستندا قدمته من قبل.,msa,eligibility,eligibility,eligibility
+R02372,ﺍوﺩ ﺍلإبﻝﺍغ عّن مشكلة: ﺍﻝمﻭظف ﺭَفض شﺭح ﺍًﻝقﺭﺍﺭ. ﻭشكﺭا ﻝكم.,msa,staff,staff,staff
+R02271,ما فهمت ليش ما طلعت مستحق. الله يعافيكم شوفوا لنا حل. رقم هويتي [ID],gulf,eligibility,eligibility,eligibility
+R01012,السلام علیکم المبلغ نازل اقل من العادة.,gulf,payments,payments,payments
+R01992,المبلغ نازل أقل من العادة. وشکرا. كلموني على [PHONE],gulf,payments,payments,payments
+R01945,لم يرد أحد على اتصالاتي. آمل التواصل معي.,msa,staff,staff,staff
+R00281,المبلغ المصروف اقل من المعتاد.,msa,payments,payments,payments
+R01712,"Hello, Nobody answered my calls. Thank you.",en,staff,staff,staff
+R02049,مرحبا رفضوا طلبي وانا مستوفي الشروط. تكفون بسرعة. جوالي [PHONE],gulf,eligibility,eligibility,eligibility
+R00713,محد رد على اتصالاتي. الله يعافيكم شوفوا لنا حل.,gulf,staff,staff,staff

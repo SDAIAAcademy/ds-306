@@ -1,0 +1,44 @@
+[
+ {
+  "field": "district",
+  "errors": 29,
+  "commonest": "al_faisaliya -> None",
+  "count": 5,
+  "worst_group": "ar (8%)"
+ },
+ {
+  "field": "inspection_date",
+  "errors": 17,
+  "commonest": "day and month swapped",
+  "count": 17,
+  "worst_group": "dd/mm/yyyy (15%)"
+ },
+ {
+  "field": "defect_type",
+  "errors": 16,
+  "commonest": "damaged_pavement -> pothole",
+  "count": 9,
+  "worst_group": "en (4%)"
+ },
+ {
+  "field": "severity",
+  "errors": 16,
+  "commonest": "medium -> low",
+  "count": 16,
+  "worst_group": "ar (5%)"
+ },
+ {
+  "field": "hazard_to_public",
+  "errors": 46,
+  "commonest": "False -> True",
+  "count": 46,
+  "worst_group": "ar (9%)"
+ },
+ {
+  "field": "repair_deadline_days",
+  "errors": 56,
+  "commonest": "None -> 14",
+  "count": 18,
+  "worst_group": "ar (12%)"
+ }
+]

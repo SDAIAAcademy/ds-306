@@ -1,0 +1,41 @@
+id,text,coder_1,coder_2
+C12335,يا جماعة فيه عَمود نْور مايل في شارع ٩٠ بُيطيح على احد. تكفون بسرعة. ايميلي [EMAIL],lighting,lighting
+C15222,يا جماعه سياره البلدية تشيل الزبالة وتطيح نصها بالشارع. الزبالة ما انشالت مُن 8 أيام في شارع 100. وبلغنا قبل ومحد سوا شُي. الشارع كله ترقيع وحفر من بعد الأمطار. تَكفون بسرعة.,roads,waste
+C13077,يا جماعة الموظف في مِركز الخدمة كان اسلوبه مو زُين أبد. اُتصلت على الرقم الموحد 26 مرات وماحد رد. ومحد جا يشوف. وشكرا.,staff_service,roads
+C17648,السلام عليكم ضغط الماى ضعيف مره وما يوصل للخزان فوق. الماي مقطوع عندنا من 23 ايام وما أحد رد علينا. وصار له فترة على هالحال. وشكرا.,water_sewage,water_sewage
+C09155,"Dear Sada team, The pavement near the neighbourhood school is broken and elderly people cannot walk on it. A new speed bump near the entrance of the district has no warning signs. I reported it before. Thank you. My name is [NAME].",roads,roads
+C13852,"Hi, Serious cracks have appeared on the bridge leading to the bakery. The pavement near the neighbourhood school is broken and elderly people cannot walk on it.",roads,roads
+C13753,يا جماعة فيه نْاس يكبون مخلفات بناء جنب مخبز الحي كل ليلة. حاوية حّارتنا مكسورة مَن شهر ومحد بدلها. تكفون بسرعة. معك [NAME].,waste,waste
+C09137,"Hello, My permit application was rejected without saying which documents were missing. The inspection appointment for my licence was cancelled twice. Nobody came to inspect it. Construction waste is being dumped next to the neighbourhood school every night. Please fix this soon.",permits,permits
+C13188,"Hello, Construction waste is being dumped next to the entrance of the district every night. Children and older people are at risk. This is the third time I report it.",water_sewage,waste
+C07697,ترى المجاري طافحة عند السوق المركزى والريحة وايد قوية. وصار له فترة على هالحال. تكفون بسرعة. رقم هويتي [ID],water_sewage,water_sewage
+C13934,ألغي مًوعد المعاينة لَطلب الترخيص مًرتين.,permits,permits
+C09051,ضغط الماي ضعيف مره وما يوصل للخزان فوق. وبلغنا قبل ومحد سوا شي.,waste,water_sewage
+C18751,ضغط الماي ضعيف مره وما يوصل للخزان فوق. والوضع كل يوم يسوء. وشكرا. جوالي [PHONE],water_sewage,water_sewage
+C13638,أود الإبلاغ عن مشكلة: الطريق المؤدي إلى السوق المركزي مظلم تماما في الليل. ويتضرر منها سكان الحي كلهم.,lighting,lighting
+C19655,Construction waste is being dumped next to the central market every night. Please contact me.,waste,roads
+C16975,اتصلت على الرقم الموحد 25 مرات ومحد رد. سكروا البلاغ اللي قبل وهم ما سووا شي. وشكرا. انا [NAME] من سكان الحي.,staff_service,staff_service
+C10550,"Rubbish has not been collected from Street 24 for 22 days. I reported it before. Please contact me. [NAME], phone [PHONE]",waste,waste
+C14305,We have had no water at home on Street 158 for 26 days. Sewage is overflowing in front of the entrance of the district and the smell is unbearable. The whole neighbourhood is affected. Please contact me. My mobile is [PHONE].,water_sewage,water_sewage
+C10248,تحية طيبة، رفض طلب التصريح دون ذكر المستندات الناقصة. وقد أبلغت عن ذلك سابقا. آمل التواصل معي. للتواصل: [PHONE],permits,permits
+C00990,"Hi, The children's play equipment in the park is broken and dangerous. The whole neighbourhood is affected. Thank you. Call me on [PHONE].",parks,parks
+C19463,"Hello, Sewage is overflowing in front of the neighbourhood school and the smell is unbearable. This is the third time I report it. Call me on [PHONE].",water_sewage,water_sewage
+C16791,توجد حفرة كبيرة في شارع ١٧٧ تسببت في أضرار للسيارات. ظهرت تشققات خطيرة في الجسر المؤدي إلى الدوار. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة.,roads,roads
+C14338,فيه نُاس يكبون مخلفات بناء جنب مًدرسة الحي كًل ليلة. وكل أسبوع نفس الشي. تكفون بسرعة. ايميلي [EMAIL],waste,waste
+C09715,السلام علیکم، ورشة فی شارع 191 تعمل طوال اللیل بأصوات مزعجة. مولد کهربائی یعمل باستمرار فی شارع 102 ویسبب ضوضاء. ولم یحضر أحد للمعاینة. آمل التواصل معی. للتواصل: [PHONE],noise,noise
+C15989,اتصلت بالرقم الموحد ٧ مرات ولم يرد أحد. نرجو سرعه المعالجة. رقم جوالي [PHONE],staff_service,staff_service
+C17598,"Serious cracks have appeared on the bridge leading to the clinic. It is getting worse. This is the third time I report it. Regards, [NAME]",permits,roads
+C00151,لو OK سمحتوا الحاويات عند المستوصف فايضة والقطاوة معفسينها. اتصلت على الرقم الموحد 13 مرات ومحد رد. وشكرا.,waste,waste
+C13194,ترمى مخلفات البناء بجوار الدوار دون رقابة. حاويات النفايات عند مدخل الحي ممتلئة وتنتشر حولها القطط. وهذا يؤثر على الأطفال وكبار السن. آمل التواصل معي. مقدم البلاغ: [NAME]، جوال [PHONE],waste,waste
+C02491,السلام عليكم فيه ورشة في شارع ١٦ تشتغل طول الليل والإزعاج واااايد. البناء اللي جنب المسجد يبدون قبل الفجر ونصحى من الدق. وبلغنا قبل وماحد سوا شي. العاب الياهل في الحديقة مكسره وخطيرة. تكفون بسرعة. انا [NAME] وهذا رقمي [PHONE],noise,noise
+C00836,مرحبا حمامات الحدیقه مسکرة من أسابیع. وکل أسبوع نفس الشی. مقدم على رخصة بناء من ٢٣ یوم وللحین ما ردوا. الحینه صار لها واید ومحد سوا شی. انا [NAME] من سكان الحي.,parks,permits
+C06823,"Hello, The inspection appointment for my licence was cancelled twice. It is getting worse. This is the third time I report it.",permits,permits
+C00607,طلب تجديد رخصة المحل معلق في النظام دون سبب واضح. رفض طلب التصريح دون ذكر المستندات الناقصة. نرجو سرعه المعالجة. رقم الهوية [ID],permits,roads
+C18261,"Dear Sada team, I called the hotline 3 times and nobody answered. I reported it before. Thank you.",staff_service,staff_service
+C02490,تحية طيبة، دورات المياه في الحديقة مغلقة منذ اسابيع. الحديقة العامة في شارع 25 بلا سقي والعشب جاف. والمشكلة تزداد سوءا. توجد حفرة كبيرة في شارع 19 تسببت في أضرار للسيارات. وشكرا لكم. أنا المواطن [NAME].,roads,parks
+C11901,سیارة النظافة تترک نصف المخلفات على الطریق. حاویات النفایات عند السوق المرکزی ممتلئة وتنتشر حولها القطط. والوضع على هذه الحال منذ مدة. نرجو سرعة المعالجة.,parks,waste
+C16420,تحية طيبة، تعامل الموظف في مركز الخدمة كان غير لائق. اغلقوا البلاغ السابق دون اي اجراء فعلي. نرجو سرعة المعالجة. رقم الهوية [ID],staff_service,staff_service
+C11335,لو سمحتوا المجاري في شْارع 12 عند المدرسة طافحة من أسبوعين والعيال يمرون من وسط المويه، نبي حِل. انا [NAME] وهذا رقمي [PHONE],water_sewage,water_sewage
+C15192,تقدمت بُطلب رخصة بناء مُنذ 15 يوما ولم يصلني أي رد. ولم يحضر أحد للمعاينة. ألعاب الأطفال في السوق المركزي مكسورة وًخطرة. بريدي الإلكتروني [EMAIL],parks,parks
+C15055,السلام عليكم فيه ورشة في شارع 131 تشتغل طول الليل والإزعاج وايد. البناء اللي جنب الدوار يبدون قبل الفجر ونصحى من الدق. ومحد جا يشوف. ويشكرا. جوالي [PHONE],noise,noise
+C05849,سيارة البلدية تشيل الزبالة وتطيح نصها بالشارع. فيه ناس يكبون مخلفات بناء جنب الدوار كل ليلة. وصار له فتره على هالحال. تكفون بسرعة.,waste,waste

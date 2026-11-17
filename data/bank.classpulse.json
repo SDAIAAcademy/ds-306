@@ -1,0 +1,1842 @@
+{
+  "format": "classpulse-bank",
+  "version": 1,
+  "course": {
+    "name": "Text and Unstructured Data for Data Science",
+    "los": [
+      {
+        "code": "LO1",
+        "description": "Prepare a bilingual corpus by normalising script, removing near-duplicates and redacting personal data, given 20,000 raw complaints with mixed scripts and embedded phone numbers"
+      },
+      {
+        "code": "LO2",
+        "description": "Implement sparse, embedding-based and prompted classifiers and score them on one held-out gold set, given a training pool and a fixed budget of model calls"
+      },
+      {
+        "code": "LO3",
+        "description": "Implement schema-constrained field extraction and measure field-level precision and recall, given 500 synthetic inspection reports with reference extractions"
+      },
+      {
+        "code": "LO4",
+        "description": "Compute a district complaint rate from model labels corrected with a human-labelled sample and compare it with the uncorrected rate, given model labels for all complaints and a 300-document human gold set with measured agreement"
+      },
+      {
+        "code": "LO5",
+        "description": "Evaluate a language model as an annotator and decide whether its labels can feed a downstream estimate, given labels from two prompts and three runs over the gold set"
+      },
+      {
+        "code": "LO6",
+        "description": "Design a text-measurement pipeline for a stakeholder question and defend each measurement choice, given a supplied corpus and a written brief"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "check-form-field-q1",
+      "type": "single",
+      "prompt": "Muhannad needs the complaints split into Arabic and English for two review teams. The form records a language for every complaint. What do you use?",
+      "options": [
+        "The form's language field, since every row has one",
+        "The channel, since the call centre serves Arabic speakers",
+        "The script of the text itself, checked against the form field on a sample",
+        "A person reading every complaint and tagging it"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The language of a text is a property of the text. The form field disagrees with it for 8.8% of complaints, and for a quarter of the app's.",
+      "misconceptions": [
+        "Trusts a metadata field because it is complete: completeness says nothing about whether the field is right",
+        "Treats the channel as the language: every channel carries both languages",
+        "",
+        "Gives up measurement for a person's reading: possible for 40 complaints, not for 20,000"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 12
+    },
+    {
+      "id": "check-normalise-q1",
+      "type": "single",
+      "prompt": "A colleague's script applies NFKC, removes marks, maps ة to ه and writes the result over the text column. A reviewer asks how many complaints had presentation forms. What should the script have done?",
+      "options": [
+        "Written the normalised text to a new column and kept the raw text",
+        "Applied NFKC only and skipped the other rules",
+        "Logged the rules it applied in a comment",
+        "Applied the rules in the reverse order"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Each rule loses information on purpose. With the raw text kept, any count about the raw text, and any rule changed later, can be recomputed.",
+      "misconceptions": [
+        "",
+        "Thinks fewer rules means less loss: any rule that overwrites the raw text destroys the evidence",
+        "Confuses a log of what was done with the data it was done to: counts cannot be recomputed from a log",
+        "Treats a rule's order as the issue: the answer is lost whatever the order once the column is overwritten"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 22
+    },
+    {
+      "id": "check-near-dups-q1",
+      "type": "single",
+      "prompt": "The keep rule finds 576 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?",
+      "options": [
+        "Keep the earliest message and drop the other 575",
+        "Drop all 576 as an organised campaign",
+        "Keep all 576 with no flag, since they are complaints",
+        "Keep all 576, flag them, and report the count with and without the campaign"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "They are 576 complaints and one issue. The flag lets both counts be made, and the report states which one the rate uses.",
+      "misconceptions": [
+        "Treats a campaign as copies by one person: each message is a resident who complained",
+        "Assumes organised complaints are less real: the residents are real and the sewer overflows",
+        "Hides the decision from the reader: the count changes by 575 depending on a choice nobody sees",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 32
+    },
+    {
+      "id": "check-redaction-q1",
+      "type": "single",
+      "prompt": "Your script masked 7,400 values in the corpus. Ashwaq Al-Jabr must decide whether the redacted text may leave the centre's servers. Which number answers her?",
+      "options": [
+        "The 7,400 values the script masked",
+        "The share of values a person marked in a random sample that the script left readable",
+        "The time the script takes on the whole corpus",
+        "The six test numbers that all passed"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Only a human-marked sample shows what the script missed. Her decision rests on the miss rate by type, with an interval.",
+      "misconceptions": [
+        "Counts what was found: a large count can sit beside a large number of misses",
+        "",
+        "Measures speed, not protection: a fast script can still leak",
+        "Assumes a pattern tested on examples works on the corpus: six test strings show the formats you thought of"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 42
+    },
+    {
+      "id": "review-day1-q1",
+      "type": "single",
+      "prompt": "The redaction left 26 of 122 marked names readable in the audited sample, and no phone or identity number. What follows for the release of redacted text?",
+      "options": [
+        "Phone numbers are proven absent from the redacted corpus",
+        "About one name in five survives: a name rule or a review is needed before release",
+        "The overall miss rate of 7.7% is low enough to release",
+        "The audited sample must be re-marked before anything is decided"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The misses sit in one type with a clear cause. The decision follows the type, not the average.",
+      "misconceptions": [
+        "Reads a zero on the sample as a zero in the corpus: a sample bounds the miss rate, it does not prove none",
+        "",
+        "Averages a serious gap away: the overall rate hides that the misses are all names",
+        "Blames the reference: the misses follow a clear pattern, names without a cue word"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 3
+    },
+    {
+      "id": "check-kappa-q1",
+      "type": "single",
+      "prompt": "Pair A agrees on 94% of complaints for \"staff conduct or not\", with kappa 0.52. Pair B agrees on 88% for \"water and sewage or not\", with kappa 0.71. Staff conduct is rare. Which statement holds?",
+      "options": [
+        "Pair A, since they agree more often",
+        "Pair B labels water and sewage more correctly",
+        "They cannot be compared at all",
+        "Pair B agrees more beyond chance; Pair A's 94% is mostly agreement on \"no\""
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "With a rare category most agreement is on the negative and would happen by chance; kappa removes it.",
+      "misconceptions": [
+        "Ranks by raw agreement, which a rare category inflates with easy negatives",
+        "Treats kappa as accuracy: neither number says who is right",
+        "Thinks different categories make the numbers incomparable in every way: kappa is designed to compare beyond chance",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 12
+    },
+    {
+      "id": "check-sparse-q1",
+      "type": "single",
+      "prompt": "A colleague reports 0.97 accuracy for the n-gram classifier, measured on a random fifth of the 3,000 pool complaints held out from training. What is wrong with the number?",
+      "options": [
+        "It is scored against routing labels nobody checked, which share the model's own training habits",
+        "600 complaints are too few to score on",
+        "The held-out complaints leaked into training",
+        "Accuracy should have been macro F1"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A score is only as good as the labels it is compared with. The gold set was coded twice and adjudicated; the routing labels were not.",
+      "misconceptions": [
+        "",
+        "Thinks the size of the test set is the problem: 600 complaints is larger than the gold set",
+        "Treats a held-out split as leakage: the complaints were not used for training",
+        "Blames the metric: macro F1 would be measured against the same unchecked labels"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 22
+    },
+    {
+      "id": "check-embeddings-q1",
+      "type": "single",
+      "prompt": "Your key failed and Lab 2.3 ran on the stand-in vectors, with 0.893 gold accuracy. Dr. Ebtisam asks whether embeddings beat the n-gram baseline. What do you answer?",
+      "options": [
+        "\"No: embeddings reach 0.893 against 0.930\"",
+        "\"Yes: embeddings usually beat n-grams\"",
+        "\"Not measured yet: the code works, the comparison needs a run with the hosted model\"",
+        "\"Embeddings cannot be used at the centre\""
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A stand-in proves the pipeline runs. It says nothing about the model the question is about.",
+      "misconceptions": [
+        "Quotes a stand-in result as a model's: the stand-in is lexical and measures nothing about embeddings",
+        "Fills a gap with a general belief: no measurement on Sada's data supports it",
+        "",
+        "Treats a failed key as a reason to drop an outcome: the run can be repeated"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 31
+    },
+    {
+      "id": "check-paired-q1",
+      "type": "single",
+      "prompt": "The paired difference in gold accuracy, sparse minus embedding, is +0.037 with a 95% interval from −0.003 to +0.073. Which sentence belongs in the report?",
+      "options": [
+        "The two classifiers perform the same",
+        "The sparse classifier is probably better by up to seven points, but a difference of zero cannot be ruled out",
+        "The sparse classifier is 3.7 points better",
+        "The embedding classifier may be the better one, since the interval is negative"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The interval states the range of differences the gold set allows: mostly in favour of the sparse model, zero just inside.",
+      "misconceptions": [
+        "Reads an interval that touches zero as proof of equality: absence of evidence is not evidence of no difference",
+        "",
+        "Ignores the interval entirely and reports the point estimate as certain",
+        "Thinks a slightly negative bound makes the embedding model better: the interval is mostly positive"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 40
+    },
+    {
+      "id": "review-day2-q1",
+      "type": "single",
+      "prompt": "Sparse minus embedding accuracy on the same 300 gold complaints was +0.037, interval −0.003 to +0.073. Unpaired, the interval was 0.093 wide; paired, 0.077. What made the paired interval narrower?",
+      "options": [
+        "Pairing doubles the number of complaints",
+        "The paired bootstrap used more resamples",
+        "Complaints that are easy or hard for both classifiers cancel out in the difference",
+        "Accuracy is less variable than macro F1"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Only the complaints where exactly one classifier is right carry the difference; pairing keeps the rest from adding noise.",
+      "misconceptions": [
+        "Thinks pairing adds data: both analyses use the same 300 complaints",
+        "Confuses the number of resamples with precision: both used 2,000",
+        "",
+        "Attributes the width to the metric: both intervals are on accuracy"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 3
+    },
+    {
+      "id": "check-prompted-q1",
+      "type": "single",
+      "prompt": "The centre adds a ninth category, \"heat and cooling in public buildings\", with no labelled examples yet. The sparse model scores 0.930 on the old eight; Fahim 0.810. What do you use for the first month?",
+      "options": [
+        "The sparse model, since it scores higher",
+        "Fahim with the new category added to its prompt, checked on a small new gold sample",
+        "Neither, until 3,000 new labels are collected",
+        "The sparse model for the new category and Fahim for the old ones"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A prompted model needs a codebook, not training labels. It must still be measured against a human sample before its labels are used.",
+      "misconceptions": [
+        "Ignores that the sparse model has never seen the new category and cannot predict it",
+        "",
+        "Assumes no labels means no measurement: a small gold sample is enough to check",
+        "Uses each model where it is weakest: the sparse model cannot route to a category it never learnt"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 11
+    },
+    {
+      "id": "check-stability-q1",
+      "type": "single",
+      "prompt": "Prompt 1 scores 0.810 on the gold set and prompt 2 scores 0.797. A colleague says the prompts are equivalent, so the published district counts do not depend on the choice. What do you check?",
+      "options": [
+        "Nothing: equal accuracy means equal counts",
+        "The flip rate of prompt 1 alone",
+        "Which prompt uses fewer tokens",
+        "How many labels differ between the prompts, and the counts by category and district under each"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A third of the labels change between the prompts while accuracy stays put. Counts are built from labels, not from accuracy.",
+      "misconceptions": [
+        "Treats equal accuracy as equal labels: the same score can come from different complaints being wrong",
+        "Checks run noise instead of the prompt effect",
+        "Changes the subject to cost: the question is whether the counts depend on the prompt",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 20
+    },
+    {
+      "id": "check-dialect-q1",
+      "type": "single",
+      "prompt": "Fahim misses more sewage complaints in Gulf dialect. Al-Naseem's complaints are 60% Gulf, Al-Khalij's 13%. The naive sewage rate is published for both. Which statement holds?",
+      "options": [
+        "Al-Naseem's rate is under-stated more than Al-Khalij's, so the gap between them looks smaller than it is",
+        "Both are under-stated equally, so the comparison is fair",
+        "Al-Naseem's rate is over-stated",
+        "The rates are fine because overall accuracy is 0.81"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO5",
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The miss rate follows the variety, and the variety mix differs by district. The district that suffers most is under-counted most.",
+      "misconceptions": [
+        "",
+        "Assumes errors cancel across districts: the error depends on each district's language mix",
+        "Reverses the direction of the error: missed complaints lower the count",
+        "Thinks a better overall accuracy fixes a group error: the gap is in one variety"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 28
+    },
+    {
+      "id": "check-annotator-q1",
+      "type": "single",
+      "prompt": "Fahim fails the criteria on Gulf dialect and on stability, and passes on formal Arabic and English. Dr. Ebtisam wants one recommendation. Which one follows from the evidence?",
+      "options": [
+        "Replace the second coder, since overall kappa is 0.778",
+        "Stop using Fahim for anything",
+        "Keep both human coders; use Fahim's labels for counts only with a correction from the human sample, by variety",
+        "Lower the stability criterion to 80% so that Fahim passes"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Per-complaint use needs every label to be good enough; a count can be corrected for measured errors.",
+      "misconceptions": [
+        "Ignores the failed criteria because the overall numbers look acceptable",
+        "Discards labels that are usable for estimates with a correction",
+        "",
+        "Moves the bar after the results: the criteria were set before looking"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 36
+    },
+    {
+      "id": "review-day3-q1",
+      "type": "single",
+      "prompt": "Fahim failed the criteria on Gulf dialect (kappa 0.187 below the human pair) and on stability (80.3% of complaints with three agreeing runs). What did the reliability memo recommend?",
+      "options": [
+        "Stop using Fahim's labels altogether",
+        "Keep the second coder; use Fahim's labels for counts, corrected with the gold set by variety",
+        "Replace the coder with the majority of three runs",
+        "Relax the stability criterion to 80%"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A label used one complaint at a time must be right; a count can be corrected for errors measured on a human sample. Session 4 does that correction.",
+      "misconceptions": [
+        "Treats a failed annotator test as a ban on any use: counts can be corrected",
+        "",
+        "Takes the majority vote as a fix for a systematic error: votes cancel noise, not bias",
+        "Moves the bar after the results were known"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 3
+    },
+    {
+      "id": "check-extraction-q1",
+      "type": "single",
+      "prompt": "A report reads \"The repair date will be set later.\" The defect is serious. The schema allows repair_deadline_days from 1 to 90 or null. Which extraction is right?",
+      "options": [
+        "7, the usual deadline for a serious defect",
+        "0, meaning no deadline",
+        "\"later\"",
+        "null"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "An empty field is honest and countable. Any number would be read as a deadline by the schedule.",
+      "misconceptions": [
+        "Fills the field from the severity table: a plausible value the report never gave",
+        "Uses a number as a code for missing: it passes as a real deadline downstream and fails the 1 to 90 range",
+        "Puts text in a whole-number field: the schema rejects it",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 9
+    },
+    {
+      "id": "check-field-q1",
+      "type": "single",
+      "prompt": "Khalaf will schedule repairs from repair_deadline_days. A wrong deadline sends a crew on the wrong day; a missing one is checked by phone. Which measure answers his question?",
+      "options": [
+        "The deadline field's precision, with the share of empty deadlines that stayed empty",
+        "The accuracy pooled over all six fields",
+        "The deadline field's recall",
+        "The share of replies that passed the schema"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "His costly error is a deadline given that is wrong or invented: that is precision, and the empties are where invention happens.",
+      "misconceptions": [
+        "",
+        "Uses the pooled figure, which mixes the easy fields with the one that matters",
+        "Measures found values, while his cost is in wrong and invented ones",
+        "Confuses a valid reply with a right one: invented deadlines are valid"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 16
+    },
+    {
+      "id": "check-clusters-q1",
+      "type": "single",
+      "prompt": "A colleague proposes a new quarterly figure: the share of complaints in each of the five clusters, named from their top terms. What is the main problem?",
+      "options": [
+        "Five is the wrong number of clusters",
+        "The silhouette is too low; a higher one would make the figure valid",
+        "A cluster has no definition or measured error, and here it tracks language and a campaign more than topic",
+        "The sample of 1,000 is too small"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2",
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A category has a codebook, a gold set and an error rate. A cluster is a way to look, and it moves with the vectors, the sample and k.",
+      "misconceptions": [
+        "Treats the choice of k as the only issue: any k has the same problem",
+        "Thinks a better silhouette makes clusters into categories",
+        "",
+        "Blames the sample size: more complaints would sharpen, not define, the clusters"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 22
+    },
+    {
+      "id": "check-corrected-q1",
+      "type": "single",
+      "prompt": "One rectifier for all complaints (−0.030) raises every district's rate by about the same amount, 5.4 to 5.8 per 10,000. The stratified rectifiers raise Al-Naseem by 10.1 and Al-Khalij by 0.0. Which reason justifies stratifying?",
+      "options": [
+        "It always gives narrower intervals",
+        "It uses more gold complaints",
+        "It makes all districts' rates rise equally",
+        "The model's error differs by variety and districts differ in their variety mix"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4",
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A single rectifier spreads the Gulf under-count over every district; stratifying puts it where the Gulf complaints are.",
+      "misconceptions": [
+        "Thinks stratifying always narrows intervals: smaller strata can widen them",
+        "Confuses the gold set's size with its strata: the 300 complaints stay the same",
+        "Inverts the logic: the variety mix is the reason, not a side effect",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000,
+      "slide": 29
+    },
+    {
+      "id": "q-arabic-indic-phone",
+      "type": "single",
+      "prompt": "A redaction pattern for Saudi mobile numbers passes all of its tests, which are written with the digits 0 to 9. On the audited sample it misses a quarter of the phone numbers in Arabic complaints. What is the most likely cause?",
+      "options": [
+        "The audited sample was marked carelessly",
+        "The numbers are typed in Arabic-Indic digits, which the digit class does not cover",
+        "Arabic complaints are longer, so numbers are harder to find",
+        "The pattern needs a word boundary before the number"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Tests written only with Western digits cannot show a gap for Arabic-Indic digits; a digit class such as [0-9٠-٩] closes it.",
+      "misconceptions": [
+        "Blames the reference before the tool: a quarter of one script points to a pattern gap, not to random marking errors",
+        "",
+        "Treats length as the cause: a pattern matches the same at any position in the text",
+        "Adds a fix for a different problem: boundaries do not make a digit class match other digits"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-normalise-new-column",
+      "type": "single",
+      "prompt": "Why does the cleaning script write normalised text to a new column instead of replacing the raw text?",
+      "options": [
+        "Because the Personal Data Protection Law requires it",
+        "Because normalised text takes less storage",
+        "Because models cannot read the raw text",
+        "Because each rule loses information on purpose, and a wrong rule must be reversible"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Normalisation merges spellings deliberately; keeping the raw text lets any count about it, and any changed rule, be recomputed.",
+      "misconceptions": [
+        "Attributes an engineering habit to a law: the reason is reproducibility",
+        "Confuses a side effect with the reason: storage is not what is at stake",
+        "Assumes models need normalised text: many read raw text; the choice is about evidence",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-campaign-count",
+      "type": "single",
+      "prompt": "Near-duplicate detection finds 300 messages from one district in a week, all copied from one social media post about a broken bridge. The director asks how many problems need a crew this month. How do the 300 messages enter that count?",
+      "options": [
+        "As one problem",
+        "As the number of distinct phone numbers among them",
+        "As 300 problems",
+        "As zero, since they are a campaign"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The question is about issues, and the campaign describes one issue; the residents count belongs to a question about complaints.",
+      "misconceptions": [
+        "",
+        "Counts residents, which answers a different question",
+        "Counts messages where the question asks about issues",
+        "Assumes organised complaints describe no real problem"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-shingle-digits",
+      "type": "single",
+      "prompt": "Before computing shingles, the lab replaces numbers of seven digits or more by a symbol but keeps short numbers. What is the reason?",
+      "options": [
+        "Long numbers slow MinHash down",
+        "Short numbers are already removed by normalisation",
+        "Long numbers are phone and identity numbers that differ between copies; short numbers such as street numbers tell places apart",
+        "Short numbers are too short to form a five-character shingle"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Masking what varies between copies and keeping what separates places makes the similarity reflect the message.",
+      "misconceptions": [
+        "Treats it as a speed trick: the number of shingles barely changes",
+        "Confuses digit translation with removal: normalisation keeps digits",
+        "",
+        "Thinks shingles are cut per token: a shingle runs across spaces and digits alike"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-form-field-split",
+      "type": "single",
+      "prompt": "An analyst compares the share of \"English complaints\" across channels using the form's language field and finds the app has twice the English share of the web form. What should be checked first?",
+      "options": [
+        "Whether English complaints are longer",
+        "Whether app users are more often English speakers",
+        "Whether the field agrees with the script of the text in each channel",
+        "Whether the app received more complaints overall"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A metadata field is a measurement with its own errors; in the Sada corpus the app default makes a quarter of its \"English\" rows Arabic.",
+      "misconceptions": [
+        "Checks a property unrelated to how the field was recorded",
+        "Accepts the field as truth and explains the pattern it shows",
+        "",
+        "Confuses a share with a count: the comparison is already a share"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-gold-held-out",
+      "type": "single",
+      "prompt": "Three classifiers are compared. Which setup makes their scores comparable?",
+      "options": [
+        "All three scored on the same held-out gold set, labelled by people",
+        "Each scored on the routing labels of the training pool",
+        "Each scored by the number of documents it labels per second",
+        "Each scored on its own random test split"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The same documents with the same human labels remove the documents as a source of difference.",
+      "misconceptions": [
+        "",
+        "Scores on noisy labels that two of the classifiers were trained on",
+        "Replaces quality with speed",
+        "Thinks any held-out data is enough: different documents add sampling noise to the comparison"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-char-ngrams-arabic",
+      "type": "single",
+      "prompt": "Why do character n-grams suit a sparse classifier on Arabic complaints?",
+      "options": [
+        "They need no training data",
+        "They translate dialect into formal Arabic",
+        "They ignore the order of letters",
+        "Words with a prefix, suffix or spelling variant still share most of their n-grams"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Arabic attaches articles and pronouns to words; character pieces let الحديقة and حديقتنا share evidence.",
+      "misconceptions": [
+        "Confuses features with a model: the classifier still learns from labelled data",
+        "Expects features to translate: they only split text into pieces",
+        "Gets the mechanism backwards: n-grams keep short-range letter order",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-paired-bootstrap",
+      "type": "single",
+      "prompt": "Two classifiers reach 0.81 and 0.78 accuracy on the same 300 gold documents. Their separate 95% intervals overlap. What do you conclude?",
+      "options": [
+        "The difference is not real, since the intervals overlap",
+        "Compute the interval of the paired difference over the same documents before concluding",
+        "The first classifier is better, since 0.81 is higher",
+        "Collect a new gold set for each classifier"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "On the same documents, the paired difference has a much narrower interval than each accuracy on its own.",
+      "misconceptions": [
+        "Reads overlapping separate intervals as no difference: pairing removes the shared document noise",
+        "",
+        "Ignores sampling noise entirely",
+        "Throws away the pairing, which is the strength of the design"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-cost-per-thousand",
+      "type": "single",
+      "prompt": "A prompted classifier uses on average 120 input and 14 output tokens per complaint at USD 0.20 and 0.40 per million tokens. What does labelling 1,000 complaints cost?",
+      "options": [
+        "Nothing, since the free endpoint is used",
+        "About USD 0.03",
+        "About USD 0.24",
+        "About USD 30"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "1,000 x (120 x 0.20 + 14 x 0.40) / 1,000,000 is about USD 0.03; the free endpoint caps requests, it does not make volume free.",
+      "misconceptions": [
+        "Confuses the free tier, limited to a number of requests a day, with the cost at volume",
+        "",
+        "Multiplies the input tokens by both prices",
+        "Treats the price as per thousand tokens instead of per million"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-embedding-budget",
+      "type": "single",
+      "prompt": "Your free embedding endpoint allows 50 requests a day and takes 64 texts per request. You need vectors for a 3,000-document pool and a 300-document gold set. What is the plan?",
+      "options": [
+        "One request per document, 3,300 requests",
+        "Embed only the gold set and train on it",
+        "Skip embeddings and report the sparse classifier only",
+        "53 requests over two days, or a subsample of the pool, with the vectors cached"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "3,300 texts in batches of 64 are 52 to 53 requests; caching makes a rerun cost nothing.",
+      "misconceptions": [
+        "Ignores batching, which the endpoint supports",
+        "Trains and scores on the same documents",
+        "Drops an outcome instead of planning within the budget",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-null-not-invented",
+      "type": "single",
+      "prompt": "An inspection report says nothing about a repair deadline. The extraction schema has `repair_deadline_days: int`. What should change?",
+      "options": [
+        "Make the field optional and instruct the model to return null when the report does not state it",
+        "Set a default of 14 days in the schema",
+        "Drop the field from the schema",
+        "Nothing: the model will pick a typical deadline"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A required field pushes a model to invent; an optional field with an explicit null keeps absence measurable.",
+      "misconceptions": [
+        "",
+        "Hides the absence behind a number that looks measured",
+        "Loses the field for the 70% of reports that state it",
+        "Accepts an invented value as an extraction"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-field-precision",
+      "type": "single",
+      "prompt": "For the deadline field, the extractor returns a value for 400 reports; 340 of them match the reference. The reference has a deadline for 350 reports. What are precision and recall?",
+      "options": [
+        "Precision 0.85, recall 0.85",
+        "Both 0.68, over all 500 reports",
+        "Precision 0.85, recall 0.97",
+        "Precision 0.97, recall 0.85"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Precision is 340 of the 400 returned values; recall is 340 of the 350 reference values.",
+      "misconceptions": [
+        "Uses one denominator for both",
+        "Divides by all reports, mixing in the ones with nothing to find",
+        "",
+        "Swaps the denominators: precision is over what the extractor returned"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-day-month-swap",
+      "type": "single",
+      "prompt": "Errors in the inspection date field occur only in reports that write dates as 05/03/2026, and only when the day is 12 or less. What is happening?",
+      "options": [
+        "Arabic-Indic digits confuse the model",
+        "The schema type for dates is wrong",
+        "The model reads dd/mm dates as mm/dd when both readings are possible",
+        "The reference extraction is wrong"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A date valid under both orders passes validation; only a rule that states the order, or a check against the visit log, catches it.",
+      "misconceptions": [
+        "Names a cause the condition does not mention",
+        "Validation passes: both readings are valid dates",
+        "",
+        "Blames the reference without checking a pattern that has a clear cause"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-validation-not-accuracy",
+      "type": "single",
+      "prompt": "Every reply of the extractor validates against the schema. What does that prove?",
+      "options": [
+        "That each value has an allowed type and range, not that it matches the report",
+        "That the model did not invent values",
+        "That precision and recall are 1",
+        "That the extracted values are correct"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Validation checks shape and allowed values; field-level precision and recall against a reference check content.",
+      "misconceptions": [
+        "",
+        "An invented value can be perfectly valid",
+        "Treats validation as an evaluation against a reference",
+        "Confuses valid shape with correct content"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-negation",
+      "type": "single",
+      "prompt": "The field hazard_to_public is wrong mostly in reports that say \"There is no risk to the public\". Which rule would catch most of these errors before the table is used?",
+      "options": [
+        "Remove the field from the schema",
+        "Validate the field as a boolean",
+        "Raise the model temperature",
+        "Flag every true hazard whose report contains a negation of risk for review"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A targeted consistency rule turns a known error pattern into a review queue.",
+      "misconceptions": [
+        "Loses the field instead of checking it",
+        "It already is one: the error is in the value",
+        "Adds randomness, not reading accuracy",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-naive-biased",
+      "type": "single",
+      "prompt": "Model labels under-detect sewage complaints written in Gulf dialect. A district where most residents write in Gulf dialect gets a naive sewage rate from the model labels. How is that rate wrong?",
+      "options": [
+        "Too high",
+        "Too low, and more so than in other districts",
+        "Unbiased but noisier",
+        "Correct, since errors cancel across categories"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A systematic miss in one variety becomes an under-count where that variety is common.",
+      "misconceptions": [
+        "Reverses the direction: missed complaints lower the count",
+        "",
+        "Treats a systematic error as random",
+        "Assumes errors cancel: missed sewage complaints land in other categories"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-correction-sample",
+      "type": "single",
+      "prompt": "You correct a model-label rate with a human-labelled gold set. Why must the gold set be a random sample of the same corpus?",
+      "options": [
+        "Because a random sample has no labelling errors",
+        "Because the correction estimates the model's errors on the documents being counted",
+        "Because random samples are larger",
+        "Because the model was trained on it"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The correction transfers the error rate measured on the sample to the corpus; that holds only when the sample represents the corpus.",
+      "misconceptions": [
+        "Randomness does not remove human error",
+        "",
+        "Confuses randomness with size",
+        "The gold set must not be training data"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-stratify-language",
+      "type": "single",
+      "prompt": "The gold set shows the model is accurate on English and formal Arabic and weaker on Gulf dialect. Districts differ in their mix of varieties. How do you correct district rates?",
+      "options": [
+        "Drop Gulf complaints from the rate",
+        "Use only the gold set to compute district rates",
+        "Apply one overall correction factor to every district",
+        "Estimate the correction separately by variety and apply it to each district's mix"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Stratifying the correction by variety lets each district get the error rates of the language its residents write in.",
+      "misconceptions": [
+        "Removes the group that is under-counted",
+        "Throws away the model labels: 300 documents are too few per district",
+        "Assumes one error rate fits districts with different mixes",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-interval-corrected",
+      "type": "single",
+      "prompt": "Why is the interval of a corrected rate wider than the interval of the naive rate?",
+      "options": [
+        "Because the correction adds the uncertainty of an error rate estimated on a few hundred documents",
+        "Because the corrected rate is always larger",
+        "Because the naive rate has no uncertainty",
+        "Because bootstrap intervals are wider than formula intervals"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The naive interval is narrow and centred in the wrong place; the corrected one is honest about how well the error is known.",
+      "misconceptions": [
+        "",
+        "Confuses width with level",
+        "A count from 20,000 labels has little sampling noise but a bias the interval does not show",
+        "Blames the method, not the source of uncertainty"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-version-record",
+      "type": "single",
+      "prompt": "A rate computed from model labels is published. Which record must travel with the labels so the number can be reproduced?",
+      "options": [
+        "The number of complaints only",
+        "A screenshot of the dashboard",
+        "The model identifier, the prompt version, the settings and the date of the run",
+        "The name of the analyst"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Model and prompt versions decide the labels; without them a rerun cannot be matched to the published number.",
+      "misconceptions": [
+        "Too little: two runs on the same complaints can differ",
+        "Records the result, not how it was made",
+        "",
+        "Records who, not what produced the labels"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-kappa-prevalence",
+      "type": "single",
+      "prompt": "Two coders agree on 96% of documents for \"parks or not\". Cohen's kappa is 0.55. How can both be true?",
+      "options": [
+        "The coders disagree on easy documents",
+        "Kappa penalises coders who label quickly",
+        "Parks is rare, so most agreement is on \"not parks\" and would happen by chance",
+        "Kappa was computed wrongly"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "With a rare category, chance agreement is high; kappa measures agreement beyond it.",
+      "misconceptions": [
+        "Invents a cause the numbers do not show",
+        "Kappa knows nothing about speed",
+        "",
+        "Distrusts the statistic instead of reading it"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-stability-meaning",
+      "type": "single",
+      "prompt": "Three runs of the same prompt give different labels for 8% of the gold documents. What does this measure?",
+      "options": [
+        "How much of a single run's labelling is chance at these settings",
+        "The difficulty of the codebook for people",
+        "A bug in the parsing code",
+        "The model's accuracy"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Run-to-run disagreement is the instrument's noise; a single run carries it silently.",
+      "misconceptions": [
+        "",
+        "Measures the model, not the coders",
+        "Assumes variation must be a bug",
+        "Confuses agreement with itself and agreement with the truth"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-criteria-first",
+      "type": "single",
+      "prompt": "Before reading Fahim's results, the team writes: \"Replace the second coder only if model-gold kappa is at least the human pair's kappa minus 0.05 in every variety.\" Why write it first?",
+      "options": [
+        "Because kappa cannot be computed afterwards",
+        "To make the model look better",
+        "Because the codebook requires it",
+        "So the decision cannot be bent to fit the results"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Criteria set after the results invite moving the bar to where the results land.",
+      "misconceptions": [
+        "Mistakes a matter of order for one of feasibility",
+        "Gets the purpose backwards",
+        "Attributes a research practice to the codebook",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-dialect-gap-report",
+      "type": "single",
+      "prompt": "Fahim reaches 0.85 accuracy overall and 0.66 on Gulf dialect complaints. What goes in the reliability memo?",
+      "options": [
+        "The overall 0.85, since it summarises all documents",
+        "Accuracy by variety with intervals, the confusion behind the gap, and its effect on counts",
+        "Only the Gulf number, since it is the weakest",
+        "A recommendation to remove Gulf complaints"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A gap is reported by group, explained by its confusions and traced to the estimates it biases.",
+      "misconceptions": [
+        "Hides a group behind an average",
+        "",
+        "Reports one group without the comparison that makes it a gap",
+        "Excludes the group that is under-counted"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-replace-coder",
+      "type": "single",
+      "prompt": "Model-gold kappa is 0.71, human-human kappa is 0.79, and the model is stable across runs. Gulf kappa is 0.55. What is the defensible decision?",
+      "options": [
+        "Replace the second coder everywhere",
+        "Use model labels for estimates only with a human-sample correction, and keep a second human coder for Gulf complaints",
+        "Stop using the model entirely",
+        "Retrain the human coders to agree with the model"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The decision follows the evidence by group: usable with correction where it is close to people, not where it is not.",
+      "misconceptions": [
+        "Ignores the gap in one variety",
+        "",
+        "Ignores that the labels are usable with correction",
+        "Treats the model as the reference"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-pipeline-order",
+      "type": "single",
+      "prompt": "In which order does a text-measurement pipeline at Sada run?",
+      "options": [
+        "Deduplicate, classify, correct, redact",
+        "Normalise, classify, redact, report",
+        "Classify, redact, deduplicate, normalise",
+        "Redact, normalise, deduplicate, label, correct the estimate"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Personal data leaves first, then the text is made comparable, copies are handled, labels are made and the estimate is corrected.",
+      "misconceptions": [
+        "Redacts last, after the text has gone to a model",
+        "Reports without a correction and redacts too late",
+        "Sends personal data to a model before redaction",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-brief-question",
+      "type": "single",
+      "prompt": "A brief asks for \"the share of feedback about facilities in each branch\". Which measurement choice must the report state explicitly?",
+      "options": [
+        "Whether copies and campaigns are counted as messages or as issues",
+        "The order in which the coders labelled the gold set",
+        "The colour scale of the branch map",
+        "The random seed of the clustering run used to explore the corpus"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The unit counted changes the share; the report states it and gives the other count beside it.",
+      "misconceptions": [
+        "",
+        "Order may affect fatigue, but the share is computed from the labels, not their order",
+        "A presentation choice, not a measurement choice",
+        "A cluster run that does not feed the share cannot change it"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-defence-relabel",
+      "type": "single",
+      "prompt": "In the defence, the assessor asks you to re-label ten documents live and explain disagreements with your gold set. What does this check?",
+      "options": [
+        "That the model agrees with you",
+        "That the gold set has no errors",
+        "That you can apply your codebook and that the gold set is your work",
+        "That you type quickly"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Re-labelling from the codebook shows the participant owns the instrument the whole project rests on.",
+      "misconceptions": [
+        "The model is not part of this check",
+        "Disagreements are expected; explaining them is the point",
+        "",
+        "Confuses the check with a speed test"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-public-corpus",
+      "type": "single",
+      "prompt": "A participant wants to use a public corpus of Arabic product reviews for the capstone. What must be checked before approval?",
+      "options": [
+        "That a model has been trained on it before",
+        "That it is in Modern Standard Arabic only",
+        "Its licence, whether it holds personal data, and whether a gold set can be built for the question in the brief",
+        "Only its size"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The capstone needs a corpus it may use, that is safe to process, and on which agreement and model results can be measured.",
+      "misconceptions": [
+        "Irrelevant to whether it may be used here",
+        "Excludes dialect, which the course wants measured",
+        "",
+        "Size says nothing about licence or personal data"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-cluster-language",
+      "type": "single",
+      "prompt": "Five clusters of 1,000 complaint vectors agree with the routing labels at an adjusted Rand index of 0.005 and with the guessed language variety at 0.642. What should the report on the clusters say?",
+      "options": [
+        "The clusters group complaints by language more than by topic, so their sizes are not topic counts",
+        "The routing labels are wrong, since the clusters disagree with them",
+        "Five is the wrong number of clusters; more clusters would match the topics",
+        "The clusters are new categories to add to the codebook"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A cluster shows what the vectors see. Here that is mostly language, so the report describes it as a lens and keeps topic counts to the coded categories.",
+      "misconceptions": [
+        "",
+        "Treats an unsupervised grouping as the reference for labels it was never asked to match",
+        "Assumes changing k removes what the vectors encode; the language signal stays at any k",
+        "Promotes a grouping with no definition or measured error to a category"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-census-interval",
+      "type": "single",
+      "prompt": "Sada counts every one of its 20,000 complaints, then corrects the count with 300 gold complaints. Where does the interval of the corrected district rate come from?",
+      "options": [
+        "From the three runs of the model",
+        "There is no interval, because all complaints were counted",
+        "From resampling the 20,000 complaints",
+        "From the 300 gold complaints that estimate the correction"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The counts have no sampling error, but the rectifiers do: they are estimated from 300 complaints, so the bootstrap resamples those, within each variety.",
+      "misconceptions": [
+        "Run variation was measured on Day 3; the rate uses one recorded run",
+        "Forgets that the correction itself is estimated from a sample",
+        "Treats a census as a sample: every complaint received is already counted",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    },
+    {
+      "id": "q-defend-stratify",
+      "type": "single",
+      "prompt": "In the defence the assessor asks: \"Why did you correct by language variety and not with one overall correction?\" Which answer defends the choice best?",
+      "options": [
+        "Because stratified estimates are always more precise",
+        "Because the model's error differed by variety on my gold set, and the branches differ in their variety mix; here are both numbers",
+        "Because Gulf dialect is harder for every model",
+        "Because the course did it that way"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A measurement choice is defended with the project's own numbers: the measured difference in error and the difference in mix that makes it matter.",
+      "misconceptions": [
+        "States a general rule that is false: small strata can widen intervals",
+        "",
+        "Generalises without the project's own measurement",
+        "Appeals to authority instead of evidence from the project"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794766698000,
+      "updatedAt": 1794766698000
+    }
+  ]
+}

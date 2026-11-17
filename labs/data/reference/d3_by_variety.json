@@ -1,0 +1,29 @@
+[
+ {
+  "variety": "msa",
+  "n": 114,
+  "accuracy": 0.868,
+  "low": 0.807,
+  "high": 0.93,
+  "kappa_model": 0.845,
+  "kappa_humans": 0.813
+ },
+ {
+  "variety": "gulf",
+  "n": 120,
+  "accuracy": 0.733,
+  "low": 0.658,
+  "high": 0.808,
+  "kappa_model": 0.685,
+  "kappa_humans": 0.872
+ },
+ {
+  "variety": "en",
+  "n": 66,
+  "accuracy": 0.848,
+  "low": 0.758,
+  "high": 0.939,
+  "kappa_model": 0.824,
+  "kappa_humans": 0.772
+ }
+]

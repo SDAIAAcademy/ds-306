@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 4 · From documents to tables · Text and Unstructured Data for Data Science</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day4.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Text and Unstructured Data for Data Science" data-track="data-science" data-day="Day 4">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Text and Unstructured Data for Data Science</div>
+  <h1>From documents to tables</h1>
+  <p class="lead mt">Day 4: Validated extraction, field-level scores, clusters, and estimates corrected with the human sample</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-306</span></div>
+  <aside class="notes"><p>The last teaching day turns text into tables: fields from reports in the morning, structure and corrected rates in the afternoon. The day ends with the choice of the capstone corpus, so keep the last lab on time. Model runs today are again the course's synthetic recordings unless a participant has a working key; say so at the start.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>From documents to tables</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Schema-constrained extraction</b><small>A schema the model must fill, validation of every reply, and nulls instead of invented values</small></div></div><div class="item"><div><b>Session 2 · Field-level validation</b><small>Precision and recall per field, with nulls counted correctly, and the commonest errors</small></div></div><div class="item"><div><b>Session 3 · Structure in text</b><small>Clusters of embeddings as a way to see a corpus, and why a cluster is not a category</small></div></div><div class="item"><div><b>Session 4 · Errors downstream</b><small>A complaint rate from model labels, corrected with the human sample, with intervals</small></div></div></div>
+  <aside class="notes"><p>Two sessions on extraction and its validation, one on clustering, one on carrying model errors into a published rate. Every lab starts from supplied files.</p></aside>
+</section>
+
+<section class="slide" id="review-day3" data-lo="LO5" data-n="3">
+  <div class="kicker">Review of Day 3</div>
+  <h2>What did the criteria decide?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="review-day3-q1">
+    <p class="lead">Fahim failed the criteria on Gulf dialect (kappa 0.187 below the human pair) and on stability (80.3% of complaints with three agreeing runs). What did the reliability memo recommend?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats a failed annotator test as a ban on any use: counts can be corrected" data-k="A">Stop using Fahim's labels altogether</div>
+      <div class="opt" data-ok data-k="B">Keep the second coder; use Fahim's labels for counts, corrected with the gold set by variety</div>
+      <div class="opt" data-why="Takes the majority vote as a fix for a systematic error: votes cancel noise, not bias" data-k="C">Replace the coder with the majority of three runs</div>
+      <div class="opt" data-why="Moves the bar after the results were known" data-k="D">Relax the stability criterion to 80%</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A label used one complaint at a time must be right; a count can be corrected for errors measured on a human sample. Session 4 does that correction.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. Keep the distinction alive all day: per-document use against aggregate use.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Schema-constrained extraction</h1>
+  <ul class="bullets outcomes"><li>Define a schema with types, ranges and allowed values for six fields</li><li>Request schema-constrained output and validate every reply</li><li>Return a null for a field the text does not state</li></ul>
+  <div class="sess-no">01</div>
+  <aside class="notes"><p>Khalaf Al-Baqmi's field inspectors write free text. His repair schedule needs a table. The schema is the contract between them.</p></aside>
+</section>
+
+<section class="slide" id="report-to-row" data-lo="LO3" data-n="5" data-session="1">
+  <div class="kicker">From report to row</div>
+  <h2>One report, six fields, each with a type and a rule</h2>
+  <div class="cols cols-2">
+    <div class="chat">
+      <div class="msg user"><span class="who">IR-0005</span><span class="ar">تاريخ الزيارة: 19 سبتمبر 2026. الحي: المروة. لاحظ المفتش طفح مياه الصرف … الخلل جسيم. يشكل خطرا على المارة. يجب الإصلاح خلال 10 أيام.</span></div>
+    </div>
+    <table class="t small">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>district</td><td><code>al_marwa</code></td></tr>
+      <tr><td>inspection_date</td><td><code>2026-09-19</code></td></tr>
+      <tr><td>defect_type</td><td><code>sewage_overflow</code></td></tr>
+      <tr><td>severity</td><td><code>high</code></td></tr>
+      <tr><td>hazard_to_public</td><td><code>true</code></td></tr>
+      <tr><td>repair_deadline_days</td><td><code>10</code></td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>From data/inspections.jsonl: 500 synthetic reports, 40% in English, dates in three styles, district names in several spellings, a third with no deadline. Ask the room which field they would trust least before seeing any numbers.</p></aside>
+</section>
+
+<section class="slide" id="schema" data-lo="LO3" data-n="6" data-session="1">
+  <div class="kicker">Lab 4.1, step 1</div>
+  <h2>The schema says what a valid answer is before any model answers</h2>
+  <pre class="code" data-file="D4_1_extraction.ipynb"><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Inspection</span>(<span class="hljs-title class_ inherited__">BaseModel</span>):
+    model_config = ConfigDict(extra=<span class="hljs-string">&quot;forbid&quot;</span>)
+    district: <span class="hljs-type">Optional</span>[<span class="hljs-type">Literal</span>[CODES]] = <span class="hljs-literal">None</span>
+    inspection_date: <span class="hljs-type">Optional</span>[date] = <span class="hljs-literal">None</span>      <span class="hljs-comment"># and a 2026 check</span>
+    defect_type: <span class="hljs-type">Optional</span>[<span class="hljs-type">Literal</span>[DEFECTS]] = <span class="hljs-literal">None</span>
+    severity: <span class="hljs-type">Optional</span>[<span class="hljs-type">Literal</span>[<span class="hljs-string">&quot;low&quot;</span>, <span class="hljs-string">&quot;medium&quot;</span>, <span class="hljs-string">&quot;high&quot;</span>, <span class="hljs-string">&quot;critical&quot;</span>]] = <span class="hljs-literal">None</span>
+    hazard_to_public: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">bool</span>] = <span class="hljs-literal">None</span>
+    repair_deadline_days: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">int</span>] = Field(<span class="hljs-literal">None</span>, ge=<span class="hljs-number">1</span>, le=<span class="hljs-number">90</span>)</code></pre>
+  <aside class="notes"><p>Every field is optional because a report may not state it: the schema must allow an honest empty. Pydantic is one choice; JSON Schema, which OpenRouter's structured outputs accept for models that support them, is another. The class produces the JSON Schema, so either way it is written once. Sources: Pydantic documentation.</p></aside>
+</section>
+
+<section class="slide" id="validate-repair" data-lo="LO3" data-n="7" data-session="1">
+  <div class="kicker">Lab 4.1, step 3</div>
+  <h2>JSON mode makes a reply parse; the schema makes it admissible</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Ask</b>Prompt and report, JSON mode</div>
+    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · Validate</b>"Al Marwa", "07/06/2026", "Minor": three errors</div>
+    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · Repair once</b>Send the errors back; validate again</div>
+  </div>
+  <div class="callout warn mt frag"><b>What goes wrong.</b> The repaired IR-0002 is valid and still wrong: no district, day and month swapped, a hazard the report denies.</div>
+  <aside class="notes"><p>Press once per step. The broken reply is supplied in the lab, so the repair path runs without a key. The point of the last line: validation checks form, not truth. Session 2 measures truth.</p></aside>
+</section>
+
+<section class="slide" id="null-not-invented" data-lo="LO3" data-n="8" data-session="1">
+  <div class="kicker">Lab 4.1, step 4</div>
+  <h2>A deadline the report never gave looks exactly like data</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">47 of 177</div><div class="lbl">reports with no deadline got one in the recorded run (26.6%)</div></div>
+    <ul class="bullets">
+      <li>The prompt says: never infer it from the severity</li>
+      <li>The invented values match the severity table</li>
+      <li><b>Grounding rule</b>: keep a deadline only when the number of days is written in the text</li>
+      <li>It catches all 47</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 4.1 on the recorded run (synthetic). A missing value is visible and gets checked; an invented one enters the repair schedule. The grounding rule is plain code: a number followed by the word for days, in either digit system.</p></aside>
+</section>
+
+<section class="slide" id="check-extraction" data-lo="LO3" data-n="9" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should come back for a field the report does not state?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-extraction-q1">
+    <p class="lead">A report reads "The repair date will be set later." The defect is serious. The schema allows <code>repair_deadline_days</code> from 1 to 90 or null. Which extraction is right?</p>
+    <div class="opts">
+      <div class="opt" data-why="Fills the field from the severity table: a plausible value the report never gave" data-k="A">7, the usual deadline for a serious defect</div>
+      <div class="opt" data-why="Uses a number as a code for missing: it passes as a real deadline downstream and fails the 1 to 90 range" data-k="B">0, meaning no deadline</div>
+      <div class="opt" data-why="Puts text in a whole-number field: the schema rejects it" data-k="C">"later"</div>
+      <div class="opt" data-ok data-k="D">null</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> An empty field is honest and countable. Any number would be read as a deadline by the schedule.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. Ask who has seen "0" or "999" used as a missing code in a real table, and what it did to an average.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-4-1" data-auto="lab" data-lab="4.1" data-label="Lab 4.1" data-n="10" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 4.1 · 25 min</div><h2>Six fields, validated</h2><p class="lead small">Extract six fields from inspection reports into a validated schema, repair replies that fail and keep a null where the report states nothing.</p><a class="nb" href="../labs/D4_1_extraction.ipynb">D4_1_extraction.ipynb</a></div><ul class="checklist"><li>The schema with Pydantic <span class="min">6 min</span></li><li>The prompt and three reports <span class="min">6 min</span></li><li>Validate and repair <span class="min">6 min</span></li><li>A null, not an invented value <span class="min">4 min</span></li><li>Twelve reports, saved with the version <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Add a seventh field, the street number, and measure it on the twelve reports</li></ul></div>
+  <aside class="notes"><p>Without a key the stand-in replays the recorded run; with one, about fifteen requests. Common error: building the schema with plain str fields, which then accepts "Al Marwa". The twelve reports are fixed (six with a deadline, six without) so everyone compares the same rows.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="11">
+  <div class="kicker">Session 2</div>
+  <h1>Field-level validation</h1>
+  <ul class="bullets outcomes"><li>Define precision and recall for a field that may be empty</li><li>Compute them per field over 500 reports</li><li>List the commonest errors per field and the rule that would catch each</li></ul>
+  <div class="sess-no">02</div>
+  <aside class="notes"><p>"The extraction is 94% accurate." Ask what that number would tell Khalaf about his schedule. Nothing.</p></aside>
+</section>
+
+<section class="slide" id="outcomes" data-lo="LO3" data-n="12" data-session="2">
+  <div class="kicker">Lab 4.2, step 2</div>
+  <h2>A field that may be empty has five outcomes, not two</h2>
+  <table class="t">
+    <tr><th>Outcome</th><th>Reference</th><th>Extracted</th><th>Counts against</th></tr>
+    <tr><td>Right</td><td>a value</td><td>the same value</td><td></td></tr>
+    <tr><td>Wrong</td><td>a value</td><td>another value</td><td>precision and recall</td></tr>
+    <tr><td>Missed</td><td>a value</td><td>empty</td><td>recall</td></tr>
+    <tr class="hl"><td>Invented</td><td>empty</td><td>a value</td><td>precision</td></tr>
+    <tr><td>Correctly empty</td><td>empty</td><td>empty</td><td></td></tr>
+  </table>
+  <aside class="notes"><p>Precision is right over everything the model gave; recall is right over everything the reports state. Correctly empty fields count for neither, which is why the lab also reports the share of empty fields that stayed empty.</p></aside>
+</section>
+
+<section class="slide" id="field-scores" data-lo="LO3" data-n="13" data-session="2">
+  <div class="kicker">Lab 4.2, step 3 (recorded run)</div>
+  <h2>94% of all values are right; the deadline's precision is 0.87</h2>
+  <table class="t">
+    <tr><th>Field</th><th class="num">Precision</th><th class="num">Recall</th></tr>
+    <tr><td>district</td><td class="num">1.000</td><td class="num">0.942</td></tr>
+    <tr><td>inspection_date</td><td class="num">0.966</td><td class="num">0.966</td></tr>
+    <tr><td>defect_type</td><td class="num">0.968</td><td class="num">0.968</td></tr>
+    <tr><td>severity</td><td class="num">0.968</td><td class="num">0.968</td></tr>
+    <tr><td>hazard_to_public</td><td class="num">0.908</td><td class="num">0.908</td></tr>
+    <tr class="hl"><td>repair_deadline_days</td><td class="num">0.870</td><td class="num">0.972</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.2 over 500 reports (synthetic run). The deadline's precision has a 95% interval of 0.834 to 0.903 (stretch). Only 73% of empty deadlines stayed empty. The pooled 94% is the number a vendor quotes.</p></aside>
+</section>
+
+<section class="slide" id="error-patterns" data-lo="LO3" data-n="14" data-session="2">
+  <div class="kicker">Lab 4.2, step 4</div>
+  <h2>Each field fails in its own way, and most failures follow the text's form</h2>
+  <table class="t">
+    <tr><th>Field</th><th>Commonest error</th><th class="num">n</th><th>Where</th></tr>
+    <tr><td>district</td><td>left empty for a spelling variant</td><td class="num">29</td><td>Arabic 8%</td></tr>
+    <tr><td>inspection_date</td><td>day and month swapped</td><td class="num">17</td><td>dd/mm/yyyy 15%</td></tr>
+    <tr><td>defect_type</td><td>damaged pavement read as pothole</td><td class="num">9</td><td>English 4%</td></tr>
+    <tr><td>severity</td><td>medium read as low</td><td class="num">16</td><td>Arabic 5%</td></tr>
+    <tr><td>hazard_to_public</td><td>"no risk" read as a risk</td><td class="num">46</td><td>Arabic 9%</td></tr>
+    <tr><td>repair_deadline_days</td><td>empty filled with 14</td><td class="num">18</td><td>Arabic 12%</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.2. A swap is only possible when the day is 12 or less, which is why the error concentrates in one date style rather than one language.</p></aside>
+</section>
+
+<section class="slide" id="rules-in-code" data-lo="LO3" data-n="15" data-session="2">
+  <div class="kicker">Lab 4.2, step 5</div>
+  <h2>Most fixes are rules in code, not a better prompt</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Dates with slashes: parse in code, day first</li>
+      <li>District: a list of spelling variants kept with the schema</li>
+      <li>Hazard: check the negated phrase, override to false</li>
+      <li>Deadline: keep it only when written in the text</li>
+    </ul>
+    <div class="card c-teal"><h4>The validation report</h4><p class="small mb0">One line per field: precision, recall, the commonest error and the rule that catches it. It goes to Khalaf with the table.</p></div>
+  </div>
+  <aside class="notes"><p>The model is left with what code cannot read: the defect description and severity words in free form. Ask which rule participants would add first given one hour: usually the deadline grounding, because it protects the schedule.</p></aside>
+</section>
+
+<section class="slide" id="check-field" data-lo="LO3" data-n="16" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which number tells Khalaf whether to trust the deadlines?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-field-q1">
+    <p class="lead">Khalaf will schedule repairs from <code>repair_deadline_days</code>. A wrong deadline sends a crew on the wrong day; a missing one is checked by phone. Which measure answers his question?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">The deadline field's precision, with the share of empty deadlines that stayed empty</div>
+      <div class="opt" data-why="Uses the pooled figure, which mixes the easy fields with the one that matters" data-k="B">The accuracy pooled over all six fields</div>
+      <div class="opt" data-why="Measures found values, while his cost is in wrong and invented ones" data-k="C">The deadline field's recall</div>
+      <div class="opt" data-why="Confuses a valid reply with a right one: invented deadlines are valid" data-k="D">The share of replies that passed the schema</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> His costly error is a deadline given that is wrong or invented: that is precision, and the empties are where invention happens.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-4-2" data-auto="lab" data-lab="4.2" data-label="Lab 4.2" data-n="17" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 4.2 · 25 min</div><h2>Field-level validation</h2><p class="lead small">Compute per-field precision and recall of the recorded extraction run over 500 reports, list the commonest errors and write the validation report.</p><a class="nb" href="../labs/D4_2_field_validation.ipynb">D4_2_field_validation.ipynb</a></div><ul class="checklist"><li>Load the run and the reference <span class="min">3 min</span></li><li>Matching rules per field <span class="min">5 min</span></li><li>Precision and recall per field <span class="min">7 min</span></li><li>The commonest errors per field <span class="min">6 min</span></li><li>The validation report <span class="min">4 min</span></li><li class="stretch">✱ Stretch: An interval for the precision of the deadline field</li></ul></div>
+  <aside class="notes"><p>No model calls. The commonest slip is counting a None against a None as a true positive, which inflates recall. Another: comparing 14 with 14.0 as different. The matching function handles both; make participants read it.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="18">
+  <div class="kicker">Session 3</div>
+  <h1>Structure in text</h1>
+  <ul class="bullets outcomes"><li>Cluster document vectors and choose a number of clusters</li><li>Name clusters from their terms and examples</li><li>Compare clusters with codebook categories and say what each shows</li></ul>
+  <div class="sess-no">03</div>
+  <aside class="notes"><p>Dr. Ebtisam asks what people write about that the eight categories do not show. Clustering looks without a codebook, and shows what the vectors see.</p></aside>
+</section>
+
+<section class="slide" id="choosing-k" data-lo="LO2" data-n="19" data-session="3">
+  <div class="kicker">Lab 4.3, step 2</div>
+  <h2>The silhouette barely moves with k: complaints have no sharp borders</h2>
+  <div class="bars">
+    <div class="row"><span>k = 3</span><div class="bar c-teal" style="--w:50%"></div><span class="val">0.100</span></div>
+    <div class="row"><span>k = 5</span><div class="bar c-coral" style="--w:50.5%"></div><span class="val">0.101</span></div>
+    <div class="row"><span>k = 8</span><div class="bar c-teal" style="--w:51%"></div><span class="val">0.102</span></div>
+    <div class="row"><span>k = 10</span><div class="bar c-teal" style="--w:55%"></div><span class="val">0.110</span></div>
+    <div class="row"><span>k = 12</span><div class="bar c-teal" style="--w:43%"></div><span class="val">0.086</span></div>
+  </div>
+  <p class="small mt">Mean silhouette, cosine, 1,000 complaints. The silhouette advises; the number of clusters a person can read decides.</p>
+  <aside class="notes"><p>From Lab 4.3, on the stand-in's lexical vectors because no embedding call ran. Bars are scaled to a maximum of 0.2. With a real embedding model the values change; the flat shape is typical of short complaints.</p></aside>
+</section>
+
+<section class="slide" id="what-clusters-see" data-lo="LO2 LO6" data-n="20" data-session="3">
+  <div class="kicker">Lab 4.3, step 4</div>
+  <h2>The five clusters follow the language, not the topic</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Agreement of the clusters with</th><th class="num">Adjusted Rand</th></tr>
+      <tr><td>Routing labels (topic)</td><td class="num">0.005</td></tr>
+      <tr class="hl"><td>Guessed variety</td><td class="num">0.642</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>One cluster is all English, one all formal Arabic</li>
+      <li>Three are mostly Gulf dialect</li>
+      <li>Wording-based vectors see wording</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A team names the clusters "topics" and publishes their sizes. They were counting languages.</div>
+  <aside class="notes"><p>From Lab 4.3 on stand-in vectors (hashed character n-grams). A multilingual embedding model should weaken the language effect; whether it removes it is something to measure, not assume. Adjusted Rand: 0 is chance, 1 the same partition.</p></aside>
+</section>
+
+<section class="slide" id="campaign-cluster" data-lo="LO2 LO6" data-n="21" data-session="3">
+  <div class="kicker">Lab 4.3, stretch</div>
+  <h2>Every campaign message in the sample lands in one cluster</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">26 of 26</div><div class="lbl">campaign messages in the sample fall in one Gulf sewage cluster, a quarter of it</div></div>
+    <div class="chat">
+      <div class="msg user"><span class="who">Cluster 3, nearest the centre</span><span class="ar">يا جماعة ترى المجاري طافحة عند مدخل الحي والريحة وايد قوية. الشارع غرقان مويه …</span></div>
+    </div>
+  </div>
+  <aside class="notes"><p>From Lab 4.3. The campaign found by MinHash on Day 1 shows up again, from another direction. A cluster's size is not a measure of how many citizens share a concern: organised writing inflates it.</p></aside>
+</section>
+
+<section class="slide" id="check-clusters" data-lo="LO2" data-n="22" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Can a cluster's size be published as a topic count?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2 LO6" data-id="check-clusters-q1">
+    <p class="lead">A colleague proposes a new quarterly figure: the share of complaints in each of the five clusters, named from their top terms. What is the main problem?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats the choice of k as the only issue: any k has the same problem" data-k="A">Five is the wrong number of clusters</div>
+      <div class="opt" data-why="Thinks a better silhouette makes clusters into categories" data-k="B">The silhouette is too low; a higher one would make the figure valid</div>
+      <div class="opt" data-ok data-k="C">A cluster has no definition or measured error, and here it tracks language and a campaign more than topic</div>
+      <div class="opt" data-why="Blames the sample size: more complaints would sharpen, not define, the clusters" data-k="D">The sample of 1,000 is too small</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A category has a codebook, a gold set and an error rate. A cluster is a way to look, and it moves with the vectors, the sample and k.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. The useful outcome of clustering here is a question for the codebook: is there a theme the eight categories miss?</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-4-3" data-auto="lab" data-lab="4.3" data-label="Lab 4.3" data-n="23" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 4.3 · 25 min</div><h2>Structure in text</h2><p class="lead small">Cluster complaint embeddings, name five clusters from their terms and examples, and compare them with the codebook categories.</p><a class="nb" href="../labs/D4_3_clusters.ipynb">D4_3_clusters.ipynb</a></div><ul class="checklist"><li>Vectors for a sample of complaints <span class="min">5 min</span></li><li>k-means for several k, with silhouette <span class="min">6 min</span></li><li>Five clusters: terms and examples <span class="min">7 min</span></li><li>Name them and compare with the categories <span class="min">7 min</span></li><li class="stretch">✱ Stretch: Find the campaign: which cluster is it, and what would it do to a topic count?</li></ul></div>
+  <aside class="notes"><p>With a key, 16 embedding requests (64 complaints each), under the free daily limit. Only redacted text from pool.csv is sent. Fitting ten k-means takes under a minute. If someone names clusters from terms alone, ask them to read the three examples first.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="24">
+  <div class="kicker">Session 4</div>
+  <h1>Errors downstream</h1>
+  <ul class="bullets outcomes"><li>Compute a naive district rate from model labels</li><li>Correct it with the gold set, stratified by language</li><li>Report naive and corrected rates with intervals and a version record</li></ul>
+  <div class="sess-no">04</div>
+  <aside class="notes"><p>The number Dr. Ebtisam publishes: water and sewage complaints per 10,000 residents, by district. Day 3 showed why it is biased. Now it is corrected.</p></aside>
+</section>
+
+<section class="slide" id="rectifier" data-lo="LO4" data-n="25" data-session="4">
+  <div class="kicker">Lab 4.4, step 2</div>
+  <h2>The gold set measures how far the model's share is off, one variety at a time</h2>
+  <table class="t">
+    <tr><th>Guessed variety</th><th class="num">Gold n</th><th class="num">Model's share</th><th class="num">True share</th><th class="num">Rectifier</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">127</td><td class="num">0.197</td><td class="num">0.205</td><td class="num">−0.008</td></tr>
+    <tr class="hl"><td>Gulf dialect</td><td class="num">107</td><td class="num">0.187</td><td class="num">0.280</td><td class="num">−0.093</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.152</td><td class="num">0.121</td><td class="num">+0.030</td></tr>
+  </table>
+  <p class="small mt-s">Corrected count = model's count − complaints × rectifier, summed over varieties.</p>
+  <aside class="notes"><p>The rectifier is the core of prediction-powered inference (Angelopoulos, Bates, Fannjiang, Jordan and Zrnic, Science, 2023): the model labels everything, a human sample measures its bias. Stratifying by variety is the course's choice because the bias differs by variety. The variety is guessed on the gold set too, so strata match. Sources: Prediction-powered inference.</p></aside>
+</section>
+
+<section class="slide" id="corrected-rates" data-lo="LO4" data-n="26" data-session="4">
+  <div class="kicker">Lab 4.4, steps 3 and 4</div>
+  <h2>The Gulf-speaking districts move up; Al-Khalij does not move</h2>
+  <table class="t">
+    <tr><th>Per 10,000 residents</th><th class="num">Gulf share</th><th class="num">Naive</th><th class="num">Corrected</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>Al-Naseem</td><td class="num">57%</td><td class="num">47.0</td><td class="num">57.1</td><td class="num">50.2 to 64.5</td></tr>
+    <tr><td>Al-Jazira</td><td class="num">55%</td><td class="num">38.5</td><td class="num">47.9</td><td class="num">41.4 to 54.9</td></tr>
+    <tr><td>Al-Salam</td><td class="num">48%</td><td class="num">39.0</td><td class="num">47.3</td><td class="num">41.1 to 53.8</td></tr>
+    <tr><td>Al-Shati</td><td class="num">18%</td><td class="num">21.5</td><td class="num">22.7</td><td class="num">17.2 to 27.0</td></tr>
+    <tr><td>Al-Khalij</td><td class="num">13%</td><td class="num">23.8</td><td class="num">23.8</td><td class="num">18.2 to 28.1</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 4.4 (synthetic labels). The complaints are a census, so the interval comes only from the 300 gold complaints, resampled within each variety. The naive rate has no interval, which makes it look more certain than it is.</p></aside>
+</section>
+
+<section class="slide" id="against-truth" data-lo="LO4 LO6" data-n="27" data-session="4">
+  <div class="kicker">Only in a course: the truth</div>
+  <h2>The correction restores the gap between districts, which is what the director compares</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">23.2 → 33.3</div><div class="lbl">Al-Naseem minus Al-Khalij, naive then corrected; the true gap is 32.6</div></div>
+    <ul class="bullets">
+      <li>Average error per district: naive 2.7, corrected 2.6</li>
+      <li>All 12 intervals contain the true rate</li>
+      <li>The correction trades a hidden bias for a visible variance</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The data are synthetic, so the true category of every complaint is known (solutions/truth). In a real project the gold set is the only access to the truth. Be honest about the second bullet: with 300 gold complaints the rectifiers are noisy, so the average error barely falls. The comparison between districts is what improves.</p></aside>
+</section>
+
+<section class="slide" id="campaign-rate" data-lo="LO4 LO6" data-n="28" data-session="4">
+  <div class="kicker">Lab 4.4, stretch</div>
+  <h2>Counted message by message, one campaign would double Al-Naseem's rate</h2>
+  <table class="t">
+    <tr><th>Al-Naseem, per 10,000</th><th class="num">Naive</th><th class="num">Corrected</th></tr>
+    <tr><td>Campaign counted as one issue</td><td class="num">47.0</td><td class="num">57.1</td></tr>
+    <tr class="hl"><td>Campaign's 576 messages counted</td><td class="num">98.8</td><td class="num">113.3</td></tr>
+  </table>
+  <p class="small mt-s">Every choice from Day 1 reaches the published number: copies, the campaign rule, redaction, the variety guess.</p>
+  <aside class="notes"><p>From the stretch of Lab 4.4. This is the slide that ties the course together for the capstone defence: every measurement choice is a line in the rate's version record.</p></aside>
+</section>
+
+<section class="slide" id="check-corrected" data-lo="LO4" data-n="29" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Why stratify the correction by variety?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4 LO6" data-id="check-corrected-q1">
+    <p class="lead">One rectifier for all complaints (−0.030) raises every district's rate by about the same amount, 5.4 to 5.8 per 10,000. The stratified rectifiers raise Al-Naseem by 10.1 and Al-Khalij by 0.0. Which reason justifies stratifying?</p>
+    <div class="opts">
+      <div class="opt" data-why="Thinks stratifying always narrows intervals: smaller strata can widen them" data-k="A">It always gives narrower intervals</div>
+      <div class="opt" data-why="Confuses the gold set's size with its strata: the 300 complaints stay the same" data-k="B">It uses more gold complaints</div>
+      <div class="opt" data-why="Inverts the logic: the variety mix is the reason, not a side effect" data-k="C">It makes all districts' rates rise equally</div>
+      <div class="opt" data-ok data-k="D">The model's error differs by variety and districts differ in their variety mix</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A single rectifier spreads the Gulf under-count over every district; stratifying puts it where the Gulf complaints are.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. Follow up: what would make the stratified correction wrong? A district whose Gulf speakers write differently from the gold set's.</p></aside>
+</section>
+
+<section class="slide" id="capstone-choice" data-lo="LO6" data-n="30" data-session="4">
+  <div class="kicker">Lab 4.4, step 5</div>
+  <h2>Choose the corpus you will defend</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Nadwa libraries</h4><p class="small mb0">Facilities feedback per branch, corrected, for the renovation budget. Six branches, 2,575 documents.</p></div>
+    <div class="card c-coral"><h4>Raafid social support</h4><p class="small mb0">Late-payment enquiries per region and month, with intervals: national or regional?</p></div>
+  </div>
+  <p class="small mt">Each has personal data to redact, a 200-document gold set with two coders, recorded runs and a brief. A public corpus needs the trainer's approval.</p>
+  <aside class="notes"><p>Both corpora are synthetic and built like Sada's, so every lab of the course applies. The choice is saved to artifacts/day4/capstone_choice.json with the hardest measurement choice the participant expects to defend.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-4-4" data-auto="lab" data-lab="4.4" data-label="Lab 4.4" data-n="31" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 4.4 · 25 min</div><h2>Corrected rates</h2><p class="lead small">Correct model-label complaint rates with the human sample, compare naive and corrected rates by district with intervals, and choose the capstone corpus.</p><a class="nb" href="../labs/D4_4_corrected_rates.ipynb">D4_4_corrected_rates.ipynb</a></div><ul class="checklist"><li>Naive rates per district from model labels <span class="min">5 min</span></li><li>The correction from the gold set, by language <span class="min">6 min</span></li><li>Corrected rates per district <span class="min">6 min</span></li><li>Bootstrap intervals <span class="min">5 min</span></li><li>Choose the capstone corpus <span class="min">3 min</span></li><li class="stretch">✱ Stretch: What does the campaign do to Al-Naseem's rate, with and without it?</li></ul></div>
+  <aside class="notes"><p>No model calls. Guessing the variety of 20,000 complaints takes about a minute. The commonest error is estimating the rectifiers with the coders' variety while the corpus uses the guess: the strata must match. Leave three minutes for the capstone choice.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="32" data-session="4">
+  <div class="kicker">Day 4 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Valid is not right</h4><p class="small mb0">A schema checks form; field-level precision and recall check truth.</p></div>
+    <div class="card c-coral"><h4>A cluster is a lens</h4><p class="small mb0">It shows what the vectors see, here language and a campaign, not a category.</p></div>
+    <div class="card c-purple"><h4>Correct, then compare</h4><p class="small mb0">A human sample turns a biased count into an estimate with an interval.</p></div>
+  </div>
+  <aside class="notes"><p>Ask: which correction from today would change a decision at Sada? Usually the district comparison.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="33" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Capstone: a text measurement defended live</h2>
+  <p class="lead">Eight minutes to defend your pipeline, ten documents re-labelled live, then questions. Bring the corrected estimate, its interval and its version record.</p>
+  <aside class="notes"><p>The capstone deck has the rubric and the timer. Remind participants that the assessor chooses the ten documents, so the labelling instruction must work on documents they have not seen.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"../index.html"},"deck":{"id":"day4","kind":"day","day":4,"label":"Day 4","title":"From documents to tables","prev":"day3.html","next":"capstone.html","md":"day4.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Schema-constrained extraction","slide":"s1","outcomes":["Define a schema with types, ranges and allowed values for six fields","Request schema-constrained output and validate every reply","Return a null for a field the text does not state"],"minutes":50,"lab":{"id":"4.1","title":"Six fields, validated","minutes":25,"href":"../labs/D4_1_extraction.ipynb"}},{"n":2,"label":"Session 2","title":"Field-level validation","slide":"s2","outcomes":["Define precision and recall for a field that may be empty","Compute them per field over 500 reports","List the commonest errors per field and the rule that would catch each"],"minutes":50,"lab":{"id":"4.2","title":"Field-level validation","minutes":25,"href":"../labs/D4_2_field_validation.ipynb"}},{"n":3,"label":"Session 3","title":"Structure in text","slide":"s3","outcomes":["Cluster document vectors and choose a number of clusters","Name clusters from their terms and examples","Compare clusters with codebook categories and say what each shows"],"minutes":50,"lab":{"id":"4.3","title":"Structure in text","minutes":25,"href":"../labs/D4_3_clusters.ipynb"}},{"n":4,"label":"Session 4","title":"Errors downstream","slide":"s4","outcomes":["Compute a naive district rate from model labels","Correct it with the gold set, stratified by language","Report naive and corrected rates with intervals and a version record"],"minutes":50,"lab":{"id":"4.4","title":"Corrected rates","minutes":25,"href":"../labs/D4_4_corrected_rates.ipynb"}}],"slides":[{"id":"title","n":1,"title":"From documents to tables","kind":"title","session":0,"hash":"8d799498","md":"#### [day4#title] From documents to tables\n\n*SDAIA Academy · Text and Unstructured Data for Data Science*\n\nDay 4: Validated extraction, field-level scores, clusters, and estimates corrected with the human sample\n\nData Science Track · 4 teaching days + capstone day · 4 sessions · 4 labs · DS-306","notes":"The last teaching day turns text into tables: fields from reports in the morning, structure and corrected rates in the afternoon. The day ends with the choice of the capstone corpus, so keep the last lab on time. Model runs today are again the course's synthetic recordings unless a participant has a working key; say so at the start.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"From documents to tables","kind":"content","session":0,"hash":"17dd658b","md":"#### [day4#agenda] From documents to tables\n\n*Today*\n\n- **Session 1 · Schema-constrained extraction**: A schema the model must fill, validation of every reply, and nulls instead of invented values\n- **Session 2 · Field-level validation**: Precision and recall per field, with nulls counted correctly, and the commonest errors\n- **Session 3 · Structure in text**: Clusters of embeddings as a way to see a corpus, and why a cluster is not a category\n- **Session 4 · Errors downstream**: A complaint rate from model labels, corrected with the human sample, with intervals","notes":"Two sessions on extraction and its validation, one on clustering, one on carrying model errors into a published rate. Every lab starts from supplied files.","minutes":null,"lo":[]},{"id":"review-day3","n":3,"title":"What did the criteria decide?","kind":"quiz","session":0,"hash":"d571c4d5","md":"#### [day4#review-day3] What did the criteria decide?\n\n*Review of Day 3*\n\n**Question:** Fahim failed the criteria on Gulf dialect (kappa 0.187 below the human pair) and on stability (80.3% of complaints with three agreeing runs). What did the reliability memo recommend?\n\n- A. Stop using Fahim's labels altogether\n- B. Keep the second coder; use Fahim's labels for counts, corrected with the gold set by variety\n- C. Replace the coder with the majority of three runs\n- D. Relax the stability criterion to 80%","notes":"Answer: the second option. Keep the distinction alive all day: per-document use against aggregate use.","minutes":null,"lo":["LO5"]},{"id":"s1","n":4,"title":"Schema-constrained extraction","kind":"section","session":1,"hash":"c8e44ba8","md":"#### [day4#s1] Schema-constrained extraction\n\n*Session 1*\n\n- Define a schema with types, ranges and allowed values for six fields\n- Request schema-constrained output and validate every reply\n- Return a null for a field the text does not state","notes":"Khalaf Al-Baqmi's field inspectors write free text. His repair schedule needs a table. The schema is the contract between them.","minutes":null,"lo":["LO3"]},{"id":"report-to-row","n":5,"title":"One report, six fields, each with a type and a rule","kind":"content","session":1,"hash":"8cb52e2a","md":"#### [day4#report-to-row] One report, six fields, each with a type and a rule\n\n*From report to row*\n\n**IR-0005:** تاريخ الزيارة: 19 سبتمبر 2026. الحي: المروة. لاحظ المفتش طفح مياه الصرف … الخلل جسيم. يشكل خطرا على المارة. يجب الإصلاح خلال 10 أيام.\n\n| Field | Value |\n| --- | --- |\n| district | `al_marwa` |\n| inspection_date | `2026-09-19` |\n| defect_type | `sewage_overflow` |\n| severity | `high` |\n| hazard_to_public | `true` |\n| repair_deadline_days | `10` |","notes":"From data/inspections.jsonl: 500 synthetic reports, 40% in English, dates in three styles, district names in several spellings, a third with no deadline. Ask the room which field they would trust least before seeing any numbers.","minutes":null,"lo":["LO3"]},{"id":"schema","n":6,"title":"The schema says what a valid answer is before any model answers","kind":"content","session":1,"hash":"6c2d547f","md":"#### [day4#schema] The schema says what a valid answer is before any model answers\n\n*Lab 4.1, step 1*\n\n```python\n# file: D4_1_extraction.ipynb\nclass Inspection(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n    district: Optional[Literal[CODES]] = None\n    inspection_date: Optional[date] = None      # and a 2026 check\n    defect_type: Optional[Literal[DEFECTS]] = None\n    severity: Optional[Literal[\"low\", \"medium\", \"high\", \"critical\"]] = None\n    hazard_to_public: Optional[bool] = None\n    repair_deadline_days: Optional[int] = Field(None, ge=1, le=90)\n```","notes":"Every field is optional because a report may not state it: the schema must allow an honest empty. Pydantic is one choice; JSON Schema, which OpenRouter's structured outputs accept for models that support them, is another. The class produces the JSON Schema, so either way it is written once. Sources: Pydantic documentation.","minutes":null,"lo":["LO3"]},{"id":"validate-repair","n":7,"title":"JSON mode makes a reply parse; the schema makes it admissible","kind":"content","session":1,"hash":"ed02b37c","md":"#### [day4#validate-repair] JSON mode makes a reply parse; the schema makes it admissible\n\n*Lab 4.1, step 3*\n\n1. **1 · Ask** Prompt and report, JSON mode\n2. **2 · Validate** \"Al Marwa\", \"07/06/2026\", \"Minor\": three errors\n3. **3 · Repair once** Send the errors back; validate again\n\n> **What goes wrong.** The repaired IR-0002 is valid and still wrong: no district, day and month swapped, a hazard the report denies.","notes":"Press once per step. The broken reply is supplied in the lab, so the repair path runs without a key. The point of the last line: validation checks form, not truth. Session 2 measures truth.","minutes":null,"lo":["LO3"]},{"id":"null-not-invented","n":8,"title":"A deadline the report never gave looks exactly like data","kind":"content","session":1,"hash":"02018f17","md":"#### [day4#null-not-invented] A deadline the report never gave looks exactly like data\n\n*Lab 4.1, step 4*\n\n**47 of 177** reports with no deadline got one in the recorded run (26.6%)\n\n- The prompt says: never infer it from the severity\n- The invented values match the severity table\n- **Grounding rule**: keep a deadline only when the number of days is written in the text\n- It catches all 47","notes":"From Lab 4.1 on the recorded run (synthetic). A missing value is visible and gets checked; an invented one enters the repair schedule. The grounding rule is plain code: a number followed by the word for days, in either digit system.","minutes":null,"lo":["LO3"]},{"id":"check-extraction","n":9,"title":"What should come back for a field the report does not state?","kind":"quiz","session":1,"hash":"efc4c2af","md":"#### [day4#check-extraction] What should come back for a field the report does not state?\n\n*Checkpoint*\n\n**Question:** A report reads \"The repair date will be set later.\" The defect is serious. The schema allows `repair_deadline_days` from 1 to 90 or null. Which extraction is right?\n\n- A. 7, the usual deadline for a serious defect\n- B. 0, meaning no deadline\n- C. \"later\"\n- D. null","notes":"Answer: the fourth option. Ask who has seen \"0\" or \"999\" used as a missing code in a real table, and what it did to an average.","minutes":null,"lo":["LO3"]},{"id":"lab-4-1","n":10,"title":"Six fields, validated","kind":"lab","session":1,"hash":"cc46cc4e","md":"#### [day4#lab-4-1] Six fields, validated\n\nLab 4.1 · 25 min\n\nExtract six fields from inspection reports into a validated schema, repair replies that fail and keep a null where the report states nothing.\n\n[D4_1_extraction.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D4_1_extraction.ipynb)\n\n- [ ] The schema with Pydantic (6 min)\n- [ ] The prompt and three reports (6 min)\n- [ ] Validate and repair (6 min)\n- [ ] A null, not an invented value (4 min)\n- [ ] Twelve reports, saved with the version (3 min)\n- [ ] ✱ Stretch: Add a seventh field, the street number, and measure it on the twelve reports","notes":"Without a key the stand-in replays the recorded run; with one, about fifteen requests. Common error: building the schema with plain str fields, which then accepts \"Al Marwa\". The twelve reports are fixed (six with a deadline, six without) so everyone compares the same rows.","minutes":null,"lo":[]},{"id":"s2","n":11,"title":"Field-level validation","kind":"section","session":2,"hash":"ed1563d4","md":"#### [day4#s2] Field-level validation\n\n*Session 2*\n\n- Define precision and recall for a field that may be empty\n- Compute them per field over 500 reports\n- List the commonest errors per field and the rule that would catch each","notes":"\"The extraction is 94% accurate.\" Ask what that number would tell Khalaf about his schedule. Nothing.","minutes":null,"lo":["LO3"]},{"id":"outcomes","n":12,"title":"A field that may be empty has five outcomes, not two","kind":"content","session":2,"hash":"def2d007","md":"#### [day4#outcomes] A field that may be empty has five outcomes, not two\n\n*Lab 4.2, step 2*\n\n| Outcome | Reference | Extracted | Counts against |\n| --- | --- | --- | --- |\n| Right | a value | the same value |  |\n| Wrong | a value | another value | precision and recall |\n| Missed | a value | empty | recall |\n| Invented | empty | a value | precision |\n| Correctly empty | empty | empty |  |","notes":"Precision is right over everything the model gave; recall is right over everything the reports state. Correctly empty fields count for neither, which is why the lab also reports the share of empty fields that stayed empty.","minutes":null,"lo":["LO3"]},{"id":"field-scores","n":13,"title":"94% of all values are right; the deadline's precision is 0.87","kind":"content","session":2,"hash":"0b95b4f6","md":"#### [day4#field-scores] 94% of all values are right; the deadline's precision is 0.87\n\n*Lab 4.2, step 3 (recorded run)*\n\n| Field | Precision | Recall |\n| --- | --- | --- |\n| district | 1.000 | 0.942 |\n| inspection_date | 0.966 | 0.966 |\n| defect_type | 0.968 | 0.968 |\n| severity | 0.968 | 0.968 |\n| hazard_to_public | 0.908 | 0.908 |\n| repair_deadline_days | 0.870 | 0.972 |","notes":"From Lab 4.2 over 500 reports (synthetic run). The deadline's precision has a 95% interval of 0.834 to 0.903 (stretch). Only 73% of empty deadlines stayed empty. The pooled 94% is the number a vendor quotes.","minutes":null,"lo":["LO3"]},{"id":"error-patterns","n":14,"title":"Each field fails in its own way, and most failures follow the text's form","kind":"content","session":2,"hash":"ac66d232","md":"#### [day4#error-patterns] Each field fails in its own way, and most failures follow the text's form\n\n*Lab 4.2, step 4*\n\n| Field | Commonest error | n | Where |\n| --- | --- | --- | --- |\n| district | left empty for a spelling variant | 29 | Arabic 8% |\n| inspection_date | day and month swapped | 17 | dd/mm/yyyy 15% |\n| defect_type | damaged pavement read as pothole | 9 | English 4% |\n| severity | medium read as low | 16 | Arabic 5% |\n| hazard_to_public | \"no risk\" read as a risk | 46 | Arabic 9% |\n| repair_deadline_days | empty filled with 14 | 18 | Arabic 12% |","notes":"From Lab 4.2. A swap is only possible when the day is 12 or less, which is why the error concentrates in one date style rather than one language.","minutes":null,"lo":["LO3"]},{"id":"rules-in-code","n":15,"title":"Most fixes are rules in code, not a better prompt","kind":"content","session":2,"hash":"98aba71c","md":"#### [day4#rules-in-code] Most fixes are rules in code, not a better prompt\n\n*Lab 4.2, step 5*\n\n- Dates with slashes: parse in code, day first\n- District: a list of spelling variants kept with the schema\n- Hazard: check the negated phrase, override to false\n- Deadline: keep it only when written in the text\n\n- **The validation report.** One line per field: precision, recall, the commonest error and the rule that catches it. It goes to Khalaf with the table.","notes":"The model is left with what code cannot read: the defect description and severity words in free form. Ask which rule participants would add first given one hour: usually the deadline grounding, because it protects the schedule.","minutes":null,"lo":["LO3"]},{"id":"check-field","n":16,"title":"Which number tells Khalaf whether to trust the deadlines?","kind":"quiz","session":2,"hash":"f51ef7bd","md":"#### [day4#check-field] Which number tells Khalaf whether to trust the deadlines?\n\n*Checkpoint*\n\n**Question:** Khalaf will schedule repairs from `repair_deadline_days`. A wrong deadline sends a crew on the wrong day; a missing one is checked by phone. Which measure answers his question?\n\n- A. The deadline field's precision, with the share of empty deadlines that stayed empty\n- B. The accuracy pooled over all six fields\n- C. The deadline field's recall\n- D. The share of replies that passed the schema","notes":"Answer: the first option.","minutes":null,"lo":["LO3"]},{"id":"lab-4-2","n":17,"title":"Field-level validation","kind":"lab","session":2,"hash":"e58d60b4","md":"#### [day4#lab-4-2] Field-level validation\n\nLab 4.2 · 25 min\n\nCompute per-field precision and recall of the recorded extraction run over 500 reports, list the commonest errors and write the validation report.\n\n[D4_2_field_validation.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D4_2_field_validation.ipynb)\n\n- [ ] Load the run and the reference (3 min)\n- [ ] Matching rules per field (5 min)\n- [ ] Precision and recall per field (7 min)\n- [ ] The commonest errors per field (6 min)\n- [ ] The validation report (4 min)\n- [ ] ✱ Stretch: An interval for the precision of the deadline field","notes":"No model calls. The commonest slip is counting a None against a None as a true positive, which inflates recall. Another: comparing 14 with 14.0 as different. The matching function handles both; make participants read it.","minutes":null,"lo":[]},{"id":"s3","n":18,"title":"Structure in text","kind":"section","session":3,"hash":"41e36515","md":"#### [day4#s3] Structure in text\n\n*Session 3*\n\n- Cluster document vectors and choose a number of clusters\n- Name clusters from their terms and examples\n- Compare clusters with codebook categories and say what each shows","notes":"Dr. Ebtisam asks what people write about that the eight categories do not show. Clustering looks without a codebook, and shows what the vectors see.","minutes":null,"lo":["LO2","LO6"]},{"id":"choosing-k","n":19,"title":"The silhouette barely moves with k: complaints have no sharp borders","kind":"content","session":3,"hash":"6dd43c43","md":"#### [day4#choosing-k] The silhouette barely moves with k: complaints have no sharp borders\n\n*Lab 4.3, step 2*\n\n| Item | Value |\n| --- | --- |\n| k = 3 | 0.100 |\n| k = 5 | 0.101 |\n| k = 8 | 0.102 |\n| k = 10 | 0.110 |\n| k = 12 | 0.086 |\n\nMean silhouette, cosine, 1,000 complaints. The silhouette advises; the number of clusters a person can read decides.","notes":"From Lab 4.3, on the stand-in's lexical vectors because no embedding call ran. Bars are scaled to a maximum of 0.2. With a real embedding model the values change; the flat shape is typical of short complaints.","minutes":null,"lo":["LO2"]},{"id":"what-clusters-see","n":20,"title":"The five clusters follow the language, not the topic","kind":"content","session":3,"hash":"0300b67c","md":"#### [day4#what-clusters-see] The five clusters follow the language, not the topic\n\n*Lab 4.3, step 4*\n\n| Agreement of the clusters with | Adjusted Rand |\n| --- | --- |\n| Routing labels (topic) | 0.005 |\n| Guessed variety | 0.642 |\n\n- One cluster is all English, one all formal Arabic\n- Three are mostly Gulf dialect\n- Wording-based vectors see wording\n\n> **What goes wrong.** A team names the clusters \"topics\" and publishes their sizes. They were counting languages.","notes":"From Lab 4.3 on stand-in vectors (hashed character n-grams). A multilingual embedding model should weaken the language effect; whether it removes it is something to measure, not assume. Adjusted Rand: 0 is chance, 1 the same partition.","minutes":null,"lo":["LO2","LO6"]},{"id":"campaign-cluster","n":21,"title":"Every campaign message in the sample lands in one cluster","kind":"content","session":3,"hash":"ed11880d","md":"#### [day4#campaign-cluster] Every campaign message in the sample lands in one cluster\n\n*Lab 4.3, stretch*\n\n**26 of 26** campaign messages in the sample fall in one Gulf sewage cluster, a quarter of it\n\n**Cluster 3, nearest the centre:** يا جماعة ترى المجاري طافحة عند مدخل الحي والريحة وايد قوية. الشارع غرقان مويه …","notes":"From Lab 4.3. The campaign found by MinHash on Day 1 shows up again, from another direction. A cluster's size is not a measure of how many citizens share a concern: organised writing inflates it.","minutes":null,"lo":["LO2","LO6"]},{"id":"check-clusters","n":22,"title":"Can a cluster's size be published as a topic count?","kind":"quiz","session":3,"hash":"de55d66c","md":"#### [day4#check-clusters] Can a cluster's size be published as a topic count?\n\n*Checkpoint*\n\n**Question:** A colleague proposes a new quarterly figure: the share of complaints in each of the five clusters, named from their top terms. What is the main problem?\n\n- A. Five is the wrong number of clusters\n- B. The silhouette is too low; a higher one would make the figure valid\n- C. A cluster has no definition or measured error, and here it tracks language and a campaign more than topic\n- D. The sample of 1,000 is too small","notes":"Answer: the third option. The useful outcome of clustering here is a question for the codebook: is there a theme the eight categories miss?","minutes":null,"lo":["LO2"]},{"id":"lab-4-3","n":23,"title":"Structure in text","kind":"lab","session":3,"hash":"f3458f90","md":"#### [day4#lab-4-3] Structure in text\n\nLab 4.3 · 25 min\n\nCluster complaint embeddings, name five clusters from their terms and examples, and compare them with the codebook categories.\n\n[D4_3_clusters.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D4_3_clusters.ipynb)\n\n- [ ] Vectors for a sample of complaints (5 min)\n- [ ] k-means for several k, with silhouette (6 min)\n- [ ] Five clusters: terms and examples (7 min)\n- [ ] Name them and compare with the categories (7 min)\n- [ ] ✱ Stretch: Find the campaign: which cluster is it, and what would it do to a topic count?","notes":"With a key, 16 embedding requests (64 complaints each), under the free daily limit. Only redacted text from pool.csv is sent. Fitting ten k-means takes under a minute. If someone names clusters from terms alone, ask them to read the three examples first.","minutes":null,"lo":[]},{"id":"s4","n":24,"title":"Errors downstream","kind":"section","session":4,"hash":"e81b87de","md":"#### [day4#s4] Errors downstream\n\n*Session 4*\n\n- Compute a naive district rate from model labels\n- Correct it with the gold set, stratified by language\n- Report naive and corrected rates with intervals and a version record","notes":"The number Dr. Ebtisam publishes: water and sewage complaints per 10,000 residents, by district. Day 3 showed why it is biased. Now it is corrected.","minutes":null,"lo":["LO4","LO6"]},{"id":"rectifier","n":25,"title":"The gold set measures how far the model's share is off, one variety at a time","kind":"content","session":4,"hash":"de36d896","md":"#### [day4#rectifier] The gold set measures how far the model's share is off, one variety at a time\n\n*Lab 4.4, step 2*\n\n| Guessed variety | Gold n | Model's share | True share | Rectifier |\n| --- | --- | --- | --- | --- |\n| Modern Standard Arabic | 127 | 0.197 | 0.205 | −0.008 |\n| Gulf dialect | 107 | 0.187 | 0.280 | −0.093 |\n| English | 66 | 0.152 | 0.121 | +0.030 |\n\nCorrected count = model's count − complaints × rectifier, summed over varieties.","notes":"The rectifier is the core of prediction-powered inference (Angelopoulos, Bates, Fannjiang, Jordan and Zrnic, Science, 2023): the model labels everything, a human sample measures its bias. Stratifying by variety is the course's choice because the bias differs by variety. The variety is guessed on the gold set too, so strata match. Sources: Prediction-powered inference.","minutes":null,"lo":["LO4"]},{"id":"corrected-rates","n":26,"title":"The Gulf-speaking districts move up; Al-Khalij does not move","kind":"content","session":4,"hash":"903f23c7","md":"#### [day4#corrected-rates] The Gulf-speaking districts move up; Al-Khalij does not move\n\n*Lab 4.4, steps 3 and 4*\n\n| Per 10,000 residents | Gulf share | Naive | Corrected | 95% interval |\n| --- | --- | --- | --- | --- |\n| Al-Naseem | 57% | 47.0 | 57.1 | 50.2 to 64.5 |\n| Al-Jazira | 55% | 38.5 | 47.9 | 41.4 to 54.9 |\n| Al-Salam | 48% | 39.0 | 47.3 | 41.1 to 53.8 |\n| Al-Shati | 18% | 21.5 | 22.7 | 17.2 to 27.0 |\n| Al-Khalij | 13% | 23.8 | 23.8 | 18.2 to 28.1 |","notes":"From Lab 4.4 (synthetic labels). The complaints are a census, so the interval comes only from the 300 gold complaints, resampled within each variety. The naive rate has no interval, which makes it look more certain than it is.","minutes":null,"lo":["LO4"]},{"id":"against-truth","n":27,"title":"The correction restores the gap between districts, which is what the director compares","kind":"content","session":4,"hash":"ba26f435","md":"#### [day4#against-truth] The correction restores the gap between districts, which is what the director compares\n\n*Only in a course: the truth*\n\n**23.2 → 33.3** Al-Naseem minus Al-Khalij, naive then corrected; the true gap is 32.6\n\n- Average error per district: naive 2.7, corrected 2.6\n- All 12 intervals contain the true rate\n- The correction trades a hidden bias for a visible variance","notes":"The data are synthetic, so the true category of every complaint is known (solutions/truth). In a real project the gold set is the only access to the truth. Be honest about the second bullet: with 300 gold complaints the rectifiers are noisy, so the average error barely falls. The comparison between districts is what improves.","minutes":null,"lo":["LO4","LO6"]},{"id":"campaign-rate","n":28,"title":"Counted message by message, one campaign would double Al-Naseem's rate","kind":"content","session":4,"hash":"0603ee0f","md":"#### [day4#campaign-rate] Counted message by message, one campaign would double Al-Naseem's rate\n\n*Lab 4.4, stretch*\n\n| Al-Naseem, per 10,000 | Naive | Corrected |\n| --- | --- | --- |\n| Campaign counted as one issue | 47.0 | 57.1 |\n| Campaign's 576 messages counted | 98.8 | 113.3 |\n\nEvery choice from Day 1 reaches the published number: copies, the campaign rule, redaction, the variety guess.","notes":"From the stretch of Lab 4.4. This is the slide that ties the course together for the capstone defence: every measurement choice is a line in the rate's version record.","minutes":null,"lo":["LO4","LO6"]},{"id":"check-corrected","n":29,"title":"Why stratify the correction by variety?","kind":"quiz","session":4,"hash":"62015b5d","md":"#### [day4#check-corrected] Why stratify the correction by variety?\n\n*Checkpoint*\n\n**Question:** One rectifier for all complaints (−0.030) raises every district's rate by about the same amount, 5.4 to 5.8 per 10,000. The stratified rectifiers raise Al-Naseem by 10.1 and Al-Khalij by 0.0. Which reason justifies stratifying?\n\n- A. It always gives narrower intervals\n- B. It uses more gold complaints\n- C. It makes all districts' rates rise equally\n- D. The model's error differs by variety and districts differ in their variety mix","notes":"Answer: the fourth option. Follow up: what would make the stratified correction wrong? A district whose Gulf speakers write differently from the gold set's.","minutes":null,"lo":["LO4"]},{"id":"capstone-choice","n":30,"title":"Choose the corpus you will defend","kind":"content","session":4,"hash":"35732009","md":"#### [day4#capstone-choice] Choose the corpus you will defend\n\n*Lab 4.4, step 5*\n\n- **Nadwa libraries.** Facilities feedback per branch, corrected, for the renovation budget. Six branches, 2,575 documents.\n- **Raafid social support.** Late-payment enquiries per region and month, with intervals: national or regional?\n\nEach has personal data to redact, a 200-document gold set with two coders, recorded runs and a brief. A public corpus needs the trainer's approval.","notes":"Both corpora are synthetic and built like Sada's, so every lab of the course applies. The choice is saved to artifacts/day4/capstone_choice.json with the hardest measurement choice the participant expects to defend.","minutes":null,"lo":["LO6"]},{"id":"lab-4-4","n":31,"title":"Corrected rates","kind":"lab","session":4,"hash":"47ae60d6","md":"#### [day4#lab-4-4] Corrected rates\n\nLab 4.4 · 25 min\n\nCorrect model-label complaint rates with the human sample, compare naive and corrected rates by district with intervals, and choose the capstone corpus.\n\n[D4_4_corrected_rates.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D4_4_corrected_rates.ipynb)\n\n- [ ] Naive rates per district from model labels (5 min)\n- [ ] The correction from the gold set, by language (6 min)\n- [ ] Corrected rates per district (6 min)\n- [ ] Bootstrap intervals (5 min)\n- [ ] Choose the capstone corpus (3 min)\n- [ ] ✱ Stretch: What does the campaign do to Al-Naseem's rate, with and without it?","notes":"No model calls. Guessing the variety of 20,000 complaints takes about a minute. The commonest error is estimating the rectifiers with the coders' variety while the corpus uses the guess: the strata must match. Leave three minutes for the capstone choice.","minutes":null,"lo":[]},{"id":"wrap-up","n":32,"title":"Three things to keep","kind":"content","session":4,"hash":"16da661e","md":"#### [day4#wrap-up] Three things to keep\n\n*Day 4 · wrap-up*\n\n- **Valid is not right.** A schema checks form; field-level precision and recall check truth.\n- **A cluster is a lens.** It shows what the vectors see, here language and a campaign, not a category.\n- **Correct, then compare.** A human sample turns a biased count into an estimate with an interval.","notes":"Ask: which correction from today would change a decision at Sada? Usually the district comparison.","minutes":null,"lo":[]},{"id":"next","n":33,"title":"Capstone: a text measurement defended live","kind":"content","session":4,"hash":"e3045ca1","md":"#### [day4#next] Capstone: a text measurement defended live\n\n*Next*\n\nEight minutes to defend your pipeline, ten documents re-labelled live, then questions. Bring the corrected estimate, its interval and its version record.","notes":"The capstone deck has the rubric and the timer. Remind participants that the assessor chooses the ten documents, so the labelling instruction must work on documents they have not seen.","minutes":null,"lo":[]}],"activities":[{"id":"review-day3-q1","slide":"review-day3","type":"single","prompt":"Fahim failed the criteria on Gulf dialect (kappa 0.187 below the human pair) and on stability (80.3% of complaints with three agreeing runs). What did the reliability memo recommend?","options":[{"key":"A","text":"Stop using Fahim's labels altogether"},{"key":"B","text":"Keep the second coder; use Fahim's labels for counts, corrected with the gold set by variety"},{"key":"C","text":"Replace the coder with the majority of three runs"},{"key":"D","text":"Relax the stability criterion to 80%"}],"correct":[1],"explanation":"A label used one complaint at a time must be right; a count can be corrected for errors measured on a human sample. Session 4 does that correction.","misconceptions":["Treats a failed annotator test as a ban on any use: counts can be corrected","","Takes the majority vote as a fix for a systematic error: votes cancel noise, not bias","Moves the bar after the results were known"],"lo":["LO5"]},{"id":"check-extraction-q1","slide":"check-extraction","type":"single","prompt":"A report reads \"The repair date will be set later.\" The defect is serious. The schema allows repair_deadline_days from 1 to 90 or null. Which extraction is right?","options":[{"key":"A","text":"7, the usual deadline for a serious defect"},{"key":"B","text":"0, meaning no deadline"},{"key":"C","text":"\"later\""},{"key":"D","text":"null"}],"correct":[3],"explanation":"An empty field is honest and countable. Any number would be read as a deadline by the schedule.","misconceptions":["Fills the field from the severity table: a plausible value the report never gave","Uses a number as a code for missing: it passes as a real deadline downstream and fails the 1 to 90 range","Puts text in a whole-number field: the schema rejects it",""],"lo":["LO3"]},{"id":"check-field-q1","slide":"check-field","type":"single","prompt":"Khalaf will schedule repairs from repair_deadline_days. A wrong deadline sends a crew on the wrong day; a missing one is checked by phone. Which measure answers his question?","options":[{"key":"A","text":"The deadline field's precision, with the share of empty deadlines that stayed empty"},{"key":"B","text":"The accuracy pooled over all six fields"},{"key":"C","text":"The deadline field's recall"},{"key":"D","text":"The share of replies that passed the schema"}],"correct":[0],"explanation":"His costly error is a deadline given that is wrong or invented: that is precision, and the empties are where invention happens.","misconceptions":["","Uses the pooled figure, which mixes the easy fields with the one that matters","Measures found values, while his cost is in wrong and invented ones","Confuses a valid reply with a right one: invented deadlines are valid"],"lo":["LO3"]},{"id":"check-clusters-q1","slide":"check-clusters","type":"single","prompt":"A colleague proposes a new quarterly figure: the share of complaints in each of the five clusters, named from their top terms. What is the main problem?","options":[{"key":"A","text":"Five is the wrong number of clusters"},{"key":"B","text":"The silhouette is too low; a higher one would make the figure valid"},{"key":"C","text":"A cluster has no definition or measured error, and here it tracks language and a campaign more than topic"},{"key":"D","text":"The sample of 1,000 is too small"}],"correct":[2],"explanation":"A category has a codebook, a gold set and an error rate. A cluster is a way to look, and it moves with the vectors, the sample and k.","misconceptions":["Treats the choice of k as the only issue: any k has the same problem","Thinks a better silhouette makes clusters into categories","","Blames the sample size: more complaints would sharpen, not define, the clusters"],"lo":["LO2","LO6"]},{"id":"check-corrected-q1","slide":"check-corrected","type":"single","prompt":"One rectifier for all complaints (−0.030) raises every district's rate by about the same amount, 5.4 to 5.8 per 10,000. The stratified rectifiers raise Al-Naseem by 10.1 and Al-Khalij by 0.0. Which reason justifies stratifying?","options":[{"key":"A","text":"It always gives narrower intervals"},{"key":"B","text":"It uses more gold complaints"},{"key":"C","text":"It makes all districts' rates rise equally"},{"key":"D","text":"The model's error differs by variety and districts differ in their variety mix"}],"correct":[3],"explanation":"A single rectifier spreads the Gulf under-count over every district; stratifying puts it where the Gulf complaints are.","misconceptions":["Thinks stratifying always narrows intervals: smaller strata can widen them","Confuses the gold set's size with its strata: the 300 complaints stay the same","Inverts the logic: the variety mix is the reason, not a side effect",""],"lo":["LO4","LO6"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day4.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

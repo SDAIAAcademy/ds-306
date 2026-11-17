@@ -1,0 +1,10 @@
+{
+ "mae_naive": 2.7,
+ "mae_corrected": 2.6,
+ "covered": 12,
+ "gap": {
+  "naive_rate": 23.2,
+  "corrected_rate": 33.3,
+  "true_rate": 32.6
+ }
+}

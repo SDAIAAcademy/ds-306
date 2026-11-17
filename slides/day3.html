@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3 · Language models as instruments · Text and Unstructured Data for Data Science</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day3.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Text and Unstructured Data for Data Science" data-track="data-science" data-day="Day 3">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Text and Unstructured Data for Data Science</div>
+  <h1>Language models as instruments</h1>
+  <p class="lead mt">Day 3: A prompted open-weight model measured like any other instrument: accuracy, stability, dialect gaps</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-306</span></div>
+  <aside class="notes"><p>Today a language model enters, and it is treated like any other instrument: calibrated against the gold set, tested for repeatability, checked by group. Say early and clearly that the full runs used today are synthetic recordings; participants with a working key run a few live calls and compare. Breaks are yours: press B.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Language models as instruments</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Prompted classification</b><small>A prompt is an instrument: codebook, label set, output format, batch and a version record</small></div></div><div class="item"><div><b>Session 2 · Ask it twice</b><small>Run stability and prompt stability, measured as agreement of the model with itself</small></div></div><div class="item"><div><b>Session 3 · Dialect gaps</b><small>Agreement by language variety, the confusions behind a gap, and what a gap does to a count</small></div></div><div class="item"><div><b>Session 4 · Is the model a good annotator</b><small>A model as a second coder: criteria fixed before looking, evidence, and a written decision</small></div></div></div>
+  <aside class="notes"><p>Four questions, one per session: how good is it, how repeatable, for whom, and is that good enough to replace a person. Each lab starts from the recorded runs, so nothing depends on a key or on yesterday.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO2" data-n="3">
+  <div class="kicker">Review of Day 2</div>
+  <h2>What did the paired comparison show?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="review-day2-q1">
+    <p class="lead">Sparse minus embedding accuracy on the same 300 gold complaints was +0.037, interval −0.003 to +0.073. Unpaired, the interval was 0.093 wide; paired, 0.077. What made the paired interval narrower?</p>
+    <div class="opts">
+      <div class="opt" data-why="Thinks pairing adds data: both analyses use the same 300 complaints" data-k="A">Pairing doubles the number of complaints</div>
+      <div class="opt" data-why="Confuses the number of resamples with precision: both used 2,000" data-k="B">The paired bootstrap used more resamples</div>
+      <div class="opt" data-ok data-k="C">Complaints that are easy or hard for both classifiers cancel out in the difference</div>
+      <div class="opt" data-why="Attributes the width to the metric: both intervals are on accuracy" data-k="D">Accuracy is less variable than macro F1</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the complaints where exactly one classifier is right carry the difference; pairing keeps the rest from adding noise.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. This comes back in session 2: two runs of one model share most of their errors, which is why their disagreement is small and informative.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Prompted classification</h1>
+  <ul class="bullets outcomes"><li>Write a classification prompt from a codebook with a fixed output format</li><li>Classify documents in batches within a call budget and parse every reply</li><li>Record model, prompt version and settings with every label set</li></ul>
+  <div class="sess-no">01</div>
+  <aside class="notes"><p>The prompt is the instrument's design. Its version is recorded like a questionnaire's.</p></aside>
+</section>
+
+<section class="slide" id="prompt-as-instrument" data-lo="LO2 LO5" data-n="5" data-session="1">
+  <div class="kicker">A prompt is an instrument</div>
+  <h2>The codebook becomes a prompt with fixed labels and a fixed output format</h2>
+  <div class="prompt" data-tool="Fahim, prompt 1">
+    <span class="seg c-teal">You label citizen complaints for Sada Citizen Voice Centre.</span>
+    <span class="seg c-cyan">Assign each complaint exactly one category: the main problem the citizen asks the centre to fix.</span>
+    <span class="seg c-coral">Categories: water_sewage, roads, waste, … each with one line of definition.</span>
+    <span class="seg c-purple">Reply with JSON only: {"labels": [{"id": …, "label": …}]}</span>
+  </div>
+  <div class="legend"><span class="c-teal">Role</span><span class="c-cyan">Unit and rule</span><span class="c-coral">Label set</span><span class="c-purple">Format</span></div>
+  <aside class="notes"><p>From data/prompts/fahim_p1.md. Ask the room which line of the codebook did not make it into the prompt: the "does not include" column. That omission is one of the reasons for tomorrow's corrections. The labels are the exact codes, so parsing is a lookup, not an interpretation.</p></aside>
+</section>
+
+<section class="slide" id="batch-and-budget" data-lo="LO2" data-n="6" data-session="1">
+  <div class="kicker">Within the budget</div>
+  <h2>Ten complaints a request: the prompt is paid once per batch</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>One request labels ten complaints, each line <code>id: text</code></li>
+      <li>The gold set is 30 requests; all 20,000 complaints are 2,000</li>
+      <li>Free tier: 50 requests a day, 1,000 after a one-time 10 credits</li>
+    </ul>
+    <div class="callout warn"><b>A measurement choice.</b> Batching can change labels: a complaint is read next to nine others. The stretch of Lab 3.1 compares one-per-call with batches.</div>
+  </div>
+  <aside class="notes"><p>Limits from OpenRouter's documentation, read this month. Batching is a trade: fewer requests and tokens against a possible context effect. A careful study measures it; the stretch does with a key. Sources: OpenRouter API rate limits.</p></aside>
+</section>
+
+<section class="slide" id="parse-never-guess" data-lo="LO2" data-n="7" data-session="1">
+  <div class="kicker">Lab 3.1, step 2</div>
+  <h2>A reply that cannot be parsed is a missing label, never a guessed one</h2>
+  <pre class="code" data-file="sada.py"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_labels</span>(<span class="hljs-params">text, ids</span>):
+    data = json.loads(text[text.find(<span class="hljs-string">&quot;{&quot;</span>): text.rfind(<span class="hljs-string">&quot;}&quot;</span>) + <span class="hljs-number">1</span>])
+    got = {<span class="hljs-built_in">str</span>(x.get(<span class="hljs-string">&quot;id&quot;</span>)): x.get(<span class="hljs-string">&quot;label&quot;</span>) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> data.get(<span class="hljs-string">&quot;labels&quot;</span>, [])}
+    <span class="hljs-keyword">return</span> {i: (got.get(i) <span class="hljs-keyword">if</span> got.get(i) <span class="hljs-keyword">in</span> CATEGORIES <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ids}</code></pre>
+  <p class="small mt-s">In the course's run all ten labels came back usable and eight were right.</p>
+  <aside class="notes"><p>Missing ids and labels outside the codebook become None and are counted. Mapping "Roads and pavements" to roads silently would hide a format failure that grows with a new model. The 8 of 10 is from the stand-in replaying the recorded run.</p></aside>
+</section>
+
+<section class="slide" id="version-record" data-lo="LO2 LO4" data-n="8" data-session="1">
+  <div class="kicker">The version record</div>
+  <h2>Every label set travels with the model, the prompt and the settings that made it</h2>
+  <table class="t">
+    <tr><th>Field</th><th>Value in the recorded run</th></tr>
+    <tr><td>Model</td><td><code>google/gemma-4-31b-it:free</code></td></tr>
+    <tr><td>Prompt</td><td>P1 and the hash of its text</td></tr>
+    <tr><td>Temperature, batch size</td><td>0.7, ten complaints</td></tr>
+    <tr><td>Date</td><td>The day of the run</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> A model name stays while the weights behind an endpoint change. Without the date and the prompt hash, a published rate cannot be reproduced.</div>
+  <aside class="notes"><p>Gemma 4 31B Instruct is an open-weight model from Google; its free endpoint was listed on OpenRouter this month. An Arabic-capable alternative is ALLaM 7B, published on the Hugging Face Hub, which a centre would serve locally (llama.cpp, Ollama) when text may not leave its servers. Sources: OpenRouter Gemma 4 31B model page; ALLaM 7B Instruct model card.</p></aside>
+</section>
+
+<section class="slide" id="prompted-results" data-lo="LO2" data-n="9" data-session="1">
+  <div class="kicker">Lab 3.1, the scores (recorded run)</div>
+  <h2>Fahim is right on 81% of the gold set, and on 73% of Gulf complaints</h2>
+  <table class="t">
+    <tr><th>Gold complaints</th><th class="num">n</th><th class="num">Accuracy</th><th class="num">95% interval</th></tr>
+    <tr class="hl"><td>All</td><td class="num">300</td><td class="num">0.810</td><td class="num">0.763 to 0.853</td></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.868</td><td class="num">0.807 to 0.930</td></tr>
+    <tr><td>Gulf dialect</td><td class="num">120</td><td class="num">0.733</td><td class="num">0.658 to 0.808</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.848</td><td class="num">0.758 to 0.939</td></tr>
+  </table>
+  <p class="small mt-s">Macro F1 0.797. The sparse classifier of Day 2: 0.930, with no dialect gap.</p>
+  <aside class="notes"><p>From Lab 3.1 on the recorded run (synthetic). The comparison with Day 2 is fair in one way (same gold set) and unfair in another: the sparse model learnt from 3,000 Sada complaints, Fahim from none. Ask the room when that difference is worth paying for.</p></aside>
+</section>
+
+<section class="slide" id="prompted-cost" data-lo="LO2" data-n="10" data-session="1">
+  <div class="kicker">Lab 3.1, step 5</div>
+  <h2>A thousand complaints cost 100 requests, or about three cents at volume</h2>
+  <table class="t">
+    <tr><th>Per 1,000 complaints</th><th class="num">Value</th></tr>
+    <tr><td>Tokens in, per complaint (prompt shared by ten)</td><td class="num">106.9</td></tr>
+    <tr><td>Tokens out, per complaint</td><td class="num">14.0</td></tr>
+    <tr><td>Requests, ten a batch</td><td class="num">100</td></tr>
+    <tr><td>Days on a free account without credits</td><td class="num">2</td></tr>
+    <tr class="hl"><td>USD on the paid endpoint of the same model</td><td class="num">0.027</td></tr>
+  </table>
+  <aside class="notes"><p>Paid price of google/gemma-4-31b-it on OpenRouter's public list on 2026-11-15: USD 0.20 per million input tokens and 0.40 per million output tokens. Tokens per complaint are from the recorded run. Money is not the binding cost here; requests per day and where the text goes are. Sources: OpenRouter Gemma 4 31B model page.</p></aside>
+</section>
+
+<section class="slide" id="check-prompted" data-lo="LO2" data-n="11" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which classifier for a category that did not exist last month?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-prompted-q1">
+    <p class="lead">The centre adds a ninth category, "heat and cooling in public buildings", with no labelled examples yet. The sparse model scores 0.930 on the old eight; Fahim 0.810. What do you use for the first month?</p>
+    <div class="opts">
+      <div class="opt" data-why="Ignores that the sparse model has never seen the new category and cannot predict it" data-k="A">The sparse model, since it scores higher</div>
+      <div class="opt" data-ok data-k="B">Fahim with the new category added to its prompt, checked on a small new gold sample</div>
+      <div class="opt" data-why="Assumes no labels means no measurement: a small gold sample is enough to check" data-k="C">Neither, until 3,000 new labels are collected</div>
+      <div class="opt" data-why="Uses each model where it is weakest: the sparse model cannot route to a category it never learnt" data-k="D">The sparse model for the new category and Fahim for the old ones</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A prompted model needs a codebook, not training labels. It must still be measured against a human sample before its labels are used.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. This is the honest case for prompted classification: speed of change, not accuracy on a stable task.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-1" data-auto="lab" data-lab="3.1" data-label="Lab 3.1" data-n="12" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.1 · 25 min</div><h2>Prompted classification</h2><p class="lead small">Classify the gold set with Fahim, a prompted open-weight model: ten documents live, the full recorded run scored with intervals by language and costed.</p><a class="nb" href="../labs/D3_1_prompted.ipynb">D3_1_prompted.ipynb</a></div><ul class="checklist"><li>The prompt: codebook, labels, JSON <span class="min">6 min</span></li><li>Classify a batch of ten <span class="min">5 min</span></li><li>Load the recorded run and its version record <span class="min">4 min</span></li><li>Score it on the gold set by language <span class="min">6 min</span></li><li>Cost per thousand documents <span class="min">4 min</span></li><li class="stretch">✱ Stretch: One document per call against batches of ten: do the labels change?</li></ul></div>
+  <aside class="notes"><p>With a key in labs/.env or Colab Secrets, task 2 makes one real request. A 401 switches to the stand-in for the rest of the notebook and prints a warning; a 429 waits and retries. Common error: building the user message with the full text including the ids twice. The stretch only measures something with a working key.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="13">
+  <div class="kicker">Session 2</div>
+  <h1>Ask it twice</h1>
+  <ul class="bullets outcomes"><li>Measure how often labels change between runs of one prompt</li><li>Measure the shift caused by rewording a prompt</li><li>Name the documents that move and why</li></ul>
+  <div class="sess-no">02</div>
+  <aside class="notes"><p>A scale that reads differently each time you step on it. Ask the room what they would do with it before showing any numbers.</p></aside>
+</section>
+
+<section class="slide" id="two-kinds-of-instability" data-lo="LO5" data-n="14" data-session="2">
+  <div class="kicker">Ask it twice</div>
+  <h2>Two kinds of instability: the same prompt again, and the same request in other words</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Run stability</h4><p class="small mb0">Prompt 1, three runs at the same settings. Sampling makes the labels vary.</p></div>
+    <div class="card c-coral"><h4>Prompt stability</h4><p class="small mb0">Prompt 2 says the same thing differently and adds a rule for two-problem complaints. Wording moves labels.</p></div>
+  </div>
+  <p class="small mt">Both are part of the measurement error of one label. A single run shows neither.</p>
+  <aside class="notes"><p>Read prompt 2 aloud. Nobody would call it a different instruction, which is the point: a researcher choosing between two equally reasonable prompts is choosing between two label sets.</p></aside>
+</section>
+
+<section class="slide" id="flip-rate" data-lo="LO5" data-n="15" data-session="2">
+  <div class="kicker">Lab 3.2, step 1</div>
+  <h2>One complaint in five gets a different label in one of three runs</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">19.7%</div><div class="lbl">of gold complaints: the three runs of prompt 1 do not all agree</div></div>
+    <table class="t small">
+      <tr><th>Prompt 1</th><th class="num">Accuracy</th></tr>
+      <tr><td>Run 1</td><td class="num">0.810</td></tr>
+      <tr><td>Run 2</td><td class="num">0.793</td></tr>
+      <tr><td>Run 3</td><td class="num">0.817</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>From Lab 3.2 on the recorded runs (synthetic). Prompt 2 has the same flip rate. The accuracies move by two points between runs: a difference that size between two models, from one run each, means nothing.</p></aside>
+</section>
+
+<section class="slide" id="run-kappa" data-lo="LO5" data-n="16" data-session="2">
+  <div class="kicker">Lab 3.2, step 2</div>
+  <h2>Fahim agrees with itself about as well as two people agree with each other</h2>
+  <div class="bars">
+    <div class="row"><span>Run 1 and run 2</span><div class="bar c-teal" style="--w:84%"></div><span class="val">0.840</span></div>
+    <div class="row"><span>Run 1 and run 3</span><div class="bar c-teal" style="--w:86.4%"></div><span class="val">0.864</span></div>
+    <div class="row"><span>Run 2 and run 3</span><div class="bar c-teal" style="--w:83.7%"></div><span class="val">0.837</span></div>
+    <div class="row"><span>Two human coders</span><div class="bar c-coral" style="--w:82.9%"></div><span class="val">0.829</span></div>
+  </div>
+  <p class="small mt">Kappa. Whatever changes between runs is noise that every single-run label set carries.</p>
+  <aside class="notes"><p>From Lab 3.2. Read the bars as test-retest reliability at these settings. Do not read them as a ceiling on Fahim's agreement with gold; there is no such strict bound for kappa (a model that is right 81% of the time with independent noise agrees with gold more than with itself). What the bars do say is that a second run of the same prompt changes about one label in seven, so one run is a sample of possible label sets, not the label set. Fahim's kappa against gold is 0.778.</p></aside>
+</section>
+
+<section class="slide" id="prompt-shift" data-lo="LO5" data-n="17" data-session="2">
+  <div class="kicker">Lab 3.2, step 3</div>
+  <h2>Rewording the prompt moves twice as many labels as running it again</h2>
+  <table class="t">
+    <tr><th>Labels that change</th><th class="num">Share of gold complaints</th></tr>
+    <tr><td>Prompt 1 run 1 against prompt 1 run 2</td><td class="num">13.7%</td></tr>
+    <tr class="hl"><td>Prompt 1 run 1 against prompt 2 run 1</td><td class="num">31.3%</td></tr>
+  </table>
+  <p class="small mt-s">Yet the accuracy barely moves: 0.810 with prompt 1, 0.797 with prompt 2. Different complaints are wrong.</p>
+  <aside class="notes"><p>From Lab 3.2. This is the slide to dwell on: the headline accuracy hides that a third of the labels changed. Any count built on the labels changes too, by category and by district. Report which prompt produced a published number, and test a second one.</p></aside>
+</section>
+
+<section class="slide" id="who-moves" data-lo="LO5" data-n="18" data-session="2">
+  <div class="kicker">Lab 3.2, step 4</div>
+  <h2>The complaints Fahim cannot settle are the ones people disagree on too</h2>
+  <table class="t">
+    <tr><th>The two human coders</th><th class="num">Complaints</th><th class="num">Unstable across six model labels</th></tr>
+    <tr><td>Agreed</td><td class="num">256</td><td class="num">43.4%</td></tr>
+    <tr class="hl"><td>Disagreed</td><td class="num">44</td><td class="num">72.7%</td></tr>
+  </table>
+  <p class="small mt-s">Most of them name two problems. The codebook's rule for them is the weak point of both instruments.</p>
+  <aside class="notes"><p>From Lab 3.2. Instability is not spread evenly: it concentrates on ambiguous complaints. The practical step is a codebook change (a sharper rule for two-problem complaints) and a review queue for unstable labels, which DS-311 builds at scale.</p></aside>
+</section>
+
+<section class="slide" id="majority-vote" data-lo="LO5" data-n="19" data-session="2">
+  <div class="kicker">Lab 3.2, step 5</div>
+  <h2>The majority of three runs gains four points for three times the requests</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">0.850</div><div class="lbl">accuracy of the majority of three runs, against 0.810 for one run</div></div>
+    <ul class="bullets">
+      <li>Votes cancel part of the run noise</li>
+      <li>They do not cancel a systematic error: a Gulf word misread three times is misread</li>
+      <li>Cost: 300 requests per 1,000 complaints</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 3.2. The second bullet prepares session 3: the dialect gap is systematic and survives voting.</p></aside>
+</section>
+
+<section class="slide" id="check-stability" data-lo="LO5" data-n="20" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Two prompts, the same accuracy: are their labels interchangeable?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-stability-q1">
+    <p class="lead">Prompt 1 scores 0.810 on the gold set and prompt 2 scores 0.797. A colleague says the prompts are equivalent, so the published district counts do not depend on the choice. What do you check?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats equal accuracy as equal labels: the same score can come from different complaints being wrong" data-k="A">Nothing: equal accuracy means equal counts</div>
+      <div class="opt" data-why="Checks run noise instead of the prompt effect" data-k="B">The flip rate of prompt 1 alone</div>
+      <div class="opt" data-why="Changes the subject to cost: the question is whether the counts depend on the prompt" data-k="C">Which prompt uses fewer tokens</div>
+      <div class="opt" data-ok data-k="D">How many labels differ between the prompts, and the counts by category and district under each</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A third of the labels change between the prompts while accuracy stays put. Counts are built from labels, not from accuracy.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-2" data-auto="lab" data-lab="3.2" data-label="Lab 3.2" data-n="21" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.2 · 25 min</div><h2>Ask it twice</h2><p class="lead small">Repeat one prompt three times, reword it once and measure label stability: flip rate, kappa between runs and the documents that move.</p><a class="nb" href="../labs/D3_2_stability.ipynb">D3_2_stability.ipynb</a></div><ul class="checklist"><li>Three runs of one prompt: the flip rate <span class="min">6 min</span></li><li>Kappa between runs <span class="min">5 min</span></li><li>The reworded prompt: the shift <span class="min">6 min</span></li><li>Which documents move <span class="min">5 min</span></li><li>The majority of three runs <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Run twenty complaints three times live and compare with the recorded runs</li></ul></div>
+  <aside class="notes"><p>All on the recorded runs; no key needed. The pivot from long to wide format is where most participants lose time: give them the wide table if needed (it is built in the first cell). The stretch makes six requests with a key.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="22">
+  <div class="kicker">Session 3</div>
+  <h1>Dialect gaps</h1>
+  <ul class="bullets outcomes"><li>Measure agreement by language variety with intervals</li><li>Find the confusion that drives a dialect gap</li><li>Estimate how a gap under-counts a category in some districts</li></ul>
+  <div class="sess-no">03</div>
+  <aside class="notes"><p>Averages hide groups. The session ends on a district, not on a model.</p></aside>
+</section>
+
+<section class="slide" id="gap-by-variety" data-lo="LO5" data-n="23" data-session="3">
+  <div class="kicker">Lab 3.3, step 1</div>
+  <h2>Fahim falls short of the human coders on Gulf dialect, not elsewhere</h2>
+  <table class="t">
+    <tr><th>Variety</th><th class="num">n</th><th class="num">Kappa, Fahim against gold</th><th class="num">Kappa, two humans</th></tr>
+    <tr><td>Modern Standard Arabic</td><td class="num">114</td><td class="num">0.845</td><td class="num">0.813</td></tr>
+    <tr class="hl"><td>Gulf dialect</td><td class="num">120</td><td class="num">0.685</td><td class="num">0.872</td></tr>
+    <tr><td>English</td><td class="num">66</td><td class="num">0.824</td><td class="num">0.772</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.3 on the recorded run. The human coders do best on Gulf complaints: the centre's coders include Gulf speakers. The model does worst. The gap is not "Arabic is hard"; formal Arabic is fine.</p></aside>
+</section>
+
+<section class="slide" id="gulf-confusion" data-lo="LO5" data-n="24" data-session="3">
+  <div class="kicker">Lab 3.3, step 2</div>
+  <h2>Gulf sewage complaints that mention a flooded street are read as road complaints</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">9 of 32</div><div class="lbl">Gulf gold <code>water_sewage</code> complaints labelled <code>roads</code></div></div>
+    <div class="chat">
+      <div class="msg user"><span class="who">Complaint</span><span class="ar">ترى المجاري طافحة عند الدوار … والشارع غرقان.</span></div>
+      <div class="msg ai bad"><span class="who">Fahim</span>roads</div>
+    </div>
+  </div>
+  <p class="small mt">Gulf words such as غرقان and مويه ("flooded", "water") sit next to شارع ("street"). The prompt lists "flooding from sewage" under <code>water_sewage</code>, in formal words only.</p>
+  <aside class="notes"><p>From Lab 3.3's confusion table. This is a systematic error with a cause: dialect words the prompt does not anticipate. Prompt 2 rewords the definitions and adds a rule for two-problem complaints; the stretch of Lab 3.3 measures whether that helps.</p></aside>
+</section>
+
+<section class="slide" id="gap-interval" data-lo="LO5" data-n="25" data-session="3">
+  <div class="kicker">Lab 3.3, step 3</div>
+  <h2>The gap is 13.5 points, and its interval excludes zero</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">+0.135</div><div class="lbl">accuracy on formal Arabic minus Gulf; 95% interval +0.025 to +0.236</div></div>
+    <ul class="bullets">
+      <li>Two groups, different complaints: resample within each group, nothing to pair</li>
+      <li>Wide, because each group has about 120 complaints</li>
+      <li>Prompt 2: +0.065, interval −0.046 to +0.167</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 3.3 and its stretch. Prompt 2 halves the point estimate, but its interval overlaps prompt 1's: a promising change, not a proven one. A larger Gulf gold sample is the way to know.</p></aside>
+</section>
+
+<section class="slide" id="variety-instrument" data-lo="LO4 LO5" data-n="26" data-session="3">
+  <div class="kicker">Lab 3.3, step 4</div>
+  <h2>To carry the gap to districts, the variety of every complaint is guessed, and the guess is measured</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>English: by script</li>
+      <li>Gulf: when a Gulf marker word appears (وايد, الحين, محد, مويه …)</li>
+      <li>Otherwise formal Arabic</li>
+    </ul>
+    <div class="stat center"><div class="big">95.7%</div><div class="lbl">agreement with the coders' variety on the gold set; 13 of 120 Gulf complaints guessed as formal</div></div>
+  </div>
+  <aside class="notes"><p>From Lab 3.3. Every instrument used on the way to a number gets the same treatment, the variety guess included. Its error runs one way: short Gulf complaints without a marker word look formal.</p></aside>
+</section>
+
+<section class="slide" id="district-recall" data-lo="LO4 LO5" data-n="27" data-session="3">
+  <div class="kicker">Lab 3.3, step 4</div>
+  <h2>Where most residents write in Gulf dialect, a quarter of sewage complaints are missed</h2>
+  <table class="t">
+    <tr><th>District</th><th class="num">Gulf share</th><th class="num">Expected recall of sewage complaints</th></tr>
+    <tr class="hl"><td>Al-Naseem</td><td class="num">60.5%</td><td class="num">0.752</td></tr>
+    <tr><td>Al-Jazira</td><td class="num">55.1%</td><td class="num">0.767</td></tr>
+    <tr><td>Al-Salam</td><td class="num">48.1%</td><td class="num">0.787</td></tr>
+    <tr><td>Al-Shati</td><td class="num">17.5%</td><td class="num">0.892</td></tr>
+    <tr><td>Al-Khalij</td><td class="num">12.8%</td><td class="num">0.910</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.3: the district's guessed variety mix times the gold-set recall of each variety. The districts that complain most about sewage are the ones the model under-counts most. SDAIA's AI Bias Reference Guide calls a systematic over- or under-estimate of true values measurement bias. Sources: AI Bias Reference Guide, first edition.</p></aside>
+</section>
+
+<section class="slide" id="check-dialect" data-lo="LO5" data-n="28" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does the dialect gap do to the published rate?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5 LO4" data-id="check-dialect-q1">
+    <p class="lead">Fahim misses more sewage complaints in Gulf dialect. Al-Naseem's complaints are 60% Gulf, Al-Khalij's 13%. The naive sewage rate is published for both. Which statement holds?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">Al-Naseem's rate is under-stated more than Al-Khalij's, so the gap between them looks smaller than it is</div>
+      <div class="opt" data-why="Assumes errors cancel across districts: the error depends on each district's language mix" data-k="B">Both are under-stated equally, so the comparison is fair</div>
+      <div class="opt" data-why="Reverses the direction of the error: missed complaints lower the count" data-k="C">Al-Naseem's rate is over-stated</div>
+      <div class="opt" data-why="Thinks a better overall accuracy fixes a group error: the gap is in one variety" data-k="D">The rates are fine because overall accuracy is 0.81</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The miss rate follows the variety, and the variety mix differs by district. The district that suffers most is under-counted most.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option. Tomorrow's last lab corrects exactly this.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-3" data-auto="lab" data-lab="3.3" data-label="Lab 3.3" data-n="29" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.3 · 25 min</div><h2>Dialect gaps</h2><p class="lead small">Measure Fahim's agreement on Modern Standard Arabic, Gulf dialect and English subsets, find the confusion behind the gap and its effect on a count.</p><a class="nb" href="../labs/D3_3_dialect_gaps.ipynb">D3_3_dialect_gaps.ipynb</a></div><ul class="checklist"><li>Agreement by variety with intervals <span class="min">7 min</span></li><li>The confusion table of Gulf complaints <span class="min">6 min</span></li><li>The gap with a bootstrap interval <span class="min">6 min</span></li><li>What the gap does to a count <span class="min">6 min</span></li><li class="stretch">✱ Stretch: Does the reworded prompt narrow the gap?</li></ul></div>
+  <aside class="notes"><p>Task 4 guesses the variety of all 20,000 complaints; it takes about a minute (quick mode uses 5,000). Some participants compute recall over all categories: the question is about water and sewage only. The stretch compares the prompts.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="30">
+  <div class="kicker">Session 4</div>
+  <h1>Is the model a good annotator</h1>
+  <ul class="bullets outcomes"><li>Compare model-human agreement with human-human agreement</li><li>Set decision criteria before reading the results</li><li>Write a reliability memo with a decision and its limits</li></ul>
+  <div class="sess-no">04</div>
+  <aside class="notes"><p>The decision of the day. Make the room write criteria before the lab prints anything.</p></aside>
+</section>
+
+<section class="slide" id="the-question" data-lo="LO5" data-n="31" data-session="4">
+  <div class="kicker">The decision</div>
+  <h2>Can Fahim replace the second coder, and can its labels feed an estimate?</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Replace a coder</h4><p class="small mb0">Each label is used as it is, complaint by complaint. The bar is what a second person adds.</p></div>
+    <div class="card c-coral"><h4>Feed an estimate</h4><p class="small mb0">Labels are counted. Errors can be measured on a human sample and corrected in the count.</p></div>
+  </div>
+  <p class="small mt">Two questions, two bars. A model can fail the first and pass the second.</p>
+  <aside class="notes"><p>Keep the two questions apart all session. Most teams merge them and decide "the model is good enough" or "not good enough" for everything at once.</p></aside>
+</section>
+
+<section class="slide" id="criteria-first" data-lo="LO5" data-n="32" data-session="4">
+  <div class="kicker">Lab 3.4, step 3</div>
+  <h2>Write the bar before you read the results</h2>
+  <table class="t">
+    <tr><th>Criterion, in every variety</th><th class="num">The course's bar</th></tr>
+    <tr><td>Fahim's kappa below the human pair's, at most</td><td class="num">0.05</td></tr>
+    <tr><td>Complaints whose three runs agree, at least</td><td class="num">90%</td></tr>
+    <tr><td>Accuracy gap between varieties, at most</td><td class="num">0.05</td></tr>
+  </table>
+  <p class="small mt-s">A criterion written after the results is a description of the results.</p>
+  <aside class="notes"><p>The numbers are one defensible set, not a standard. The alternative annotator test (Calderon, Reichart and Dror, 2025) is a formal version of the first criterion with a statistical procedure; the stretch of the lab uses its idea. Sources: The Alternative Annotator Test for LLM-as-a-Judge.</p></aside>
+</section>
+
+<section class="slide" id="criteria-results" data-lo="LO5" data-n="33" data-session="4">
+  <div class="kicker">Lab 3.4, step 4</div>
+  <h2>Fahim passes on formal Arabic and English, and fails on Gulf dialect and stability</h2>
+  <table class="t">
+    <tr><th>Test</th><th class="num">Value</th><th>Result</th></tr>
+    <tr><td>Kappa shortfall, Modern Standard Arabic</td><td class="num">−0.032</td><td>Pass</td></tr>
+    <tr class="hl"><td>Kappa shortfall, Gulf dialect</td><td class="num">0.187</td><td>Fail</td></tr>
+    <tr><td>Kappa shortfall, English</td><td class="num">−0.052</td><td>Pass</td></tr>
+    <tr class="hl"><td>Three runs agree</td><td class="num">80.3%</td><td>Fail</td></tr>
+    <tr class="hl"><td>Accuracy gap between varieties</td><td class="num">0.135</td><td>Fail</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 3.4 on the recorded runs. A negative shortfall means Fahim agrees with gold better than the two coders agree with each other in that group; it is not the same comparison, so read it as "no shortfall", not as "better than people".</p></aside>
+</section>
+
+<section class="slide" id="leave-one-out" data-lo="LO5" data-n="34" data-session="4">
+  <div class="kicker">Lab 3.4, stretch</div>
+  <h2>Swapped in for either coder, Fahim agrees less with the other one than a person does</h2>
+  <table class="t">
+    <tr><th>Replace</th><th class="num">The human's agreement with the other coder</th><th class="num">Fahim's</th></tr>
+    <tr><td>Coder A</td><td class="num">0.853</td><td class="num">0.780</td></tr>
+    <tr><td>Coder B</td><td class="num">0.853</td><td class="num">0.750</td></tr>
+  </table>
+  <aside class="notes"><p>From the stretch of Lab 3.4: the idea of the alternative annotator test with two coders. With more coders the test counts, for each one left out, whether the model agrees with the rest at least as well; with two coders it is a sanity check rather than a test.</p></aside>
+</section>
+
+<section class="slide" id="reliability-memo" data-lo="LO5" data-n="35" data-session="4">
+  <div class="kicker">Lab 3.4, step 5</div>
+  <h2>The reliability memo answers both questions in five short paragraphs</h2>
+  <div class="flow v">
+    <div class="step c-teal"><b>Question</b>Replace the second coder? Feed the district rates?</div>
+    <div class="arrow">↓</div>
+    <div class="step c-cyan"><b>Evidence</b>Agreement, stability, gaps, each with its number</div>
+    <div class="arrow">↓</div>
+    <div class="step c-coral"><b>Decision</b>Not as a coder; yes for counts with a correction</div>
+    <div class="arrow">↓</div>
+    <div class="step c-purple"><b>Limits</b>Synthetic runs, small groups, versions to keep</div>
+  </div>
+  <aside class="notes"><p>The draft is saved to artifacts/day3/reliability_memo.md. In the capstone it is worth 25 of the 100 rubric points, the same as preparation and redaction. Ask two participants to read their decision paragraph aloud.</p></aside>
+</section>
+
+<section class="slide" id="check-annotator" data-lo="LO5" data-n="36" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does the memo recommend?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-annotator-q1">
+    <p class="lead">Fahim fails the criteria on Gulf dialect and on stability, and passes on formal Arabic and English. Dr. Ebtisam wants one recommendation. Which one follows from the evidence?</p>
+    <div class="opts">
+      <div class="opt" data-why="Ignores the failed criteria because the overall numbers look acceptable" data-k="A">Replace the second coder, since overall kappa is 0.778</div>
+      <div class="opt" data-why="Discards labels that are usable for estimates with a correction" data-k="B">Stop using Fahim for anything</div>
+      <div class="opt" data-ok data-k="C">Keep both human coders; use Fahim's labels for counts only with a correction from the human sample, by variety</div>
+      <div class="opt" data-why="Moves the bar after the results: the criteria were set before looking" data-k="D">Lower the stability criterion to 80% so that Fahim passes</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Per-complaint use needs every label to be good enough; a count can be corrected for measured errors.</div>
+  </div>
+  <aside class="notes"><p>Answer: the third option. The fourth option happens in real projects more than anyone admits; name it.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-4" data-auto="lab" data-lab="3.4" data-label="Lab 3.4" data-n="37" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.4 · 25 min</div><h2>A good annotator?</h2><p class="lead small">Decide whether Fahim's labels can replace a second human coder, against criteria written first, and draft the reliability memo.</p><a class="nb" href="../labs/D3_4_annotator.ipynb">D3_4_annotator.ipynb</a></div><ul class="checklist"><li>Agreement between the two human coders <span class="min">4 min</span></li><li>Fahim against each coder and the gold label <span class="min">6 min</span></li><li>Write the criteria before looking <span class="min">4 min</span></li><li>Apply them: agreement, stability, gaps <span class="min">6 min</span></li><li>Draft the reliability memo <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Leave one coder out: how often does Fahim agree with the other coder as often as a human does?</li></ul></div>
+  <aside class="notes"><p>Insist on writing the criteria in task 3 before running task 4. The memo is a draft for the capstone; it may be in Arabic or English. All on recorded runs.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="38" data-session="4">
+  <div class="kicker">Day 3 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Version everything</h4><p class="small mb0">Model, prompt hash, settings and date travel with every label set.</p></div>
+    <div class="card c-coral"><h4>Ask it twice</h4><p class="small mb0">Run and prompt stability are part of a label's error; a single run hides both.</p></div>
+    <div class="card c-purple"><h4>Report by group</h4><p class="small mb0">A gap by variety turns into an under-count by district.</p></div>
+  </div>
+  <aside class="notes"><p>Ask: which number from today would you put in the first line of the memo? Usually the Gulf shortfall.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="39" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 4: From documents to tables</h2>
+  <p class="lead">Tomorrow: fields extracted from inspection reports, clusters, and the corrected district rates. Read the two capstone briefs in labs/data/capstone/.</p>
+  <aside class="notes"><p>Lab 4.4 ends with the choice of the capstone corpus: Nadwa, Raafid, or a public corpus the trainer approves. Ask participants to come with a first choice.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"../index.html"},"deck":{"id":"day3","kind":"day","day":3,"label":"Day 3","title":"Language models as instruments","prev":"day2.html","next":"day4.html","md":"day3.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Prompted classification","slide":"s1","outcomes":["Write a classification prompt from a codebook with a fixed output format","Classify documents in batches within a call budget and parse every reply","Record model, prompt version and settings with every label set"],"minutes":50,"lab":{"id":"3.1","title":"Prompted classification","minutes":25,"href":"../labs/D3_1_prompted.ipynb"}},{"n":2,"label":"Session 2","title":"Ask it twice","slide":"s2","outcomes":["Measure how often labels change between runs of one prompt","Measure the shift caused by rewording a prompt","Name the documents that move and why"],"minutes":50,"lab":{"id":"3.2","title":"Ask it twice","minutes":25,"href":"../labs/D3_2_stability.ipynb"}},{"n":3,"label":"Session 3","title":"Dialect gaps","slide":"s3","outcomes":["Measure agreement by language variety with intervals","Find the confusion that drives a dialect gap","Estimate how a gap under-counts a category in some districts"],"minutes":50,"lab":{"id":"3.3","title":"Dialect gaps","minutes":25,"href":"../labs/D3_3_dialect_gaps.ipynb"}},{"n":4,"label":"Session 4","title":"Is the model a good annotator","slide":"s4","outcomes":["Compare model-human agreement with human-human agreement","Set decision criteria before reading the results","Write a reliability memo with a decision and its limits"],"minutes":50,"lab":{"id":"3.4","title":"A good annotator?","minutes":25,"href":"../labs/D3_4_annotator.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Language models as instruments","kind":"title","session":0,"hash":"f755e933","md":"#### [day3#title] Language models as instruments\n\n*SDAIA Academy · Text and Unstructured Data for Data Science*\n\nDay 3: A prompted open-weight model measured like any other instrument: accuracy, stability, dialect gaps\n\nData Science Track · 4 teaching days + capstone day · 4 sessions · 4 labs · DS-306","notes":"Today a language model enters, and it is treated like any other instrument: calibrated against the gold set, tested for repeatability, checked by group. Say early and clearly that the full runs used today are synthetic recordings; participants with a working key run a few live calls and compare. Breaks are yours: press B.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Language models as instruments","kind":"content","session":0,"hash":"184df895","md":"#### [day3#agenda] Language models as instruments\n\n*Today*\n\n- **Session 1 · Prompted classification**: A prompt is an instrument: codebook, label set, output format, batch and a version record\n- **Session 2 · Ask it twice**: Run stability and prompt stability, measured as agreement of the model with itself\n- **Session 3 · Dialect gaps**: Agreement by language variety, the confusions behind a gap, and what a gap does to a count\n- **Session 4 · Is the model a good annotator**: A model as a second coder: criteria fixed before looking, evidence, and a written decision","notes":"Four questions, one per session: how good is it, how repeatable, for whom, and is that good enough to replace a person. Each lab starts from the recorded runs, so nothing depends on a key or on yesterday.","minutes":null,"lo":[]},{"id":"review-day2","n":3,"title":"What did the paired comparison show?","kind":"quiz","session":0,"hash":"edb51d60","md":"#### [day3#review-day2] What did the paired comparison show?\n\n*Review of Day 2*\n\n**Question:** Sparse minus embedding accuracy on the same 300 gold complaints was +0.037, interval −0.003 to +0.073. Unpaired, the interval was 0.093 wide; paired, 0.077. What made the paired interval narrower?\n\n- A. Pairing doubles the number of complaints\n- B. The paired bootstrap used more resamples\n- C. Complaints that are easy or hard for both classifiers cancel out in the difference\n- D. Accuracy is less variable than macro F1","notes":"Answer: the third option. This comes back in session 2: two runs of one model share most of their errors, which is why their disagreement is small and informative.","minutes":null,"lo":["LO2"]},{"id":"s1","n":4,"title":"Prompted classification","kind":"section","session":1,"hash":"a505e060","md":"#### [day3#s1] Prompted classification\n\n*Session 1*\n\n- Write a classification prompt from a codebook with a fixed output format\n- Classify documents in batches within a call budget and parse every reply\n- Record model, prompt version and settings with every label set","notes":"The prompt is the instrument's design. Its version is recorded like a questionnaire's.","minutes":null,"lo":["LO2","LO5"]},{"id":"prompt-as-instrument","n":5,"title":"The codebook becomes a prompt with fixed labels and a fixed output format","kind":"content","session":1,"hash":"e8411052","md":"#### [day3#prompt-as-instrument] The codebook becomes a prompt with fixed labels and a fixed output format\n\n*A prompt is an instrument*\n\nPrompt for Fahim, prompt 1:\n\n```text\nYou label citizen complaints for Sada Citizen Voice Centre.\nAssign each complaint exactly one category: the main problem the citizen asks the centre to fix.\nCategories: water_sewage, roads, waste, … each with one line of definition.\nReply with JSON only: {\"labels\": [{\"id\": …, \"label\": …}]}\n```\n\nRole · Unit and rule · Label set · Format","notes":"From data/prompts/fahim_p1.md. Ask the room which line of the codebook did not make it into the prompt: the \"does not include\" column. That omission is one of the reasons for tomorrow's corrections. The labels are the exact codes, so parsing is a lookup, not an interpretation.","minutes":null,"lo":["LO2","LO5"]},{"id":"batch-and-budget","n":6,"title":"Ten complaints a request: the prompt is paid once per batch","kind":"content","session":1,"hash":"b8d92c56","md":"#### [day3#batch-and-budget] Ten complaints a request: the prompt is paid once per batch\n\n*Within the budget*\n\n- One request labels ten complaints, each line `id: text`\n- The gold set is 30 requests; all 20,000 complaints are 2,000\n- Free tier: 50 requests a day, 1,000 after a one-time 10 credits\n\n> **A measurement choice.** Batching can change labels: a complaint is read next to nine others. The stretch of Lab 3.1 compares one-per-call with batches.","notes":"Limits from OpenRouter's documentation, read this month. Batching is a trade: fewer requests and tokens against a possible context effect. A careful study measures it; the stretch does with a key. Sources: OpenRouter API rate limits.","minutes":null,"lo":["LO2"]},{"id":"parse-never-guess","n":7,"title":"A reply that cannot be parsed is a missing label, never a guessed one","kind":"content","session":1,"hash":"6204ab2c","md":"#### [day3#parse-never-guess] A reply that cannot be parsed is a missing label, never a guessed one\n\n*Lab 3.1, step 2*\n\n```python\n# file: sada.py\ndef parse_labels(text, ids):\n    data = json.loads(text[text.find(\"{\"): text.rfind(\"}\") + 1])\n    got = {str(x.get(\"id\")): x.get(\"label\") for x in data.get(\"labels\", [])}\n    return {i: (got.get(i) if got.get(i) in CATEGORIES else None) for i in ids}\n```\n\nIn the course's run all ten labels came back usable and eight were right.","notes":"Missing ids and labels outside the codebook become None and are counted. Mapping \"Roads and pavements\" to roads silently would hide a format failure that grows with a new model. The 8 of 10 is from the stand-in replaying the recorded run.","minutes":null,"lo":["LO2"]},{"id":"version-record","n":8,"title":"Every label set travels with the model, the prompt and the settings that made it","kind":"content","session":1,"hash":"45e97a7a","md":"#### [day3#version-record] Every label set travels with the model, the prompt and the settings that made it\n\n*The version record*\n\n| Field | Value in the recorded run |\n| --- | --- |\n| Model | `google/gemma-4-31b-it:free` |\n| Prompt | P1 and the hash of its text |\n| Temperature, batch size | 0.7, ten complaints |\n| Date | The day of the run |\n\n> **What goes wrong.** A model name stays while the weights behind an endpoint change. Without the date and the prompt hash, a published rate cannot be reproduced.","notes":"Gemma 4 31B Instruct is an open-weight model from Google; its free endpoint was listed on OpenRouter this month. An Arabic-capable alternative is ALLaM 7B, published on the Hugging Face Hub, which a centre would serve locally (llama.cpp, Ollama) when text may not leave its servers. Sources: OpenRouter Gemma 4 31B model page; ALLaM 7B Instruct model card.","minutes":null,"lo":["LO2","LO4"]},{"id":"prompted-results","n":9,"title":"Fahim is right on 81% of the gold set, and on 73% of Gulf complaints","kind":"content","session":1,"hash":"625fe433","md":"#### [day3#prompted-results] Fahim is right on 81% of the gold set, and on 73% of Gulf complaints\n\n*Lab 3.1, the scores (recorded run)*\n\n| Gold complaints | n | Accuracy | 95% interval |\n| --- | --- | --- | --- |\n| All | 300 | 0.810 | 0.763 to 0.853 |\n| Modern Standard Arabic | 114 | 0.868 | 0.807 to 0.930 |\n| Gulf dialect | 120 | 0.733 | 0.658 to 0.808 |\n| English | 66 | 0.848 | 0.758 to 0.939 |\n\nMacro F1 0.797. The sparse classifier of Day 2: 0.930, with no dialect gap.","notes":"From Lab 3.1 on the recorded run (synthetic). The comparison with Day 2 is fair in one way (same gold set) and unfair in another: the sparse model learnt from 3,000 Sada complaints, Fahim from none. Ask the room when that difference is worth paying for.","minutes":null,"lo":["LO2"]},{"id":"prompted-cost","n":10,"title":"A thousand complaints cost 100 requests, or about three cents at volume","kind":"content","session":1,"hash":"6a0c8539","md":"#### [day3#prompted-cost] A thousand complaints cost 100 requests, or about three cents at volume\n\n*Lab 3.1, step 5*\n\n| Per 1,000 complaints | Value |\n| --- | --- |\n| Tokens in, per complaint (prompt shared by ten) | 106.9 |\n| Tokens out, per complaint | 14.0 |\n| Requests, ten a batch | 100 |\n| Days on a free account without credits | 2 |\n| USD on the paid endpoint of the same model | 0.027 |","notes":"Paid price of google/gemma-4-31b-it on OpenRouter's public list on 2026-11-15: USD 0.20 per million input tokens and 0.40 per million output tokens. Tokens per complaint are from the recorded run. Money is not the binding cost here; requests per day and where the text goes are. Sources: OpenRouter Gemma 4 31B model page.","minutes":null,"lo":["LO2"]},{"id":"check-prompted","n":11,"title":"Which classifier for a category that did not exist last month?","kind":"quiz","session":1,"hash":"74f8a430","md":"#### [day3#check-prompted] Which classifier for a category that did not exist last month?\n\n*Checkpoint*\n\n**Question:** The centre adds a ninth category, \"heat and cooling in public buildings\", with no labelled examples yet. The sparse model scores 0.930 on the old eight; Fahim 0.810. What do you use for the first month?\n\n- A. The sparse model, since it scores higher\n- B. Fahim with the new category added to its prompt, checked on a small new gold sample\n- C. Neither, until 3,000 new labels are collected\n- D. The sparse model for the new category and Fahim for the old ones","notes":"Answer: the second option. This is the honest case for prompted classification: speed of change, not accuracy on a stable task.","minutes":null,"lo":["LO2"]},{"id":"lab-3-1","n":12,"title":"Prompted classification","kind":"lab","session":1,"hash":"d9becc13","md":"#### [day3#lab-3-1] Prompted classification\n\nLab 3.1 · 25 min\n\nClassify the gold set with Fahim, a prompted open-weight model: ten documents live, the full recorded run scored with intervals by language and costed.\n\n[D3_1_prompted.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D3_1_prompted.ipynb)\n\n- [ ] The prompt: codebook, labels, JSON (6 min)\n- [ ] Classify a batch of ten (5 min)\n- [ ] Load the recorded run and its version record (4 min)\n- [ ] Score it on the gold set by language (6 min)\n- [ ] Cost per thousand documents (4 min)\n- [ ] ✱ Stretch: One document per call against batches of ten: do the labels change?","notes":"With a key in labs/.env or Colab Secrets, task 2 makes one real request. A 401 switches to the stand-in for the rest of the notebook and prints a warning; a 429 waits and retries. Common error: building the user message with the full text including the ids twice. The stretch only measures something with a working key.","minutes":null,"lo":[]},{"id":"s2","n":13,"title":"Ask it twice","kind":"section","session":2,"hash":"55cf7981","md":"#### [day3#s2] Ask it twice\n\n*Session 2*\n\n- Measure how often labels change between runs of one prompt\n- Measure the shift caused by rewording a prompt\n- Name the documents that move and why","notes":"A scale that reads differently each time you step on it. Ask the room what they would do with it before showing any numbers.","minutes":null,"lo":["LO5"]},{"id":"two-kinds-of-instability","n":14,"title":"Two kinds of instability: the same prompt again, and the same request in other words","kind":"content","session":2,"hash":"62b0cf79","md":"#### [day3#two-kinds-of-instability] Two kinds of instability: the same prompt again, and the same request in other words\n\n*Ask it twice*\n\n- **Run stability.** Prompt 1, three runs at the same settings. Sampling makes the labels vary.\n- **Prompt stability.** Prompt 2 says the same thing differently and adds a rule for two-problem complaints. Wording moves labels.\n\nBoth are part of the measurement error of one label. A single run shows neither.","notes":"Read prompt 2 aloud. Nobody would call it a different instruction, which is the point: a researcher choosing between two equally reasonable prompts is choosing between two label sets.","minutes":null,"lo":["LO5"]},{"id":"flip-rate","n":15,"title":"One complaint in five gets a different label in one of three runs","kind":"content","session":2,"hash":"8075ccd1","md":"#### [day3#flip-rate] One complaint in five gets a different label in one of three runs\n\n*Lab 3.2, step 1*\n\n**19.7%** of gold complaints: the three runs of prompt 1 do not all agree\n\n| Prompt 1 | Accuracy |\n| --- | --- |\n| Run 1 | 0.810 |\n| Run 2 | 0.793 |\n| Run 3 | 0.817 |","notes":"From Lab 3.2 on the recorded runs (synthetic). Prompt 2 has the same flip rate. The accuracies move by two points between runs: a difference that size between two models, from one run each, means nothing.","minutes":null,"lo":["LO5"]},{"id":"run-kappa","n":16,"title":"Fahim agrees with itself about as well as two people agree with each other","kind":"content","session":2,"hash":"5b14f783","md":"#### [day3#run-kappa] Fahim agrees with itself about as well as two people agree with each other\n\n*Lab 3.2, step 2*\n\n| Item | Value |\n| --- | --- |\n| Run 1 and run 2 | 0.840 |\n| Run 1 and run 3 | 0.864 |\n| Run 2 and run 3 | 0.837 |\n| Two human coders | 0.829 |\n\nKappa. Whatever changes between runs is noise that every single-run label set carries.","notes":"From Lab 3.2. Read the bars as test-retest reliability at these settings. Do not read them as a ceiling on Fahim's agreement with gold; there is no such strict bound for kappa (a model that is right 81% of the time with independent noise agrees with gold more than with itself). What the bars do say is that a second run of the same prompt changes about one label in seven, so one run is a sample of possible label sets, not the label set. Fahim's kappa against gold is 0.778.","minutes":null,"lo":["LO5"]},{"id":"prompt-shift","n":17,"title":"Rewording the prompt moves twice as many labels as running it again","kind":"content","session":2,"hash":"04833a02","md":"#### [day3#prompt-shift] Rewording the prompt moves twice as many labels as running it again\n\n*Lab 3.2, step 3*\n\n| Labels that change | Share of gold complaints |\n| --- | --- |\n| Prompt 1 run 1 against prompt 1 run 2 | 13.7% |\n| Prompt 1 run 1 against prompt 2 run 1 | 31.3% |\n\nYet the accuracy barely moves: 0.810 with prompt 1, 0.797 with prompt 2. Different complaints are wrong.","notes":"From Lab 3.2. This is the slide to dwell on: the headline accuracy hides that a third of the labels changed. Any count built on the labels changes too, by category and by district. Report which prompt produced a published number, and test a second one.","minutes":null,"lo":["LO5"]},{"id":"who-moves","n":18,"title":"The complaints Fahim cannot settle are the ones people disagree on too","kind":"content","session":2,"hash":"d3e4f538","md":"#### [day3#who-moves] The complaints Fahim cannot settle are the ones people disagree on too\n\n*Lab 3.2, step 4*\n\n| The two human coders | Complaints | Unstable across six model labels |\n| --- | --- | --- |\n| Agreed | 256 | 43.4% |\n| Disagreed | 44 | 72.7% |\n\nMost of them name two problems. The codebook's rule for them is the weak point of both instruments.","notes":"From Lab 3.2. Instability is not spread evenly: it concentrates on ambiguous complaints. The practical step is a codebook change (a sharper rule for two-problem complaints) and a review queue for unstable labels, which DS-311 builds at scale.","minutes":null,"lo":["LO5"]},{"id":"majority-vote","n":19,"title":"The majority of three runs gains four points for three times the requests","kind":"content","session":2,"hash":"70c86cb3","md":"#### [day3#majority-vote] The majority of three runs gains four points for three times the requests\n\n*Lab 3.2, step 5*\n\n**0.850** accuracy of the majority of three runs, against 0.810 for one run\n\n- Votes cancel part of the run noise\n- They do not cancel a systematic error: a Gulf word misread three times is misread\n- Cost: 300 requests per 1,000 complaints","notes":"From Lab 3.2. The second bullet prepares session 3: the dialect gap is systematic and survives voting.","minutes":null,"lo":["LO5"]},{"id":"check-stability","n":20,"title":"Two prompts, the same accuracy: are their labels interchangeable?","kind":"quiz","session":2,"hash":"7d02efc8","md":"#### [day3#check-stability] Two prompts, the same accuracy: are their labels interchangeable?\n\n*Checkpoint*\n\n**Question:** Prompt 1 scores 0.810 on the gold set and prompt 2 scores 0.797. A colleague says the prompts are equivalent, so the published district counts do not depend on the choice. What do you check?\n\n- A. Nothing: equal accuracy means equal counts\n- B. The flip rate of prompt 1 alone\n- C. Which prompt uses fewer tokens\n- D. How many labels differ between the prompts, and the counts by category and district under each","notes":"Answer: the fourth option.","minutes":null,"lo":["LO5"]},{"id":"lab-3-2","n":21,"title":"Ask it twice","kind":"lab","session":2,"hash":"6daea76e","md":"#### [day3#lab-3-2] Ask it twice\n\nLab 3.2 · 25 min\n\nRepeat one prompt three times, reword it once and measure label stability: flip rate, kappa between runs and the documents that move.\n\n[D3_2_stability.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D3_2_stability.ipynb)\n\n- [ ] Three runs of one prompt: the flip rate (6 min)\n- [ ] Kappa between runs (5 min)\n- [ ] The reworded prompt: the shift (6 min)\n- [ ] Which documents move (5 min)\n- [ ] The majority of three runs (3 min)\n- [ ] ✱ Stretch: Run twenty complaints three times live and compare with the recorded runs","notes":"All on the recorded runs; no key needed. The pivot from long to wide format is where most participants lose time: give them the wide table if needed (it is built in the first cell). The stretch makes six requests with a key.","minutes":null,"lo":[]},{"id":"s3","n":22,"title":"Dialect gaps","kind":"section","session":3,"hash":"73dd63e1","md":"#### [day3#s3] Dialect gaps\n\n*Session 3*\n\n- Measure agreement by language variety with intervals\n- Find the confusion that drives a dialect gap\n- Estimate how a gap under-counts a category in some districts","notes":"Averages hide groups. The session ends on a district, not on a model.","minutes":null,"lo":["LO5","LO4"]},{"id":"gap-by-variety","n":23,"title":"Fahim falls short of the human coders on Gulf dialect, not elsewhere","kind":"content","session":3,"hash":"edb22bcb","md":"#### [day3#gap-by-variety] Fahim falls short of the human coders on Gulf dialect, not elsewhere\n\n*Lab 3.3, step 1*\n\n| Variety | n | Kappa, Fahim against gold | Kappa, two humans |\n| --- | --- | --- | --- |\n| Modern Standard Arabic | 114 | 0.845 | 0.813 |\n| Gulf dialect | 120 | 0.685 | 0.872 |\n| English | 66 | 0.824 | 0.772 |","notes":"From Lab 3.3 on the recorded run. The human coders do best on Gulf complaints: the centre's coders include Gulf speakers. The model does worst. The gap is not \"Arabic is hard\"; formal Arabic is fine.","minutes":null,"lo":["LO5"]},{"id":"gulf-confusion","n":24,"title":"Gulf sewage complaints that mention a flooded street are read as road complaints","kind":"content","session":3,"hash":"acdb74cb","md":"#### [day3#gulf-confusion] Gulf sewage complaints that mention a flooded street are read as road complaints\n\n*Lab 3.3, step 2*\n\n**9 of 32** Gulf gold `water_sewage` complaints labelled `roads`\n\n**Complaint:** ترى المجاري طافحة عند الدوار … والشارع غرقان.\n\n**Fahim (weak example):** roads\n\nGulf words such as غرقان and مويه (\"flooded\", \"water\") sit next to شارع (\"street\"). The prompt lists \"flooding from sewage\" under `water_sewage`, in formal words only.","notes":"From Lab 3.3's confusion table. This is a systematic error with a cause: dialect words the prompt does not anticipate. Prompt 2 rewords the definitions and adds a rule for two-problem complaints; the stretch of Lab 3.3 measures whether that helps.","minutes":null,"lo":["LO5"]},{"id":"gap-interval","n":25,"title":"The gap is 13.5 points, and its interval excludes zero","kind":"content","session":3,"hash":"38c4da6f","md":"#### [day3#gap-interval] The gap is 13.5 points, and its interval excludes zero\n\n*Lab 3.3, step 3*\n\n**+0.135** accuracy on formal Arabic minus Gulf; 95% interval +0.025 to +0.236\n\n- Two groups, different complaints: resample within each group, nothing to pair\n- Wide, because each group has about 120 complaints\n- Prompt 2: +0.065, interval −0.046 to +0.167","notes":"From Lab 3.3 and its stretch. Prompt 2 halves the point estimate, but its interval overlaps prompt 1's: a promising change, not a proven one. A larger Gulf gold sample is the way to know.","minutes":null,"lo":["LO5"]},{"id":"variety-instrument","n":26,"title":"To carry the gap to districts, the variety of every complaint is guessed, and the guess is measured","kind":"content","session":3,"hash":"a854d93c","md":"#### [day3#variety-instrument] To carry the gap to districts, the variety of every complaint is guessed, and the guess is measured\n\n*Lab 3.3, step 4*\n\n- English: by script\n- Gulf: when a Gulf marker word appears (وايد, الحين, محد, مويه …)\n- Otherwise formal Arabic\n\n**95.7%** agreement with the coders' variety on the gold set; 13 of 120 Gulf complaints guessed as formal","notes":"From Lab 3.3. Every instrument used on the way to a number gets the same treatment, the variety guess included. Its error runs one way: short Gulf complaints without a marker word look formal.","minutes":null,"lo":["LO4","LO5"]},{"id":"district-recall","n":27,"title":"Where most residents write in Gulf dialect, a quarter of sewage complaints are missed","kind":"content","session":3,"hash":"0adad13c","md":"#### [day3#district-recall] Where most residents write in Gulf dialect, a quarter of sewage complaints are missed\n\n*Lab 3.3, step 4*\n\n| District | Gulf share | Expected recall of sewage complaints |\n| --- | --- | --- |\n| Al-Naseem | 60.5% | 0.752 |\n| Al-Jazira | 55.1% | 0.767 |\n| Al-Salam | 48.1% | 0.787 |\n| Al-Shati | 17.5% | 0.892 |\n| Al-Khalij | 12.8% | 0.910 |","notes":"From Lab 3.3: the district's guessed variety mix times the gold-set recall of each variety. The districts that complain most about sewage are the ones the model under-counts most. SDAIA's AI Bias Reference Guide calls a systematic over- or under-estimate of true values measurement bias. Sources: AI Bias Reference Guide, first edition.","minutes":null,"lo":["LO4","LO5"]},{"id":"check-dialect","n":28,"title":"What does the dialect gap do to the published rate?","kind":"quiz","session":3,"hash":"d2450891","md":"#### [day3#check-dialect] What does the dialect gap do to the published rate?\n\n*Checkpoint*\n\n**Question:** Fahim misses more sewage complaints in Gulf dialect. Al-Naseem's complaints are 60% Gulf, Al-Khalij's 13%. The naive sewage rate is published for both. Which statement holds?\n\n- A. Al-Naseem's rate is under-stated more than Al-Khalij's, so the gap between them looks smaller than it is\n- B. Both are under-stated equally, so the comparison is fair\n- C. Al-Naseem's rate is over-stated\n- D. The rates are fine because overall accuracy is 0.81","notes":"Answer: the first option. Tomorrow's last lab corrects exactly this.","minutes":null,"lo":["LO5"]},{"id":"lab-3-3","n":29,"title":"Dialect gaps","kind":"lab","session":3,"hash":"24524a0e","md":"#### [day3#lab-3-3] Dialect gaps\n\nLab 3.3 · 25 min\n\nMeasure Fahim's agreement on Modern Standard Arabic, Gulf dialect and English subsets, find the confusion behind the gap and its effect on a count.\n\n[D3_3_dialect_gaps.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D3_3_dialect_gaps.ipynb)\n\n- [ ] Agreement by variety with intervals (7 min)\n- [ ] The confusion table of Gulf complaints (6 min)\n- [ ] The gap with a bootstrap interval (6 min)\n- [ ] What the gap does to a count (6 min)\n- [ ] ✱ Stretch: Does the reworded prompt narrow the gap?","notes":"Task 4 guesses the variety of all 20,000 complaints; it takes about a minute (quick mode uses 5,000). Some participants compute recall over all categories: the question is about water and sewage only. The stretch compares the prompts.","minutes":null,"lo":[]},{"id":"s4","n":30,"title":"Is the model a good annotator","kind":"section","session":4,"hash":"b75a5ac7","md":"#### [day3#s4] Is the model a good annotator\n\n*Session 4*\n\n- Compare model-human agreement with human-human agreement\n- Set decision criteria before reading the results\n- Write a reliability memo with a decision and its limits","notes":"The decision of the day. Make the room write criteria before the lab prints anything.","minutes":null,"lo":["LO5"]},{"id":"the-question","n":31,"title":"Can Fahim replace the second coder, and can its labels feed an estimate?","kind":"content","session":4,"hash":"37da3a9e","md":"#### [day3#the-question] Can Fahim replace the second coder, and can its labels feed an estimate?\n\n*The decision*\n\n- **Replace a coder.** Each label is used as it is, complaint by complaint. The bar is what a second person adds.\n- **Feed an estimate.** Labels are counted. Errors can be measured on a human sample and corrected in the count.\n\nTwo questions, two bars. A model can fail the first and pass the second.","notes":"Keep the two questions apart all session. Most teams merge them and decide \"the model is good enough\" or \"not good enough\" for everything at once.","minutes":null,"lo":["LO5"]},{"id":"criteria-first","n":32,"title":"Write the bar before you read the results","kind":"content","session":4,"hash":"ec8553f7","md":"#### [day3#criteria-first] Write the bar before you read the results\n\n*Lab 3.4, step 3*\n\n| Criterion, in every variety | The course's bar |\n| --- | --- |\n| Fahim's kappa below the human pair's, at most | 0.05 |\n| Complaints whose three runs agree, at least | 90% |\n| Accuracy gap between varieties, at most | 0.05 |\n\nA criterion written after the results is a description of the results.","notes":"The numbers are one defensible set, not a standard. The alternative annotator test (Calderon, Reichart and Dror, 2025) is a formal version of the first criterion with a statistical procedure; the stretch of the lab uses its idea. Sources: The Alternative Annotator Test for LLM-as-a-Judge.","minutes":null,"lo":["LO5"]},{"id":"criteria-results","n":33,"title":"Fahim passes on formal Arabic and English, and fails on Gulf dialect and stability","kind":"content","session":4,"hash":"fa4ba7b3","md":"#### [day3#criteria-results] Fahim passes on formal Arabic and English, and fails on Gulf dialect and stability\n\n*Lab 3.4, step 4*\n\n| Test | Value | Result |\n| --- | --- | --- |\n| Kappa shortfall, Modern Standard Arabic | −0.032 | Pass |\n| Kappa shortfall, Gulf dialect | 0.187 | Fail |\n| Kappa shortfall, English | −0.052 | Pass |\n| Three runs agree | 80.3% | Fail |\n| Accuracy gap between varieties | 0.135 | Fail |","notes":"From Lab 3.4 on the recorded runs. A negative shortfall means Fahim agrees with gold better than the two coders agree with each other in that group; it is not the same comparison, so read it as \"no shortfall\", not as \"better than people\".","minutes":null,"lo":["LO5"]},{"id":"leave-one-out","n":34,"title":"Swapped in for either coder, Fahim agrees less with the other one than a person does","kind":"content","session":4,"hash":"f6073a8d","md":"#### [day3#leave-one-out] Swapped in for either coder, Fahim agrees less with the other one than a person does\n\n*Lab 3.4, stretch*\n\n| Replace | The human's agreement with the other coder | Fahim's |\n| --- | --- | --- |\n| Coder A | 0.853 | 0.780 |\n| Coder B | 0.853 | 0.750 |","notes":"From the stretch of Lab 3.4: the idea of the alternative annotator test with two coders. With more coders the test counts, for each one left out, whether the model agrees with the rest at least as well; with two coders it is a sanity check rather than a test.","minutes":null,"lo":["LO5"]},{"id":"reliability-memo","n":35,"title":"The reliability memo answers both questions in five short paragraphs","kind":"content","session":4,"hash":"2f77b31a","md":"#### [day3#reliability-memo] The reliability memo answers both questions in five short paragraphs\n\n*Lab 3.4, step 5*\n\n1. **Question** Replace the second coder? Feed the district rates?\n2. **Evidence** Agreement, stability, gaps, each with its number\n3. **Decision** Not as a coder; yes for counts with a correction\n4. **Limits** Synthetic runs, small groups, versions to keep","notes":"The draft is saved to artifacts/day3/reliability_memo.md. In the capstone it is worth 25 of the 100 rubric points, the same as preparation and redaction. Ask two participants to read their decision paragraph aloud.","minutes":null,"lo":["LO5"]},{"id":"check-annotator","n":36,"title":"What does the memo recommend?","kind":"quiz","session":4,"hash":"da6653c9","md":"#### [day3#check-annotator] What does the memo recommend?\n\n*Checkpoint*\n\n**Question:** Fahim fails the criteria on Gulf dialect and on stability, and passes on formal Arabic and English. Dr. Ebtisam wants one recommendation. Which one follows from the evidence?\n\n- A. Replace the second coder, since overall kappa is 0.778\n- B. Stop using Fahim for anything\n- C. Keep both human coders; use Fahim's labels for counts only with a correction from the human sample, by variety\n- D. Lower the stability criterion to 80% so that Fahim passes","notes":"Answer: the third option. The fourth option happens in real projects more than anyone admits; name it.","minutes":null,"lo":["LO5"]},{"id":"lab-3-4","n":37,"title":"A good annotator?","kind":"lab","session":4,"hash":"363f880b","md":"#### [day3#lab-3-4] A good annotator?\n\nLab 3.4 · 25 min\n\nDecide whether Fahim's labels can replace a second human coder, against criteria written first, and draft the reliability memo.\n\n[D3_4_annotator.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D3_4_annotator.ipynb)\n\n- [ ] Agreement between the two human coders (4 min)\n- [ ] Fahim against each coder and the gold label (6 min)\n- [ ] Write the criteria before looking (4 min)\n- [ ] Apply them: agreement, stability, gaps (6 min)\n- [ ] Draft the reliability memo (5 min)\n- [ ] ✱ Stretch: Leave one coder out: how often does Fahim agree with the other coder as often as a human does?","notes":"Insist on writing the criteria in task 3 before running task 4. The memo is a draft for the capstone; it may be in Arabic or English. All on recorded runs.","minutes":null,"lo":[]},{"id":"wrap-up","n":38,"title":"Three things to keep","kind":"content","session":4,"hash":"b8bd0f80","md":"#### [day3#wrap-up] Three things to keep\n\n*Day 3 · wrap-up*\n\n- **Version everything.** Model, prompt hash, settings and date travel with every label set.\n- **Ask it twice.** Run and prompt stability are part of a label's error; a single run hides both.\n- **Report by group.** A gap by variety turns into an under-count by district.","notes":"Ask: which number from today would you put in the first line of the memo? Usually the Gulf shortfall.","minutes":null,"lo":[]},{"id":"next","n":39,"title":"Day 4: From documents to tables","kind":"content","session":4,"hash":"4e99e52e","md":"#### [day3#next] Day 4: From documents to tables\n\n*Next*\n\nTomorrow: fields extracted from inspection reports, clusters, and the corrected district rates. Read the two capstone briefs in labs/data/capstone/.","notes":"Lab 4.4 ends with the choice of the capstone corpus: Nadwa, Raafid, or a public corpus the trainer approves. Ask participants to come with a first choice.","minutes":null,"lo":[]}],"activities":[{"id":"review-day2-q1","slide":"review-day2","type":"single","prompt":"Sparse minus embedding accuracy on the same 300 gold complaints was +0.037, interval −0.003 to +0.073. Unpaired, the interval was 0.093 wide; paired, 0.077. What made the paired interval narrower?","options":[{"key":"A","text":"Pairing doubles the number of complaints"},{"key":"B","text":"The paired bootstrap used more resamples"},{"key":"C","text":"Complaints that are easy or hard for both classifiers cancel out in the difference"},{"key":"D","text":"Accuracy is less variable than macro F1"}],"correct":[2],"explanation":"Only the complaints where exactly one classifier is right carry the difference; pairing keeps the rest from adding noise.","misconceptions":["Thinks pairing adds data: both analyses use the same 300 complaints","Confuses the number of resamples with precision: both used 2,000","","Attributes the width to the metric: both intervals are on accuracy"],"lo":["LO2"]},{"id":"check-prompted-q1","slide":"check-prompted","type":"single","prompt":"The centre adds a ninth category, \"heat and cooling in public buildings\", with no labelled examples yet. The sparse model scores 0.930 on the old eight; Fahim 0.810. What do you use for the first month?","options":[{"key":"A","text":"The sparse model, since it scores higher"},{"key":"B","text":"Fahim with the new category added to its prompt, checked on a small new gold sample"},{"key":"C","text":"Neither, until 3,000 new labels are collected"},{"key":"D","text":"The sparse model for the new category and Fahim for the old ones"}],"correct":[1],"explanation":"A prompted model needs a codebook, not training labels. It must still be measured against a human sample before its labels are used.","misconceptions":["Ignores that the sparse model has never seen the new category and cannot predict it","","Assumes no labels means no measurement: a small gold sample is enough to check","Uses each model where it is weakest: the sparse model cannot route to a category it never learnt"],"lo":["LO2"]},{"id":"check-stability-q1","slide":"check-stability","type":"single","prompt":"Prompt 1 scores 0.810 on the gold set and prompt 2 scores 0.797. A colleague says the prompts are equivalent, so the published district counts do not depend on the choice. What do you check?","options":[{"key":"A","text":"Nothing: equal accuracy means equal counts"},{"key":"B","text":"The flip rate of prompt 1 alone"},{"key":"C","text":"Which prompt uses fewer tokens"},{"key":"D","text":"How many labels differ between the prompts, and the counts by category and district under each"}],"correct":[3],"explanation":"A third of the labels change between the prompts while accuracy stays put. Counts are built from labels, not from accuracy.","misconceptions":["Treats equal accuracy as equal labels: the same score can come from different complaints being wrong","Checks run noise instead of the prompt effect","Changes the subject to cost: the question is whether the counts depend on the prompt",""],"lo":["LO5"]},{"id":"check-dialect-q1","slide":"check-dialect","type":"single","prompt":"Fahim misses more sewage complaints in Gulf dialect. Al-Naseem's complaints are 60% Gulf, Al-Khalij's 13%. The naive sewage rate is published for both. Which statement holds?","options":[{"key":"A","text":"Al-Naseem's rate is under-stated more than Al-Khalij's, so the gap between them looks smaller than it is"},{"key":"B","text":"Both are under-stated equally, so the comparison is fair"},{"key":"C","text":"Al-Naseem's rate is over-stated"},{"key":"D","text":"The rates are fine because overall accuracy is 0.81"}],"correct":[0],"explanation":"The miss rate follows the variety, and the variety mix differs by district. The district that suffers most is under-counted most.","misconceptions":["","Assumes errors cancel across districts: the error depends on each district's language mix","Reverses the direction of the error: missed complaints lower the count","Thinks a better overall accuracy fixes a group error: the gap is in one variety"],"lo":["LO5","LO4"]},{"id":"check-annotator-q1","slide":"check-annotator","type":"single","prompt":"Fahim fails the criteria on Gulf dialect and on stability, and passes on formal Arabic and English. Dr. Ebtisam wants one recommendation. Which one follows from the evidence?","options":[{"key":"A","text":"Replace the second coder, since overall kappa is 0.778"},{"key":"B","text":"Stop using Fahim for anything"},{"key":"C","text":"Keep both human coders; use Fahim's labels for counts only with a correction from the human sample, by variety"},{"key":"D","text":"Lower the stability criterion to 80% so that Fahim passes"}],"correct":[2],"explanation":"Per-complaint use needs every label to be good enough; a count can be corrected for measured errors.","misconceptions":["Ignores the failed criteria because the overall numbers look acceptable","Discards labels that are usable for estimates with a correction","","Moves the bar after the results: the criteria were set before looking"],"lo":["LO5"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day3.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

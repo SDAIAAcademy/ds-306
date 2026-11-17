@@ -1,0 +1,16 @@
+{
+ "marked": 339,
+ "missed": 26,
+ "miss_rate": 0.0767,
+ "by_type": {
+  "email": 0.0,
+  "name": 0.2131,
+  "national_id": 0.0,
+  "phone": 0.0
+ },
+ "by_script": {
+  "ar": 0.0568,
+  "en": 0.1507,
+  "mixed": 0.0
+ }
+}

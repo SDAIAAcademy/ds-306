@@ -1,0 +1,92 @@
+[
+ {
+  "script": "ar",
+  "channel": "app",
+  "chars": 125.0,
+  "words": 23.0
+ },
+ {
+  "script": "ar",
+  "channel": "call_centre",
+  "chars": 126.0,
+  "words": 23.0
+ },
+ {
+  "script": "ar",
+  "channel": "email",
+  "chars": 131.0,
+  "words": 23.0
+ },
+ {
+  "script": "ar",
+  "channel": "social",
+  "chars": 120.0,
+  "words": 21.0
+ },
+ {
+  "script": "ar",
+  "channel": "web",
+  "chars": 126.0,
+  "words": 22.0
+ },
+ {
+  "script": "en",
+  "channel": "app",
+  "chars": 168.0,
+  "words": 30.0
+ },
+ {
+  "script": "en",
+  "channel": "call_centre",
+  "chars": 160.0,
+  "words": 29.0
+ },
+ {
+  "script": "en",
+  "channel": "email",
+  "chars": 166.0,
+  "words": 30.0
+ },
+ {
+  "script": "en",
+  "channel": "social",
+  "chars": 162.0,
+  "words": 29.0
+ },
+ {
+  "script": "en",
+  "channel": "web",
+  "chars": 164.0,
+  "words": 29.0
+ },
+ {
+  "script": "mixed",
+  "channel": "app",
+  "chars": 105.0,
+  "words": 16.0
+ },
+ {
+  "script": "mixed",
+  "channel": "call_centre",
+  "chars": 102.0,
+  "words": 15.0
+ },
+ {
+  "script": "mixed",
+  "channel": "email",
+  "chars": 103.0,
+  "words": 14.0
+ },
+ {
+  "script": "mixed",
+  "channel": "social",
+  "chars": 96.0,
+  "words": 14.0
+ },
+ {
+  "script": "mixed",
+  "channel": "web",
+  "chars": 98.0,
+  "words": 14.0
+ }
+]

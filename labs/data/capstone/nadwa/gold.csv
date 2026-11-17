@@ -1,0 +1,201 @@
+id,text,variety,coder_a,coder_b,gold
+N00515,ﺍﻝسلام عﻝيكم طلﺏﺕ كتاﺏ مﻥ شهﺭ وﻝﻝحيﻥ ﻡﺍ ﻭصل.,gulf,collections,collections,collections
+N00222,ﺍود الإﺏﻝﺍغ عﻥ ﻡشكلة: ﻝا ﺕتﻭافق سﺍعﺍت اﻝعﻡل ﻡع أﻭقاﺕ الطلاﺏ. آمﻝ ﺍلﺕواصﻝ معي.,msa,opening_hours,opening_hours,opening_hours
+N01711,تحية طيبة، طلبت كتابا منذ شهر ولم يصل. نرجو سرعة المعالجة.,msa,collections,collections,collections
+N00234,التسجيل في الفعاليات يمتلئ بسرعة. اسمي [NAME].,msa,events,events,events
+N02267,مرحبا الكتب العربية الجديدة قليلة مره. الحين صار لها وايد ومحد سوا شي.,gulf,collections,collections,collections
+N01705,ﻱا جﻡﺍعه ﺍﻝكﺕﺏ ﺍﻝعربﻱة اﻝجﺩيدة قﻝيلة ﻡﺭه. جوالي [PHONE],gulf,collections,collections,collections
+N01674,لا تتوافق ساعات العمل مع اوقات الطلاب. آمل التواصل معي.,msa,collections,opening_hours,opening_hours
+N02063,يا جماعة طلبت كتاب من شهر وللحين ما وصل. الحين صار لها وايد ومحد سوا شي. رقم هويتي [ID],gulf,collections,collections,collections
+N02439,ﺍلسلام عليكﻡ ﺍلتسجﻱﻝ باﻝفعالﻱاﺕ ﻱخﻝص ﺏسﺭعة.,gulf,events,events,events
+N01494,السلام عليكم لغوا ورشة الأطفال وما علمونا. الله يعافيكم شوفوا لنا حل. معك [NAME].,gulf,events,events,events
+N02444,طلبت کتابا منذ شهر ولم یصل. آمل التواصل معی.,msa,collections,opening_hours,collections
+N02437,مرحبا طلبت كتاب من شهر ولـــلحين ما وصل. انا [NAME] من سكان الحي.,gulf,collections,collections,collections
+N02422,"Hi, I requested a book a month ago and it never arrived. Please contact me. [NAME], a member",en,collections,collections,collections
+N02172,السلام عليكم، الكتب العربية الحديثة قليلة جدا.,msa,collections,collections,collections
+N01249,النت في المكتبة ضعيف مره. جوالي [PHONE],gulf,facilities,facilities,facilities
+N02473,مرحبا المكتبه تسكر بدري بالويكند.,gulf,events,opening_hours,opening_hours
+N00397,لو سمحتوا لغوا ورشة الأطفال وما علمونا. الحین صار لها واید ومحد سوا شی. معك [NAME].,gulf,events,events,events
+N01397,ﺍﻝسلاﻡ علﻱكﻡ، الكﺕب ﺍﻝعﺭﺏﻱة اﻝحدﻱثة قﻝﻱلة جﺩا. ﻭشكرا لكم.,msa,collections,collections,collections
+N00370,السلام عليكم، ألغيت ورشة الأطفال دون إشعار.,msa,events,events,events
+N01320,تحية طيبة، التكييف في قاعة المطالعه معطل. وشكرا لكم. اسمي [NAME].,msa,facilities,facilities,facilities
+N01230,"Dear team, The staff at the loans desk were unhelpful. Please contact me.",en,staff,staff,staff
+N00632,مﻭظف الإعﺍﺭة ﻡُا ﺕْعﺍوﻥ ﻡُعي. وشكﺭا. ايميلي [EMAIL],gulf,staff,staff,staff
+N00432,"Hi, There are very few new Arabic books. This is the third time I report it. [NAME], phone [PHONE]",en,collections,collections,collections
+N00817,اود الإبلاغ عن مشكلة: الغيت ورشة الأطفال دون إشعار.,msa,events,events,events
+N01132,السﻝﺍﻡ عﻝيكﻡ، شبكة الإﻥﺕﺭنﺕ فُﻱ ﺍّلمكتبة ضُعﻱفة. ﻭشكرا ﻝكﻡ.,msa,facilities,facilities,facilities
+N02146,يا جماعه المكتبة تسكر بدري بالويكند. وشكرا.,gulf,opening_hours,opening_hours,opening_hours
+N00521,طلبت كتابا منـــذ شهر ولم يصل. آمل التواصل معي. اسمي [NAME].,msa,collections,collections,collections
+N01939,لو سمحتوا طلبت كتاب من شهر وللحين ما وصل. الحين صار لها وايد ومحد سوا شي. كلموني على [PHONE],gulf,collections,collections,collections
+N01715,لَغوا وُرشة الأطفال وما عِلمونا. وشكرا. كلموني على [PHONE],gulf,events,events,events
+N02127,The air conditioning in the reading room is broken. This is the third time I report it.,en,facilities,facilities,facilities
+N01850,The library closes too early at the weekend. Please fix this soon.,en,opening_hours,opening_hours,opening_hours
+N01175,المكيف في قاعة القرايه خربان. وشكرا. معك [NAME].,gulf,events,facilities,facilities
+N01322,طلبت كتابا منذ شهر ولم يصل. نرجو سرعة المعالجة. للتواصل: [PHONE],msa,collections,collections,collections
+N01682,أود الإبلاغ عن مشكلة: الموظف في مكتب الإعارة لم يتعاون معي. نرجو سرعه المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],msa,staff,staff,staff
+N02276,النت في المكتبة ضعيف مره. الدوام ما يناسب الطلاب ابد. الله يعافيكم شوفوا لنا حل.,gulf,facilities,facilities,facilities
+N02456,تحيه طيبة، لا تتوافق ساعات العمل مع أوقات الطلاب. نرجو سرعة المعالجة. رقم جوالي [PHONE],msa,opening_hours,opening_hours,opening_hours
+N01648,تْحية طُيبة، لم يجب احد عّلى استفساري في المكتب. لا تتوافق ساعات العمل مع أوقات الطلاب. آمل التواصل معي. اسمي [NAME].,msa,staff,staff,staff
+N00946,تحﻱة طيبة، ﺍﻝمكتﺏة ﺕغلق مبكﺭا في ﻥهﺍية ﺍﻝأسبﻭع.,msa,opening_hours,opening_hours,opening_hours
+N01564,السلام عليكم، الغيت ورـــشة الأطفال دون إشعار. لا تتوافق ساعات العمل مع أوقات الطلاب. بريدي الإلكتروني [EMAIL],msa,events,events,events
+N01565,السلام عليكم، طلبت كتابا منذ شهر ولم يصل. ألغيت ورشة الأطفال دون اشعار. وشكرا لكم. مقدم البلاغ: [NAME]، جوال [PHONE],msa,collections,events,collections
+N01810,لو سمحتوا طلبت كتاب من شهر وللحين ما وصل.,gulf,collections,collections,collections
+N01304,المکتبة تغلق مبکرا فی نهایه الأسبوع. آمل التواصل معی.,msa,opening_hours,opening_hours,opening_hours
+N00628,طلبت كتابا منذ شهر ولم يصل. التكييف في قاعة المطالعة معطل. للتواصل: [PHONE],msa,facilities,facilities,collections
+N00707,التكييف فَي قاعة اِلمطالعه معطل. وَشكرا لكم. أنا المواطن [NAME].,msa,facilities,opening_hours,facilities
+N00503,أود الإبلاغ عن مشكلة: شبكه الإنترنت في المكتبة ضعيفة. المكتبة تغلق مبكرا في نهاية الأسبوع.,msa,facilities,opening_hours,facilities
+N00976,السلام عليكم، لم يجب أحد على استفساري في المكتب.,msa,staff,staff,staff
+N00566,التسجیل فَی الفعالیات یًمتلئ بسرعة. وْشکرا لکم.,msa,events,events,events
+N01281,"Hi, The library closes too early at the weekend. The library's internet is very slow. Please contact me.",en,opening_hours,opening_hours,opening_hours
+N02364,الدوام ما يناسب الطلاب أبد. المكيف في قاعة القرايه خربان.,gulf,opening_hours,opening_hours,opening_hours
+N00539,شﺏكه الإنتﺭنﺕ في ﺍلمكﺕﺏه ضعﻱفة. ﻥﺭجﻭ سرعة اﻝﻡعﺍﻝجة.,msa,facilities,facilities,facilities
+N01475,اُلنت في المكتبة ضعيف مره. الله يعافيكم شَوفوا لَنا حل.,gulf,facilities,facilities,facilities
+N00505,طلبت كَتاب من شهر وللحين ما وًصل. النت في المكتبة ضعيف مره. الله يُعافيكم شوفوا لنا حل.,gulf,collections,facilities,collections
+N01781,الدوام ما يناسب الطلاب أبد. الحين صار لها وايد ومحد سوا شي.,gulf,opening_hours,opening_hours,opening_hours
+N01769,مرحبا النت في المكتبة ضعيف مره. وشكرا. انا [NAME] وهذا رقمي [PHONE],gulf,facilities,facilities,facilities
+N01731,Nobody at the desk answered my question.,en,staff,staff,staff
+N00200,The air conditioning in the reading room is broken.,en,facilities,facilities,facilities
+N01124,"Hi, I requested a book a month ago and it never arrived. Please contact me.",en,collections,collections,collections
+N02291,ﻱﺍ جﻡﺍعه اﻝﻡكﺕﺏة ﺕسكر بدﺭي بﺍﻝﻭيكﻥد. ﻭشكرا.,gulf,opening_hours,opening_hours,opening_hours
+N01618,السلام عليكم طلـــبت كًتاب من شهر وللحين مّا وصل. الحين صار لها وايد وًمحد سوا شي.,gulf,collections,collections,collections
+N02123,الكتب العربية الجديدة قليله مره. المكتبة تسكر بدري بالويكند. انا [NAME] وهذا رقمي [PHONE],gulf,opening_hours,opening_hours,collections
+N00671,التكييف في قاعة الـــمطالعة معطل. [NAME] - الحي,msa,facilities,facilities,facilities
+N00964,"Hello, Event registration fills up too fast. There are very few new Arabic books. Please contact me. ID number [ID]",en,events,collections,events
+N02306,شبكة الإنترنت في المكتبة ضعيفة. آمل التواصل معي.,msa,facilities,facilities,facilities
+N01185,التسجيل بْالفعاليات يِخلص بسرعة. اّلنت في المكتبة ضعيف مره. كلموني على [PHONE],gulf,facilities,events,events
+N00762,لو سمحتوا طلبت كتاب من شهر وللحين ما وصل. الله يعافيكم شوفوا لنا حل.,gulf,collections,collections,collections
+N00844,مرحبا المكيف في قاعة القراية خربان. وشكرا. جوالي [PHONE],gulf,facilities,facilities,facilities
+N00661,The air conditioning in the reading room is broken. This is the third time I report it. Call me on [PHONE].,en,facilities,facilities,facilities
+N01524,تحية طيبة، التكييف في قاعة المطالعة معطل. وشكرا لكم.,msa,facilities,facilities,facilities
+N00230,Opening hours do not suit students. Call me on [PHONE].,en,opening_hours,opening_hours,opening_hours
+N01182,مرحبا المكيف في قاعة القرايه خربان. تكفون بسرعة. انا [NAME] من سكان الحي.,gulf,facilities,facilities,facilities
+N02273,The air conditioning in the reading room is broken. Please contact me. ID number [ID],en,facilities,facilities,facilities
+N01270,لغوا ورشة الأطفال وما علـــمونا. وشكرا. معك [NAME].,gulf,events,events,events
+N02430,يا جماعة الكتب العربية الجديدة قليلة مره. الحين صار لها وايد ومحد سوا شي.,gulf,collections,collections,collections
+N01313,تحية طيبة، الكتب العربية الحديثة قليلة جدا. نرجو سرعة المعالجة.,msa,collections,collections,collections
+N01030,لغوا ورشة الأطفال وما علمونا. الله يعافيكم شوفوا لنا حل. انا [NAME] وهذا رقمي [PHONE],gulf,events,events,events
+N01754,السلام علیکم، الموظف فی مکتب الإعارة لم یتعاون معی.,msa,staff,staff,staff
+N00069,The library closes too early at the weekend. Please contact me.,en,opening_hours,opening_hours,opening_hours
+N00192,لو سمحتوا طلبت كتاب من شهر وللحين ما وصل. تكفون بسرعة. كلموني على [PHONE],gulf,collections,collections,collections
+N01973,ﻡرحﺏا الﻡكتبه تسكر بﺩﺭي ﺏﺍلويكنﺩ. ﺕكفون بسﺭعة.,gulf,opening_hours,opening_hours,opening_hours
+N00745,السلام علیکم المکتبة تسکر بدری بالویکند. تکفون بسرعة.,gulf,opening_hours,opening_hours,opening_hours
+N01597,السلام عليكم، الكتب العربية الحديثة قليلة جدا. التكييف في قاعة المطالعة معطل. آمل التواصل معي. بريدي الإلكتروني [EMAIL],msa,collections,collections,collections
+N02035,الدوام مْا يناسب الطلاب ابد. الكتب اًلعربية اّلجديده قليلة مره. وشكرا.,gulf,opening_hours,collections,opening_hours
+N01589,ﺍلكﺕب ﺍﻝعرﺏية ﺍلحدﻱثة قﻝﻱﻝة جﺩﺍ. وشكﺭﺍ ﻝكﻡ.,msa,collections,collections,collections
+N01329,محﺩ رﺩ عﻝى سؤاﻝﻱ ﺏﺍلﻡكتﺏ. كلموني على [PHONE],gulf,staff,staff,staff
+N01269,الكتب العربية الجديدة قليلة مره. تكفون بسرعة.,gulf,collections,collections,collections
+N00147,The library closes too early at the weekend. Thank you.,en,opening_hours,opening_hours,opening_hours
+N00698,لو سمحتوا موظف الإعارة ما تعاون معی. وشکرا. انا [NAME] وهذا رقمي [PHONE],gulf,opening_hours,staff,staff
+N02099,"Hi, Event registration fills up too fast. Please contact me.",en,events,events,events
+N00924,السلام عّليكم، الكتب اْلعربية الحديثة قليلة جدا. نرجو سًرعة المعالجة.,msa,collections,collections,collections
+N01584,يَا جماعة اّلكتب العربية الجديده قليلة مره. وُشكرا.,gulf,collections,collections,collections
+N02138,شبکة الإنترنت فی المکتبة ضعیفة. الموظف فی مکتب الإعارة لم یتعاون معی. آمل التواصل معی. للتواصل: [PHONE],msa,staff,facilities,facilities
+N00772,السلام عليكم النت في المكتبة ضعيف مره. تكفون بسرعة. جوالي [PHONE],gulf,facilities,facilities,facilities
+N02424,التكييف في قاعة الـــمطالعة معطل. نرجو سرعة المعالجة.,msa,facilities,facilities,facilities
+N00592,أود الإبلاغ عن مشكلة: ألغيت ورشة الأطفال دون إشعار. آمل التواصل معي.,msa,events,collections,events
+N00953,الكتب العربية الحديثه قليله جدا. آمل التواصل معي. رقم جوالي [PHONE],msa,collections,collections,collections
+N01546,تحية طيبة، الكتب العربية الحديثة قليلة جدا. التكييف في قاعة المطالعة معطل. رقم جوالي [PHONE],msa,collections,facilities,collections
+N00923,التسجيل بًالفعاليات يُخلص بّسرعة. معك [NAME].,gulf,events,events,events
+N01670,"Dear team, The air conditioning in the reading room is broken. Thank you.",en,facilities,facilities,facilities
+N02066,أود الإبلاغ عن مشكلة: ألغيت ورشة الأطفال دون إشعار. آمل التواصل معي.,msa,events,events,events
+N02152,السلام عليكم لغوا ورشة الأطفال وما علمونا. الحين صار لها وايد ومحد سوا شي. انا [NAME] من سكان الحي.,gulf,events,events,events
+N00846,لو سمحتوا محد رد على سؤالي بالمكتب. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],gulf,staff,staff,staff
+N01071,تحية طيبة، لم يجب أحد على استفساري في المكتب. التسجيل في الفعاليات يمتلئ بسرعة. آمل التواصل معي. اسمي [NAME].,msa,staff,staff,staff
+N00870,Opening hours do not suit students. Please contact me.,en,opening_hours,opening_hours,opening_hours
+N01371,النت في المكتبة ضعيف مره. الله يعافيكم شوفوا لنا حل. ايميلي [EMAIL],gulf,facilities,facilities,facilities
+N02105,The children's workshop was cancelled without notice.,en,events,events,events
+N02234,السلام عليكم، الكتب العربية الحديثة قليلة جدا. نرجو سرعة المعالجة. رقم جوالي [PHONE],msa,collections,collections,collections
+N01224,يا جماعة النت في المكتبة ضعيف مره. وشكرا. انا [NAME] من سكان الحي.,gulf,facilities,facilities,facilities
+N00072,السلام عليكم، المكتبة تغلق مبكرا في نهاية الأسبوع. رقم الهوية [ID],msa,opening_hours,opening_hours,opening_hours
+N00203,طلبت کتاب من شهر وللحین ما وصل.,gulf,collections,collections,collections
+N02415,السلام عليكم، الكتب العربية الحديثة قليلة جدا.,msa,collections,collections,collections
+N01741,ألغيت ورشة الأطفال دون إشعار. وشـــكرا لكم.,msa,events,events,events
+N02081,يا جماعة الـــنت في المكتبة ضعيف مره. الحين صار لها وايد ومحد سوا شي.,gulf,facilities,facilities,facilities
+N02068,المكتبه تغلق مبكرا في نهاية الأسبوع. وشكرا لكم. للتواصل: [PHONE],msa,opening_hours,opening_hours,opening_hours
+N02109,شبکة الإنترنت فی المکتبة ضعیفة. أنا المواطن [NAME].,msa,facilities,facilities,facilities
+N00755,اﻝسﻝام عﻝﻱكﻡ ﺍﻝﻥﺕ فُﻱ ﺍلمكﺕﺏة ضعﻱف ﻡره. المكتﺏة ﺕسكر ﺏدري بّالﻭيكنﺩ. ﺍُلله ﻱعﺍفﻱكﻡ شﻭفﻭا ﻝنا حﻝ. جوالي [PHONE],gulf,facilities,facilities,facilities
+N02270,الكتب العربية الجديدة قلـــيلة مره. الله يعافيكم شوفوا لنا حل.,gulf,staff,collections,collections
+N02189,مرحبا المكيف في قاعة القراية خربان. انا [NAME] وهذا رقمي [PHONE],gulf,facilities,facilities,facilities
+N00134,السلام علیکم النت فی المکتبه ضعیف مره. الحین صار لها واید ومحد سوا شی. انا [NAME] من سكان الحي.,gulf,facilities,facilities,facilities
+N01242,"Hi, I requested a book a month ago and it never arrived. Thank you.",en,collections,collections,collections
+N00456,"Hi, The air conditioning in the reading room is broken. Please fix this soon.",en,facilities,facilities,facilities
+N00906,يا جماعه الكتب العربية الجديدة قليلة مره. تكفون بسرعة.,gulf,collections,collections,collections
+N00862,تحية طيبة، شبكة الإنترنت في المكتبة ضعيفة. رقم جوالي [PHONE],msa,collections,facilities,facilities
+N00037,السلام عَليكم اَلتسجيل بالفعاليات يَخلص بسرعة. وشكرا. [NAME] - الحي,gulf,events,events,events
+N01802,تحية طيبة، لا تتوافق ساعات العمل مع أوقات الطلاب.,msa,opening_hours,opening_hours,opening_hours
+N00434,النت في المكتبة ضعيف مره. وشكرا. [NAME] - الحي,gulf,facilities,facilities,facilities
+N00056,مرحبا النت في المكتبة ضعيف مره. الله يعافيكم شوفوا لنا حل.,gulf,facilities,facilities,facilities
+N02094,تحية طيبة، طلبت كتابا منذ شهر ولم يصل. [NAME] - الحي,msa,collections,collections,collections
+N00570,اًلسلام عليكم، طُلبت كتابا منذ شهر وُلم يصل.,msa,collections,collections,collections
+N00636,ألغيت ورشه الأطفال دون اشعار.,msa,events,events,events
+N00251,المكيف في قاعة القراية خربان. تكفون بسرعة. كلموني على [PHONE],gulf,facilities,facilities,facilities
+N00332,اود الإبلاغ عن مشكلة: لا تتوافق ساعات العمل مع اوقات الطلاب. نرجو سرعه المعالجة. اسمي [NAME].,msa,opening_hours,opening_hours,opening_hours
+N00511,لم يجب أحد على استفساري في المكتب. نرجو سرعة المعالجة. مقدم البلاغ: [NAME]، جوال [PHONE],msa,staff,staff,staff
+N00095,تحية طيـــبة، شبكة الإنترنت في المكتبة ضعيفة.,msa,facilities,facilities,facilities
+N00978,لو سمحتوا المكيف في قاعة القراية خربان. الحين صار لها وايد ومحد سوا شي. كلموني على [PHONE],gulf,facilities,facilities,facilities
+N00090,ألغيت ورشة الأطفال دون إشعار. نرجو سرعة المعالجة.,msa,events,collections,events
+N00163,ﻡرحبﺍ اﻝﺩوﺍﻡ مﺍ ﻱناسب ﺍﻝطلاﺏ أﺏﺩ. انا [NAME] وهذا رقمي [PHONE],gulf,opening_hours,opening_hours,opening_hours
+N01283,"Hello, Opening hours do not suit students. This is the third time I report it. ID number [ID]",en,opening_hours,opening_hours,opening_hours
+N01199,ﺕحﻱة طيبة، طﻝﺏﺕ كﺕﺍبﺍ ﻡﻥذ شهﺭ ﻭﻝم يصل. ﻭشكﺭﺍ لكم. أنا المواطن [NAME].,msa,collections,collections,collections
+N00228,السلام عليكم، شبكة الإنترنت في المكتبة ضعيفة. نرجو سرعة المعالجة.,msa,facilities,facilities,facilities
+N00025,مرحبا موظف الإعارة ما تعاون معي. الله يعافيكم شوفوا لنا حل. ايميلي [EMAIL],gulf,staff,staff,staff
+N02219,اﻝﺕسجيل في الفعﺍلﻱاﺕ يمتﻝئ ﺏسﺭعة. أنا المواطن [NAME].,msa,opening_hours,events,events
+N00180,أود الإبلاغ عن مشكلة: الموظف في مكتب الإعارة لم يتعاون معي. رقم الهوية [ID],msa,staff,staff,staff
+N01690,تحيه طيبة، الـــتكييف في قاعة المطالعة معطل.,msa,facilities,facilities,facilities
+N00939,اود الإبلاغ عن مشکلة: شبکة الإنترنت فی المکتبة ضعیفة. نرجو سرعة المعالجة. رقم جوالي [PHONE],msa,facilities,facilities,facilities
+N01483,السلام عليكم، التكييف في قاعة المطالعة معطل. وشكرا لكم. أنا المواطن [NAME].,msa,facilities,collections,facilities
+N01119,أود الإبلاغ عن مشكلة: التسجيل في الفعاليات يمتلئ بسرعة. وشكرا لكم.,msa,events,events,events
+N01302,شبكة ﺍﻝإنتﺭنت في ﺍلﻡكﺕﺏة ضعيفة. آمﻝ ﺍﻝتﻭاصﻝ معﻱ. رقم جوالي [PHONE],msa,facilities,facilities,facilities
+N02449,الكتب العربية الحديثة قليلة جدا. وشكرا لكم.,msa,collections,events,collections
+N01654,تحية طيبة، شبكة الـــإنترنت في المكتبه ضعيفة. نرجو سرعة المعالجة.,msa,facilities,facilities,facilities
+N01507,أﻭﺩ ﺍلإﺏﻝاغ عﻥ ﻡشكﻝة: أﻝغﻱت وﺭشة ﺍلأطفاﻝ ﺩوﻥ ﺍشعاﺭ. وشكرﺍ لكﻡ. رقم جوالي [PHONE],msa,events,events,events
+N00264,الدوام ما يناسب الطلاب أبد. تكفون بسرعة. جوالي [PHONE],gulf,opening_hours,opening_hours,opening_hours
+N01752,مرحبا اَلتسجيل بُالفعاليات يُخلص بسرعة. وشكرا.,gulf,events,events,events
+N00609,الموظف فُي مْكتب الإعارة لم يتعاون معي. وشكرا لَكم.,msa,staff,staff,staff
+N01889,طلبت كتابا منذ شهر ولم يصل. المكتبة تغلق مبكرا في نهاية الأسبوع. آمل التواصل معي.,msa,collections,collections,collections
+N02280,اود الإبلاغ عن مشكلة: شبكه الإنترنت في المكتبه ضعيفة. بريدي الإلكتروني [EMAIL],msa,facilities,facilities,facilities
+N01387,السلام علـــيكم موظف الإعارة ما تعاون معي. وشكرا.,gulf,staff,staff,staff
+N01840,السلام عليكم الدوام ما يناسب الطلاب أبد.,gulf,opening_hours,opening_hours,opening_hours
+N01496,المكتبه تغلق مبكرا في نهاية الأسبوع. طلبت كتابا منذ شهر ولم يصل. نرجو سرعة المعالجة.,msa,opening_hours,collections,opening_hours
+N00421,تحية طيبة، الكتب العربيه الحديثة قليله جدا. أنا المواطن [NAME].,msa,collections,collections,collections
+N02070,الكتب العربية الحديثة قليلة جدا. نرجو سرعة المعالجة.,msa,facilities,collections,collections
+N01048,يا جماعة الكتب العربية الجديدة قليلة مره. الحين صار لها وايد ومحد سوا شي.,gulf,collections,collections,collections
+N01977,التكييف في قاعة المطالعة معطل. رقم جوالي [PHONE],msa,facilities,facilities,facilities
+N01035,ﺍﻝﻡﻭظف فُﻱ ﻡكتب ﺍلإعﺍرة ﻝم يتعﺍﻭﻥ ﻡعﻱ. آّﻡﻝ ﺍﻝﺕﻭﺍصﻝ مّعي. مقدم البلاغ: [NAME]، جوال [PHONE],msa,staff,staff,staff
+N00496,طلبت کتاب مْن شهر وللحین مُا وُصل. الله یعافیکم شوفوا لنا حل.,gulf,collections,collections,collections
+N01421,Event registration fills up too fast. Please contact me.,en,events,events,events
+N02020,الموظف في مكتب الإعارة لم يتعاون معي. نرجو سرعة المعالجة.,msa,staff,staff,staff
+N01790,لا تتوافق ساعات العمل مع اوقات الطلاب. وشکرا لکم.,msa,opening_hours,opening_hours,opening_hours
+N01714,طلبت کتاب من شهر وللحین ما وصل. [NAME] - الحي,gulf,collections,collections,collections
+N01005,الﺩﻭام ﻡا يﻥﺍسﺏ ﺍلطﻝﺍب أﺏد. وشكرﺍ. كلموني على [PHONE],gulf,opening_hours,opening_hours,opening_hours
+N02246,لو سمحتوا طلبت کتاب من شهر وللحین ما وصل.,gulf,collections,collections,collections
+N02344,"Hi, The staff at the loans desk were unhelpful. This is the third time I report it.",en,staff,staff,staff
+N01783,"Hi, Nobody at the desk answered my question. This is the third time I report it. ID number [ID]",en,staff,staff,staff
+N00576,الـــسلام عليكم الكتب العربية الجديدة قليلة مره. تكفون بسرعة.,gulf,collections,collections,collections
+N00777,يا جماعة طلبت كتاب من شهر وللحين ما وصل. محد رد على سؤالي بالمكتب. الله يعافيكم شوفوا لنا حل. جوالي [PHONE],gulf,collections,collections,collections
+N00679,يا جماعة الكتب العربية الجديدة قليله مره. وشكرا. رقم هويتي [ID],gulf,collections,collections,collections
+N00416,تحﻱة طيﺏة، شﺏكة ﺍلإﻥتﺭنت فﻱ اﻝﻡكﺕبة ضعيفة. آﻡﻝ ﺍﻝﺕوﺍصﻝ معي. أنا المواطن [NAME].,msa,facilities,facilities,facilities
+N00436,السلام عليكم، التسجيل في الفعاليات يمتلئ بسرعة. للتواصل: [PHONE],msa,events,staff,events
+N01040,لا ﺕﺕوافق سﺍعﺍﺕ العمل مع أوقات ﺍلطﻝاﺏ. ﻭشكرﺍ ﻝكم. رقم الهوية [ID],msa,opening_hours,events,opening_hours
+N01193,لم يجب أحد على استفساري في المكتب. المكتبه تغلق مبكرا في نهاية الأسبوع. آمل التواصل معي.,msa,staff,staff,staff
+N00876,الكتب العربية الجديدة قليلة مره. تكفون بسرعة. انا [NAME] من سكان الحي.,gulf,collections,collections,collections
+N00124,أود الإبلاغ عن مشکلة: طلبت کتابا منذ شهر ولم یصل. آمل التواصل معی. رقم الهوية [ID],msa,collections,collections,collections
+N00624,The air conditioning in the reading room is broken. Event registration fills up too fast. Thank you.,en,events,events,facilities
+N01672,لا تتوافق ساعات العمل مع اوقات الطلاب. للتواصل: [PHONE],msa,opening_hours,opening_hours,opening_hours
+N02041,السلام عليكم الكتب العربية الجديدة قليلة مره. وشكرا.,gulf,collections,collections,collections
+N01448,الدوام ما يناسب الطلاب ابد. وشكرا. جوالي [PHONE],gulf,opening_hours,opening_hours,opening_hours
+N01942,"Dear team, The air conditioning in the reading room is broken. Please fix this soon.",en,facilities,facilities,facilities
+N02197,There are very few new Arabic books. Thank you.,en,collections,collections,collections
+N02115,السلام عليكم لغوا ورشة الأطفال وما علمونا. الـــله يعافيكم شوفوا لنا حل. جوالي [PHONE],gulf,events,staff,events
+N00468,تحية طيبة، طلبت كتابا منذ شهر ولم يصل. نرجو سرعة المعالجة. أنا المواطن [NAME].,msa,collections,collections,collections
+N00268,"Hello, Event registration fills up too fast. I requested a book a month ago and it never arrived. Please contact me. Regards, [NAME]",en,events,events,events
+N01574,لا تتوافق ساعات العمل مع أوقات الطلاب. ألغيت ورشة الأطفال دون اشعار. للتواصل: [PHONE],msa,events,opening_hours,opening_hours
+N01738,"Hello, The library's internet is very slow. Please fix this soon. My mobile is [PHONE].",en,facilities,facilities,facilities
+N00974,"Hi, The library closes too early at the weekend. Please contact me. [NAME], phone [PHONE]",en,opening_hours,opening_hours,opening_hours
+N00488,أود الإبلاغ عن مشكلة: التكييف في قاعة المطالعة معطل.,msa,facilities,facilities,facilities
+N00568,"Hello, The air conditioning in the reading room is broken. Please fix this soon. My mobile is [PHONE].",en,facilities,facilities,facilities
+N02114,أود الإبلاغ عن مشكلة: التكييف في قاعه المطالعة معطل. رقم جوالي [PHONE],msa,facilities,facilities,facilities
+N01530,لو سمحتوا موـــظف الإعارة ما تعاون معی. الله یعافیکم شوفوا لنا حل.,gulf,staff,facilities,staff
+N01909,التسجيل بالفعاليات يخلص بسرعة. الحين صار لها وايد ومحد سوا شي.,gulf,events,events,events
+N01686,"The library's internet is very slow. Please contact me. [NAME], phone [PHONE]",en,events,facilities,facilities
+N02340,"Dear team, The library's internet is very slow.",en,facilities,facilities,facilities

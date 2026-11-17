@@ -1,0 +1,134 @@
+[
+ {
+  "district": "al_nuzha",
+  "naive_count": 263,
+  "naive_rate": 27.4,
+  "corrected_rate": 31.4,
+  "single_rect_rate": 33.0,
+  "gulf_share": 0.248,
+  "change": 4.0,
+  "low": 26.4,
+  "high": 36.2
+ },
+ {
+  "district": "al_rawabi",
+  "naive_count": 247,
+  "naive_rate": 33.4,
+  "corrected_rate": 37.9,
+  "single_rect_rate": 38.8,
+  "gulf_share": 0.288,
+  "change": 4.5,
+  "low": 32.9,
+  "high": 42.8
+ },
+ {
+  "district": "al_safa",
+  "naive_count": 344,
+  "naive_rate": 29.2,
+  "corrected_rate": 33.5,
+  "single_rect_rate": 34.8,
+  "gulf_share": 0.266,
+  "change": 4.3,
+  "low": 28.4,
+  "high": 38.4
+ },
+ {
+  "district": "al_marwa",
+  "naive_count": 187,
+  "naive_rate": 30.7,
+  "corrected_rate": 35.3,
+  "single_rect_rate": 36.2,
+  "gulf_share": 0.297,
+  "change": 4.6,
+  "low": 30.2,
+  "high": 40.3
+ },
+ {
+  "district": "al_naseem",
+  "naive_count": 414,
+  "naive_rate": 47.0,
+  "corrected_rate": 57.1,
+  "single_rect_rate": 52.8,
+  "gulf_share": 0.567,
+  "change": 10.1,
+  "low": 50.2,
+  "high": 64.5
+ },
+ {
+  "district": "al_khalij",
+  "naive_count": 124,
+  "naive_rate": 23.8,
+  "corrected_rate": 23.8,
+  "single_rect_rate": 29.6,
+  "gulf_share": 0.128,
+  "change": 0.0,
+  "low": 18.2,
+  "high": 28.1
+ },
+ {
+  "district": "al_wurud",
+  "naive_count": 193,
+  "naive_rate": 28.0,
+  "corrected_rate": 32.3,
+  "single_rect_rate": 33.8,
+  "gulf_share": 0.253,
+  "change": 4.3,
+  "low": 27.1,
+  "high": 37.4
+ },
+ {
+  "district": "al_shati",
+  "naive_count": 101,
+  "naive_rate": 21.5,
+  "corrected_rate": 22.7,
+  "single_rect_rate": 27.2,
+  "gulf_share": 0.179,
+  "change": 1.2,
+  "low": 17.2,
+  "high": 27.0
+ },
+ {
+  "district": "al_jazira",
+  "naive_count": 397,
+  "naive_rate": 38.5,
+  "corrected_rate": 47.9,
+  "single_rect_rate": 44.1,
+  "gulf_share": 0.547,
+  "change": 9.4,
+  "low": 41.4,
+  "high": 54.9
+ },
+ {
+  "district": "al_faisaliya",
+  "naive_count": 392,
+  "naive_rate": 29.7,
+  "corrected_rate": 34.1,
+  "single_rect_rate": 35.4,
+  "gulf_share": 0.27,
+  "change": 4.4,
+  "low": 29.0,
+  "high": 39.2
+ },
+ {
+  "district": "al_aziziya",
+  "naive_count": 252,
+  "naive_rate": 31.9,
+  "corrected_rate": 37.1,
+  "single_rect_rate": 37.5,
+  "gulf_share": 0.318,
+  "change": 5.2,
+  "low": 32.0,
+  "high": 42.3
+ },
+ {
+  "district": "al_salam",
+  "naive_count": 226,
+  "naive_rate": 39.0,
+  "corrected_rate": 47.3,
+  "single_rect_rate": 44.7,
+  "gulf_share": 0.477,
+  "change": 8.3,
+  "low": 41.1,
+  "high": 53.8
+ }
+]

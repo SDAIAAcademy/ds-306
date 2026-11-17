@@ -1,0 +1,62 @@
+[
+ {
+  "district": "al_nuzha",
+  "naive_count": 263,
+  "naive_rate": 27.4
+ },
+ {
+  "district": "al_rawabi",
+  "naive_count": 247,
+  "naive_rate": 33.4
+ },
+ {
+  "district": "al_safa",
+  "naive_count": 344,
+  "naive_rate": 29.2
+ },
+ {
+  "district": "al_marwa",
+  "naive_count": 187,
+  "naive_rate": 30.7
+ },
+ {
+  "district": "al_naseem",
+  "naive_count": 414,
+  "naive_rate": 47.0
+ },
+ {
+  "district": "al_khalij",
+  "naive_count": 124,
+  "naive_rate": 23.8
+ },
+ {
+  "district": "al_wurud",
+  "naive_count": 193,
+  "naive_rate": 28.0
+ },
+ {
+  "district": "al_shati",
+  "naive_count": 101,
+  "naive_rate": 21.5
+ },
+ {
+  "district": "al_jazira",
+  "naive_count": 397,
+  "naive_rate": 38.5
+ },
+ {
+  "district": "al_faisaliya",
+  "naive_count": 392,
+  "naive_rate": 29.7
+ },
+ {
+  "district": "al_aziziya",
+  "naive_count": 252,
+  "naive_rate": 31.9
+ },
+ {
+  "district": "al_salam",
+  "naive_count": 226,
+  "naive_rate": 39.0
+ }
+]

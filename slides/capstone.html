@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone · Capstone: a text measurement defended live · Text and Unstructured Data for Data Science</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="capstone.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Text and Unstructured Data for Data Science" data-track="data-science" data-day="Capstone">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Text and Unstructured Data for Data Science</div>
+  <h1>Capstone: a text measurement defended live</h1>
+  <p class="lead mt">Capstone: Each participant defends a text-measurement pipeline in eight minutes, then re-labels ten documents chosen by the assessor and answers questions</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>8 min talk and demo · 7 min Q&amp;A</span><span>DS-306</span></div>
+  <aside class="notes">Today is theirs: keep your own talking to the opening and the closing. Confirm the running order, screen sharing, and that every participant has the repository link and a recorded backup of their demo. The assessor needs each participant's codebook open before the defence starts.</aside>
+</section>
+
+<section class="slide" id="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Capstone</div>
+  <h2>How the defences run</h2>
+  <div class="agenda">
+    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, what full marks look like, a last rehearsal</small></div></div>
+    <div class="item"><div><b>Defences</b><small>eight minutes each, then seven minutes of live labelling and questions</small></div></div>
+    <div class="item"><div><b>Review and closing</b><small>peer feedback, the trainer's review, what next</small></div></div>
+  </div>
+  <aside class="notes">The supervised AI-off exit check (20% of the grade) runs before the first defence or after the last one, as the cohort's schedule allows.</aside>
+</section>
+
+<section class="slide" id="the-task" data-lo="LO6" data-n="3">
+  <div class="kicker">The task</div>
+  <h2>One question, one corpus, one corrected number you can defend</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The director's question from your brief, in one sentence</li>
+      <li>The corpus prepared and redacted, with its miss rate</li>
+      <li>A gold set with agreement, and a model scored on it</li>
+      <li>Fields extracted and validated per field</li>
+      <li>The corrected estimate with its interval</li>
+      <li>The reliability memo and the version record</li>
+    </ul>
+    <div class="card c-teal"><h4>Corpora</h4><p class="small mb0">Nadwa libraries or Raafid social support (synthetic, in <code>labs/data/capstone/</code>), or a public corpus the trainer approved. Extraction uses the course's 500 inspection reports unless your corpus has its own fields.</p></div>
+  </div>
+  <aside class="notes">Every item maps to a lab: Day 1 for preparation, Day 2 for agreement and classifiers, Day 3 for the memo, Day 4 for extraction and the corrected rate. The capstone corpora have no fields to extract, so the extraction criterion is scored on the inspection reports or on a reference set of at least 50 documents the participant built from their own corpus.</aside>
+</section>
+
+<section class="slide" id="rubric" data-label="The rubric" data-lo="LO6" data-n="4">
+  <div class="kicker">How the project is scored</div>
+  <h2>The rubric</h2>
+  <div class="bars">
+    <div class="row"><span>Preparation and redaction</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25</span></div>
+    <div class="row"><span>Gold set and agreement</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">20</span></div>
+    <div class="row"><span>Models and extraction</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20</span></div>
+    <div class="row"><span>Reliability memo</span><div class="bar c-purple" style="--w:100%"></div><span class="val">25</span></div>
+    <div class="row"><span>Reproducibility</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10</span></div>
+  </div>
+  <div class="callout tip mt"><b>Every claim carries a number from a run.</b> A claim without one is a plan, not a result.</div>
+  <aside class="notes">The rubric is 60% of the grade, the live defence 20%, the AI-off checks 20%. Passing: 70% overall and at least 60% on both the rubric and the supervised check. Walk through the next slide before anyone rehearses.</aside>
+</section>
+
+<section class="slide" id="full-marks" data-lo="LO6" data-n="5">
+  <div class="kicker">What full marks look like</div>
+  <h2>Each criterion has one thing that separates a pass from full marks</h2>
+  <table class="t small">
+    <tr><th>Criterion</th><th>Full marks</th></tr>
+    <tr><td>Preparation and redaction</td><td>A near-duplicate rule justified by a threshold table; a redaction miss rate with its interval</td></tr>
+    <tr><td>Gold set and agreement</td><td>Kappa by group, and the disagreements read and explained</td></tr>
+    <tr><td>Models and extraction</td><td>Two methods compared on the same gold set, paired; precision and recall per field</td></tr>
+    <tr><td>Reliability memo</td><td>Criteria set before the results; separate answers for per-document and aggregate use</td></tr>
+    <tr><td>Reproducibility</td><td>Lock file, prompts, saved outputs and a version record for every label set</td></tr>
+  </table>
+  <aside class="notes">These are the examples to give when someone asks what "good" means. The most common gap in a first draft is a corrected estimate with no interval, or an interval without saying where its uncertainty comes from.</aside>
+</section>
+
+<section class="slide" id="format" data-label="Format" data-lo="LO6" data-n="6">
+  <div class="kicker">Format</div>
+  <h2>Eight minutes to defend, seven to label live and answer</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>1 · The question</h4><p class="small mb0">Who asked, what decision it feeds. One slide.</p></div>
+    <div class="card c-cyan"><h4>2 · The pipeline</h4><p class="small mb0">Each measurement choice with the number that justified it.</p></div>
+    <div class="card c-coral"><h4>3 · The estimate</h4><p class="small mb0">Naive and corrected, the interval, the limits, the memo's decision.</p></div>
+  </div>
+  <div class="callout note mt"><b>Then live.</b> The assessor picks ten documents; you label them from your codebook and explain any disagreement with your gold set.</div>
+  <aside class="notes">Peer feedback after each defence: one strength, one question, one suggestion, written on the shared sheet.</aside>
+</section>
+
+<section class="slide" id="live-labelling" data-lo="LO6" data-n="7">
+  <div class="kicker">The seven minutes after the talk</div>
+  <h2>The ten documents test the codebook, not your memory</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Ten documents</b>The assessor picks them from your corpus, some from your gold set</div>
+    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · Label</b>From your codebook, aloud, about two minutes</div>
+    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · Explain</b>Where you differ from your gold label, say why</div>
+  </div>
+  <div class="callout tip mt frag"><b>Assessor.</b> Pick at least two documents with two problems and one in each language variety.</div>
+  <aside class="notes">Press once per step. A disagreement with one's own gold set is not a failure: explaining it from the codebook is what earns the marks. Remaining minutes are questions on any measurement choice.</aside>
+</section>
+
+<section class="slide order" id="running-order" data-label="Running order" data-n="8">
+  <div class="kicker">Running order</div>
+  <h2>Who defends when</h2>
+  <table class="t small">
+    <tr><th>#</th><th>Participant</th><th>Corpus and question</th></tr>
+    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="corpus · question"></td></tr>
+  </table>
+  <aside class="notes">Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too. Alternate Nadwa and Raafid projects so the room hears different choices.</aside>
+</section>
+
+<section class="slide dark" id="final-prep" data-label="Before the first defence" data-n="9">
+  <div class="kicker">Before the first defence</div>
+  <h1>Final prep · 20 minutes</h1>
+  <div class="timer" data-minutes="20"></div>
+  <p class="lead">Rehearse once against the clock, check the repository link opens, keep your codebook at hand.</p>
+  <aside class="notes">Press T to start the timer. Breaks are not slides: press B when the room needs one.</aside>
+</section>
+
+<section class="slide dark presenting" id="now-presenting" data-label="Now presenting" data-n="10">
+  <div class="kicker center">Now defending</div>
+  <div class="center"><input placeholder="Participant · corpus"></div>
+  <div class="timers mt">
+    <div><h3>Defence</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Ten documents and questions</h3><div class="timer" data-minutes="7"></div></div>
+  </div>
+  <aside class="notes">Type the participant's name and press T to start the first timer; start the second when the talk ends. Reuse this slide for every participant.</aside>
+</section>
+
+<section class="slide" id="review" data-label="Trainer review" data-n="11">
+  <div class="kicker">Trainer review</div>
+  <h2>What the defences showed</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Strongest patterns</h4><p class="small mb0">What several projects got right.</p></div>
+    <div class="card c-coral"><h4>Common gaps</h4><p class="small mb0">What most projects would fix next.</p></div>
+    <div class="card c-purple"><h4>One surprise</h4><p class="small mb0">Something nobody expected.</p></div>
+  </div>
+  <aside class="notes">Fill these in from your scoring notes during the last break. Name projects for strengths; keep gaps anonymous.</aside>
+</section>
+
+<section class="slide" id="what-next" data-label="After the course" data-n="12">
+  <div class="kicker">After the course</div>
+  <h2>Keep going</h2>
+  <ul class="bullets">
+    <li><b>The follow-up task:</b> audit one labelling process, at your own organisation or in a published source, with the course's checks, due in four weeks (labs/followup/)</li>
+    <li><b>Your project stays yours:</b> keep it reproducible and add the next improvement you named today</li>
+    <li><b>Next Academy course:</b> DS-311, labelling guidelines, pilots and adjudication: building the gold set this course supplied</li>
+  </ul>
+  <aside class="notes">The follow-up is tracked: remind participants of the date and where to submit it.</aside>
+</section>
+
+<section class="slide dark" id="thanks" data-label="Thank you" data-n="13">
+  <div class="kicker">SDAIA Academy</div>
+  <h1>Thank you</h1>
+  <p class="lead">Text and Unstructured Data for Data Science</p>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"../index.html"},"deck":{"id":"capstone","kind":"capstone","day":5,"label":"Capstone","title":"Capstone: a text measurement defended live","prev":"day4.html","next":null,"md":"capstone.md","alt":{}},"sessions":[],"slides":[{"id":"title","n":1,"title":"Capstone: a text measurement defended live","kind":"title","session":0,"hash":"03fe9172","md":"#### [capstone#title] Capstone: a text measurement defended live\n\n*SDAIA Academy · Text and Unstructured Data for Data Science*\n\nCapstone: Each participant defends a text-measurement pipeline in eight minutes, then re-labels ten documents chosen by the assessor and answers questions\n\nData Science Track · 4 teaching days + capstone day · 8 min talk and demo · 7 min Q&A · DS-306","notes":"Today is theirs: keep your own talking to the opening and the closing. Confirm the running order, screen sharing, and that every participant has the repository link and a recorded backup of their demo. The assessor needs each participant's codebook open before the defence starts.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"How the defences run","kind":"content","session":0,"hash":"cb91af03","md":"#### [capstone#agenda] How the defences run\n\n*Capstone*\n\n- **Expectations and final prep**: the rubric, what full marks look like, a last rehearsal\n- **Defences**: eight minutes each, then seven minutes of live labelling and questions\n- **Review and closing**: peer feedback, the trainer's review, what next","notes":"The supervised AI-off exit check (20% of the grade) runs before the first defence or after the last one, as the cohort's schedule allows.","minutes":null,"lo":[]},{"id":"the-task","n":3,"title":"One question, one corpus, one corrected number you can defend","kind":"content","session":0,"hash":"d2f404df","md":"#### [capstone#the-task] One question, one corpus, one corrected number you can defend\n\n*The task*\n\n- The director's question from your brief, in one sentence\n- The corpus prepared and redacted, with its miss rate\n- A gold set with agreement, and a model scored on it\n- Fields extracted and validated per field\n- The corrected estimate with its interval\n- The reliability memo and the version record\n\n- **Corpora.** Nadwa libraries or Raafid social support (synthetic, in `labs/data/capstone/`), or a public corpus the trainer approved. Extraction uses the course's 500 inspection reports unless your corpus has its own fields.","notes":"Every item maps to a lab: Day 1 for preparation, Day 2 for agreement and classifiers, Day 3 for the memo, Day 4 for extraction and the corrected rate. The capstone corpora have no fields to extract, so the extraction criterion is scored on the inspection reports or on a reference set of at least 50 documents the participant built from their own corpus.","minutes":null,"lo":["LO6"]},{"id":"rubric","n":4,"title":"The rubric","kind":"content","session":0,"hash":"6bc9ebf4","md":"#### [capstone#rubric] The rubric\n\n*How the project is scored*\n\n| Item | Value |\n| --- | --- |\n| Preparation and redaction | 25 |\n| Gold set and agreement | 20 |\n| Models and extraction | 20 |\n| Reliability memo | 25 |\n| Reproducibility | 10 |\n\n> **Every claim carries a number from a run.** A claim without one is a plan, not a result.","notes":"The rubric is 60% of the grade, the live defence 20%, the AI-off checks 20%. Passing: 70% overall and at least 60% on both the rubric and the supervised check. Walk through the next slide before anyone rehearses.","minutes":null,"lo":["LO6"]},{"id":"full-marks","n":5,"title":"Each criterion has one thing that separates a pass from full marks","kind":"content","session":0,"hash":"97b67bcb","md":"#### [capstone#full-marks] Each criterion has one thing that separates a pass from full marks\n\n*What full marks look like*\n\n| Criterion | Full marks |\n| --- | --- |\n| Preparation and redaction | A near-duplicate rule justified by a threshold table; a redaction miss rate with its interval |\n| Gold set and agreement | Kappa by group, and the disagreements read and explained |\n| Models and extraction | Two methods compared on the same gold set, paired; precision and recall per field |\n| Reliability memo | Criteria set before the results; separate answers for per-document and aggregate use |\n| Reproducibility | Lock file, prompts, saved outputs and a version record for every label set |","notes":"These are the examples to give when someone asks what \"good\" means. The most common gap in a first draft is a corrected estimate with no interval, or an interval without saying where its uncertainty comes from.","minutes":null,"lo":["LO6"]},{"id":"format","n":6,"title":"Eight minutes to defend, seven to label live and answer","kind":"content","session":0,"hash":"16081b7b","md":"#### [capstone#format] Eight minutes to defend, seven to label live and answer\n\n*Format*\n\n- **1 · The question.** Who asked, what decision it feeds. One slide.\n- **2 · The pipeline.** Each measurement choice with the number that justified it.\n- **3 · The estimate.** Naive and corrected, the interval, the limits, the memo's decision.\n\n> **Then live.** The assessor picks ten documents; you label them from your codebook and explain any disagreement with your gold set.","notes":"Peer feedback after each defence: one strength, one question, one suggestion, written on the shared sheet.","minutes":null,"lo":["LO6"]},{"id":"live-labelling","n":7,"title":"The ten documents test the codebook, not your memory","kind":"content","session":0,"hash":"6d8b2ce3","md":"#### [capstone#live-labelling] The ten documents test the codebook, not your memory\n\n*The seven minutes after the talk*\n\n1. **1 · Ten documents** The assessor picks them from your corpus, some from your gold set\n2. **2 · Label** From your codebook, aloud, about two minutes\n3. **3 · Explain** Where you differ from your gold label, say why\n\n> **Assessor.** Pick at least two documents with two problems and one in each language variety.","notes":"Press once per step. A disagreement with one's own gold set is not a failure: explaining it from the codebook is what earns the marks. Remaining minutes are questions on any measurement choice.","minutes":null,"lo":["LO6"]},{"id":"running-order","n":8,"title":"Who defends when","kind":"order","session":0,"hash":"75bc2684","md":"#### [capstone#running-order] Who defends when\n\n*Running order*\n\n| # | Participant | Corpus and question |\n| --- | --- | --- |\n| 1 |  |  |\n| 2 |  |  |\n| 3 |  |  |\n| 4 |  |  |\n| 5 |  |  |\n| 6 |  |  |\n| 7 |  |  |\n| 8 |  |  |","notes":"Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too. Alternate Nadwa and Raafid projects so the room hears different choices.","minutes":null,"lo":[]},{"id":"final-prep","n":9,"title":"Final prep · 20 minutes","kind":"content","session":0,"hash":"bd2266a0","md":"#### [capstone#final-prep] Final prep · 20 minutes\n\n*Before the first defence*\n\nRehearse once against the clock, check the repository link opens, keep your codebook at hand.","notes":"Press T to start the timer. Breaks are not slides: press B when the room needs one.","minutes":null,"lo":[]},{"id":"now-presenting","n":10,"title":"Defence","kind":"presenting","session":0,"hash":"5d85032e","md":"#### [capstone#now-presenting] Defence\n\n*Now defending*\n\n##### Ten documents and questions","notes":"Type the participant's name and press T to start the first timer; start the second when the talk ends. Reuse this slide for every participant.","minutes":null,"lo":[]},{"id":"review","n":11,"title":"What the defences showed","kind":"content","session":0,"hash":"7cc1a5f6","md":"#### [capstone#review] What the defences showed\n\n*Trainer review*\n\n- **Strongest patterns.** What several projects got right.\n- **Common gaps.** What most projects would fix next.\n- **One surprise.** Something nobody expected.","notes":"Fill these in from your scoring notes during the last break. Name projects for strengths; keep gaps anonymous.","minutes":null,"lo":[]},{"id":"what-next","n":12,"title":"Keep going","kind":"content","session":0,"hash":"c5c24d37","md":"#### [capstone#what-next] Keep going\n\n*After the course*\n\n- **The follow-up task:** audit one labelling process, at your own organisation or in a published source, with the course's checks, due in four weeks (labs/followup/)\n- **Your project stays yours:** keep it reproducible and add the next improvement you named today\n- **Next Academy course:** DS-311, labelling guidelines, pilots and adjudication: building the gold set this course supplied","notes":"The follow-up is tracked: remind participants of the date and where to submit it.","minutes":null,"lo":[]},{"id":"thanks","n":13,"title":"Thank you","kind":"content","session":0,"hash":"3c9751bb","md":"#### [capstone#thanks] Thank you\n\n*SDAIA Academy*\n\nText and Unstructured Data for Data Science","notes":"","minutes":null,"lo":[]}],"activities":[],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"capstone.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

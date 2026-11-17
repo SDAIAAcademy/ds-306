@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 1 · Text into clean data · Text and Unstructured Data for Data Science</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day1.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Text and Unstructured Data for Data Science" data-track="data-science" data-day="Day 1">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Text and Unstructured Data for Data Science</div>
+  <h1>Text into clean data</h1>
+  <p class="lead mt">Day 1: Profile, normalise, deduplicate and redact 20,000 complaints before any model reads them</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-306</span></div>
+  <aside class="notes"><p>Welcome the room and introduce yourself. Ask one calibrating question: who has cleaned Arabic text for an analysis before, and who has used a language model to label data? The rhythm of every day: about 20 to 25 minutes of ideas, one checkpoint, a 25-minute lab. Breaks are yours: press B.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Text into clean data</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Text as a data source</b><small>Who writes to the centre, through which channel and in which language: a profile before any model</small></div></div><div class="item"><div><b>Session 2 · Preparing Arabic text</b><small>Script variants, marks, digits and dialect spellings, and what each normalisation rule costs</small></div></div><div class="item"><div><b>Session 3 · Near-duplicates</b><small>Shingles, Jaccard similarity and MinHash, and a keep rule that the count can defend</small></div></div><div class="item"><div><b>Session 4 · Redacting personal data</b><small>Personal data in free text: patterns, cue words and a miss rate measured on an audited sample</small></div></div></div>
+  <aside class="notes"><p>Today nothing is modelled. Every lab ends with a number that goes into the cleaning report: the profile, the vocabulary change, the duplicates kept and removed, the redaction miss rate. Each lab starts from the supplied raw file, so nobody depends on an earlier lab.</p></aside>
+</section>
+
+<section class="slide" id="the-case" data-lo="LO1" data-n="3">
+  <div class="kicker">The case for the week</div>
+  <h2>Sada Citizen Voice Centre wants numbers it can defend</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>20,000 complaints</b> from 12 districts, in formal Arabic, Gulf dialect and English</li>
+      <li><b>Fahim</b> (<span class="ar">فهيم</span>): the centre's labelling prompt on an open-weight model</li>
+      <li><b>500 inspection reports</b> whose fields go into a table</li>
+      <li>By Day 4: sewage complaints per 10,000 residents, by district</li>
+    </ul>
+    <div class="card c-teal"><h4>The people</h4><p class="small mb0">Dr. Ebtisam Al-Dhafiri, director. Muhannad Al-Oqaili, intake and the codebook. Ashwaq Al-Jabr, data protection. You are Fatin Al-Muqbel, junior data scientist.</p></div>
+  </div>
+  <div class="callout note mt"><b>All synthetic.</b> Every complaint, name and number, and every recorded model run, is generated with a fixed seed.</div>
+  <aside class="notes"><p>Two more people appear during the week: Sumayah Al-Dakhil, the senior coder who leads the gold set, and Khalaf Al-Baqmi, head of field inspections. Say once, clearly, that the corpus is synthetic and that so are the recorded runs of Fahim used on Days 3 and 4: they imitate behaviour the course measures. With a working key, participants can make real runs with the live cells and compare. The question on the slide is the thread of the week: every lab removes one reason not to trust the final rate.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Text as a data source</h1>
+  <ul class="bullets outcomes"><li>Describe how a complaint corpus samples the people affected</li><li>Profile a corpus by language, length and channel</li><li>Measure the exact duplicate rate and say what it does to a count</li></ul>
+  <div class="sess-no">01</div>
+  <aside class="notes"><p>The session is about what a corpus is before it is data: a sample of people who chose to write, through channels that shape what they write.</p></aside>
+</section>
+
+<section class="slide" id="who-writes" data-lo="LO1" data-n="5" data-session="1">
+  <div class="kicker">A corpus is a sample</div>
+  <h2>Complaints sample the people who write, not the people who are affected</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Who writes</h4><p class="small mb0">Residents with the app, time and confidence to complain. A street with older residents may suffer more and write less.</p></div>
+    <div class="card c-coral"><h4>How they write</h4><p class="small mb0">The channel shapes the text: a call-centre transcript, a form field, a social post, an email pasted from a PDF.</p></div>
+    <div class="card c-purple"><h4>What it can answer</h4><p class="small mb0">"What do complaints say?" directly. "Where are services worst?" only with a check against something else, such as inspections.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A rate of complaints is read as a rate of problems. It is a rate of people who wrote.</div>
+  <aside class="notes"><p>Ask the room for one group that writes less than it suffers. Answers usually include older residents, workers without the app, and people who gave up after an earlier report. Day 4 returns to this when the corrected rate is reported: correcting the labels does not correct who wrote.</p></aside>
+</section>
+
+<section class="slide" id="three-units" data-lo="LO1" data-n="6" data-session="1">
+  <div class="kicker">What is one row?</div>
+  <h2>Message, complaint and issue are three different units</h2>
+  <table class="t">
+    <tr><th>Unit</th><th>What it is</th><th>Counted when you ask</th></tr>
+    <tr><td><b>Message</b></td><td>One row as stored, copies included</td><td>How much work arrived at intake?</td></tr>
+    <tr><td><b>Complaint</b></td><td>One citizen's report of one problem, copies removed</td><td>How many residents complained?</td></tr>
+    <tr><td><b>Issue</b></td><td>One problem in the world, however many reported it</td><td>How many problems need a crew?</td></tr>
+  </table>
+  <p class="small mt-s">A campaign of 600 messages about one overflowing sewer is 600 messages, about 600 complaints and one issue.</p>
+  <aside class="notes"><p>Write the three words on the board and keep them there all week. Most disputes about a number at Sada turn out to be disputes about the unit. The campaign appears in Lab 1.1's stretch and is found in Lab 1.3.</p></aside>
+</section>
+
+<section class="slide" id="channels" data-lo="LO1" data-n="7" data-session="1">
+  <div class="kicker">Lab 1.1, the channels</div>
+  <h2>Five channels deliver the corpus, and each leaves its mark on the text</h2>
+  <div class="bars">
+    <div class="row"><span>Web form</span><div class="bar c-teal" style="--w:30.9%"></div><span class="val">30.9%</span></div>
+    <div class="row"><span>App</span><div class="bar c-cyan" style="--w:27.1%"></div><span class="val">27.1%</span></div>
+    <div class="row"><span>Call centre</span><div class="bar c-coral" style="--w:23.5%"></div><span class="val">23.5%</span></div>
+    <div class="row"><span>Social media</span><div class="bar c-purple" style="--w:9.7%"></div><span class="val">9.7%</span></div>
+    <div class="row"><span>Email</span><div class="bar c-amber" style="--w:8.8%"></div><span class="val">8.8%</span></div>
+  </div>
+  <p class="small mt">Call-centre transcripts carry more Gulf dialect; app text arrives with a Persian keyboard layout; emails carry letters pasted from PDF files.</p>
+  <aside class="notes"><p>Shares of the 20,000 rows from the Lab 1.1 run. The channel matters again in session 2: the script problems cluster by channel, which is how you find their cause rather than only their symptom.</p></aside>
+</section>
+
+<section class="slide" id="form-field" data-lo="LO1" data-n="8" data-session="1">
+  <div class="kicker">Lab 1.1, metadata</div>
+  <h2>The form's language field is wrong for about one complaint in eleven</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">8.8%</div><div class="lbl">of complaints: the form field contradicts the script of the text</div></div>
+    <table class="t small">
+      <tr><th>Channel</th><th class="num">Field contradicts the text</th></tr>
+      <tr class="hl"><td>App</td><td class="num">25.1%</td></tr>
+      <tr><td>Social media</td><td class="num">4.8%</td></tr>
+      <tr><td>Web form</td><td class="num">2.7%</td></tr>
+      <tr><td>Call centre</td><td class="num">2.0%</td></tr>
+      <tr><td>Email</td><td class="num">1.8%</td></tr>
+    </table>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A dashboard reports "English complaints" from the field. A quarter of the app's "English" rows are Arabic.</div>
+  <aside class="notes"><p>From Lab 1.1: 1,750 of 20,000 rows. The field records how the form was set, often by the app's default, not what the citizen wrote. The lesson generalises: a metadata field is a measurement made by somebody else, with its own errors. Measure it against the text before you use it to split a corpus.</p></aside>
+</section>
+
+<section class="slide" id="profile-first" data-lo="LO1" data-n="9" data-session="1">
+  <div class="kicker">Before any model</div>
+  <h2>A profile is the first table of every text project</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Count</b>Rows, dates, channels, districts</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Language</b>From the text, compared with the fields</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Length</b>By language and channel</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Copies</b>Exact first, near next</div>
+  </div>
+  <p class="small mt">The profile is saved as a file and opens the cleaning report: anyone who reruns the script can compare their numbers with it.</p>
+  <aside class="notes"><p>Walk the four steps in the order of the lab. The point of saving the profile as a file is reproducibility: on Day 4 the capstone repository must rerun from the raw corpus and print the same profile.</p></aside>
+</section>
+
+<section class="slide" id="lengths" data-lo="LO1 LO2" data-n="10" data-session="1">
+  <div class="kicker">Lab 1.1, length</div>
+  <h2>English complaints are longer in characters and words than Arabic ones</h2>
+  <table class="t">
+    <tr><th>Script</th><th class="num">Median characters</th><th class="num">Median words</th></tr>
+    <tr><td>Arabic</td><td class="num">126</td><td class="num">22</td></tr>
+    <tr><td>English</td><td class="num">164</td><td class="num">29</td></tr>
+    <tr><td>Mixed</td><td class="num">98</td><td class="num">14</td></tr>
+  </table>
+  <ul class="bullets mt">
+    <li>Length differs by language, hardly by channel</li>
+    <li>A word count is not a token count: models split Arabic into more pieces per word</li>
+    <li>Cost per document, on Day 3, depends on both</li>
+  </ul>
+  <aside class="notes"><p>Medians from the Lab 1.1 run, web channel; the other channels are within a few characters. The token point is a bridge to Day 3: the cost per thousand documents is computed from tokens, not words, and Arabic text usually takes more tokens per word in tokenisers trained mostly on English.</p></aside>
+</section>
+
+<section class="slide" id="exact-copies" data-lo="LO1" data-n="11" data-session="1">
+  <div class="kicker">Lab 1.1, copies</div>
+  <h2>One message in thirty is an exact copy of an earlier one</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">3.2%</div><div class="lbl">639 exact copies after whitespace is collapsed</div></div>
+    <ul class="bullets">
+      <li>Most copies arrive through the app (4.7%) and the web form (4.0%): a second press of "send"</li>
+      <li>Copies inflate every count by district</li>
+      <li>A copy in the training data and its twin in the test data flatter every score</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 1.1. Exact copies are the easy part; session 3 finds the copies that differ by a sentence or a phone number. Ask: which of the three units from earlier does removing exact copies move us towards? From messages to complaints.</p></aside>
+</section>
+
+<section class="slide" id="check-form-field" data-lo="LO1" data-n="12" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which split of the corpus by language can you defend?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-form-field-q1">
+    <p class="lead">Muhannad needs the complaints split into Arabic and English for two review teams. The form records a language for every complaint. What do you use?</p>
+    <div class="opts">
+      <div class="opt" data-why="Trusts a metadata field because it is complete: completeness says nothing about whether the field is right" data-k="A">The form's language field, since every row has one</div>
+      <div class="opt" data-why="Treats the channel as the language: every channel carries both languages" data-k="B">The channel, since the call centre serves Arabic speakers</div>
+      <div class="opt" data-ok data-k="C">The script of the text itself, checked against the form field on a sample</div>
+      <div class="opt" data-why="Gives up measurement for a person's reading: possible for 40 complaints, not for 20,000" data-k="D">A person reading every complaint and tagging it</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The language of a text is a property of the text. The form field disagrees with it for 8.8% of complaints, and for a quarter of the app's.</div>
+  </div>
+  <aside class="notes"><p>Answer: the script of the text. If the room picks the field, show the app row of the previous slide again. Mixed-script complaints need a decision of their own: the lab gives them their own label rather than forcing them into one team.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-1" data-auto="lab" data-lab="1.1" data-label="Lab 1.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 1.1 · 25 min</div><h2>Profile the corpus</h2><p class="lead small">Profile the corpus by language, length, channel and duplicate rate, and test the form's language field against the text itself.</p><a class="nb" href="../labs/D1_1_profile.ipynb">D1_1_profile.ipynb</a></div><ul class="checklist"><li>Load the complaints and count what arrived <span class="min">4 min</span></li><li>Language from the script against the form field <span class="min">6 min</span></li><li>Length by language and channel <span class="min">5 min</span></li><li>The exact duplicate rate <span class="min">5 min</span></li><li>The profile table, saved for the report <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Complaints per week and channel: find the week that does not look like the others</li></ul></div>
+  <aside class="notes"><p>Watch for participants who skip reading rows in task 1: ask them to read five aloud to a neighbour. In task 4, some deduplicate before sorting by date; the earliest copy should be kept, so sort first. The stretch finds a week in June with 813 complaints against a median week of 499: do not reveal why; session 3 does.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="14">
+  <div class="kicker">Session 2</div>
+  <h1>Preparing Arabic text</h1>
+  <ul class="bullets outcomes"><li>Identify the script variants in an Arabic corpus</li><li>Write a normalisation function in named layers</li><li>Measure the vocabulary change of each layer and name what it merges</li></ul>
+  <div class="sess-no">02</div>
+  <aside class="notes"><p>Normalisation is a set of decisions. Each one gets a name, a number and a reason, because each one loses information on purpose.</p></aside>
+</section>
+
+<section class="slide" id="recap-ds202" data-lo="LO1" data-n="15" data-session="2">
+  <div class="kicker">Recap from DS-202</div>
+  <h2>You already repair encodings and build matching keys; today the goal is measurement</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>In DS-202</h4><p class="small mb0">Encoding repair (Windows-1256 read as UTF-8) and a normalised name key for matching records, kept beside the stored name.</p></div>
+    <div class="card c-coral"><h4>Here</h4><p class="small mb0">Normalising whole texts for counting and classifying: which rules, in which order, and what each does to the vocabulary a model sees.</p></div>
+  </div>
+  <aside class="notes"><p>One slide only: DS-202 Day 2 session 1 covers encodings and Arabic name keys. If participants did not take DS-202, the important habit is the same: the normalised text is a new column; the raw text stays.</p></aside>
+</section>
+
+<section class="slide" id="same-word-many-codes" data-lo="LO1" data-n="16" data-session="2">
+  <div class="kicker">What a computer sees</div>
+  <h2>Text pasted from a PDF looks Arabic and is made of different characters</h2>
+  <pre class="code" data-file="lab 1.2"><code class="language-python"><span class="hljs-string">&quot;تحية&quot;</span>  →  U+062A U+062D U+064A U+0629      <span class="hljs-comment"># letters</span>
+<span class="hljs-string">&quot;ﺕحﻱة&quot;</span>  →  U+FE95 U+062D U+FEF1 U+0629      <span class="hljs-comment"># presentation forms</span>
+
+unicodedata.normalize(<span class="hljs-string">&quot;NFKC&quot;</span>, <span class="hljs-string">&quot;ﺕحﻱة&quot;</span>) == <span class="hljs-string">&quot;تحية&quot;</span>   <span class="hljs-comment"># True</span></code></pre>
+  <ul class="bullets mt">
+    <li>Presentation forms are the shapes a PDF stores; NFKC folds them back into letters</li>
+    <li>To a classifier, the two spellings are two unrelated words</li>
+  </ul>
+  <aside class="notes"><p>From Lab 1.2: the first complaint with presentation forms, an email. Type both strings in a notebook and compare them with == to show they differ, then apply NFKC. Unicode normalisation forms are defined in Unicode Standard Annex 15. Sources: Python unicodedata documentation.</p></aside>
+</section>
+
+<section class="slide" id="variants-found" data-lo="LO1" data-n="17" data-session="2">
+  <div class="kicker">Lab 1.2, step 1</div>
+  <h2>Every Arabic complaint carries at least one spelling choice</h2>
+  <table class="t small">
+    <tr><th>Variant</th><th class="num">Arabic complaints with it</th><th>Where it comes from</th></tr>
+    <tr><td>Teh marbuta (ة)</td><td class="num">90.0%</td><td>Spelling, written either ة or ه</td></tr>
+    <tr><td>Hamza on alef (أ إ آ)</td><td class="num">69.3%</td><td>Spelling, often typed without hamza</td></tr>
+    <tr><td>Alef maqsura (ى)</td><td class="num">43.8%</td><td>Spelling, often confused with ي</td></tr>
+    <tr><td>Arabic-Indic digits</td><td class="num">28.8%</td><td>Keyboard</td></tr>
+    <tr><td>Diacritics</td><td class="num">14.8%</td><td>Emphasis or habit</td></tr>
+    <tr><td>Tatweel (ـ)</td><td class="num">9.8%</td><td>Stretching a word for emphasis</td></tr>
+    <tr><td>Persian yeh or kaf</td><td class="num">6.5%</td><td>Keyboard layout, mostly the app</td></tr>
+    <tr><td>Presentation forms</td><td class="num">2.8%</td><td>Pasted from PDF files, the email channel</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 1.2 over 15,964 complaints in Arabic or mixed script. The first three are spelling habits of the writer; the last four come from tools. That difference matters: a tool problem has one fix at its source, a spelling habit is handled by normalisation forever.</p></aside>
+</section>
+
+<section class="slide" id="layers" data-lo="LO1" data-n="18" data-session="2">
+  <div class="kicker">One function, named layers</div>
+  <h2>Write normalisation as layers you can switch on and measure one by one</h2>
+  <table class="t small">
+    <tr><th>Layer</th><th>Rule</th><th>Mirrors in CAMeL Tools</th></tr>
+    <tr><td><code>unicode</code></td><td>NFKC: presentation forms to letters</td><td><code>normalize_unicode</code></td></tr>
+    <tr><td><code>persian</code></td><td>ی to ي, ک to ك</td><td></td></tr>
+    <tr><td><code>marks</code></td><td>Remove diacritics and tatweel</td><td></td></tr>
+    <tr><td><code>alef</code></td><td>أ إ آ ٱ to ا</td><td><code>normalize_alef_ar</code></td></tr>
+    <tr><td><code>yeh_teh</code></td><td>ى to ي, ة to ه</td><td><code>normalize_alef_maksura_ar</code>, <code>normalize_teh_marbuta_ar</code></td></tr>
+    <tr><td><code>digits</code></td><td>Arabic-Indic and Persian digits to 0 to 9</td><td></td></tr>
+  </table>
+  <p class="small mt-s">The course uses its own rules: CAMeL Tools 1.6 installs a deep learning framework that these labs do not need.</p>
+  <aside class="notes"><p>CAMeL Tools is a real option and a good one for morphology; its normalize module provides the functions in the third column. Version and dependencies checked on PyPI this month. Sources: CAMeL Tools documentation, utils.normalize; PyPI page for camel-tools.</p></aside>
+</section>
+
+<section class="slide" id="vocab-drop" data-lo="LO1" data-n="19" data-session="2">
+  <div class="kicker">Lab 1.2, step 3</div>
+  <h2>Three layers do almost all the work: forms, marks and digits</h2>
+  <div class="bars">
+    <div class="row"><span>unicode</span><div class="bar c-teal" style="--w:100%"></div><span class="val">−2,935</span></div>
+    <div class="row"><span>persian</span><div class="bar c-cyan" style="--w:12%"></div><span class="val">−346</span></div>
+    <div class="row"><span>marks</span><div class="bar c-coral" style="--w:85%"></div><span class="val">−2,488</span></div>
+    <div class="row"><span>alef</span><div class="bar c-purple" style="--w:1.1%"></div><span class="val">−33</span></div>
+    <div class="row"><span>yeh_teh</span><div class="bar c-amber" style="--w:2.3%"></div><span class="val">−68</span></div>
+    <div class="row"><span>digits</span><div class="bar c-green" style="--w:35%"></div><span class="val">−1,018</span></div>
+  </div>
+  <p class="small mt">Distinct tokens over the Arabic complaints: 14,158 raw, 7,270 after all six layers.</p>
+  <aside class="notes"><p>From Lab 1.2. The alef and yeh_teh layers remove few distinct tokens here because both spellings of most words already occur; what they change is how often each token is counted. Ask why digits remove so many: every street number in two digit systems was two tokens.</p></aside>
+</section>
+
+<section class="slide" id="rules-cost" data-lo="LO1" data-n="20" data-session="2">
+  <div class="kicker">Every rule is a decision</div>
+  <h2>A normalisation rule removes noise and, sometimes, a difference that mattered</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>ة to ه</b> merges a feminine ending with a pronoun suffix</li>
+      <li><b>Digits</b> merge ٢٣ and 23, which is right for counting streets</li>
+      <li><b>Marks</b> remove emphasis the writer chose</li>
+      <li>53 normalised tokens in this corpus came from both a final ة and a final ه</li>
+    </ul>
+    <div class="card c-teal"><h4>The habit</h4><p class="small mb0">Keep the raw text in its own column. Write each rule with its layer name. Rerun with a layer off when a result surprises you.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> Normalised text overwrites the raw text, and a rule that turns out wrong cannot be undone.</div>
+  <aside class="notes"><p>The 53 comes from the stretch of Lab 1.2. Most are the same word spelled two ways, such as الحديقة and الحديقه, which is what the rule is for. Ask the room for a pair that is two words; in Gulf text مره ("very") and مرة ("once") are the classic example.</p></aside>
+</section>
+
+<section class="slide" id="dialect-spellings" data-lo="LO1" data-n="21" data-session="2">
+  <div class="kicker">Gulf dialect</div>
+  <h2>Dialect spellings are normalised as spellings, not translated into formal Arabic</h2>
+  <table class="t small">
+    <tr><th>Written</th><th>Normalised to</th><th>Meaning</th></tr>
+    <tr><td>اللحين, الحينه</td><td>الحين</td><td>now</td></tr>
+    <tr><td>ماحد</td><td>محد</td><td>nobody</td></tr>
+    <tr><td>شنو, ويش</td><td>وش</td><td>what</td></tr>
+    <tr><td>واااايد</td><td>وايد</td><td>a lot (letters repeated three times or more)</td></tr>
+  </table>
+  <p class="small mt-s">Lab 1.2: the stretched letters fired in 872 complaints; the map took the vocabulary from 7,270 to 7,211.</p>
+  <div class="callout note mt"><b>Why not translate?</b> وايد is not an error. Turning Gulf text into formal Arabic hides the variety that Day 3 measures.</div>
+  <aside class="notes"><p>The map in data/dialect_map.csv is the course's own: sixteen rules, each with its meaning. The point to stress is the callout: the dialect is a property of the writer and a group in the analysis. Day 3 asks whether Fahim labels Gulf complaints as well as formal ones; translating them away would make that impossible to see.</p></aside>
+</section>
+
+<section class="slide" id="check-normalise" data-lo="LO1" data-n="22" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which normalisation choice keeps the evidence?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-normalise-q1">
+    <p class="lead">A colleague's script applies NFKC, removes marks, maps ة to ه and writes the result over the <code>text</code> column. A reviewer asks how many complaints had presentation forms. What should the script have done?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">Written the normalised text to a new column and kept the raw text</div>
+      <div class="opt" data-why="Thinks fewer rules means less loss: any rule that overwrites the raw text destroys the evidence" data-k="B">Applied NFKC only and skipped the other rules</div>
+      <div class="opt" data-why="Confuses a log of what was done with the data it was done to: counts cannot be recomputed from a log" data-k="C">Logged the rules it applied in a comment</div>
+      <div class="opt" data-why="Treats a rule's order as the issue: the answer is lost whatever the order once the column is overwritten" data-k="D">Applied the rules in the reverse order</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Each rule loses information on purpose. With the raw text kept, any count about the raw text, and any rule changed later, can be recomputed.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first option. If the room hesitates on the comment option, ask how they would count the presentation forms from a comment.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-2" data-auto="lab" data-lab="1.2" data-label="Lab 1.2" data-n="23" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 1.2 · 25 min</div><h2>Normalise Arabic text</h2><p class="lead small">Normalise letter variants and diacritics in named layers, measure the vocabulary change of each, and apply the course's Gulf spelling rules.</p><a class="nb" href="../labs/D1_2_normalise.ipynb">D1_2_normalise.ipynb</a></div><ul class="checklist"><li>Find the variants: forms, marks, letters, digits <span class="min">5 min</span></li><li>Write normalise() in layers <span class="min">8 min</span></li><li>The vocabulary change of each layer <span class="min">7 min</span></li><li>Gulf spellings from the supplied map <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Find two different words that one rule merges into one</li></ul></div>
+  <aside class="notes"><p>The vocabulary loop in step 3 takes up to a minute on the full corpus; quick mode (SADA_QUICK=1) uses 4,000 complaints. A common mistake is removing marks with a range that also removes letters: the self-checks after task 2 catch it. In step 4, remind them the map applies after normalise, so its entries are normalised too.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="24">
+  <div class="kicker">Session 3</div>
+  <h1>Near-duplicates</h1>
+  <ul class="bullets outcomes"><li>Compute the Jaccard similarity of two texts from character shingles</li><li>Find near-duplicate candidates with MinHash and banding</li><li>Write a keep rule that separates resubmissions from a campaign</li></ul>
+  <div class="sess-no">03</div>
+  <aside class="notes"><p>The June week from Lab 1.1 is the hook: open by asking what the 300 or so extra complaints could be.</p></aside>
+</section>
+
+<section class="slide" id="three-kinds" data-lo="LO1" data-n="25" data-session="3">
+  <div class="kicker">Not all copies are the same</div>
+  <h2>A copy, a resubmission and a campaign need three different decisions</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Exact copy</h4><p class="small mb0">The same text twice within days. One citizen pressed send twice. Keep the first.</p></div>
+    <div class="card c-cyan"><h4>Resubmission</h4><p class="small mb0">The same complaint with a sentence added: "this is my second report". One citizen, one complaint. Keep the first, note the repeat.</p></div>
+    <div class="card c-coral"><h4>Campaign</h4><p class="small mb0">Many residents paste one message and change a few words. Many complaints, one issue. Keep all, flag them.</p></div>
+  </div>
+  <aside class="notes"><p>The three units of session 1 come back: a copy changes the message count only; a campaign changes the issue count. The keep rule in Lab 1.3 encodes these three decisions.</p></aside>
+</section>
+
+<section class="slide" id="shingles" data-lo="LO1" data-n="26" data-session="3">
+  <div class="kicker">Comparing texts</div>
+  <h2>Shingles turn a text into a set of overlapping five-character pieces</h2>
+  <div class="tokens"><span>المجا</span><span>لمجار</span><span>مجاري</span><span>جاري </span><span>اري ط</span><span>ري طا</span><span>ي طاف</span><span> طافح</span></div>
+  <ul class="bullets mt">
+    <li>Normalise first, so spelling variants share shingles</li>
+    <li>Mask long numbers: two copies with different phone numbers should still match</li>
+    <li>Keep short numbers: Street 12 and Street 46 are different places</li>
+  </ul>
+  <aside class="notes"><p>The chips are the first shingles of "المجاري طافحة". Characters rather than words suit Arabic: a prefix such as ال or a suffix does not stop two forms of one word from sharing most of their shingles. The masking rule is the first line of the lab's prepare() function.</p></aside>
+</section>
+
+<section class="slide" id="jaccard" data-lo="LO1" data-n="27" data-session="3">
+  <div class="kicker">One number for overlap</div>
+  <h2>Jaccard similarity is the shared shingles over all the shingles of the two texts</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">|A ∩ B| / |A ∪ B|</div><div class="lbl">1 for identical sets, 0 for nothing shared</div></div>
+    <ul class="bullets">
+      <li>Two campaign messages written in different words: <b>0.21</b></li>
+      <li>Two unrelated complaints: <b>0.03</b></li>
+      <li>A resubmission and its original: usually above 0.7</li>
+    </ul>
+  </div>
+  <div class="callout note mt"><b>Same issue, different words.</b> Jaccard finds copied wording, not the same problem described twice. The campaign is found as several groups, one per template.</div>
+  <aside class="notes"><p>Numbers from Lab 1.3, task 1. The 0.21 is the honest surprise: two residents complaining about the same sewer in their own words are not near-duplicates by text. That is correct behaviour for this tool, and the reason a campaign is found as a few groups that the keep rule then flags by size.</p></aside>
+</section>
+
+<section class="slide" id="minhash" data-lo="LO1" data-n="28" data-session="3">
+  <div class="kicker">Fast candidates</div>
+  <h2>MinHash compares 20,000 complaints without comparing every pair</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Signature</b>64 minimum hash values per complaint</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Agreement</b>The share of equal positions estimates Jaccard</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Bands</b>16 bands of 4: equal in one band makes a candidate</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Confirm</b>The true Jaccard on candidates only</div>
+  </div>
+  <p class="small mt">All pairs would be about 200 million comparisons. The bands leave about 103,000 candidates.</p>
+  <aside class="notes"><p>The probability that two signatures agree at one position equals the Jaccard similarity of the sets; that is the whole trick. Bands tune the trade-off: more rows per band means fewer, closer candidates. Sources: Leskovec, Rajaraman and Ullman, Mining of Massive Datasets, chapter 3 (Finding Similar Items). The lab writes it in numpy to see it.</p></aside>
+</section>
+
+<section class="slide" id="blocking" data-lo="LO1" data-n="29" data-session="3">
+  <div class="kicker">Lab 1.3, step 3</div>
+  <h2>Short complaints look alike, so district and date join the rule</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>"The street lights on Street 12 are off" is written by many residents, independently</li>
+      <li><b>Block</b> by district: only complaints from the same district can pair</li>
+      <li><b>Window</b>: confirm a pair only within 21 days</li>
+      <li><b>Threshold</b>: Jaccard of 0.7 or more</li>
+    </ul>
+    <table class="t small">
+      <tr><th>Step</th><th class="num">Pairs</th></tr>
+      <tr><td>Candidates from the bands</td><td class="num">103,238</td></tr>
+      <tr class="hl"><td>Confirmed</td><td class="num">11,031</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>From Lab 1.3. Without blocking and the window, the first version of this lab chained more than 5,000 unrelated complaints into one group: formulaic text is the norm in complaints. The metadata is part of the definition of a duplicate, not a speed trick.</p></aside>
+</section>
+
+<section class="slide" id="keep-rule" data-lo="LO1" data-n="30" data-session="3">
+  <div class="kicker">Lab 1.3, step 4</div>
+  <h2>The keep rule removes 998 messages and flags 576 as one campaign</h2>
+  <table class="t">
+    <tr><th>Group</th><th>Rule</th><th class="num">Messages</th></tr>
+    <tr><td>Fewer than 20 members</td><td>Keep the earliest; the others are copies</td><td class="num">998 removed</td></tr>
+    <tr class="hl"><td>20 members or more</td><td>Keep all, flag <code>campaign</code></td><td class="num">576 flagged</td></tr>
+  </table>
+  <p class="small mt-s">All 576 flagged messages are from Al-Naseem, sent in ten days of June, about one sewer on Street 12.</p>
+  <aside class="notes"><p>From Lab 1.3. The campaign carries over to Day 4: a rate per message counts 576 residents; a rate per issue counts one. Neither is wrong; the report says which one it gives.</p></aside>
+</section>
+
+<section class="slide" id="threshold-tradeoff" data-lo="LO1" data-n="31" data-session="3">
+  <div class="kicker">What the answer key shows</div>
+  <h2>A threshold trades copies missed against real complaints dropped</h2>
+  <table class="t">
+    <tr><th class="num">Jaccard threshold</th><th class="num">Messages removed</th><th class="num">Of them, true copies</th><th class="num">True copies found</th></tr>
+    <tr><td class="num">0.6</td><td class="num">1,247</td><td class="num">839</td><td class="num">91%</td></tr>
+    <tr class="hl"><td class="num">0.7</td><td class="num">998</td><td class="num">810</td><td class="num">88%</td></tr>
+    <tr><td class="num">0.8</td><td class="num">758</td><td class="num">626</td><td class="num">68%</td></tr>
+  </table>
+  <p class="small mt-s">924 messages are true copies or resubmissions. Synthetic data has an answer key; real data has a sample you read.</p>
+  <aside class="notes"><p>From the generator's answer key, run with the lab's rule at a 21-day window. At 0.7, about four in five removed messages are true copies; the rest are independent complaints worded alike. In real work there is no key: read 50 removed pairs and count how many are true copies. That reading is the evidence for the threshold.</p></aside>
+</section>
+
+<section class="slide" id="check-near-dups" data-lo="LO1" data-n="32" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What do you do with 576 near-identical messages?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-near-dups-q1">
+    <p class="lead">The keep rule finds 576 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats a campaign as copies by one person: each message is a resident who complained" data-k="A">Keep the earliest message and drop the other 575</div>
+      <div class="opt" data-why="Assumes organised complaints are less real: the residents are real and the sewer overflows" data-k="B">Drop all 576 as an organised campaign</div>
+      <div class="opt" data-why="Hides the decision from the reader: the count changes by 575 depending on a choice nobody sees" data-k="C">Keep all 576 with no flag, since they are complaints</div>
+      <div class="opt" data-ok data-k="D">Keep all 576, flag them, and report the count with and without the campaign</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> They are 576 complaints and one issue. The flag lets both counts be made, and the report states which one the rate uses.</div>
+  </div>
+  <aside class="notes"><p>Answer: the fourth option. The first option is the commonest wrong answer: it applies the rule for exact copies to a campaign. Link back to the three units slide.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-3" data-auto="lab" data-lab="1.3" data-label="Lab 1.3" data-n="33" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 1.3 · 25 min</div><h2>Find near-duplicates</h2><p class="lead small">Find near-duplicate complaints with character shingles and MinHash, group them, and decide which to keep and which to flag as a campaign.</p><a class="nb" href="../labs/D1_3_near_duplicates.ipynb">D1_3_near_duplicates.ipynb</a></div><ul class="checklist"><li>Shingles and Jaccard on two complaints <span class="min">5 min</span></li><li>MinHash signatures for the corpus <span class="min">7 min</span></li><li>Bands: candidate pairs, then the true similarity <span class="min">6 min</span></li><li>Groups and the keep rule <span class="min">7 min</span></li><li class="stretch">✱ Stretch: Count the campaign as one issue: which district's count changes most?</li></ul></div>
+  <aside class="notes"><p>The MinHash step takes about a minute on the full corpus; quick mode uses 6,000 complaints. An integer overflow appears if someone uses a prime above 2 to the 31: the lab's P is chosen so products fit. If union-find is new to someone, give them the reference groups (the safety net) and let them write the keep rule.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="34">
+  <div class="kicker">Session 4</div>
+  <h1>Redacting personal data</h1>
+  <ul class="bullets outcomes"><li>Explain why identifiers are removed before text reaches a hosted model</li><li>Write patterns for phone and identity numbers in both digit systems</li><li>Measure a redaction miss rate by type and language on an audited sample</li></ul>
+  <div class="sess-no">04</div>
+  <aside class="notes"><p>The session ends Day 1 with the number Ashwaq asks for: the share of personal data the redaction missed, measured, not assumed.</p></aside>
+</section>
+
+<section class="slide" id="redact-before" data-lo="LO1" data-n="35" data-session="4">
+  <div class="kicker">Why first</div>
+  <h2>Identifiers come out before any text goes to a model</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The Data Classification Policy has four levels: Top Secret, Secret, Restricted, Public</li>
+      <li>The Generative AI Guideline for government asks employees not to enter data classified Restricted or higher into generative AI tools</li>
+      <li>It limits their use, and data analysis with them, to data classified Public</li>
+      <li>Complaints with names and numbers are not Public</li>
+    </ul>
+    <div class="card c-coral"><h4>At Sada</h4><p class="small mb0">Redacted text is classified again by Ashwaq. Text that stays above Public goes to a locally served model (llama.cpp, Ollama), never to a free hosted one.</p></div>
+  </div>
+  <aside class="notes"><p>Both points are read from the documents: the four levels from the NDMO Data Classification Policy, and section 3.5 and the data-analysis practices of SDAIA's Generative AI Guideline for Government. The labs send only synthetic text to hosted models. The Personal Data Protection Law and its implementing regulations govern the processing itself: name them and leave their reading to the data protection officer. Sources: Data Classification Policy; Generative AI Guideline for Government; Personal Data Protection Law.</p></aside>
+</section>
+
+<section class="slide" id="what-is-there" data-lo="LO1" data-n="36" data-session="4">
+  <div class="kicker">The audited sample</div>
+  <h2>A person marked 339 personal values in 500 complaints</h2>
+  <div class="bars">
+    <div class="row"><span>Phone numbers</span><div class="bar c-teal" style="--w:100%"></div><span class="val">160</span></div>
+    <div class="row"><span>Names</span><div class="bar c-coral" style="--w:76%"></div><span class="val">122</span></div>
+    <div class="row"><span>Identity numbers</span><div class="bar c-purple" style="--w:24%"></div><span class="val">38</span></div>
+    <div class="row"><span>Emails</span><div class="bar c-amber" style="--w:12%"></div><span class="val">19</span></div>
+  </div>
+  <p class="small mt">The marking is the reference. Without it, a redaction can only report what it found, never what it missed.</p>
+  <aside class="notes"><p>From data/redaction_audit.csv in Lab 1.4. In real work the sample is drawn at random from the corpus and marked by two people; 500 is enough to put an interval on the miss rate of the common types, not of rare ones.</p></aside>
+</section>
+
+<section class="slide" id="naive-pattern" data-lo="LO1" data-n="37" data-session="4">
+  <div class="kicker">Lab 1.4, step 1</div>
+  <h2>"05 and eight digits" misses four phone numbers in five</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">80.6%</div><div class="lbl">of marked phone numbers missed by <code>05\d{8}</code></div></div>
+    <ul class="bullets">
+      <li><span class="ar">٠٥٥ ٩٥٠ ٨٤١٤</span>: Arabic-Indic digits, with spaces</li>
+      <li><code>+966 59 158 0751</code>: international form</li>
+      <li><code>059-386-9528</code>: dashes</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 1.4, step 1. The five numbers it printed show the three reasons: digit system, country code, separators. Ask the room to guess the miss rate before revealing it; most guess under 20%.</p></aside>
+</section>
+
+<section class="slide" id="one-pattern" data-lo="LO1" data-n="38" data-session="4">
+  <div class="kicker">Lab 1.4, step 2</div>
+  <h2>One pattern covers both digit systems, the country code and the separators</h2>
+  <pre class="code" data-file="redact.py"><code class="language-python">D = <span class="hljs-string">&quot;[0-9٠-٩]&quot;</span>
+PHONE = <span class="hljs-string">rf&quot;(?:\+?(?:966|٩٦٦)[\s\-]?|[0٠])?[5٥]<span class="hljs-subst">{D}</span>(?:[\s\-]?<span class="hljs-subst">{D}</span>){{7}}(?!<span class="hljs-subst">{D}</span>)&quot;</span>
+ID    = <span class="hljs-string">rf&quot;(?&lt;!<span class="hljs-subst">{D}</span>)[12١٢]<span class="hljs-subst">{D}</span>{{9}}(?!<span class="hljs-subst">{D}</span>)&quot;</span>
+EMAIL = <span class="hljs-string">r&quot;[\w.+-]+@[\w-]+(?:\.[\w-]+)+&quot;</span></code></pre>
+  <ul class="bullets mt">
+    <li>The digit class keeps the citizen's text as written: no translation before masking</li>
+    <li>Phones first, then emails, then identity numbers</li>
+  </ul>
+  <aside class="notes"><p>Walk the phone pattern left to right: optional country code or leading zero, a 5, then eight more digits with optional separators, and nothing digit-like after. Order matters: an email's local part can hold digits, and a phone in 966 form must not be half-masked by the identity pattern.</p></aside>
+</section>
+
+<section class="slide" id="names-cues" data-lo="LO1" data-n="39" data-session="4">
+  <div class="kicker">Lab 1.4, step 4</div>
+  <h2>Names have no shape, so the pattern looks for the words that introduce them</h2>
+  <table class="t small">
+    <tr><th>Cue</th><th>Example after masking</th></tr>
+    <tr><td>اسمي</td><td><span class="ar">اسمي [NAME]، جوالي [PHONE]</span></td></tr>
+    <tr><td>معك, انا</td><td><span class="ar">معك [NAME].</span></td></tr>
+    <tr><td>My name is, Regards,</td><td>My name is [NAME]. Call me on [PHONE].</td></tr>
+    <tr><td><em>No cue</em></td><td><em>Badr Al-Mutairi, phone [PHONE]</em></td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> A name written with no cue word passes untouched. Patterns reach their limit here.</div>
+  <aside class="notes"><p>The last row is from the stretch of Lab 1.4. Options beyond patterns: a list of common names (cheap, misses rare names, masks words that are also names), a named-entity model (better, needs its own evaluation on Gulf text), a person for high-risk releases. Each has a miss rate to measure the same way.</p></aside>
+</section>
+
+<section class="slide" id="miss-rate" data-lo="LO1" data-n="40" data-session="4">
+  <div class="kicker">Lab 1.4, step 5</div>
+  <h2>The redaction misses 7.7% of personal values, all of them names</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Type</th><th class="num">Missed</th></tr>
+      <tr><td>Phone numbers</td><td class="num">0 of 160</td></tr>
+      <tr><td>Identity numbers</td><td class="num">0 of 38</td></tr>
+      <tr><td>Emails</td><td class="num">0 of 19</td></tr>
+      <tr class="hl"><td>Names</td><td class="num">26 of 122 (21.3%)</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>Arabic-script complaints: 5.7% missed</li>
+      <li>English complaints: 15.1% missed</li>
+      <li>The interval on 26 of 122 runs from about 15% to 29%</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 1.4. The language gap is the first of the week: English names are more often written without a cue ("Name, phone"), and so are bare names at the end of Arabic complaints. The interval is a Wilson 95% interval computed by hand for this slide. The miss rate and its interval go into the profile report: that is the LO1 evidence.</p></aside>
+</section>
+
+<section class="slide" id="zero-matches" data-lo="LO1" data-n="41" data-session="4">
+  <div class="kicker">The rule of the session</div>
+  <h2>Zero matches is a statement about the pattern, not about the text</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Sample</b>Draw complaints at random</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Mark</b>A person marks every personal value</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Redact</b>Run the script on the sample</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Count misses</b>By type and language, with an interval</div>
+  </div>
+  <p class="small mt">The profile report carries the miss rate next to the profile: <code>artifacts/day1/profile_report.md</code>.</p>
+  <aside class="notes"><p>This is the measurement idea of the whole course applied to cleaning: a tool's output is compared with a human reference on a sample. Tomorrow the same idea is applied to labels.</p></aside>
+</section>
+
+<section class="slide" id="check-redaction" data-lo="LO1" data-n="42" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does Ashwaq need to approve the redaction?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-redaction-q1">
+    <p class="lead">Your script masked 7,400 values in the corpus. Ashwaq Al-Jabr must decide whether the redacted text may leave the centre's servers. Which number answers her?</p>
+    <div class="opts">
+      <div class="opt" data-why="Counts what was found: a large count can sit beside a large number of misses" data-k="A">The 7,400 values the script masked</div>
+      <div class="opt" data-ok data-k="B">The share of values a person marked in a random sample that the script left readable</div>
+      <div class="opt" data-why="Measures speed, not protection: a fast script can still leak" data-k="C">The time the script takes on the whole corpus</div>
+      <div class="opt" data-why="Assumes a pattern tested on examples works on the corpus: six test strings show the formats you thought of" data-k="D">The six test numbers that all passed</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only a human-marked sample shows what the script missed. Her decision rests on the miss rate by type, with an interval.</div>
+  </div>
+  <aside class="notes"><p>Answer: the second option. The test strings are useful for development, which is why the lab has them, but they contain only formats you already knew about.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-4" data-auto="lab" data-lab="1.4" data-label="Lab 1.4" data-n="43" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 1.4 · 25 min</div><h2>Redact and measure misses</h2><p class="lead small">Mask phone numbers, identity numbers, emails and names, measure the misses on 500 audited complaints, and write the profile report.</p><a class="nb" href="../labs/D1_4_redaction.ipynb">D1_4_redaction.ipynb</a></div><ul class="checklist"><li>Read what leaks in the audited sample <span class="min">4 min</span></li><li>Phone numbers in every format <span class="min">7 min</span></li><li>Identity numbers and emails <span class="min">4 min</span></li><li>Names after cue words <span class="min">5 min</span></li><li>The miss rate and the profile report <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Names with no cue word: how many are there, and what would catch them?</li></ul></div>
+  <aside class="notes"><p>Typical problems: a phone pattern that also eats the first ten digits of an identity number (order of patterns); Arabic names captured with one word only. If Lab 1.1 was not finished, the report falls back to the reference profile. The miss table counts a phone as missed when seven digits in a row are still readable.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="44" data-session="4">
+  <div class="kicker">Day 1 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Profile first</h4><p class="small mb0">Language from the text, not the form; copies counted; the profile saved as a file.</p></div>
+    <div class="card c-coral"><h4>Rules are decisions</h4><p class="small mb0">Each normalisation layer and each keep rule has a name, a number and a reason. The raw text stays.</p></div>
+    <div class="card c-purple"><h4>Measure misses</h4><p class="small mb0">A redaction is reported with its miss rate on a human-marked sample, by type and language.</p></div>
+  </div>
+  <aside class="notes"><p>Ask each table to name the number from today they would put in front of Dr. Ebtisam first. The usual answer is the name miss rate; the campaign is the runner-up.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="45" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 2: Labels you can trust</h2>
+  <p class="lead">Bring a partner for the first lab: you will label 40 complaints together, without AI. Read the codebook in labs/data/codebook.md tonight.</p>
+  <aside class="notes"><p>Day 2 labs use redacted files only. Participants with a free OpenRouter key can add it to labs/.env for Lab 2.3; without a key the embedding cells use a stand-in and say so.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:18:18Z","version":"2027.1.0","commit":"b4603d2"},"course":{"id":"ds-306","code":"DS-306","title":"Text and Unstructured Data for Data Science","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-306/","repo":"SDAIAAcademy/ds-306","home":"../index.html"},"deck":{"id":"day1","kind":"day","day":1,"label":"Day 1","title":"Text into clean data","prev":null,"next":"day2.html","md":"day1.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Text as a data source","slide":"s1","outcomes":["Describe how a complaint corpus samples the people affected","Profile a corpus by language, length and channel","Measure the exact duplicate rate and say what it does to a count"],"minutes":50,"lab":{"id":"1.1","title":"Profile the corpus","minutes":25,"href":"../labs/D1_1_profile.ipynb"}},{"n":2,"label":"Session 2","title":"Preparing Arabic text","slide":"s2","outcomes":["Identify the script variants in an Arabic corpus","Write a normalisation function in named layers","Measure the vocabulary change of each layer and name what it merges"],"minutes":50,"lab":{"id":"1.2","title":"Normalise Arabic text","minutes":25,"href":"../labs/D1_2_normalise.ipynb"}},{"n":3,"label":"Session 3","title":"Near-duplicates","slide":"s3","outcomes":["Compute the Jaccard similarity of two texts from character shingles","Find near-duplicate candidates with MinHash and banding","Write a keep rule that separates resubmissions from a campaign"],"minutes":50,"lab":{"id":"1.3","title":"Find near-duplicates","minutes":25,"href":"../labs/D1_3_near_duplicates.ipynb"}},{"n":4,"label":"Session 4","title":"Redacting personal data","slide":"s4","outcomes":["Explain why identifiers are removed before text reaches a hosted model","Write patterns for phone and identity numbers in both digit systems","Measure a redaction miss rate by type and language on an audited sample"],"minutes":50,"lab":{"id":"1.4","title":"Redact and measure misses","minutes":25,"href":"../labs/D1_4_redaction.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Text into clean data","kind":"title","session":0,"hash":"4851f91a","md":"#### [day1#title] Text into clean data\n\n*SDAIA Academy · Text and Unstructured Data for Data Science*\n\nDay 1: Profile, normalise, deduplicate and redact 20,000 complaints before any model reads them\n\nData Science Track · 4 teaching days + capstone day · 4 sessions · 4 labs · DS-306","notes":"Welcome the room and introduce yourself. Ask one calibrating question: who has cleaned Arabic text for an analysis before, and who has used a language model to label data? The rhythm of every day: about 20 to 25 minutes of ideas, one checkpoint, a 25-minute lab. Breaks are yours: press B.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Text into clean data","kind":"content","session":0,"hash":"f2c3ac54","md":"#### [day1#agenda] Text into clean data\n\n*Today*\n\n- **Session 1 · Text as a data source**: Who writes to the centre, through which channel and in which language: a profile before any model\n- **Session 2 · Preparing Arabic text**: Script variants, marks, digits and dialect spellings, and what each normalisation rule costs\n- **Session 3 · Near-duplicates**: Shingles, Jaccard similarity and MinHash, and a keep rule that the count can defend\n- **Session 4 · Redacting personal data**: Personal data in free text: patterns, cue words and a miss rate measured on an audited sample","notes":"Today nothing is modelled. Every lab ends with a number that goes into the cleaning report: the profile, the vocabulary change, the duplicates kept and removed, the redaction miss rate. Each lab starts from the supplied raw file, so nobody depends on an earlier lab.","minutes":null,"lo":[]},{"id":"the-case","n":3,"title":"Sada Citizen Voice Centre wants numbers it can defend","kind":"content","session":0,"hash":"d45ae107","md":"#### [day1#the-case] Sada Citizen Voice Centre wants numbers it can defend\n\n*The case for the week*\n\n- **20,000 complaints** from 12 districts, in formal Arabic, Gulf dialect and English\n- **Fahim** (فهيم): the centre's labelling prompt on an open-weight model\n- **500 inspection reports** whose fields go into a table\n- By Day 4: sewage complaints per 10,000 residents, by district\n\n- **The people.** Dr. Ebtisam Al-Dhafiri, director. Muhannad Al-Oqaili, intake and the codebook. Ashwaq Al-Jabr, data protection. You are Fatin Al-Muqbel, junior data scientist.\n\n> **All synthetic.** Every complaint, name and number, and every recorded model run, is generated with a fixed seed.","notes":"Two more people appear during the week: Sumayah Al-Dakhil, the senior coder who leads the gold set, and Khalaf Al-Baqmi, head of field inspections. Say once, clearly, that the corpus is synthetic and that so are the recorded runs of Fahim used on Days 3 and 4: they imitate behaviour the course measures. With a working key, participants can make real runs with the live cells and compare. The question on the slide is the thread of the week: every lab removes one reason not to trust the final rate.","minutes":null,"lo":["LO1"]},{"id":"s1","n":4,"title":"Text as a data source","kind":"section","session":1,"hash":"886befbb","md":"#### [day1#s1] Text as a data source\n\n*Session 1*\n\n- Describe how a complaint corpus samples the people affected\n- Profile a corpus by language, length and channel\n- Measure the exact duplicate rate and say what it does to a count","notes":"The session is about what a corpus is before it is data: a sample of people who chose to write, through channels that shape what they write.","minutes":null,"lo":["LO1"]},{"id":"who-writes","n":5,"title":"Complaints sample the people who write, not the people who are affected","kind":"content","session":1,"hash":"41d61e71","md":"#### [day1#who-writes] Complaints sample the people who write, not the people who are affected\n\n*A corpus is a sample*\n\n- **Who writes.** Residents with the app, time and confidence to complain. A street with older residents may suffer more and write less.\n- **How they write.** The channel shapes the text: a call-centre transcript, a form field, a social post, an email pasted from a PDF.\n- **What it can answer.** \"What do complaints say?\" directly. \"Where are services worst?\" only with a check against something else, such as inspections.\n\n> **What goes wrong.** A rate of complaints is read as a rate of problems. It is a rate of people who wrote.","notes":"Ask the room for one group that writes less than it suffers. Answers usually include older residents, workers without the app, and people who gave up after an earlier report. Day 4 returns to this when the corrected rate is reported: correcting the labels does not correct who wrote.","minutes":null,"lo":["LO1"]},{"id":"three-units","n":6,"title":"Message, complaint and issue are three different units","kind":"content","session":1,"hash":"3544352d","md":"#### [day1#three-units] Message, complaint and issue are three different units\n\n*What is one row?*\n\n| Unit | What it is | Counted when you ask |\n| --- | --- | --- |\n| **Message** | One row as stored, copies included | How much work arrived at intake? |\n| **Complaint** | One citizen's report of one problem, copies removed | How many residents complained? |\n| **Issue** | One problem in the world, however many reported it | How many problems need a crew? |\n\nA campaign of 600 messages about one overflowing sewer is 600 messages, about 600 complaints and one issue.","notes":"Write the three words on the board and keep them there all week. Most disputes about a number at Sada turn out to be disputes about the unit. The campaign appears in Lab 1.1's stretch and is found in Lab 1.3.","minutes":null,"lo":["LO1"]},{"id":"channels","n":7,"title":"Five channels deliver the corpus, and each leaves its mark on the text","kind":"content","session":1,"hash":"9db7ed87","md":"#### [day1#channels] Five channels deliver the corpus, and each leaves its mark on the text\n\n*Lab 1.1, the channels*\n\n| Item | Value |\n| --- | --- |\n| Web form | 30.9% |\n| App | 27.1% |\n| Call centre | 23.5% |\n| Social media | 9.7% |\n| Email | 8.8% |\n\nCall-centre transcripts carry more Gulf dialect; app text arrives with a Persian keyboard layout; emails carry letters pasted from PDF files.","notes":"Shares of the 20,000 rows from the Lab 1.1 run. The channel matters again in session 2: the script problems cluster by channel, which is how you find their cause rather than only their symptom.","minutes":null,"lo":["LO1"]},{"id":"form-field","n":8,"title":"The form's language field is wrong for about one complaint in eleven","kind":"content","session":1,"hash":"d81a1d68","md":"#### [day1#form-field] The form's language field is wrong for about one complaint in eleven\n\n*Lab 1.1, metadata*\n\n**8.8%** of complaints: the form field contradicts the script of the text\n\n| Channel | Field contradicts the text |\n| --- | --- |\n| App | 25.1% |\n| Social media | 4.8% |\n| Web form | 2.7% |\n| Call centre | 2.0% |\n| Email | 1.8% |\n\n> **What goes wrong.** A dashboard reports \"English complaints\" from the field. A quarter of the app's \"English\" rows are Arabic.","notes":"From Lab 1.1: 1,750 of 20,000 rows. The field records how the form was set, often by the app's default, not what the citizen wrote. The lesson generalises: a metadata field is a measurement made by somebody else, with its own errors. Measure it against the text before you use it to split a corpus.","minutes":null,"lo":["LO1"]},{"id":"profile-first","n":9,"title":"A profile is the first table of every text project","kind":"content","session":1,"hash":"fcbf0c22","md":"#### [day1#profile-first] A profile is the first table of every text project\n\n*Before any model*\n\n1. **Count** Rows, dates, channels, districts\n2. **Language** From the text, compared with the fields\n3. **Length** By language and channel\n4. **Copies** Exact first, near next\n\nThe profile is saved as a file and opens the cleaning report: anyone who reruns the script can compare their numbers with it.","notes":"Walk the four steps in the order of the lab. The point of saving the profile as a file is reproducibility: on Day 4 the capstone repository must rerun from the raw corpus and print the same profile.","minutes":null,"lo":["LO1"]},{"id":"lengths","n":10,"title":"English complaints are longer in characters and words than Arabic ones","kind":"content","session":1,"hash":"4814e923","md":"#### [day1#lengths] English complaints are longer in characters and words than Arabic ones\n\n*Lab 1.1, length*\n\n| Script | Median characters | Median words |\n| --- | --- | --- |\n| Arabic | 126 | 22 |\n| English | 164 | 29 |\n| Mixed | 98 | 14 |\n\n- Length differs by language, hardly by channel\n- A word count is not a token count: models split Arabic into more pieces per word\n- Cost per document, on Day 3, depends on both","notes":"Medians from the Lab 1.1 run, web channel; the other channels are within a few characters. The token point is a bridge to Day 3: the cost per thousand documents is computed from tokens, not words, and Arabic text usually takes more tokens per word in tokenisers trained mostly on English.","minutes":null,"lo":["LO1","LO2"]},{"id":"exact-copies","n":11,"title":"One message in thirty is an exact copy of an earlier one","kind":"content","session":1,"hash":"55c7c4a7","md":"#### [day1#exact-copies] One message in thirty is an exact copy of an earlier one\n\n*Lab 1.1, copies*\n\n**3.2%** 639 exact copies after whitespace is collapsed\n\n- Most copies arrive through the app (4.7%) and the web form (4.0%): a second press of \"send\"\n- Copies inflate every count by district\n- A copy in the training data and its twin in the test data flatter every score","notes":"From Lab 1.1. Exact copies are the easy part; session 3 finds the copies that differ by a sentence or a phone number. Ask: which of the three units from earlier does removing exact copies move us towards? From messages to complaints.","minutes":null,"lo":["LO1"]},{"id":"check-form-field","n":12,"title":"Which split of the corpus by language can you defend?","kind":"quiz","session":1,"hash":"032ec397","md":"#### [day1#check-form-field] Which split of the corpus by language can you defend?\n\n*Checkpoint*\n\n**Question:** Muhannad needs the complaints split into Arabic and English for two review teams. The form records a language for every complaint. What do you use?\n\n- A. The form's language field, since every row has one\n- B. The channel, since the call centre serves Arabic speakers\n- C. The script of the text itself, checked against the form field on a sample\n- D. A person reading every complaint and tagging it","notes":"Answer: the script of the text. If the room picks the field, show the app row of the previous slide again. Mixed-script complaints need a decision of their own: the lab gives them their own label rather than forcing them into one team.","minutes":null,"lo":["LO1"]},{"id":"lab-1-1","n":13,"title":"Profile the corpus","kind":"lab","session":1,"hash":"376d8289","md":"#### [day1#lab-1-1] Profile the corpus\n\nLab 1.1 · 25 min\n\nProfile the corpus by language, length, channel and duplicate rate, and test the form's language field against the text itself.\n\n[D1_1_profile.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D1_1_profile.ipynb)\n\n- [ ] Load the complaints and count what arrived (4 min)\n- [ ] Language from the script against the form field (6 min)\n- [ ] Length by language and channel (5 min)\n- [ ] The exact duplicate rate (5 min)\n- [ ] The profile table, saved for the report (5 min)\n- [ ] ✱ Stretch: Complaints per week and channel: find the week that does not look like the others","notes":"Watch for participants who skip reading rows in task 1: ask them to read five aloud to a neighbour. In task 4, some deduplicate before sorting by date; the earliest copy should be kept, so sort first. The stretch finds a week in June with 813 complaints against a median week of 499: do not reveal why; session 3 does.","minutes":null,"lo":[]},{"id":"s2","n":14,"title":"Preparing Arabic text","kind":"section","session":2,"hash":"9d11131a","md":"#### [day1#s2] Preparing Arabic text\n\n*Session 2*\n\n- Identify the script variants in an Arabic corpus\n- Write a normalisation function in named layers\n- Measure the vocabulary change of each layer and name what it merges","notes":"Normalisation is a set of decisions. Each one gets a name, a number and a reason, because each one loses information on purpose.","minutes":null,"lo":["LO1"]},{"id":"recap-ds202","n":15,"title":"You already repair encodings and build matching keys; today the goal is measurement","kind":"content","session":2,"hash":"8e62aaa9","md":"#### [day1#recap-ds202] You already repair encodings and build matching keys; today the goal is measurement\n\n*Recap from DS-202*\n\n- **In DS-202.** Encoding repair (Windows-1256 read as UTF-8) and a normalised name key for matching records, kept beside the stored name.\n- **Here.** Normalising whole texts for counting and classifying: which rules, in which order, and what each does to the vocabulary a model sees.","notes":"One slide only: DS-202 Day 2 session 1 covers encodings and Arabic name keys. If participants did not take DS-202, the important habit is the same: the normalised text is a new column; the raw text stays.","minutes":null,"lo":["LO1"]},{"id":"same-word-many-codes","n":16,"title":"Text pasted from a PDF looks Arabic and is made of different characters","kind":"content","session":2,"hash":"b77a474f","md":"#### [day1#same-word-many-codes] Text pasted from a PDF looks Arabic and is made of different characters\n\n*What a computer sees*\n\n```python\n# file: lab 1.2\n\"تحية\"  →  U+062A U+062D U+064A U+0629      # letters\n\"ﺕحﻱة\"  →  U+FE95 U+062D U+FEF1 U+0629      # presentation forms\n\nunicodedata.normalize(\"NFKC\", \"ﺕحﻱة\") == \"تحية\"   # True\n```\n\n- Presentation forms are the shapes a PDF stores; NFKC folds them back into letters\n- To a classifier, the two spellings are two unrelated words","notes":"From Lab 1.2: the first complaint with presentation forms, an email. Type both strings in a notebook and compare them with == to show they differ, then apply NFKC. Unicode normalisation forms are defined in Unicode Standard Annex 15. Sources: Python unicodedata documentation.","minutes":null,"lo":["LO1"]},{"id":"variants-found","n":17,"title":"Every Arabic complaint carries at least one spelling choice","kind":"content","session":2,"hash":"e0da2a85","md":"#### [day1#variants-found] Every Arabic complaint carries at least one spelling choice\n\n*Lab 1.2, step 1*\n\n| Variant | Arabic complaints with it | Where it comes from |\n| --- | --- | --- |\n| Teh marbuta (ة) | 90.0% | Spelling, written either ة or ه |\n| Hamza on alef (أ إ آ) | 69.3% | Spelling, often typed without hamza |\n| Alef maqsura (ى) | 43.8% | Spelling, often confused with ي |\n| Arabic-Indic digits | 28.8% | Keyboard |\n| Diacritics | 14.8% | Emphasis or habit |\n| Tatweel (ـ) | 9.8% | Stretching a word for emphasis |\n| Persian yeh or kaf | 6.5% | Keyboard layout, mostly the app |\n| Presentation forms | 2.8% | Pasted from PDF files, the email channel |","notes":"From Lab 1.2 over 15,964 complaints in Arabic or mixed script. The first three are spelling habits of the writer; the last four come from tools. That difference matters: a tool problem has one fix at its source, a spelling habit is handled by normalisation forever.","minutes":null,"lo":["LO1"]},{"id":"layers","n":18,"title":"Write normalisation as layers you can switch on and measure one by one","kind":"content","session":2,"hash":"99a62374","md":"#### [day1#layers] Write normalisation as layers you can switch on and measure one by one\n\n*One function, named layers*\n\n| Layer | Rule | Mirrors in CAMeL Tools |\n| --- | --- | --- |\n| `unicode` | NFKC: presentation forms to letters | `normalize_unicode` |\n| `persian` | ی to ي, ک to ك |  |\n| `marks` | Remove diacritics and tatweel |  |\n| `alef` | أ إ آ ٱ to ا | `normalize_alef_ar` |\n| `yeh_teh` | ى to ي, ة to ه | `normalize_alef_maksura_ar`, `normalize_teh_marbuta_ar` |\n| `digits` | Arabic-Indic and Persian digits to 0 to 9 |  |\n\nThe course uses its own rules: CAMeL Tools 1.6 installs a deep learning framework that these labs do not need.","notes":"CAMeL Tools is a real option and a good one for morphology; its normalize module provides the functions in the third column. Version and dependencies checked on PyPI this month. Sources: CAMeL Tools documentation, utils.normalize; PyPI page for camel-tools.","minutes":null,"lo":["LO1"]},{"id":"vocab-drop","n":19,"title":"Three layers do almost all the work: forms, marks and digits","kind":"content","session":2,"hash":"92be053c","md":"#### [day1#vocab-drop] Three layers do almost all the work: forms, marks and digits\n\n*Lab 1.2, step 3*\n\n| Item | Value |\n| --- | --- |\n| unicode | −2,935 |\n| persian | −346 |\n| marks | −2,488 |\n| alef | −33 |\n| yeh_teh | −68 |\n| digits | −1,018 |\n\nDistinct tokens over the Arabic complaints: 14,158 raw, 7,270 after all six layers.","notes":"From Lab 1.2. The alef and yeh_teh layers remove few distinct tokens here because both spellings of most words already occur; what they change is how often each token is counted. Ask why digits remove so many: every street number in two digit systems was two tokens.","minutes":null,"lo":["LO1"]},{"id":"rules-cost","n":20,"title":"A normalisation rule removes noise and, sometimes, a difference that mattered","kind":"content","session":2,"hash":"5fc11022","md":"#### [day1#rules-cost] A normalisation rule removes noise and, sometimes, a difference that mattered\n\n*Every rule is a decision*\n\n- **ة to ه** merges a feminine ending with a pronoun suffix\n- **Digits** merge ٢٣ and 23, which is right for counting streets\n- **Marks** remove emphasis the writer chose\n- 53 normalised tokens in this corpus came from both a final ة and a final ه\n\n- **The habit.** Keep the raw text in its own column. Write each rule with its layer name. Rerun with a layer off when a result surprises you.\n\n> **What goes wrong.** Normalised text overwrites the raw text, and a rule that turns out wrong cannot be undone.","notes":"The 53 comes from the stretch of Lab 1.2. Most are the same word spelled two ways, such as الحديقة and الحديقه, which is what the rule is for. Ask the room for a pair that is two words; in Gulf text مره (\"very\") and مرة (\"once\") are the classic example.","minutes":null,"lo":["LO1"]},{"id":"dialect-spellings","n":21,"title":"Dialect spellings are normalised as spellings, not translated into formal Arabic","kind":"content","session":2,"hash":"201729fa","md":"#### [day1#dialect-spellings] Dialect spellings are normalised as spellings, not translated into formal Arabic\n\n*Gulf dialect*\n\n| Written | Normalised to | Meaning |\n| --- | --- | --- |\n| اللحين, الحينه | الحين | now |\n| ماحد | محد | nobody |\n| شنو, ويش | وش | what |\n| واااايد | وايد | a lot (letters repeated three times or more) |\n\nLab 1.2: the stretched letters fired in 872 complaints; the map took the vocabulary from 7,270 to 7,211.\n\n> **Why not translate?** وايد is not an error. Turning Gulf text into formal Arabic hides the variety that Day 3 measures.","notes":"The map in data/dialect_map.csv is the course's own: sixteen rules, each with its meaning. The point to stress is the callout: the dialect is a property of the writer and a group in the analysis. Day 3 asks whether Fahim labels Gulf complaints as well as formal ones; translating them away would make that impossible to see.","minutes":null,"lo":["LO1"]},{"id":"check-normalise","n":22,"title":"Which normalisation choice keeps the evidence?","kind":"quiz","session":2,"hash":"a96668d4","md":"#### [day1#check-normalise] Which normalisation choice keeps the evidence?\n\n*Checkpoint*\n\n**Question:** A colleague's script applies NFKC, removes marks, maps ة to ه and writes the result over the `text` column. A reviewer asks how many complaints had presentation forms. What should the script have done?\n\n- A. Written the normalised text to a new column and kept the raw text\n- B. Applied NFKC only and skipped the other rules\n- C. Logged the rules it applied in a comment\n- D. Applied the rules in the reverse order","notes":"Answer: the first option. If the room hesitates on the comment option, ask how they would count the presentation forms from a comment.","minutes":null,"lo":["LO1"]},{"id":"lab-1-2","n":23,"title":"Normalise Arabic text","kind":"lab","session":2,"hash":"3b85536f","md":"#### [day1#lab-1-2] Normalise Arabic text\n\nLab 1.2 · 25 min\n\nNormalise letter variants and diacritics in named layers, measure the vocabulary change of each, and apply the course's Gulf spelling rules.\n\n[D1_2_normalise.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D1_2_normalise.ipynb)\n\n- [ ] Find the variants: forms, marks, letters, digits (5 min)\n- [ ] Write normalise() in layers (8 min)\n- [ ] The vocabulary change of each layer (7 min)\n- [ ] Gulf spellings from the supplied map (5 min)\n- [ ] ✱ Stretch: Find two different words that one rule merges into one","notes":"The vocabulary loop in step 3 takes up to a minute on the full corpus; quick mode (SADA_QUICK=1) uses 4,000 complaints. A common mistake is removing marks with a range that also removes letters: the self-checks after task 2 catch it. In step 4, remind them the map applies after normalise, so its entries are normalised too.","minutes":null,"lo":[]},{"id":"s3","n":24,"title":"Near-duplicates","kind":"section","session":3,"hash":"fa5b8f38","md":"#### [day1#s3] Near-duplicates\n\n*Session 3*\n\n- Compute the Jaccard similarity of two texts from character shingles\n- Find near-duplicate candidates with MinHash and banding\n- Write a keep rule that separates resubmissions from a campaign","notes":"The June week from Lab 1.1 is the hook: open by asking what the 300 or so extra complaints could be.","minutes":null,"lo":["LO1"]},{"id":"three-kinds","n":25,"title":"A copy, a resubmission and a campaign need three different decisions","kind":"content","session":3,"hash":"bb10178e","md":"#### [day1#three-kinds] A copy, a resubmission and a campaign need three different decisions\n\n*Not all copies are the same*\n\n- **Exact copy.** The same text twice within days. One citizen pressed send twice. Keep the first.\n- **Resubmission.** The same complaint with a sentence added: \"this is my second report\". One citizen, one complaint. Keep the first, note the repeat.\n- **Campaign.** Many residents paste one message and change a few words. Many complaints, one issue. Keep all, flag them.","notes":"The three units of session 1 come back: a copy changes the message count only; a campaign changes the issue count. The keep rule in Lab 1.3 encodes these three decisions.","minutes":null,"lo":["LO1"]},{"id":"shingles","n":26,"title":"Shingles turn a text into a set of overlapping five-character pieces","kind":"content","session":3,"hash":"cb4f51f7","md":"#### [day1#shingles] Shingles turn a text into a set of overlapping five-character pieces\n\n*Comparing texts*\n\n`المجا` `لمجار` `مجاري` `جاري ` `اري ط` `ري طا` `ي طاف` ` طافح`\n\n- Normalise first, so spelling variants share shingles\n- Mask long numbers: two copies with different phone numbers should still match\n- Keep short numbers: Street 12 and Street 46 are different places","notes":"The chips are the first shingles of \"المجاري طافحة\". Characters rather than words suit Arabic: a prefix such as ال or a suffix does not stop two forms of one word from sharing most of their shingles. The masking rule is the first line of the lab's prepare() function.","minutes":null,"lo":["LO1"]},{"id":"jaccard","n":27,"title":"Jaccard similarity is the shared shingles over all the shingles of the two texts","kind":"content","session":3,"hash":"9eaf0454","md":"#### [day1#jaccard] Jaccard similarity is the shared shingles over all the shingles of the two texts\n\n*One number for overlap*\n\n**|A ∩ B| / |A ∪ B|** 1 for identical sets, 0 for nothing shared\n\n- Two campaign messages written in different words: **0.21**\n- Two unrelated complaints: **0.03**\n- A resubmission and its original: usually above 0.7\n\n> **Same issue, different words.** Jaccard finds copied wording, not the same problem described twice. The campaign is found as several groups, one per template.","notes":"Numbers from Lab 1.3, task 1. The 0.21 is the honest surprise: two residents complaining about the same sewer in their own words are not near-duplicates by text. That is correct behaviour for this tool, and the reason a campaign is found as a few groups that the keep rule then flags by size.","minutes":null,"lo":["LO1"]},{"id":"minhash","n":28,"title":"MinHash compares 20,000 complaints without comparing every pair","kind":"content","session":3,"hash":"7509de3f","md":"#### [day1#minhash] MinHash compares 20,000 complaints without comparing every pair\n\n*Fast candidates*\n\n1. **Signature** 64 minimum hash values per complaint\n2. **Agreement** The share of equal positions estimates Jaccard\n3. **Bands** 16 bands of 4: equal in one band makes a candidate\n4. **Confirm** The true Jaccard on candidates only\n\nAll pairs would be about 200 million comparisons. The bands leave about 103,000 candidates.","notes":"The probability that two signatures agree at one position equals the Jaccard similarity of the sets; that is the whole trick. Bands tune the trade-off: more rows per band means fewer, closer candidates. Sources: Leskovec, Rajaraman and Ullman, Mining of Massive Datasets, chapter 3 (Finding Similar Items). The lab writes it in numpy to see it.","minutes":null,"lo":["LO1"]},{"id":"blocking","n":29,"title":"Short complaints look alike, so district and date join the rule","kind":"content","session":3,"hash":"ff08bb6c","md":"#### [day1#blocking] Short complaints look alike, so district and date join the rule\n\n*Lab 1.3, step 3*\n\n- \"The street lights on Street 12 are off\" is written by many residents, independently\n- **Block** by district: only complaints from the same district can pair\n- **Window**: confirm a pair only within 21 days\n- **Threshold**: Jaccard of 0.7 or more\n\n| Step | Pairs |\n| --- | --- |\n| Candidates from the bands | 103,238 |\n| Confirmed | 11,031 |","notes":"From Lab 1.3. Without blocking and the window, the first version of this lab chained more than 5,000 unrelated complaints into one group: formulaic text is the norm in complaints. The metadata is part of the definition of a duplicate, not a speed trick.","minutes":null,"lo":["LO1"]},{"id":"keep-rule","n":30,"title":"The keep rule removes 998 messages and flags 576 as one campaign","kind":"content","session":3,"hash":"ad12a1cd","md":"#### [day1#keep-rule] The keep rule removes 998 messages and flags 576 as one campaign\n\n*Lab 1.3, step 4*\n\n| Group | Rule | Messages |\n| --- | --- | --- |\n| Fewer than 20 members | Keep the earliest; the others are copies | 998 removed |\n| 20 members or more | Keep all, flag `campaign` | 576 flagged |\n\nAll 576 flagged messages are from Al-Naseem, sent in ten days of June, about one sewer on Street 12.","notes":"From Lab 1.3. The campaign carries over to Day 4: a rate per message counts 576 residents; a rate per issue counts one. Neither is wrong; the report says which one it gives.","minutes":null,"lo":["LO1"]},{"id":"threshold-tradeoff","n":31,"title":"A threshold trades copies missed against real complaints dropped","kind":"content","session":3,"hash":"2217e665","md":"#### [day1#threshold-tradeoff] A threshold trades copies missed against real complaints dropped\n\n*What the answer key shows*\n\n| Jaccard threshold | Messages removed | Of them, true copies | True copies found |\n| --- | --- | --- | --- |\n| 0.6 | 1,247 | 839 | 91% |\n| 0.7 | 998 | 810 | 88% |\n| 0.8 | 758 | 626 | 68% |\n\n924 messages are true copies or resubmissions. Synthetic data has an answer key; real data has a sample you read.","notes":"From the generator's answer key, run with the lab's rule at a 21-day window. At 0.7, about four in five removed messages are true copies; the rest are independent complaints worded alike. In real work there is no key: read 50 removed pairs and count how many are true copies. That reading is the evidence for the threshold.","minutes":null,"lo":["LO1"]},{"id":"check-near-dups","n":32,"title":"What do you do with 576 near-identical messages?","kind":"quiz","session":3,"hash":"42da3423","md":"#### [day1#check-near-dups] What do you do with 576 near-identical messages?\n\n*Checkpoint*\n\n**Question:** The keep rule finds 576 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?\n\n- A. Keep the earliest message and drop the other 575\n- B. Drop all 576 as an organised campaign\n- C. Keep all 576 with no flag, since they are complaints\n- D. Keep all 576, flag them, and report the count with and without the campaign","notes":"Answer: the fourth option. The first option is the commonest wrong answer: it applies the rule for exact copies to a campaign. Link back to the three units slide.","minutes":null,"lo":["LO1"]},{"id":"lab-1-3","n":33,"title":"Find near-duplicates","kind":"lab","session":3,"hash":"393dd285","md":"#### [day1#lab-1-3] Find near-duplicates\n\nLab 1.3 · 25 min\n\nFind near-duplicate complaints with character shingles and MinHash, group them, and decide which to keep and which to flag as a campaign.\n\n[D1_3_near_duplicates.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D1_3_near_duplicates.ipynb)\n\n- [ ] Shingles and Jaccard on two complaints (5 min)\n- [ ] MinHash signatures for the corpus (7 min)\n- [ ] Bands: candidate pairs, then the true similarity (6 min)\n- [ ] Groups and the keep rule (7 min)\n- [ ] ✱ Stretch: Count the campaign as one issue: which district's count changes most?","notes":"The MinHash step takes about a minute on the full corpus; quick mode uses 6,000 complaints. An integer overflow appears if someone uses a prime above 2 to the 31: the lab's P is chosen so products fit. If union-find is new to someone, give them the reference groups (the safety net) and let them write the keep rule.","minutes":null,"lo":[]},{"id":"s4","n":34,"title":"Redacting personal data","kind":"section","session":4,"hash":"b84aafb0","md":"#### [day1#s4] Redacting personal data\n\n*Session 4*\n\n- Explain why identifiers are removed before text reaches a hosted model\n- Write patterns for phone and identity numbers in both digit systems\n- Measure a redaction miss rate by type and language on an audited sample","notes":"The session ends Day 1 with the number Ashwaq asks for: the share of personal data the redaction missed, measured, not assumed.","minutes":null,"lo":["LO1"]},{"id":"redact-before","n":35,"title":"Identifiers come out before any text goes to a model","kind":"content","session":4,"hash":"c96b343d","md":"#### [day1#redact-before] Identifiers come out before any text goes to a model\n\n*Why first*\n\n- The Data Classification Policy has four levels: Top Secret, Secret, Restricted, Public\n- The Generative AI Guideline for government asks employees not to enter data classified Restricted or higher into generative AI tools\n- It limits their use, and data analysis with them, to data classified Public\n- Complaints with names and numbers are not Public\n\n- **At Sada.** Redacted text is classified again by Ashwaq. Text that stays above Public goes to a locally served model (llama.cpp, Ollama), never to a free hosted one.","notes":"Both points are read from the documents: the four levels from the NDMO Data Classification Policy, and section 3.5 and the data-analysis practices of SDAIA's Generative AI Guideline for Government. The labs send only synthetic text to hosted models. The Personal Data Protection Law and its implementing regulations govern the processing itself: name them and leave their reading to the data protection officer. Sources: Data Classification Policy; Generative AI Guideline for Government; Personal Data Protection Law.","minutes":null,"lo":["LO1"]},{"id":"what-is-there","n":36,"title":"A person marked 339 personal values in 500 complaints","kind":"content","session":4,"hash":"fcebaa3d","md":"#### [day1#what-is-there] A person marked 339 personal values in 500 complaints\n\n*The audited sample*\n\n| Item | Value |\n| --- | --- |\n| Phone numbers | 160 |\n| Names | 122 |\n| Identity numbers | 38 |\n| Emails | 19 |\n\nThe marking is the reference. Without it, a redaction can only report what it found, never what it missed.","notes":"From data/redaction_audit.csv in Lab 1.4. In real work the sample is drawn at random from the corpus and marked by two people; 500 is enough to put an interval on the miss rate of the common types, not of rare ones.","minutes":null,"lo":["LO1"]},{"id":"naive-pattern","n":37,"title":"\"05 and eight digits\" misses four phone numbers in five","kind":"content","session":4,"hash":"c8fb5b03","md":"#### [day1#naive-pattern] \"05 and eight digits\" misses four phone numbers in five\n\n*Lab 1.4, step 1*\n\n**80.6%** of marked phone numbers missed by `05\\d{8}`\n\n- ٠٥٥ ٩٥٠ ٨٤١٤: Arabic-Indic digits, with spaces\n- `+966 59 158 0751`: international form\n- `059-386-9528`: dashes","notes":"From Lab 1.4, step 1. The five numbers it printed show the three reasons: digit system, country code, separators. Ask the room to guess the miss rate before revealing it; most guess under 20%.","minutes":null,"lo":["LO1"]},{"id":"one-pattern","n":38,"title":"One pattern covers both digit systems, the country code and the separators","kind":"content","session":4,"hash":"5f2e64c3","md":"#### [day1#one-pattern] One pattern covers both digit systems, the country code and the separators\n\n*Lab 1.4, step 2*\n\n```python\n# file: redact.py\nD = \"[0-9٠-٩]\"\nPHONE = rf\"(?:\\+?(?:966|٩٦٦)[\\s\\-]?|[0٠])?[5٥]{D}(?:[\\s\\-]?{D}){{7}}(?!{D})\"\nID    = rf\"(?\u003c!{D})[12١٢]{D}{{9}}(?!{D})\"\nEMAIL = r\"[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+\"\n```\n\n- The digit class keeps the citizen's text as written: no translation before masking\n- Phones first, then emails, then identity numbers","notes":"Walk the phone pattern left to right: optional country code or leading zero, a 5, then eight more digits with optional separators, and nothing digit-like after. Order matters: an email's local part can hold digits, and a phone in 966 form must not be half-masked by the identity pattern.","minutes":null,"lo":["LO1"]},{"id":"names-cues","n":39,"title":"Names have no shape, so the pattern looks for the words that introduce them","kind":"content","session":4,"hash":"db8c386c","md":"#### [day1#names-cues] Names have no shape, so the pattern looks for the words that introduce them\n\n*Lab 1.4, step 4*\n\n| Cue | Example after masking |\n| --- | --- |\n| اسمي | اسمي [NAME]، جوالي [PHONE] |\n| معك, انا | معك [NAME]. |\n| My name is, Regards, | My name is [NAME]. Call me on [PHONE]. |\n| *No cue* | *Badr Al-Mutairi, phone [PHONE]* |\n\n> **What goes wrong.** A name written with no cue word passes untouched. Patterns reach their limit here.","notes":"The last row is from the stretch of Lab 1.4. Options beyond patterns: a list of common names (cheap, misses rare names, masks words that are also names), a named-entity model (better, needs its own evaluation on Gulf text), a person for high-risk releases. Each has a miss rate to measure the same way.","minutes":null,"lo":["LO1"]},{"id":"miss-rate","n":40,"title":"The redaction misses 7.7% of personal values, all of them names","kind":"content","session":4,"hash":"a3805af8","md":"#### [day1#miss-rate] The redaction misses 7.7% of personal values, all of them names\n\n*Lab 1.4, step 5*\n\n| Type | Missed |\n| --- | --- |\n| Phone numbers | 0 of 160 |\n| Identity numbers | 0 of 38 |\n| Emails | 0 of 19 |\n| Names | 26 of 122 (21.3%) |\n\n- Arabic-script complaints: 5.7% missed\n- English complaints: 15.1% missed\n- The interval on 26 of 122 runs from about 15% to 29%","notes":"From Lab 1.4. The language gap is the first of the week: English names are more often written without a cue (\"Name, phone\"), and so are bare names at the end of Arabic complaints. The interval is a Wilson 95% interval computed by hand for this slide. The miss rate and its interval go into the profile report: that is the LO1 evidence.","minutes":null,"lo":["LO1"]},{"id":"zero-matches","n":41,"title":"Zero matches is a statement about the pattern, not about the text","kind":"content","session":4,"hash":"cf3a739a","md":"#### [day1#zero-matches] Zero matches is a statement about the pattern, not about the text\n\n*The rule of the session*\n\n1. **Sample** Draw complaints at random\n2. **Mark** A person marks every personal value\n3. **Redact** Run the script on the sample\n4. **Count misses** By type and language, with an interval\n\nThe profile report carries the miss rate next to the profile: `artifacts/day1/profile_report.md`.","notes":"This is the measurement idea of the whole course applied to cleaning: a tool's output is compared with a human reference on a sample. Tomorrow the same idea is applied to labels.","minutes":null,"lo":["LO1"]},{"id":"check-redaction","n":42,"title":"What does Ashwaq need to approve the redaction?","kind":"quiz","session":4,"hash":"616ab599","md":"#### [day1#check-redaction] What does Ashwaq need to approve the redaction?\n\n*Checkpoint*\n\n**Question:** Your script masked 7,400 values in the corpus. Ashwaq Al-Jabr must decide whether the redacted text may leave the centre's servers. Which number answers her?\n\n- A. The 7,400 values the script masked\n- B. The share of values a person marked in a random sample that the script left readable\n- C. The time the script takes on the whole corpus\n- D. The six test numbers that all passed","notes":"Answer: the second option. The test strings are useful for development, which is why the lab has them, but they contain only formats you already knew about.","minutes":null,"lo":["LO1"]},{"id":"lab-1-4","n":43,"title":"Redact and measure misses","kind":"lab","session":4,"hash":"014a6def","md":"#### [day1#lab-1-4] Redact and measure misses\n\nLab 1.4 · 25 min\n\nMask phone numbers, identity numbers, emails and names, measure the misses on 500 audited complaints, and write the profile report.\n\n[D1_4_redaction.ipynb](https://sdaiaacademy.github.io/ds-306/labs/D1_4_redaction.ipynb)\n\n- [ ] Read what leaks in the audited sample (4 min)\n- [ ] Phone numbers in every format (7 min)\n- [ ] Identity numbers and emails (4 min)\n- [ ] Names after cue words (5 min)\n- [ ] The miss rate and the profile report (5 min)\n- [ ] ✱ Stretch: Names with no cue word: how many are there, and what would catch them?","notes":"Typical problems: a phone pattern that also eats the first ten digits of an identity number (order of patterns); Arabic names captured with one word only. If Lab 1.1 was not finished, the report falls back to the reference profile. The miss table counts a phone as missed when seven digits in a row are still readable.","minutes":null,"lo":[]},{"id":"wrap-up","n":44,"title":"Three things to keep","kind":"content","session":4,"hash":"cd6afa82","md":"#### [day1#wrap-up] Three things to keep\n\n*Day 1 · wrap-up*\n\n- **Profile first.** Language from the text, not the form; copies counted; the profile saved as a file.\n- **Rules are decisions.** Each normalisation layer and each keep rule has a name, a number and a reason. The raw text stays.\n- **Measure misses.** A redaction is reported with its miss rate on a human-marked sample, by type and language.","notes":"Ask each table to name the number from today they would put in front of Dr. Ebtisam first. The usual answer is the name miss rate; the campaign is the runner-up.","minutes":null,"lo":[]},{"id":"next","n":45,"title":"Day 2: Labels you can trust","kind":"content","session":4,"hash":"0cd2b8dd","md":"#### [day1#next] Day 2: Labels you can trust\n\n*Next*\n\nBring a partner for the first lab: you will label 40 complaints together, without AI. Read the codebook in labs/data/codebook.md tonight.","notes":"Day 2 labs use redacted files only. Participants with a free OpenRouter key can add it to labs/.env for Lab 2.3; without a key the embedding cells use a stand-in and say so.","minutes":null,"lo":[]}],"activities":[{"id":"check-form-field-q1","slide":"check-form-field","type":"single","prompt":"Muhannad needs the complaints split into Arabic and English for two review teams. The form records a language for every complaint. What do you use?","options":[{"key":"A","text":"The form's language field, since every row has one"},{"key":"B","text":"The channel, since the call centre serves Arabic speakers"},{"key":"C","text":"The script of the text itself, checked against the form field on a sample"},{"key":"D","text":"A person reading every complaint and tagging it"}],"correct":[2],"explanation":"The language of a text is a property of the text. The form field disagrees with it for 8.8% of complaints, and for a quarter of the app's.","misconceptions":["Trusts a metadata field because it is complete: completeness says nothing about whether the field is right","Treats the channel as the language: every channel carries both languages","","Gives up measurement for a person's reading: possible for 40 complaints, not for 20,000"],"lo":["LO1"]},{"id":"check-normalise-q1","slide":"check-normalise","type":"single","prompt":"A colleague's script applies NFKC, removes marks, maps ة to ه and writes the result over the text column. A reviewer asks how many complaints had presentation forms. What should the script have done?","options":[{"key":"A","text":"Written the normalised text to a new column and kept the raw text"},{"key":"B","text":"Applied NFKC only and skipped the other rules"},{"key":"C","text":"Logged the rules it applied in a comment"},{"key":"D","text":"Applied the rules in the reverse order"}],"correct":[0],"explanation":"Each rule loses information on purpose. With the raw text kept, any count about the raw text, and any rule changed later, can be recomputed.","misconceptions":["","Thinks fewer rules means less loss: any rule that overwrites the raw text destroys the evidence","Confuses a log of what was done with the data it was done to: counts cannot be recomputed from a log","Treats a rule's order as the issue: the answer is lost whatever the order once the column is overwritten"],"lo":["LO1"]},{"id":"check-near-dups-q1","slide":"check-near-dups","type":"single","prompt":"The keep rule finds 576 near-identical messages from one district in ten days, all about one sewer. Dr. Ebtisam asks for the number of sewage complaints per district. What does the cleaning script do with them?","options":[{"key":"A","text":"Keep the earliest message and drop the other 575"},{"key":"B","text":"Drop all 576 as an organised campaign"},{"key":"C","text":"Keep all 576 with no flag, since they are complaints"},{"key":"D","text":"Keep all 576, flag them, and report the count with and without the campaign"}],"correct":[3],"explanation":"They are 576 complaints and one issue. The flag lets both counts be made, and the report states which one the rate uses.","misconceptions":["Treats a campaign as copies by one person: each message is a resident who complained","Assumes organised complaints are less real: the residents are real and the sewer overflows","Hides the decision from the reader: the count changes by 575 depending on a choice nobody sees",""],"lo":["LO1"]},{"id":"check-redaction-q1","slide":"check-redaction","type":"single","prompt":"Your script masked 7,400 values in the corpus. Ashwaq Al-Jabr must decide whether the redacted text may leave the centre's servers. Which number answers her?","options":[{"key":"A","text":"The 7,400 values the script masked"},{"key":"B","text":"The share of values a person marked in a random sample that the script left readable"},{"key":"C","text":"The time the script takes on the whole corpus"},{"key":"D","text":"The six test numbers that all passed"}],"correct":[1],"explanation":"Only a human-marked sample shows what the script missed. Her decision rests on the miss rate by type, with an interval.","misconceptions":["Counts what was found: a large count can sit beside a large number of misses","","Measures speed, not protection: a fast script can still leak","Assumes a pattern tested on examples works on the corpus: six test strings show the formats you thought of"],"lo":["LO1"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day1.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
